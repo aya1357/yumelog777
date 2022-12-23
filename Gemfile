@@ -71,5 +71,7 @@ group :test do
   gem "webdrivers"
 end
 
+# CSS、JSバンドラー
 gem 'tailwindcss-rails'
 gem 'cssbundling-rails'
+
