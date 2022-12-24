@@ -75,3 +75,8 @@ end
 gem 'tailwindcss-rails'
 gem 'cssbundling-rails'
 
+# ログイン機能
+gem 'sorcery'
+
+#デバッグ
+gem 'pry-byebug'
