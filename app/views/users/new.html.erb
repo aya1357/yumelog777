@@ -1,6 +1,6 @@
 <div class="bg-white py-6 sm:py-8 lg:py-12">
   <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
-    <h2 class="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-8">ユーザー登録</h2>
+    <h2 class="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-8"><%= t '.title' %></h2>
 
     <form class="max-w-lg border rounded-lg mx-auto">
       <div class="flex flex-col border-t-4 border-indigo-600">
@@ -20,15 +20,15 @@
               <%= f.text_field :name, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2 my-2", placeholder: "ユーザー名" %>
             </div>
             <div>
-              <%= f.email_field :email, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2 my-2", placeholder: "メールアドレス" %>
+              <%= f.email_field :email, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2 my-2", placeholder: User.human_attribute_name(:email) %>
             </div>
             <div>
-              <%= f.password_field :password, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2 my-2", placeholder: "パスワード" %>
+              <%= f.password_field :password, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2 my-2", placeholder: User.human_attribute_name(:password) %>
             </div>
             <div>
-              <%= f.password_field :password_confirmation, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2 my-2", placeholder: "パスワード(確認)" %>
+              <%= f.password_field :password_confirmation, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2 my-2", placeholder: User.human_attribute_name(:password_confirmation) %>
             </div>
-            <button class="block bg-indigo-600 hover:bg-gray-700 active:bg-gray-600 focus-visible:ring ring-gray-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3 mt-10 mb-5">ログイン</button>
+            <button class="block bg-indigo-600 hover:bg-gray-700 active:bg-gray-600 focus-visible:ring ring-gray-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3 mt-10 mb-5"><%= t '.register' %></button>
           </div>
         <% end %>
         <div class="flex justify-center items-center bg-gray-100 p-4">

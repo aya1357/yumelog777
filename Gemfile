@@ -80,3 +80,6 @@ gem 'sorcery'
 
 #デバッグ
 gem 'pry-byebug'
+
+# UI/UX
+gem 'rails-i18n'

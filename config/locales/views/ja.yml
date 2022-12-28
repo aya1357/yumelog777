@@ -1,0 +1,15 @@
+ja:
+  defaults:
+    login: 'ログイン'
+    logout: 'ログアウト'
+    save: '保存'
+  users:
+    new:
+      title: 'ユーザー登録'
+      register: '登録'
+  user_sessions:
+    new:
+      title: 'ログイン'
+  profiles:
+    show:
+      title: 'プロフィール'
