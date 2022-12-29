@@ -79,7 +79,7 @@ gem 'cssbundling-rails'
 gem 'sorcery'
 
 #デバッグ
-gem 'pry-byebug'
+gem 'pry-rails'
 
 # UI/UX
 gem 'rails-i18n'

@@ -2,4 +2,4 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "./packs/login.js"
-console.log('こんにちは');
+
