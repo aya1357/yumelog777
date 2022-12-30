@@ -1,33 +1,33 @@
-<div class="navbar bg-base-100">
+<div class="navbar bg-base-100 h-20">
   <div class="flex-1">
       <a class="normal-case text-2xl" href="#">ゆめログ</a>
   </div>
   <div class="flex-none">
-    <div>
-      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle" >
-        <div class="w-8">
+    <div class="dropdown dropdown-end mr-3">
+      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-14 pl-1">
+        <div class="rounded-full">
           <%= image_tag "index.png" %>
         </div>
       </label>
     </div>
     <div class="dropdown dropdown-end">
-      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle">
-        <div class="w-5 rounded-full">
+      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-14 pl-1">
+        <div class="rounded-full">
           <%= image_tag "guide.png" %>
         </div>
       </label>
     </div>
     <div class="dropdown dropdown-end">
-      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle">
-        <div class="w-8 rounded-full">
+      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-16 pl-4">
+        <div class="rounded-full">
           <%= image_tag "login.png" %>
         </div>
       </label>
     </div>
     <div class="dropdown dropdown-end">
-      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle">
-        <div class="w-7 rounded-full">
-          <%= image_tag "signup.png", class: 'w-12', alt: "新規登録アイコン" %>
+      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-14 pl-1">
+        <div class="rounded-full">
+          <%= image_tag "signup.png", class: 'w-12' %>
         </div>
       </label>
     </div>
