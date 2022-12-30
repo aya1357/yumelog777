@@ -1,33 +1,43 @@
 <div class="navbar bg-base-100 h-20">
-  <div class="flex-1">
-      <a class="normal-case text-2xl" href="#">ゆめログ</a>
+  <div class="flex-1 ml-3">
+    <%= link_to root_path do %>
+      <%= image_tag "title.png", alt: "タイトルアイコン" %>
+    <% end %>
   </div>
   <div class="flex-none">
     <div class="dropdown dropdown-end mr-3">
-      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-14 pl-1">
+      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-16 pl-2">
         <div class="rounded-full">
-          <%= image_tag "index.png" %>
-        </div>
-      </label>
-    </div>
-    <div class="dropdown dropdown-end">
-      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-14 pl-1">
-        <div class="rounded-full">
-          <%= image_tag "guide.png" %>
+          <%= link_to '#' do %>
+            <%= image_tag "index.png", alt: "投稿一覧アイコン" %>
+          <% end %>
         </div>
       </label>
     </div>
     <div class="dropdown dropdown-end">
       <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-16 pl-4">
         <div class="rounded-full">
-          <%= image_tag "login.png" %>
+          <%= link_to '#' do %>
+            <%= image_tag "guide.png", alt: "クイックガイドアイコン" %>
+          <% end %>
         </div>
       </label>
     </div>
     <div class="dropdown dropdown-end">
-      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-14 pl-1">
+      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-16 pl-3 mr-1">
         <div class="rounded-full">
-          <%= image_tag "signup.png", class: 'w-12' %>
+          <%= link_to login_path do %>
+            <%= image_tag "login.png", alt: "ログインアイコン" %>
+          <% end %>
+        </div>
+      </label>
+    </div>
+    <div class="dropdown dropdown-end">
+      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-16 pl-2">
+        <div class="rounded-full">
+          <%= link_to new_user_path do %>
+            <%= image_tag "signup.png", class: 'w-12', alt: "新規登録アイコン" %>
+          <% end %>
         </div>
       </label>
     </div>
