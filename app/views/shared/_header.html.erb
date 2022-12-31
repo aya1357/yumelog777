@@ -1,7 +1,7 @@
 <div class="navbar bg-base-100 h-20">
   <div class="flex-1">
     <%= link_to root_path do %>
-      <%= image_tag "title.png", alt: "タイトルアイコン" %>
+      <%= image_tag "header_title.png", alt: "タイトルアイコン" %>
     <% end %>
   </div>
   <div class="flex-none">
@@ -9,7 +9,7 @@
       <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-14 pl-1">
         <div class="rounded-full">
           <%= link_to '#' do %>
-            <%= image_tag "index.png", alt: "投稿一覧アイコン" %>
+            <%= image_tag "header_index.png", alt: "投稿一覧アイコン" %>
           <% end %>
         </div>
       </label>
@@ -18,7 +18,7 @@
       <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-14 pl-1">
         <div class="rounded-full">
           <%= link_to '#' do %>
-            <%= image_tag "calendar.png", alt: "カレンダーアイコン" %>
+            <%= image_tag "header_calendar.png", alt: "カレンダーアイコン" %>
           <% end %>
         </div>
       </label>
@@ -27,7 +27,7 @@
       <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-16 pl-4 mx-2">
         <div class="rounded-full">
           <%= link_to '#' do %>
-            <%= image_tag "guide.png", alt: "クイックガイドアイコン" %>
+            <%= image_tag "header_guide.png", alt: "クイックガイドアイコン" %>
           <% end %>
         </div>
       </label>
@@ -36,7 +36,7 @@
       <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-14 pl-1">
         <div class="rounded-full">
           <%= link_to logout_path, data: { turbo_method: :delete } do %>
-            <%= image_tag "logout.png", class: 'w-12', alt: "ログアウトアイコン" %>
+            <%= image_tag "header_logout.png", class: 'w-12', alt: "ログアウトアイコン" %>
           <% end %>
         </div>
       </label>
