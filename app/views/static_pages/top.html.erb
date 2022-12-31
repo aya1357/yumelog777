@@ -1,0 +1,97 @@
+<div class="bg-blue-50">
+  <section
+    class="relative bg-[url(top_image.jpg)] bg-cover bg-center bg-no-repeat"
+  >
+    <div
+      class="absolute inset-0 bg-white/20 sm:bg-transparent sm:bg-gradient-to-r sm:from-white/20 sm:to-white/20"
+    ></div>
+
+    <div
+      class="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8"
+    >
+      <div class="max-w-xl text-center sm:text-left">
+        <h1 class="text-3xl font-extrabold sm:text-5xl text-blue-700">
+          目標管理作成アプリ
+        </h1>
+
+        <p class="ml-1 mt-4 max-w-lg sm:text-xl sm:leading-relaxed">
+          忙しい毎日に夢を叶える新習慣
+        </p>
+
+        <div class="mt-12 flex flex-wrap gap-4 text-center">
+          <%= link_to '新規登録', new_user_path, class:  "font-bold ml-1 block w-full rounded bg-blue-700 px-12 py-3 text-sm font-medium text-white shadow hover:bg-blue-800 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto" %>
+          <%= link_to 'ログイン', login_path, class:  "font-bold block w-full rounded bg-white px-12 py-3 text-sm font-medium text-blue-700 shadow hover:text-blue-700 focus:outline-none focus:ring active:text-blue-500 sm:w-auto" %>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="bg-no-repeat flex justify-center bg-white/75 sm:bg-transparent sm:bg-gradient-to-r sm:from-white/75 sm:to-white/75">
+    <%= image_tag 'top_studytime.png', class: 'mt-10' %>
+  </div>
+  <div class="text-center mb-20">
+    <p class="text-gray-700 text-5xl font-bold text-center mt-28 md:mt-28 leading-snug mb-8">忙しい毎日の空き時間を<br>有効活用しませんか？</p>
+    <%= link_to "使い方を見る", "#", class: "shadow-lg bg-orange-500 shadow-orange-500/50 text-white rounded px-2 py-1 mt-10" %>
+  </div>
+  <div class="bg-no-repeat flex justify-center">
+    <%= image_tag 'top_culc_studytime.png' %>
+  </div>
+  <div class="text-center mb-20">
+    <p class="text-gray-700 text-5xl font-bold text-center mt-28 md:mt-28 leading-snug mb-6">毎日の勉強を<br>サポートします</p>
+    <%= link_to "使い方を見る", "#", class: "shadow-lg bg-orange-500 shadow-orange-500/50 text-white rounded px-2 py-1 mt-10 mb-20" %>
+  </div>
+
+  <div class="py-6 sm:py-8 lg:py-12">
+    <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
+      <div class="sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 xl:gap-8 flex justify-center mx-14">
+        <!-- article - start -->
+        <div class="flex flex-col bg-gray-50 border rounded-lg overflow-hidden w-1/3 sm:w-full">
+          <div class="group h-48 md:h-64 block bg-gray-100 overflow-hidden relative">
+            <%= image_tag "top_description1.jpg", loading: "lazy", alt: "Photo by Minh Pham", class: "w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200" %>
+          </div>
+
+          <div class="flex flex-col flex-1 p-4 sm:p-6">
+            <h2 class="text-gray-800 text-lg font-semibold mb-2">
+              <p class="hover:text-indigo-500 active:text-indigo-600 transition duration-100">Goal Settings</p>
+            </h2>
+
+            <p class="text-gray-500 mb-8">カレンダーに本のページ数といつまでに読み終えたいか書くだけで自動で1日のページ数を算出してくれます。</p>
+          </div>
+        </div>
+        <!-- article - end -->
+
+        <!-- article - start -->
+        <div class="flex flex-col bg-gray-50 border rounded-lg overflow-hidden w-1/3  sm:w-full">
+          <div class="group h-48 md:h-64 block bg-gray-100 overflow-hidden relative">
+            <%= image_tag "top_description2.jpg", loading: "lazy", alt: "Photo by Lorenzo Herrera", class: "w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200" %>
+          </div>
+
+          <div class="flex flex-col flex-1 p-4 sm:p-6">
+            <h2 class="text-gray-800 text-lg font-semibold mb-2">
+              <p class="hover:text-indigo-500 active:text-indigo-600 transition duration-100">Records</p>
+            </h2>
+            <p class="text-gray-500 mb-8">一日の終わりに、今日勉強した総数を記録してみましょう。残りのページ数を計算してくれます。</p>
+          </div>
+        </div>
+        <!-- article - end -->
+
+        <!-- article - start -->
+        <div class="flex flex-col bg-gray-50 border rounded-lg overflow-hidden w-1/3  sm:w-full">
+          <div class="group h-48 md:h-64 block bg-gray-100 overflow-hidden relative">
+            <%= image_tag "top_description3.jpg", loading: "lazy", alt: "Photo by Magicle", class: "w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200" %>
+          </div>
+          <div class="flex flex-col flex-1 p-4 sm:p-6">
+            <h2 class="text-gray-800 text-lg font-semibold mb-2">
+              <p class="hover:text-indigo-500 active:text-indigo-600 transition duration-100">Progress</p>
+            </h2>
+            <p class="text-gray-500 mb-8">今日までの進捗率も一目でわかります。  </p>
+          </div>
+        </div>
+        <!-- article - end -->
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <%= link_to "今すぐ始めてみる", "#", class: "shadow-lg shadow-blue-500/50 btn btn-primary text-2xl mb-8" %><br>
+    <%= link_to "使い方を見る", "#", class: "shadow-lg bg-orange-500 shadow-orange-500/50 text-white rounded px-2 py-1 mt-10 mb-14" %>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+ja:
+  defaults:
+    login: 'ログイン'
+    logout: 'ログアウト'
+    save: '保存'
+  users:
+    new:
+      title: 'ユーザー登録'
+      register: '登録'
+    create:
+      success: 'ユーザー登録が完了しました'
+      fail: 'ユーザー登録に失敗しました'
+  user_sessions:
+    new:
+      title: 'ログイン'
+    create:
+      success: 'ログインしました'
+      fail: 'ログインに失敗しました'
+    destroy:
+      success: 'ログアウトしました'
+  profiles:
+    show:
+      title: 'プロフィール'

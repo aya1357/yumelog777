@@ -70,3 +70,16 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# CSS、JSバンドラー
+gem 'tailwindcss-rails'
+gem 'cssbundling-rails'
+
+# ログイン機能
+gem 'sorcery'
+
+#デバッグ
+gem 'pry-rails'
+
+# UI/UX
+gem 'rails-i18n'
