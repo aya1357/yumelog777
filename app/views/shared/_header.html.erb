@@ -33,6 +33,15 @@
       </label>
     </div>
     <div class="dropdown dropdown-end">
+      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-16 mr-4 mx-2">
+        <div class="rounded-full">
+          <%= link_to edit_profile_path do %>
+            <%= image_tag "header_plofile.png", alt: "プロフィールアイコン" %>
+          <% end %>
+        </div>
+      </label>
+    </div>
+    <div class="dropdown dropdown-end">
       <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-14 pl-1">
         <div class="rounded-full">
           <%= link_to logout_path, data: { turbo_method: :delete } do %>
