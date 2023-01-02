@@ -3,6 +3,20 @@ ja:
     login: 'ログイン'
     logout: 'ログアウト'
     save: '保存'
+    show: '詳細'
+    edit: '編集'
+    delte: '削除'
+    update: '更新'
+    password_reset: 'パスワードリセット'
+    message:
+      require_login: 'ログインしてください'
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成出来ませんでした"
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新出来ませんでした"
+      deleted: "%{item}を削除しました"
+      delete_confirm: 削除しますか？
+      not_authorized: '権限がありません'
   users:
     new:
       title: 'ユーザー登録'
@@ -21,3 +35,16 @@ ja:
   profiles:
     show:
       title: 'プロフィール'
+    edit:
+      title: 'プロフィール編集'
+  password_resets:
+    new:
+      title: 'パスワードリセット申請'
+      submit: '送信'
+    edit:
+      title: 'パスワードリセット'
+    create:
+      success: 'パスワードリセット手順を送信しました'
+    update:
+      success: 'パスワードを変更しました'
+      fail: 'パスワードの変更に失敗しました'
