@@ -43,6 +43,8 @@ ja:
       submit: '送信'
     edit:
       title: 'パスワードリセット'
+      new_password: '新しいパスワードをご入力ください'
+      new_password_confirmation: '確認用として新しいパスワードをもう一度ご入力ください'
     create:
       success: 'パスワードリセット手順を送信しました'
     update:
