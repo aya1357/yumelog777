@@ -1,1 +1,6 @@
 <h1>カレンダートップページ</h1>
+<%= turbo_frame_tag 'calendar' do %>
+  <%= month_calendar do |date| %>
+    <%= date.day %>
+  <% end %>
+<% end %>
