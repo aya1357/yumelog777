@@ -1,8 +1,16 @@
-<div class="simple-calendar">
-  <div class="calendar-heading">
-    <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
-    <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
-    <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+<div class="simple-calendar m-auto w-5/12">
+  <button type="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-6 font-mono font-extrabold">習慣を追加する</button>
+  <div class="calendar-heading flex justify-between">
+    <div class="mb-2 space-x-3">
+      <%= link_to "前月", calendar.url_for_previous_view, class: "bg-transparent hover:bg-blue-400 text-blue-500 font-semibold hover:text-white px-4 border border-blue-500 hover:border-transparent rounded" %>
+      <span class="calendar-title"><%= start_date.year %>年 <%= t('date.month_names')[start_date.month] %></span>
+      <%= link_to "翌月", calendar.url_for_next_view, class: "bg-transparent hover:bg-blue-400 text-blue-500 font-semibold hover:text-white px-4 border border-blue-500 hover:border-transparent rounded" %>
+    </div>
+    <div class="">
+      <%= link_to "勉強時間00時間00分", "#", class: "" %>
+    </div>
+  </div>
+  <div>
   </div>
 
   <table class="table table-striped">
