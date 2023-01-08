@@ -7,6 +7,6 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[new create]
   resource :profile, only: %i[show edit update]
-  resources :calendars, only: %i[index]
+  resources :calendars
   resources :password_resets, only: %i[new create edit update]
 end
