@@ -3,8 +3,8 @@ class CreateHabits < ActiveRecord::Migration[7.0]
     create_table :habits do |t|
       t.string :title, null: false
       t.date :start_day, null: false
-      t.integer :day_of_week, null: false, default: 0
-      t.integer :habit_type, null: false, default: 0
+      t.string :day_of_week, null: false
+      t.string :habit_type, null: false
       t.integer :total_number, null: false
       t.integer :start_number, null: false
       t.integer :end_number, null: false

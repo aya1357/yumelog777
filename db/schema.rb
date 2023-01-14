@@ -17,8 +17,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_08_121816) do
   create_table "habits", force: :cascade do |t|
     t.string "title", null: false
     t.date "start_day", null: false
-    t.integer "day_of_week", default: 0, null: false
-    t.integer "habit_type", default: 0, null: false
+    t.string "day_of_week", null: false
+    t.string "habit_type", null: false
     t.integer "total_number", null: false
     t.integer "start_number", null: false
     t.integer "end_number", null: false

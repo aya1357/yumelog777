@@ -11,6 +11,7 @@
     "autoprefixer": "^10.4.11",
     "daisyui": "^2.46.0",
     "esbuild": "^0.16.10",
+    "jquery": "^3.6.3",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8"
   }

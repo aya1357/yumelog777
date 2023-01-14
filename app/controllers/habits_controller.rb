@@ -10,6 +10,7 @@ class HabitsController < ApplicationController
   def create
     @habit = current_user.habits.build(habit_params)
     if @habit.save
+      binding.pry
       redirect_to calendars_path, success: t('defaults.message.created', item: Habit.model_name.human)
     else
       flash.now['danger'] = t('defaults.message.not_created', item: Habit.model_name.human)
