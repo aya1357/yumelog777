@@ -2,6 +2,7 @@ ja:
   defaults:
     login: 'ログイン'
     logout: 'ログアウト'
+    register: '登録'
     save: '保存'
     show: '詳細'
     edit: '編集'
@@ -20,7 +21,6 @@ ja:
   users:
     new:
       title: 'ユーザー登録'
-      register: '登録'
     create:
       success: 'ユーザー登録が完了しました'
       fail: 'ユーザー登録に失敗しました'

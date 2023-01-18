@@ -1,5 +1,4 @@
-<div class="simple-calendar m-auto w-5/12">
-  <button type="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-6 font-mono font-extrabold">習慣を追加する</button>
+<section class="simple_calendar">
   <div class="calendar-heading flex justify-between">
     <div class="mb-2 space-x-3">
       <%= link_to "前月", calendar.url_for_previous_view, class: "bg-transparent hover:bg-blue-400 text-blue-500 font-semibold hover:text-white px-4 border border-blue-500 hover:border-transparent rounded" %>
@@ -10,7 +9,7 @@
       <%= link_to "勉強時間00時間00分", "#", class: "" %>
     </div>
   </div>
-      <%= link_to "今日", calendar.url_for_next_view, class: "bg-transparent hover:bg-blue-400 text-blue-500 font-semibold hover:text-white px-4 border border-blue-500 hover:border-transparent rounded" %>
+      <%= link_to "今日", calendars_path, class: "bg-transparent hover:bg-blue-400 text-blue-500 font-semibold hover:text-white px-4 border border-blue-500 hover:border-transparent rounded" %>
   <div>
   </div>
 
@@ -39,4 +38,4 @@
       <% end %>
     </tbody>
   </table>
-</div>
+</section>
