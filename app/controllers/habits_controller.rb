@@ -9,8 +9,8 @@ class HabitsController < ApplicationController
 
   def create
     @habit = current_user.habits.build(habit_params)
+    binding.pry
     if @habit.save
-      binding.pry
       redirect_to calendars_path, success: t('defaults.message.created', item: Habit.model_name.human)
     else
       flash.now['danger'] = t('defaults.message.not_created', item: Habit.model_name.human)
@@ -21,6 +21,6 @@ class HabitsController < ApplicationController
   private
 
   def habit_params
-    params.require(:habit).permit(:title, :body, :start_day, :day_of_week, :habit_type, :total_number, :start_number, :end_number, :target_number, :url)
+    params.require(:habit).permit(:title, :habit_type, :total_number, :start_number, :end_number, :target_number, :url, :start_day, :day_of_week)
   end
 end
