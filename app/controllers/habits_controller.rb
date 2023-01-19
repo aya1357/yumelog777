@@ -9,12 +9,25 @@ class HabitsController < ApplicationController
 
   def create
     @habit = current_user.habits.build(habit_params)
-    binding.pry
     if @habit.save
       redirect_to calendars_path, success: t('defaults.message.created', item: Habit.model_name.human)
     else
       flash.now['danger'] = t('defaults.message.not_created', item: Habit.model_name.human)
       render :new
+    end
+  end
+
+  def edit
+    @habit = current_user.habits.find(params[:id])
+  end
+
+  def update
+    @habit = current_user.habits.find(params[:id])
+    if @habit.update(habit_params)
+      redirect_to calendars_path, success: t('defaults.message.updated', item: Habit.model_name.human)
+    else
+      flash.now['danger'] = t('defaults.message.not_updated', item: Habit.model_name.human)
+      render :edit
     end
   end
 

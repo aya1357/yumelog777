@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: 'ユーザー'
+      habit: '習慣'
     attributes:
       user:
         email: 'メールアドレス'

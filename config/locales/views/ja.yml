@@ -50,3 +50,6 @@ ja:
     update:
       success: 'パスワードを変更しました'
       fail: 'パスワードの変更に失敗しました'
+  calendars:
+    index:
+      no_result: '習慣がありません。'
