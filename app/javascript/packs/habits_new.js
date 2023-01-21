@@ -1,8 +1,9 @@
-window.addEventListener('DOMContentLoaded', function(){
+// window.addEventListener('DOMContentLoaded', function(){
+document.addEventListener("turbo:load", function () {
   $(".dayOfWeek").click(function(){
     let week_value = check_week_value($(this).val());
 
-    $(this).toggleClass("hid bg-gray-50 text-blue-700 bg-blue-700 text-slate-50");
+    $(this).toggleClass("hid bg-gray-50 text-blue-700 border-blue-500 bg-blue-700 text-slate-50 border-blue-700");
 
     if ($(this).hasClass("hid")) {
       let current_value = $("#week_hidden").val();

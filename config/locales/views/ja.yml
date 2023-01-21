@@ -11,12 +11,12 @@ ja:
     password_reset: 'パスワードリセット'
     message:
       require_login: 'ログインしてください'
-      created: "%{item}を作成しました"
-      not_created: "%{item}を作成出来ませんでした"
-      updated: "%{item}を更新しました"
-      not_updated: "%{item}を更新出来ませんでした"
-      deleted: "%{item}を削除しました"
-      delete_confirm: 削除しますか？
+      created: '%{item}を作成しました'
+      not_created: '%{item}を作成出来ませんでした'
+      updated: '%{item}を更新しました'
+      not_updated: '%{item}を更新出来ませんでした'
+      deleted: '%{item}を削除しました'
+      delete_confirm: '削除しますか？'
       not_authorized: '権限がありません'
   users:
     new:
@@ -50,3 +50,15 @@ ja:
     update:
       success: 'パスワードを変更しました'
       fail: 'パスワードの変更に失敗しました'
+  calendars:
+    index:
+      no_result: '習慣がありません。'
+  habits:
+    new:
+      title: 'タイトル'
+      total_number: '総ページ数、または総再生時間'
+      start_number: '勉強を始めるページ数'
+      end_number: '勉強を終えるページ数'
+      target_number: '1日の目標ページ数'
+      start_day: '開始予定日'
+      day_of_week: '取り組む曜日'

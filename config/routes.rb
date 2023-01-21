@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[new create]
   resource :profile, only: %i[show edit update]
-  resources :calendars, only: %i[index]
+  resources :calendars, only: %i[index destroy]
   resources :habits, only: %i[new create show edit update destroy]
   resources :password_resets, only: %i[new create edit update]
 end
