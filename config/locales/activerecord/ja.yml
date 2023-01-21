@@ -9,3 +9,11 @@ ja:
         password: 'パスワード'
         password_confirmation: 'パスワード (確認)'
         name: 'ユーザー名'
+      habit:
+        title: 'タイトル'
+        total_number: '総ページ数、または総再生時間'
+        start_number: '勉強を始めるページ数、または分数'
+        end_number: '勉強を終えるページ数、または分数'
+        target_number: '1日の目標ページ数、または分数'
+        start_day: '開始予定日'
+        day_of_week: '取り組む曜日'

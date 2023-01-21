@@ -2,14 +2,8 @@
   <div class="flex justify-between">
     <h5 class="justify-start float-left mb-2 text-xl font-semibold tracking-tight text-gray-600 dark:text-white"><%= habit.title %></h5>
     <div class="justify-end">
-      <%= link_to edit_habit_path(habit) do %>
-        <button class="float-left bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-1 px-1 border border-blue-500 hover:border-transparent rounded text-sm mr-2">
-          編集
-        </button>
-      <% end %>
-      <button class="float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm">
-        削除
-      </button>
+      <%= link_to "編集", edit_habit_path(habit), class: "float-left bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-1 px-1 border border-blue-500 hover:border-transparent rounded text-sm mr-2" %>
+      <%= link_to "削除", habit_path(habit), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm" %>
     </div>
   </div>
   <div class="flex justify-between mb-3 font-normal text-gray-600 dark:text-gray-400 text-sm">
