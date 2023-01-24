@@ -6,8 +6,9 @@ ja:
     save: '保存'
     show: '詳細'
     edit: '編集'
-    delte: '削除'
+    delete: '削除'
     update: '更新'
+    add: '追加'
     password_reset: 'パスワードリセット'
     message:
       require_login: 'ログインしてください'

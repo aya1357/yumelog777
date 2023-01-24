@@ -1,0 +1,16 @@
+<div data-turbo="false">
+  <div class="bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+    <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+      <div class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+      <div class="relative px-4 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+          <h1 class="text-2xl font-semibold text-center mb-6">メモ</h1>
+          <div class="my-6">
+            <label for="title" class="block mb-10 text-gray-600 dark:text-white font-bold">タイトル : <%= @habit.title %></span></label>
+          </div>
+          <div class="text-center">
+            <%= link_to (t 'defaults.add'), new_habit_memo_path, class: "py-3 px-8 bg-blue-600 text-white font-bold mt-6 rounded-lg" %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
