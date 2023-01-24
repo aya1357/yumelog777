@@ -43,7 +43,6 @@ class MemosController < ApplicationController
   def destroy
     @habit = current_user.habits.find(params[:habit_id])
     @memo = current_user.memos.find(params[:id])
-    binding.pry
     @memo.destroy!
     redirect_to habit_memos_path, success: t('defaults.message.deleted', item: Memo.model_name.human), status: :see_other
   end
