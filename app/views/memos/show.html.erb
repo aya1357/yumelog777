@@ -1,20 +1,18 @@
-<div data-turbo="false">
-  <div class="bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
-    <div class="relative py-3 sm:max-w-xl sm:mx-auto">
-      <div class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-      <div class="relative px-4 bg-white shadow-lg sm:rounded-3xl sm:p-20">
-          <h1 class="text-2xl font-semibold text-center mb-6">メモ</h1>
-          <div class="my-6">
-            <label for="title" class="block text-gray-600 dark:text-white font-bold">タイトル : <%= @habit.title %></span></label>
-          </div>
-          <div class="my-6">
-            <label for="title" class="block mb-10 text-gray-600 dark:text-white font-bold"><%= @memo.body %></span></label>
-          </div>
-          <div class="flex">
-            <%= link_to (t 'defaults.edit'), edit_habit_memo_path, class: "float-left hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-sm mr-2" %>
-            <%= button_to (t 'defaults.delete'), habit_memo_path(@habit.id, @memo.id), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded text-sm ml-2" %>
-          </div>
-      </div>
+<div class="bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+  <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+    <div class="relative px-4 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+        <h1 class="text-2xl font-semibold text-center mb-6">メモ</h1>
+        <div class="my-6">
+          <label for="title" class="block text-gray-600 dark:text-white font-bold">タイトル : <%= @habit.title %></span></label>
+        </div>
+        <div class="my-6">
+          <label for="title" class="block mb-10 text-gray-600 dark:text-white font-bold"><%= @memo.body %></span></label>
+        </div>
+        <div class="flex">
+          <%= link_to (t 'defaults.edit'), edit_habit_memo_path, class: "float-left hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-sm mr-2" %>
+          <%= link_to (t 'defaults.delete'), habit_memo_path(@habit, @memo), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded text-sm ml-2" %>
+        </div>
     </div>
   </div>
 </div>
