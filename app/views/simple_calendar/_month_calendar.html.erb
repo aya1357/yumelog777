@@ -9,8 +9,8 @@
       <%= link_to "勉強時間00時間00分", "#", class: "" %>
     </div>
   </div>
-      <%= link_to "今日", calendars_path, class: "bg-transparent hover:bg-blue-400 text-blue-500 font-semibold hover:text-white px-4 border border-blue-500 hover:border-transparent rounded" %>
-  <div>
+  <div class="mb-2">
+    <%= link_to "今日", calendars_path, class: "bg-transparent hover:bg-blue-400 text-blue-500 font-semibold hover:text-white px-4 border border-blue-500 hover:border-transparent rounded" %>
   </div>
 
   <table class="table table-striped">
@@ -30,7 +30,9 @@
               <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
                 <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
               <% else %>
-                <% passed_block.call day, sorted_events.fetch(day, []) %>
+                <%= link_to login_path, class: "hover:underline hover:bg-blue-200" do %>
+                  <% passed_block.call day, sorted_events.fetch(day, []) %>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>
