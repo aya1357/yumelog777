@@ -1,40 +1,14 @@
 <section class="m-auto md:w-7/12 w-full px-10">
-  <div class="simple-calendar  ">
-    <%= link_to new_habit_path do %>
-      <button type="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-6 font-mono font-extrabold">習慣を追加する</button>
-    <% end %>
+  <div class="simple-calendar">
+    <div class="mb-6">
+      <%= link_to "勉強記録を追加する", "#", class: "my-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+    </div>
     <%= turbo_frame_tag 'calendar' do %>
       <%= month_calendar do |date| %>
         <%= date.day %>
       <% end %>
     <% end %>
   </div>
-
-  <section>
-    <div class="mt-4 text-2xl flex justify-between font-bold">
-      <ul class="space-x-7">
-        <li class="float-left text-gray-700">12月1日木曜日の習慣</li>
-        <li class="float-left text-blue-500">未完了</li>
-      </ul>
-      <h2 class="text-gray-700">勉強時間0分</h2>
-    </div>
-    <div>
-      <div class="p-3 mt-4 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-          <a href="#">
-              <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-600 dark:text-white">本の名前</h5>
-          </a>
-          <div class="flex justify-between">
-            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">目標 : 10ページ</p>
-            <a href="#" class="inline-flex items-center text-blue-600 hover:underline">
-                勉強記録
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                </svg>
-            </a>
-          </div>
-      </div>
-    </div>
-  </section>
 
   <section>
     <div class="bg-white mt-12">
@@ -47,13 +21,20 @@
           </button>
       </nav>
     </div>
+    <div class="mt-8">
+      <%= link_to "習慣を追加する", new_habit_path, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+    </div>
   </section>
 
   <section>
     <% if @habits.present? %>
-      <%= render partial: 'habits/habit', collection: @habits %>
+      <div class="flex flex-wrap mt-2">
+        <%= render partial: 'habits/habit', collection: @habits %>
+      </div>
     <% else %>
       <p><%= t('.no_result') %></p>
     <% end %>
   </section>
+  
+
 </section>
