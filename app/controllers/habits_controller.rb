@@ -17,6 +17,10 @@ class HabitsController < ApplicationController
     end
   end
 
+  def show
+    @habit = current_user.habits.find(params[:id])
+  end
+
   def edit
     @habit = current_user.habits.find(params[:id])
   end
