@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <p class="font-bold"><%= habit.title %></p>
+    <%= link_to habit.title, habit_path(habit), class: "font-bold text-xl hover:text-blue-500" %><br>
     <%= link_to habit_memos_path(habit), class: "mt-3 inline-flex items-center font-normal text-gray-600 dark:text-gray-400 hover:underline" do %>
       <span>勉強メモ</span>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
