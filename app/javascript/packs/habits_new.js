@@ -1,4 +1,3 @@
-// window.addEventListener('DOMContentLoaded', function(){
 document.addEventListener("turbo:load", function () {
   $(".dayOfWeek").click(function(){
     let week_value = check_week_value($(this).val());

@@ -30,7 +30,7 @@
               <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
                 <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
               <% else %>
-                <%= link_to login_path, class: "hover:underline hover:bg-blue-200" do %>
+                <%= link_to "#", class: "hover:underline hover:bg-blue-200" do %>
                   <% passed_block.call day, sorted_events.fetch(day, []) %>
                 <% end %>
               <% end %>
