@@ -5,7 +5,6 @@ class CreateLogs < ActiveRecord::Migration[7.0]
       t.boolean :timeline_post, default: false, null: false
       t.integer :understanding, default: 0, null: false
       t.references :user, null: false, foreign_key: true
-      t.references :habit, null: false, foreign_key: true
 
       t.timestamps
     end
