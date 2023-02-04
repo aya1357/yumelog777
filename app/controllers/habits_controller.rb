@@ -42,8 +42,18 @@ class HabitsController < ApplicationController
   end
 
   def log_date
-    @date = params[:date]
-    p params
+  end
+
+  def log_date_api
+    @log_date = Date.parse(params["date"])
+    # binding.pry
+    p "テスト"
+    p @log_date
+    # @logs = Log.where(user_id: current_user.id)
+    # .where(log_date: params["date"])
+    # p params["date"]
+    # @date = params[:date]
+    # p params
     # if @log.present?
     #   render json: {status: true}
     # else

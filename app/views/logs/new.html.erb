@@ -1,0 +1,9 @@
+new
+<%= form_with model: @log, local: true do |f| %>
+  <div class="mt-2">
+    <%= f.date_field :log_date, class: "flex-1 py-2 border-b-2 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+  </div>
+  <div class="text-center">
+    <%= f.submit (t 'defaults.register'), class: "py-3 px-8 bg-blue-600 text-white font-bold mt-6 rounded-lg" %>
+  </div>
+<% end %>

@@ -40,9 +40,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_02_083349) do
   end
 
   create_table "logs", force: :cascade do |t|
-    t.integer "the_day_studytime", null: false
-    t.boolean "timeline_post", default: false, null: false
-    t.integer "understanding", default: 0, null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

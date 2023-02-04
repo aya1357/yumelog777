@@ -14,9 +14,8 @@ document.addEventListener("turbo:load", function () {
     const log_year_month_date = "" + log_year + log_month + log_date;
     console.log(log_year_month_date);
     window.location.href = '/habits/log_date';
-
     $.ajax({
-      url: 'habits/log_date?date='+log_year_month_date,
+      url: 'habits/log_date_api?date='+log_year_month_date,
       type: 'GET',
     });
 
