@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :calendars, only: %i[index destroy]
   resources :habits do
     resources :memos
-    resources :logs, only: %i[new create]
   end
+  resources :logs, only: %i[new create]
   resources :password_resets, only: %i[new create edit update]
 end

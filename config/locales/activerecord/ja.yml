@@ -4,6 +4,7 @@ ja:
       user: 'ユーザー'
       habit: '習慣'
       memo: 'メモ'
+      log: '習慣の記録'
     attributes:
       user:
         email: 'メールアドレス'

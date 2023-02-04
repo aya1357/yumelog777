@@ -45,10 +45,13 @@ class HabitsController < ApplicationController
   end
 
   def log_date_api
-    @log_date = Date.parse(params["date"])
+    @log_date_api = Date.parse(params["date"])
+    @logs = Log.where(user_id: current_user.id).where(log_date: params["date"])
     # binding.pry
+    p "aaa"
+    p @logs
     p "テスト"
-    p @log_date
+    p @log_date_api
     # @logs = Log.where(user_id: current_user.id)
     # .where(log_date: params["date"])
     # p params["date"]
