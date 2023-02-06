@@ -17,7 +17,13 @@ document.addEventListener("turbo:load", function () {
     $.ajax({
       url: 'habits/log_date_api?date='+log_year_month_date,
       type: 'GET',
-    });
+    }).done(function(response) {
+    if (response.status === 1) {
+      console.log(response.data);
+    } else {
+      console.log('No data available');
+    }
+  });
 
   });
 });
