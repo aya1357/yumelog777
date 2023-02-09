@@ -1,4 +1,5 @@
 class Log < ApplicationRecord
   belongs_to :user
-  belongs_to :habit
+  has_many :habit_logs
+  has_many :habits, through: :habit_logs
 end
