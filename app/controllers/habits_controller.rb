@@ -41,6 +41,16 @@ class HabitsController < ApplicationController
     redirect_to calendars_path, success: t('defaults.message.deleted', item: Habit.model_name.human), status: :see_other
   end
 
+  def log_date
+    @date = params[:date]
+    p params
+    # if @log.present?
+    #   render json: {status: true}
+    # else
+    #   render json: {status: false}
+    # end
+  end
+
   private
 
   def habit_params
