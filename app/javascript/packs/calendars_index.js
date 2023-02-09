@@ -1,5 +1,6 @@
 document.addEventListener("turbo:load", function () {
-  $(".table tbody tr td a").click(function() {
+  $(".table tbody tr td a").click(function(e) {
+    e.preventDefault()
     //カレンダーでクリックした箇所の日付の数字を取り出す
     const log_date_text = $(this).text();
     const log_date_num = log_date_text.replace(/[^0-9]/g, '');
