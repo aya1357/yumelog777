@@ -45,8 +45,15 @@ class HabitsController < ApplicationController
   end
 
   def log_date_api
-    @log_date_api = Date.parse(params["date"])
     @log = Log.where(user_id: current_user.id).where(log_date: params["date"])
+    # @habit = Log.includes(:user).where(user_id: current_user.id)
+    # @habit = Habit.where(user_id: current_user.id).Habit.includes(:logs).where("logs.log_date = ?", params["date"])
+    # @habit = Habit.where(user_id: current_user.id).Habit.joins(:logs).where(log_date: params["date"])
+    p "テスト"
+    p @log
+    p "aaa"
+    p @log.log_date
+    p "テスト2"
     #logs(習慣の記録)が無い場合はstatus: 0, logs(習慣の記録)がある場合はstatus: 1を設定
     status = @log.empty? ? 0 : 1
     render json: { status: status, data: @log }
