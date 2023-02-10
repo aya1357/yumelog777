@@ -1,40 +1,40 @@
-<section class="m-auto md:w-7/12 w-full px-10">
-  <div class="simple-calendar">
-    <div class="mb-6">
-      <%= link_to "勉強記録を追加する", new_log_path, class: "my-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
-    </div>
-    <%= turbo_frame_tag 'calendar' do %>
-      <%= month_calendar do |date| %>
-        <%= date.day %>
-      <% end %>
-    <% end %>
-  </div>
-
-  <section>
-    <div class="bg-white mt-12">
-      <nav class="flex flex-col sm:flex-row">
-          <button class="text-gray-700 px-6 block hover:text-blue-500 focus:outline-none  border-b-2 font-extrabold text-2xl border-blue-500">
-              進行中
-          </button>
-          <button class="text-gray-600 px-6 block hover:text-blue-500 focus:outline-none">
-              完了済
-          </button>
-      </nav>
-    </div>
-    <div class="mt-8">
-      <%= link_to "習慣を追加する", new_habit_path, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
-    </div>
-  </section>
-
-  <section>
-    <% if @habits.present? %>
-      <div class="flex flex-wrap mt-2">
-        <%= render partial: 'habits/habit', collection: @habits %>
+<div data-turbo="false">
+  <section class="m-auto md:w-7/12 w-full px-10">
+    <div class="simple-calendar">
+      <div class="mb-6">
+        <%= link_to "勉強記録を追加する", new_log_path, class: "my-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
       </div>
-    <% else %>
-      <p class="mt-6"><%= t('.no_result') %></p>
-    <% end %>
+      <%= turbo_frame_tag 'calendar' do %>
+        <%= month_calendar do |date| %>
+          <%= date.day %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <section>
+      <div class="bg-white mt-12">
+        <nav class="flex flex-col sm:flex-row">
+            <button class="text-gray-700 px-6 block hover:text-blue-500 focus:outline-none  border-b-2 font-extrabold text-2xl border-blue-500">
+                進行中
+            </button>
+            <button class="text-gray-600 px-6 block hover:text-blue-500 focus:outline-none">
+                完了済
+            </button>
+        </nav>
+      </div>
+      <div class="mt-8">
+        <%= link_to "習慣を追加する", new_habit_path, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+      </div>
+    </section>
+
+    <section>
+      <% if @habits.present? %>
+        <div class="flex flex-wrap mt-2">
+          <%= render partial: 'habits/habit', collection: @habits %>
+        </div>
+      <% else %>
+        <p class="mt-6"><%= t('.no_result') %></p>
+      <% end %>
+    </section>
   </section>
-
-
-</section>
+</div>
