@@ -2,7 +2,7 @@
   <div class="relative py-3 sm:max-w-xl sm:mx-auto">
     <div class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
     <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
-      <%= form_with model: @habit, local: true do |f| %>
+      <%= form_with model: @study, local: true do |f| %>
         <h1 class="text-2xl font-semibold text-center mb-10">勉強する本や動画を編集</h1>
         <div class="mb-6">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left text-center mr-2">
@@ -16,11 +16,11 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
           </svg>
           <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold">総ページ数、または総再生時間<span class="text-red-500 ml-2 text-sm">* 必須</span></label>
-          <div class="justify-start my-2 select-none flex">
-            <%= f.hidden_field :habit_type, value: "1" %>
+          <%# <div class="justify-start my-2 select-none flex">
+            <%= f.hidden_field :study_type, value: "1" %>
             <%# <%= f.button "書籍", class: "py-2 px-4 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-blue btn-primary hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2" %>
             <%# <%= f.button "動画", class: "py-2 px-4 shadow-md no-underline rounded-full bg-orange text-white font-sans font-semibold text-sm border-orange btn-primary hover:text-white hover:bg-orange-light focus:outline-none active:shadow-none mr-2" %>
-          </div>
+          <%# </div>  %>
           <div>
             <span class="float-left text-center pt-2">総</span>
             <%= f.number_field :total_number, in: 0..5000, class: "mx-3 float-left text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-1/2", placeholder: "例) 500" %>

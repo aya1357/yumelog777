@@ -10,37 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_02_083349) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_12_165409) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "habit_logs", force: :cascade do |t|
-    t.bigint "habit_id", null: false
-    t.bigint "log_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["habit_id"], name: "index_habit_logs_on_habit_id"
-    t.index ["log_id"], name: "index_habit_logs_on_log_id"
-  end
-
-  create_table "habits", force: :cascade do |t|
-    t.string "title", null: false
-    t.date "start_day", null: false
-    t.string "day_of_week", null: false
-    t.string "habit_type", null: false
-    t.integer "total_number", null: false
-    t.integer "start_number", null: false
-    t.integer "end_number", null: false
-    t.integer "target_number", null: false
-    t.string "url"
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_habits_on_user_id"
-  end
-
   create_table "logs", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "log_date", null: false
@@ -49,12 +24,36 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_02_083349) do
 
   create_table "memos", force: :cascade do |t|
     t.text "body"
-    t.bigint "user_id", null: false
-    t.bigint "habit_id", null: false
+    t.integer "user_id", null: false
+    t.integer "study_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["habit_id"], name: "index_memos_on_habit_id"
+    t.index ["study_id"], name: "index_memos_on_study_id"
     t.index ["user_id"], name: "index_memos_on_user_id"
+  end
+
+  create_table "studies", force: :cascade do |t|
+    t.string "title", null: false
+    t.date "start_day", null: false
+    t.string "day_of_week", null: false
+    t.integer "total_number", null: false
+    t.integer "start_number", null: false
+    t.integer "end_number", null: false
+    t.integer "target_number", null: false
+    t.string "url"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_studies_on_user_id"
+  end
+
+  create_table "study_logs", force: :cascade do |t|
+    t.integer "study_id", null: false
+    t.integer "log_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["log_id"], name: "index_study_logs_on_log_id"
+    t.index ["study_id"], name: "index_study_logs_on_study_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -72,8 +71,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_02_083349) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
-  add_foreign_key "habit_logs", "habits"
-  add_foreign_key "habit_logs", "logs"
-  add_foreign_key "habits", "users"
   add_foreign_key "logs", "users"
+  add_foreign_key "memos", "studies"
+  add_foreign_key "memos", "users"
+  add_foreign_key "studies", "users"
+  add_foreign_key "study_logs", "logs"
+  add_foreign_key "study_logs", "studies"
 end

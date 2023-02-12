@@ -1,6 +1,6 @@
 class LogsController < ApplicationController
   def index
-    @habit = current_user.habits.find(params[:habit_id])
+    @study = current_user.studies.find(params[:study_id])
   end
 
   def new

@@ -1,8 +1,8 @@
-class Habit < ApplicationRecord
+class Study < ApplicationRecord
   belongs_to :user
   has_one :memo, dependent: :destroy
-  has_many :habit_logs
-  has_many :logs, through: :habit_logs, dependent: :destroy
+  has_many :study_logs
+  has_many :logs, through: :study_logs, dependent: :destroy
 
   validates :title, presence: true, length: { maximum: 255 }
   validates :total_number, presence: true, length: { maximum: 5000 }
@@ -11,6 +11,4 @@ class Habit < ApplicationRecord
   validates :target_number, presence: true, length: { maximum: 5000 }
   validates :start_day, presence: true
   validates :day_of_week, presence: true
-
-
 end
