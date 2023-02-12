@@ -14,14 +14,13 @@ document.addEventListener("turbo:load", function () {
     const log_month = ( log_mon < 10 ) ? '0' + log_mon : log_mon;
     const log_year_month_date = "" + log_year + log_month + log_date;
     console.log(log_year_month_date);
-    // window.location.href = '/habits/log_date';
     $.ajax({
-      url: 'habits/log_date_api?date='+log_year_month_date,
+      url: 'studies/log_date_api?date='+log_year_month_date,
       type: 'GET',
     }).done(function(response) {
     if (response.status === 1) {
       console.log(response.data);
-      window.location.href = '/habits/log_date?date='+log_year_month_date
+      window.location.href = '/studies/log_date?date='+log_year_month_date
     } else {
       console.log('No data available');
       // <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert"><%= message %></div>

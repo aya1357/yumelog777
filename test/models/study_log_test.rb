@@ -1,6 +1,6 @@
 require "test_helper"
 
-class HabitTest < ActiveSupport::TestCase
+class StudyLogTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

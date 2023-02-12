@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
-  has_many :habits, dependent: :destroy
+  has_many :studies, dependent: :destroy
   has_many :memos, dependent: :destroy
   has_many :logs, dependent: :destroy
 

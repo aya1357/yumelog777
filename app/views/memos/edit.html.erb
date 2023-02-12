@@ -4,7 +4,7 @@
       <div class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
       <div class="relative px-4 bg-white shadow-lg sm:rounded-3xl sm:p-20">
           <h1 class="text-2xl font-semibold text-center mb-6">メモ</h1>
-          <%= form_with model: [@habit, @memo], local: true do |f| %>
+          <%= form_with model: [@study, @memo], local: true do |f| %>
             <%= render 'shared/error_messages', object: f.object %>
             <div class="my-6">
               <label for="title" class="block mb-4 text-gray-600 dark:text-white font-bold">タイトル : 本のタイトル</span></label>

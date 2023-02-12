@@ -23,14 +23,14 @@
         </nav>
       </div>
       <div class="mt-8">
-        <%= link_to "習慣を追加する", new_habit_path, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+        <%= link_to "勉強本を追加する", new_study_path, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
       </div>
     </section>
 
     <section>
-      <% if @habits.present? %>
+      <% if @studies.present? %>
         <div class="flex flex-wrap mt-2">
-          <%= render partial: 'habits/habit', collection: @habits %>
+          <%= render partial: 'studies/study', collection: @studies %>
         </div>
       <% else %>
         <p class="mt-6"><%= t('.no_result') %></p>

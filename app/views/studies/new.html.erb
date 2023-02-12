@@ -3,7 +3,7 @@
     <div class="relative py-3 sm:max-w-xl sm:mx-auto">
       <div class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
       <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
-        <%= form_with model: @habit, local: true do |f| %>
+        <%= form_with model: @study, local: true do |f| %>
           <h1 class="text-2xl font-semibold text-center mb-6">勉強する本や動画を新規追加</h1>
           <%= render 'shared/error_messages', object: f.object %>
           <div class="my-6">
@@ -19,7 +19,7 @@
             </svg>
             <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold">総ページ数、または総再生時間<span class="text-red-500 ml-2 text-sm">* 必須</span></label>
             <div class="justify-start my-2 select-none flex">
-              <%= f.hidden_field :habit_type, value: "1" %>
+              <%= f.hidden_field :study_type, value: "1" %>
               <%# <%= f.button "書籍", class: "py-2 px-4 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-blue btn-primary hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2" %>
               <%# <%= f.button "動画", class: "py-2 px-4 shadow-md no-underline rounded-full bg-orange text-white font-sans font-semibold text-sm border-orange btn-primary hover:text-white hover:bg-orange-light focus:outline-none active:shadow-none mr-2" %>
             </div>

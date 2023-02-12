@@ -2,16 +2,16 @@ ja:
   activerecord:
     models:
       user: 'ユーザー'
-      habit: '習慣'
+      study: '勉強'
       memo: 'メモ'
-      log: '習慣の記録'
+      log: '勉強の記録'
     attributes:
       user:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード (確認)'
         name: 'ユーザー名'
-      habit:
+      study:
         title: 'タイトル'
         total_number: '総ページ数、または総再生時間'
         start_number: '勉強を始めるページ数、または分数'
