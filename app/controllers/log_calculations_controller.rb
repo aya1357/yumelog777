@@ -1,0 +1,2 @@
+class LogCalculationsController < ApplicationController
+end

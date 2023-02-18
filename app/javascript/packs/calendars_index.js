@@ -23,6 +23,7 @@ document.addEventListener("turbo:load", function () {
       window.location.href = '/studies/log_date?date='+log_year_month_date
     } else {
       console.log('No data available');
+      window.location.href = '/logs/new'
       // <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert"><%= message %></div>
 
     }

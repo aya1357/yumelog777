@@ -45,6 +45,8 @@ class StudiesController < ApplicationController
   end
 
   def log_date_api
+    p "テスト"
+    p params["date"]
     @log = Log.where(user_id: current_user.id).where(log_date: params["date"])
     #logs(勉強の記録)が無い場合はstatus: 0, logs(勉強の記録)がある場合はstatus: 1を設定
     status = @log.empty? ? 0 : 1

@@ -5,6 +5,7 @@ class LogsController < ApplicationController
 
   def new
     @log = Log.new
+    @studies = Study.all.includes(:user).order(created_at: :desc)
   end
 
   def create
