@@ -1,0 +1,2 @@
+module LogCalculationsHelper
+end
