@@ -5,27 +5,21 @@ document.addEventListener("turbo:load", function () {
     const log_date_text = $(this).text();
     const log_date_num = log_date_text.replace(/[^0-9]/g, '');
     const log_date = (log_date_num < 10) ? '0' + log_date_num : log_date_num;
-
-    //カレンダーでクリックした箇所の日付の月の数字を取り出す
     const log_month_text = $(".calendar-title").text();
     const log_month_num = log_month_text.replace(/[^0-9]/g, '');
     const log_year = log_month_num.substr( 0, 4 );
     const log_mon = log_month_num.substr( 4 );
     const log_month = ( log_mon < 10 ) ? '0' + log_mon : log_mon;
     const log_year_month_date = "" + log_year + log_month + log_date;
-    console.log(log_year_month_date);
+
     $.ajax({
       url: 'studies/log_date_api?date='+log_year_month_date,
       type: 'GET',
     }).done(function(response) {
     if (response.status === 1) {
-      console.log(response.data);
       window.location.href = '/studies/log_date?date='+log_year_month_date
     } else {
-      console.log('No data available');
-      window.location.href = '/logs/new'
-      // <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert"><%= message %></div>
-
+      window.location.href = "/logs/new?date=" + log_year_month_date;
     }
   });
 
