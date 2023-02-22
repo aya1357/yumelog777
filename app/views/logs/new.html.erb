@@ -1,5 +1,5 @@
 <div>
-  <h1 class="text-center font-bold text-3xl mt-10 text-gray-700">12月1日のゆめログを作成</h1>
+  <h1 class="text-center font-bold text-3xl mt-10 text-gray-700">ゆめログを作成</h1>
   <div class="bg-white py-6 sm:py-8 lg:py-12">
       <div class="max-w-screen-xl px-4 md:px-8 mx-auto">
         <div class="grid md:grid-cols-2 gap-4 md:gap-8 md:px-20 px-6">
@@ -7,15 +7,23 @@
           <div class="relative py-3">
             <div class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
               <div class="relative flex flex-col bg-blue-50 rounded-lg gap-4 md:gap-6 px-8 py-6 drop-shadow-lg">
-                <div class="flex max-w-md text-gray-700 lg:text-lg">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left mt-1">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                  </svg>
-                  <div class="ml-1 font-bold text-2xl">完了分</div>
-                </div>
                   <div>
                     <%= form_with model: @log, local: true do |f| %>
-                      <%= f.date_field :log_date, value: (params["date"]).to_date, class: "flex-1 py-2 border-b-2 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+                      <div class="flex justify-between mb-4">
+                        <div class="flex max-w-md text-gray-700 lg:text-lg">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left mt-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                          </svg>
+                          <div class="ml-1 font-bold text-2xl">完了分</div>
+                        </div>
+                        <div>
+                          <% if params["date"].present? %>
+                            <%= f.date_field :log_date, value: (params["date"]).to_date, class: "flex-1 py-2 border-b-2 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", :disabled => true %>
+                          <% else %>
+                            <%= f.date_field :log_date, value: '', class: "flex-1 py-2 border-b-2 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+                          <% end %>
+                        </div>
+                      </div>
                       <div class="flex-wrap">
                         <%# <%= render partial: 'logs/study', locals: { f: f }, collection: @studies %>
                         <% @studies.each do |study| %>
