@@ -1,0 +1,130 @@
+<div>
+  <h1 class="text-center font-bold text-3xl mt-10 text-gray-700">ゆめログを作成</h1>
+  <div class="bg-white py-6 sm:py-8 lg:py-12">
+      <div class="max-w-screen-xl px-4 md:px-8 mx-auto">
+        <div class="grid md:grid-cols-2 gap-4 md:gap-8 md:px-20 px-6">
+          <!-- quote - start -->
+          <div class="relative py-3">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+              <div class="relative flex flex-col bg-blue-50 rounded-lg gap-4 md:gap-6 px-8 py-6 drop-shadow-lg">
+                  <div>
+                    <%= form_with model: @log, local: true do |f| %>
+                      <div class="flex justify-between mb-4">
+                        <div class="flex max-w-md text-gray-700 lg:text-lg">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left mt-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                          </svg>
+                          <div class="ml-1 font-bold text-2xl">完了分</div>
+                        </div>
+                        <div>
+                          <% if params["date"].present? %>
+                            <%= f.date_field :log_date, value: (params["date"]).to_date, class: "flex-1 py-2 border-b-2 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", :disabled => true %>
+                          <% else %>
+                            <%= f.date_field :log_date, value: '', class: "flex-1 py-2 border-b-2 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+                          <% end %>
+                        </div>
+                      </div>
+                      <div class="flex-wrap">
+                        <%# <%= render partial: 'logs/study', locals: { f: f }, collection: @studies %>
+                        <% @studies.each do |study| %>
+                          <div class="mb-6">
+                            <p class="font-bold text-xl text-indigo-900"><%= study.title %></p>
+                            <div class="mt-2 flex justify-between">
+                              <div class="flex">
+                                <%= f.number_field :study_number, in: 0..5000, placeholder: "例) 5", id: ("input_#{study.id}"), class: "mr-3 float-left bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 float-left py-3 px-6" %>
+                                <span class="block pt-3">ページ</span>
+                              </div>
+                              <%= link_to "" do %>
+                                <div class="hover:underline" id="calc_btn_<%= study.id %>">
+                                  <%= image_tag "logo_cul.png", alt: "計算アイコン", class: "w-6" %>
+                                  <span class="text-sm font-bold">計算</span>
+                                </div>
+                              <% end %>
+                            </div>
+                          </div>
+                        <% end %>
+                      </div>
+                      <div class="text-center">
+                        <%= f.submit (t 'defaults.register'), class: "py-3 px-8 bg-blue-600 text-white font-bold mt-6 rounded-lg hover:bg-blue-700" %>
+                      </div>
+                    <% end %>
+                  </div>
+              </div>
+          </div>
+          <!-- quote - end -->
+          <!-- quote - start -->
+          <div class="flex flex-col bg-gray-50 rounded-lg gap-4 md:gap-6 px-8 py-6 drop-shadow-lg my-4">
+            <div class="flex max-w-md text-gray-700 lg:text-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mt-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div class="ml-1 font-bold text-2xl">目標</div>
+            </div>
+              <div>
+                <div class="flex-wrap">
+                  <% @studies.each do |study| %>
+                    <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title %></p>
+                    <div class="flex text-left  mb-9">
+                      <div class="block">1日<span class="text-3xl mx-3 font-bold underline"><%= study.target_number %></span>ページ</div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+          </div>
+          <!-- quote - end -->
+          <!-- quote - start -->
+          <div class="flex flex-col bg-gray-50 rounded-lg gap-4 md:gap-6 px-8 py-6 drop-shadow-lg">
+            <div class="flex max-w-md text-gray-700 lg:text-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mt-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+              </svg>
+              <div class="ml-1 font-bold text-2xl">残り</div>
+            </div>
+              <div>
+                <div class="mb-7">
+                  <p class="font-bold text-xl text-indigo-900">Ruby超入門</p>
+                  <div class="mt-4 flex text-left">
+                    <div class="block">残り<span class="text-3xl mx-3 font-bold underline">150</span>ページ</div>
+                  </div>
+                </div>
+                <div class="mb-7">
+                  <p class="font-bold text-xl text-indigo-900">Ruby超入門</p>
+                  <div class="mt-4 flex text-left">
+                    <div class="block">残り<span class="text-3xl mx-3 font-bold underline">150</span>ページ</div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- quote - end -->
+          <!-- quote - start -->
+          <div class="flex flex-col bg-gray-50 rounded-lg gap-4 md:gap-6 px-8 py-6 drop-shadow-lg">
+            <div class="flex max-w-md text-gray-700 lg:text-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mt-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+              </svg>
+
+              <div class="ml-1 font-bold text-2xl">完了予定日</div>
+            </div>
+              <div>
+                <div class="mb-5">
+                  <p class="font-bold text-xl text-indigo-900">Ruby超入門</p>
+                  <div class="mt-4">
+                    <p class="">目標終了予定日: <span>2023年12月31日</span></p>
+                    <p class="">自動計算終了日: <span>2023年12月31日</span></p>
+                  </div>
+                </div>
+                <div class="mb-5">
+                  <p class="font-bold text-xl text-indigo-900">Ruby超入門</p>
+                  <div class="mt-4">
+                    <p class="">目標終了予定日: <span>2023年12月31日</span></p>
+                    <p class="">自動計算終了日: <span>2023年12月31日</span></p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- quote - end -->
+        </div>
+      </div>
+  </div>
+
+</div>

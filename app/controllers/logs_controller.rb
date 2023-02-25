@@ -21,6 +21,6 @@ class LogsController < ApplicationController
   private
 
   def log_params
-    params.require(:log).permit(:log_date)
+    params.require(:log).permit(:log_date, :study_number)
   end
 end
