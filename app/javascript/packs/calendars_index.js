@@ -19,7 +19,7 @@ document.addEventListener("turbo:load", function () {
     if (response.status === 1) {
       window.location.href = '/studies/log_date?date='+log_year_month_date
     } else {
-      window.location.href = "/logs/new?date=" + log_year_month_date;
+      window.location.href = "/log/new?date=" + log_year_month_date;
     }
   });
 
