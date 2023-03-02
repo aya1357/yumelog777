@@ -2,6 +2,8 @@ class LogsController < ApplicationController
   def new
     @form = Form::LogCollection.new
     @studies = Study.all.includes(:user).order(created_at: :desc)
+    log_date = Date.parse(params["date"])
+    @formatted_date = log_date.strftime("%Y年%m月%d日")
   end
 
   def create
