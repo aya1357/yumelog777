@@ -1,54 +1,42 @@
-<div class="navbar bg-base-100 h-20">
+<div class="navbar bg-base-100 h-18">
   <div class="flex-1">
     <%= link_to root_path do %>
       <%= image_tag "header_title.png", alt: "タイトルアイコン" %>
     <% end %>
   </div>
-  <div class="flex-none">
-    <div class="dropdown dropdown-end mr-3">
-      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-14 pl-1">
-        <div class="rounded-full">
-          <%= link_to '#' do %>
-            <%= image_tag "header_index.png", alt: "投稿一覧アイコン" %>
-          <% end %>
+  <div class="flex-none space-x-4 mt-5">
+    <div class="">
+      <%= link_to calendars_path do %>
+        <div class="hover:underline">
+          <%= image_tag "header_calendar.png", alt: "カレンダーアイコン", class: "w-6 m-auto" %>
+          <span class="font-extrabold" style="font-size: 2px">カレンダー</span>
         </div>
-      </label>
+      <% end %>
     </div>
-    <div class="dropdown dropdown-end">
-      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-14 pl-1">
-        <div class="rounded-full">
-          <%= link_to calendars_path do %>
-            <%= image_tag "header_calendar.png", alt: "カレンダーアイコン" %>
-          <% end %>
+    <div class="">
+      <%= link_to "#" do %>
+        <div class="hover:underline">
+          <%= image_tag "header_guide.png", alt: "クイックガイドアイコン", class: "w-6 m-auto" %>
+          <span class="font-extrabold" style="font-size: 4px">使い方</span>
         </div>
-      </label>
+      <% end %>
     </div>
-    <div class="dropdown dropdown-end">
-      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-16 pl-4 mx-2">
-        <div class="rounded-full">
-          <%= link_to '#' do %>
-            <%= image_tag "header_guide.png", alt: "クイックガイドアイコン" %>
-          <% end %>
+    <div class="">
+      <%= link_to profile_path do %>
+        <div class="hover:underline">
+          <%= image_tag "header_plofile.png", alt: "プロフィールアイコン", class: "w-6 m-auto" %>
+          <span class="font-extrabold" style="font-size: 4px">アカウント</span>
         </div>
-      </label>
+      <% end %>
     </div>
-    <div class="dropdown dropdown-end">
-      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-16 mr-4 mx-2">
-        <div class="rounded-full">
-          <%= link_to profile_path do %>
-            <%= image_tag "header_plofile.png", alt: "プロフィールアイコン" %>
-          <% end %>
+    <div class="">
+      <%= link_to logout_path, data: { turbo_method: :delete } do %>
+        <div class="hover:underline mr-3">
+          <%= image_tag "header_logout.png", alt: "ログアウトアイコン", class: "w-6 m-auto" %>
+          <span class="font-extrabold" style="font-size: 4px">ログアウト</span>
         </div>
-      </label>
+      <% end %>
     </div>
-    <div class="dropdown dropdown-end">
-      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-14 pl-1">
-        <div class="rounded-full">
-          <%= link_to logout_path, data: { turbo_method: :delete } do %>
-            <%= image_tag "header_logout.png", class: 'w-12', alt: "ログアウトアイコン" %>
-          <% end %>
-        </div>
-      </label>
-    </div>
+
   </div>
 </div>

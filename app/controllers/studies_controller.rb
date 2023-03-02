@@ -42,6 +42,8 @@ class StudiesController < ApplicationController
   end
 
   def log_date
+    @studies = Study.all.includes(:user).order(created_at: :desc)
+    @logs = Log.where(user_id: current_user.id).where(log_date: params["date"])
   end
 
   def log_date_api

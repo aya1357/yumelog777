@@ -1,8 +1,4 @@
 class LogsController < ApplicationController
-  def index
-    @study = current_user.studies.find(params[:study_id])
-  end
-
   def new
     @form = Form::LogCollection.new
     @studies = Study.all.includes(:user).order(created_at: :desc)
