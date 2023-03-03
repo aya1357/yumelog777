@@ -1,0 +1,15 @@
+<%= form_with model: @form, url: log_path, local: true do |f| %>
+  <%= f.hidden_field :log_date, :value => params[:date] %>
+  <% @studies.each do |study| %>
+    <%= f.fields_for :logs do |f| %>
+      <%= f.hidden_field :study_id %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :log_date, value: (params["date"]).to_date, class: "flex-1 py-2 border-b-2 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+      <%= f.number_field :study_number, in: 0..5000, class: "mr-3 float-left bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 float-left py-3 px-6", placeholder: "例) 5" %>
+      <span class="block pt-3"><%#= study.title %>ページ</span>
+    <% end %>
+  <% end %>
+  <div class="text-center">
+    <%= f.submit "更新", class: "py-3 px-8 bg-blue-600 text-white font-bold mt-6 rounded-lg hover:bg-blue-700" %>
+  </div>
+<% end %>
