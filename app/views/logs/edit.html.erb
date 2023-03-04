@@ -9,6 +9,7 @@
               <div class="relative flex flex-col bg-blue-50 rounded-lg gap-4 md:gap-6 px-8 py-6 drop-shadow-lg">
                   <div>
                     <%= form_with model: @form, url: log_path, local: true do |f| %>
+                      <%= f.hidden_field :log_date, :value => params[:date].to_date %>
                       <div class="flex justify-between mb-6">
                         <div class="flex max-w-md text-gray-700 lg:text-lg">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left mt-1">
@@ -26,7 +27,7 @@
                                 <% study = Study.find(f.object.study_id) %>
                                 <%= f.hidden_field :user_id, :value => current_user.id %>
                                 <%= f.hidden_field :study_id, :value => study.id %>
-                                <%= f.hidden_field :log_date, value: (params["date"]).to_date %>
+                                <%= f.hidden_field :log_date, :value => (params["date"]).to_date %>
                                 <div class="font-bold text-xl text-indigo-900 mt-6"><%= study.title %></div>
                                 <div class="justify-between flex mt-2">
                                   <div class="flex">
