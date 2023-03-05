@@ -4,42 +4,39 @@
       <%= image_tag "header_title.png", alt: "タイトルアイコン" %>
     <% end %>
   </div>
-  <div class="flex-none">
-    <div class="dropdown dropdown-end mr-3">
-      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-16 pl-2">
-        <div class="rounded-full">
-          <%= link_to '#' do %>
-            <%= image_tag "header_index.png", alt: "投稿一覧アイコン" %>
-          <% end %>
+  <div class="flex-none space-x-6 mt-5">
+    <div class="">
+      <%= link_to "#" do %>
+        <div class="hover:underline">
+          <%= image_tag "header_start.png", alt: "積読本アイコン", class: "w-6 m-auto" %>
+          <span class="font-extrabold" style="font-size: 2px">始める</span>
         </div>
-      </label>
+      <% end %>
     </div>
-    <div class="dropdown dropdown-end">
-      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-16 pl-4">
-        <div class="rounded-full">
-          <%= link_to '#' do %>
-            <%= image_tag "header_guide.png", alt: "クイックガイドアイコン" %>
-          <% end %>
+    <div class="">
+      <%= link_to "#" do %>
+        <div class="hover:underline">
+          <%= image_tag "header_guide.png", alt: "クイックガイドアイコン", class: "w-6 m-auto" %>
+          <span class="font-extrabold" style="font-size: 4px">使い方</span>
         </div>
-      </label>
+      <% end %>
     </div>
-    <div class="dropdown dropdown-end">
-      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-16 pl-3 mr-1">
-        <div class="rounded-full">
-          <%= link_to login_path do %>
-            <%= image_tag "header_login.png", alt: "ログインアイコン" %>
-          <% end %>
+    <div class="">
+      <%= link_to login_path do %>
+        <div class="hover:underline">
+          <%= image_tag "header_login.png", alt: "ログインアイコン", class: "w-6 m-auto" %>
+          <span class="font-extrabold" style="font-size: 4px">ログイン</span>
         </div>
-      </label>
+      <% end %>
     </div>
-    <div class="dropdown dropdown-end">
-      <label tabindex="0" class="btn btn-ghost hover:bg-blue-100 btn-circle w-16 pl-2">
-        <div class="rounded-full">
-          <%= link_to new_user_path do %>
-            <%= image_tag "header_signup.png", class: 'w-12', alt: "新規登録アイコン" %>
-          <% end %>
+    <div class="">
+      <%= link_to new_user_path do %>
+        <div class="hover:underline mr-3">
+          <%= image_tag "header_signup.png", alt: "サインアップアイコン", class: "w-6 m-auto" %>
+          <span class="font-extrabold" style="font-size: 4px">新規登録</span>
         </div>
-      </label>
+      <% end %>
     </div>
+
   </div>
 </div>

@@ -1,9 +1,6 @@
 <div data-turbo="false">
-  <section class="m-auto md:w-7/12 w-full px-10">
+  <section class="m-auto md:w-7/12 w-full px-4">
     <div class="simple-calendar">
-      <div class="mb-6">
-        <%= link_to "勉強記録を追加する", new_log_path, class: "my-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
-      </div>
       <%= turbo_frame_tag 'calendar' do %>
         <%= month_calendar do |date| %>
           <%= date.day %>

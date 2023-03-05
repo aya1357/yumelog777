@@ -42,6 +42,10 @@ class StudiesController < ApplicationController
   end
 
   def log_date
+    @studies = Study.all.includes(:user).order(created_at: :desc)
+    @logs = Log.where(user_id: current_user.id).where(log_date: params["date"])
+    log_date = Date.parse(params["date"])
+    @formatted_date = log_date.strftime("%Y年%m月%d日")
   end
 
   def log_date_api
