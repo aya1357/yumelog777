@@ -34,11 +34,7 @@ class LogsController < ApplicationController
   end
 
   def destroy
-
     @log = current_user.logs.find(params[:id])
-
-    p "テスト"
-    p params[:log_id]
     @log.destroy!
     redirect_to calendars_path, success: t('defaults.message.deleted', item: Log.model_name.human), status: :see_other
   end
