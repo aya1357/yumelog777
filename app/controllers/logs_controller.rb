@@ -9,7 +9,16 @@ class LogsController < ApplicationController
   def create
     @studies = Study.all.includes(:user).order(created_at: :desc)
     @form = Form::LogCollection.new(log_collection_params)
+    if params[:form_log_collection][:log_date].present?
+			@log_ids = Log.where(user_id: current_user.id, log_date: params[:form_log_collection][:log_date]).pluck(:id)
+		end
     if @form.save
+      if @log_ids.present?
+				@log_ids.each do |log_id|
+					log = Log.find log_id
+					log.destroy
+				end
+			end
       redirect_to calendars_path, success: t('defaults.message.created', item: Log.model_name.human)
     else
       flash.now['danger'] = t('defaults.message.not_created', item: Log.model_name.human)
@@ -18,6 +27,11 @@ class LogsController < ApplicationController
   end
 
   def edit
+    @studies = Study.all.includes(:user).order(created_at: :desc)
+    @logs = Log.where(user_id: current_user.id).where(log_date: params[:date])
+    log_date = Date.parse(params[:date])
+    @formatted_date = log_date.strftime("%Y年%m月%d日")
+    @form = Form::LogCollection.new({}, current_user.id, params[:date])
   end
 
   private

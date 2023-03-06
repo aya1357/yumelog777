@@ -26,19 +26,23 @@
                             <% log = Log.find_by(study_id: study.id, log_date: params["date"]) %>
                             <div class="text-3xl mx-3 font-bold underline"><%= log.study_number %></div>
                             <span class="block pt-3">ページ</span>
+                            <%= link_to "" do %>
+                              <div class="hover:underline ml-8" id="calc_btn_id">
+                                <%= image_tag "logo_cul.png", alt: "計算アイコン", class: "w-6" %>
+                                <span class="text-sm font-bold">計算</span>
+                              </div>
+                            <% end %>
                           </div>
-                          <%= link_to "" do %>
-                            <div class="hover:underline" id="calc_btn_id">
-                              <%= image_tag "logo_cul.png", alt: "計算アイコン", class: "w-6" %>
-                              <span class="text-sm font-bold">計算</span>
-                            </div>
-                          <% end %>
+                          <div class="flex">
+                            <%= link_to (t 'defaults.delete'), "", class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm m-auto" %>
+                            <%# <%= link_to (t 'defaults.delete'), study_path(study), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm" %>
+                          </div>
                         </div>
                       </div>
                     <% end %>
                   </div>
                   <div class="text-center">
-                    <%= link_to "編集", edit_log_path, class: "py-3 px-8 bg-blue-600 text-white font-bold mt-6 rounded-lg hover:bg-blue-800" %>
+                    <%= link_to "編集", edit_log_path(date: params["date"]), class: "py-3 px-8 bg-blue-600 text-white font-bold mt-6 rounded-lg hover:bg-blue-800" %>
                   </div>
                 </div>
               </div>
