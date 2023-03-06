@@ -28,10 +28,19 @@ class LogsController < ApplicationController
 
   def edit
     @studies = Study.all.includes(:user).order(created_at: :desc)
-    @logs = Log.where(user_id: current_user.id).where(log_date: params[:date])
     log_date = Date.parse(params[:date])
     @formatted_date = log_date.strftime("%Y年%m月%d日")
     @form = Form::LogCollection.new({}, current_user.id, params[:date])
+  end
+
+  def destroy
+
+    @log = current_user.logs.find(params[:id])
+
+    p "テスト"
+    p params[:log_id]
+    @log.destroy!
+    redirect_to calendars_path, success: t('defaults.message.deleted', item: Log.model_name.human), status: :see_other
   end
 
   private
@@ -39,6 +48,5 @@ class LogsController < ApplicationController
   def log_collection_params
     params.require(:form_log_collection)
     .permit(logs_attributes: [:log_date, :study_number, :user_id, :study_id])
-    # .merge(user_id: current_user.id, study_id: params[:study_id])
   end
 end

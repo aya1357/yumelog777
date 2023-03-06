@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   resources :studies do
     resources :memos
   end
-  resource :log, only: %i[new create edit update]
+  resource :log, only: %i[new create edit update destroy]
   resources :password_resets, only: %i[new create edit update]
 end
