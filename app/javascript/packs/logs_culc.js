@@ -16,7 +16,9 @@ document.addEventListener("turbo:load", function () {
       console.log(data.remain_number);
       console.log(data.culc_end_day);
       $("#remainPages_" + study_id).text(data.remain_number);
+      $("#remainPages_" + study_id).css("color", "#2563eb");
       $("#culcEndDay_" + study_id).text(data.culc_end_day);
+      $("#culcEndDay_" + study_id).css("color", "#2563eb");
     });
   });
 });
