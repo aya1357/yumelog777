@@ -65,16 +65,14 @@
               </svg>
               <div class="ml-1 font-bold text-2xl">目標</div>
             </div>
-              <div>
-                <div class="flex-wrap">
-                  <% @studies.each do |study| %>
-                    <p class="font-bold text-xl text-indigo-900 mb-2">タイトル</p>
-                    <div class="flex text-left  mb-9">
-                      <div class="block">1日<span class="text-3xl mx-3 font-bold underline">5</span>ページ</div>
-                    </div>
-                  <% end %>
+            <div class="flex-wrap">
+              <% @studies.each do |study| %>
+                <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title %></p>
+                <div class="flex text-left  mb-9">
+                  <div class="block">1日<span class="text-3xl mx-3 font-bold underline"><%= study.target_number %></span>ページ</div>
                 </div>
-              </div>
+              <% end %>
+            </div>
           </div>
           <!-- quote - end -->
           <!-- quote - start -->
@@ -85,20 +83,15 @@
               </svg>
               <div class="ml-1 font-bold text-2xl">残り</div>
             </div>
-              <div>
-                <div class="mb-7">
-                  <p class="font-bold text-xl text-indigo-900">Ruby超入門</p>
-                  <div class="mt-4 flex text-left">
-                    <div class="block">残り<span class="text-3xl mx-3 font-bold underline">150</span>ページ</div>
-                  </div>
+            <div class="flex-wrap">
+              <% @studies.each do |study| %>
+                <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title %></p>
+                <div class="flex text-left  mb-9">
+                  <% total_studied_number = Log.where(user_id: current_user.id, study_id: study.id).pluck(:study_number).sum %>
+                  <div class="block">残り<span class="text-3xl mx-3 font-bold underline" id="remainPages_<%= study.id %>"><%= (study.end_number - study.start_number) - total_studied_number %></span>ページ</div>
                 </div>
-                <div class="mb-7">
-                  <p class="font-bold text-xl text-indigo-900">Ruby超入門</p>
-                  <div class="mt-4 flex text-left">
-                    <div class="block">残り<span class="text-3xl mx-3 font-bold underline">150</span>ページ</div>
-                  </div>
-                </div>
-              </div>
+              <% end %>
+            </div>
           </div>
           <!-- quote - end -->
           <!-- quote - start -->
@@ -110,22 +103,56 @@
 
               <div class="ml-1 font-bold text-2xl">完了予定日</div>
             </div>
-              <div>
-                <div class="mb-5">
-                  <p class="font-bold text-xl text-indigo-900">Ruby超入門</p>
-                  <div class="mt-4">
-                    <p class="">目標終了予定日: <span>2023年12月31日</span></p>
-                    <p class="">自動計算終了日: <span>2023年12月31日</span></p>
-                  </div>
+            <div class="flex-wrap">
+              <% @studies.each do |study| %>
+
+              <%# 目標終了予定日計算式 %>
+                <%# "勉強する総ページ数" %>
+                <% study_total_number = study.end_number - study.start_number %>
+                <% if study_total_number % study.target_number == 0 %>
+                  <% study_total_days = study_total_number / study.target_number %>
+                <% else %>
+                  <% study_total_days = (study_total_number.to_f / study.target_number.to_f).ceil %>
+                <% end %>
+
+                <%# "取り組む曜日を曜日の順に数字順に並び替え" %>
+                <% dayOfWeek = study.day_of_week %>
+                <% dayOfWeek_arr = dayOfWeek.split(",").map(&:to_i).sort %>
+
+                <%# "目標終了日をルーブ文で計算" %>
+                <% while study_total_days >= 1 %>
+                  <% if (dayOfWeek_arr).include?(study.start_day.wday) %>
+                    <% study_total_days -= 1 %>
+                  <% end %>
+                  <% study.start_day += 1%>
+                <% end %>
+                <% target_day = (study.start_day - 1).strftime('%Y年%m月%d日') %>
+
+                <%# "自動計算終了日計算" %>
+                <% total_studied_number = Log.where(user_id: current_user.id, study_id: study.id).pluck(:study_number).sum %>
+                <% remain_number =  study_total_number - total_studied_number %>
+                <% if remain_number % study.target_number == 0 %>
+                  <% remain_study_days = remain_number / study.target_number %>
+                <% else %>
+                  <% remain_study_days = (remain_number.to_f / study.target_number.to_f).ceil %>
+                <% end %>
+                <% today = Date.today %>
+                <% while remain_study_days >= 1 %>
+                  <% today.wday %>
+                  <% if (dayOfWeek_arr).include?(today.wday) %>
+                    <% remain_study_days -= 1 %>
+                  <% end %>
+                  <% today += 1 %>
+                <% end %>
+                <% culc_end_day = (today - 1).strftime('%Y年%m月%d日') %>
+
+                <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title %></p>
+                <div class="text-left  mb-9">
+                  <p class="">目標終了予定日: <span><%= target_day %></span></p>
+                  <p class="">自動計算終了日: <span id = "culcEndDay_<%= study.id %>"><%= culc_end_day %></span></p>
                 </div>
-                <div class="mb-5">
-                  <p class="font-bold text-xl text-indigo-900">Ruby超入門</p>
-                  <div class="mt-4">
-                    <p class="">目標終了予定日: <span>2023年12月31日</span></p>
-                    <p class="">自動計算終了日: <span>2023年12月31日</span></p>
-                  </div>
-                </div>
-              </div>
+              <% end %>
+            </div>
           </div>
           <!-- quote - end -->
         </div>

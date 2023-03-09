@@ -84,7 +84,7 @@
                 <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title %></p>
                 <div class="flex text-left  mb-9">
                   <% total_studied_number = Log.where(user_id: current_user.id, study_id: study.id).pluck(:study_number).sum %>
-                  <div class="block">残り<span class="text-3xl mx-3 font-bold underline"><%= study.total_number - total_studied_number %></span>ページ</div>
+                  <div class="block">残り<span class="text-3xl mx-3 font-bold underline"><%= (study.end_number - study.start_number) - total_studied_number %></span>ページ</div>
                 </div>
               <% end %>
             </div>

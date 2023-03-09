@@ -59,6 +59,8 @@ class LogsController < ApplicationController
     end
     culc_end_day = (today - 1).strftime('%Y年%m月%d日')
     p culc_end_day
+    log = { culc_end_day: culc_end_day, remain_number: remain_number }
+    render json: log
   end
 
   private
