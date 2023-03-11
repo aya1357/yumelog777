@@ -7,4 +7,7 @@ class StaticPagesController < ApplicationController
 
   def guide
   end
+
+  def start
+  end
 end

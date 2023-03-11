@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   get '/privacy_policy', to: 'static_pages#privacy_policy'
   get '/faq', to: 'static_pages#faq'
   get '/guide', to: 'static_pages#guide'
+  get '/start', to: 'static_pages#start'
 end
