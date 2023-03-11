@@ -36,6 +36,12 @@ class LogsController < ApplicationController
   def destroy
     @log = current_user.logs.find(params[:id])
     @log.update!(study_number: 0)
+    redirect_to studies_log_date_path, success: t('defaults.message.deleted', item: Log.model_name.human), status: :see_other
+  end
+
+  def destroy_all
+    @logs = current_user.logs.find(params[:date])
+    @logs.destroy!
     redirect_to calendars_path, success: t('defaults.message.deleted', item: Log.model_name.human), status: :see_other
   end
 

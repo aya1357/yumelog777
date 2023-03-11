@@ -30,7 +30,7 @@
                             <span class="block pt-3">ページ</span>
                           </div>
                           <div class="flex">
-                            <%= link_to (t 'defaults.delete'), log_path(@log, id: log.id), data: { turbo_method: :delete,  turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm m-auto" %>
+                            <%= link_to "リセット", log_path(@log, id: log.id), data: { turbo_method: :delete,  turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm m-auto" %>
                           </div>
                         <% else %>
                           <div class="">勉強記録の登録がありません</div>
@@ -39,8 +39,9 @@
                     </div>
                   <% end %>
                 </div>
-                <div class="text-center">
+                <div class="text-center pt-10 space-x-5">
                   <%= link_to (t 'defaults.edit'), edit_log_path(date: params["date"]), class: "py-3 px-8 bg-blue-600 text-white font-bold mt-6 rounded-lg hover:bg-blue-800" %>
+                  <%= link_to (t 'defaults.delete'), logs_destroy_all_path(@logs, date: params["date"]), data: { turbo_method: :delete,  turbo_confirm: t('defaults.message.delete_confirm') }, class: "py-3 px-8 bg-red-600 text-white font-bold mt-6 rounded-lg hover:bg-red-800" %>
                 </div>
               </div>
             </div>
