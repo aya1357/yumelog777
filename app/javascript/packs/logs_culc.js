@@ -4,9 +4,7 @@ document.addEventListener("turbo:load", function () {
     let id_value = $(this).attr("id");
     let id_number = id_value.match(/\d+/);
     let study_id = parseInt(id_number[0]);
-    console.log(study_id);
     let input_value = $("#input_" + study_id).val();
-    console.log(input_value);
 
     $.ajax({
       url: "logs/log_culc_api",
