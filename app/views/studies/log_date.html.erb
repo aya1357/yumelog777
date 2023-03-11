@@ -30,7 +30,7 @@
                             <span class="block pt-3">ページ</span>
                           </div>
                           <div class="flex">
-                            <%= link_to "リセット", log_path(@log, id: log.id), data: { turbo_method: :delete,  turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm m-auto" %>
+                            <%= link_to "リセット", log_path(@log, id: study.id, date: params["date"]), data: { turbo_method: :delete,  turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm m-auto" %>
                           </div>
                         <% else %>
                           <div class="">勉強記録の登録がありません</div>
