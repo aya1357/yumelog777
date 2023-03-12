@@ -54,9 +54,11 @@ ja:
       fail: 'パスワードの変更に失敗しました'
   calendars:
     index:
+      title: 'カレンダー'
       no_result: '登録がありません。'
   studies:
     new:
+      top_title: '勉強本の新規登録'
       title: 'タイトル'
       total_number: '総ページ数、または総再生時間'
       start_number: '勉強を始めるページ数'
@@ -64,8 +66,17 @@ ja:
       target_number: '1日の目標ページ数'
       start_day: '開始予定日'
       day_of_week: '取り組む曜日'
+    log_date:
+      title: '積みログの詳細'
+  logs:
+    new:
+      title: '積みログの新規登録'
+    edit:
+      title: '積みログを編集'
   static_pages:
     privacy_policy:
       title: "プライバシーポリシー"
     terms:
       title: "利用規約"
+    start:
+      title: "始めてみる"
