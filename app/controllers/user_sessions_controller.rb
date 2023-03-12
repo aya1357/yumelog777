@@ -17,14 +17,17 @@ class UserSessionsController < ApplicationController
   end
 
   def guest_login
+    rondom_value = SecureRandom.alphanumeric(10) + Time.zone.now.to_i.to_s
     @guest_user = User.create(
-    name: 'ゲスト',
-    age: '**',
-    email: SecureRandom.alphanumeric(10) + "@email.com",
-    password: 'password',
-    password_confirmation: 'password'
+      name: 'GuestUser',
+      email: rondom_value + '@example.com',
+      password: 'password',
+      password_confirmation: 'password',
+      role: :guest
     )
+    id = @guest_user.id
+    @guest_user.update!(name: "GuestUser_#{id}")
     auto_login(@guest_user)
-    redirect_to calendars_path, success: 'ゲストとしてログインしました'
+    redirect_back_or_to root_path, success: 'ゲストとしてログインしました'
   end
 end
