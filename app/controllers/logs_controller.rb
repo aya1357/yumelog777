@@ -19,12 +19,9 @@ class LogsController < ApplicationController
 					log.destroy
 				end
 			end
-      log_dates = Log.where(user_id: current_user.id).where(log_date: params[:form_log_collection][:logs_attributes]["0"][:log_date]).pluck(:log_date)
-      log_date_arr = log_dates.uniq
-      log_date_str = "#{log_date_arr[0]}, #{log_date_arr[1]} #{log_date_arr[2]} #{log_date_arr[3]}"
-      log_date = Date.parse(log_date_str)
-      log_date_formatted = log_date.strftime("%Y%m%d")
-      redirect_to studies_log_date_path(date: log_date_formatted), success: t('defaults.message.created', item: Log.model_name.human)
+      log_dates = Log.where(user_id: current_user.id).where(log_date: params[:form_log_collection][:logs_attributes]["0"][:log_date]).pluck(:log_date).uniq
+      log_date_formatted = log_dates.map {|log_date| log_date.strftime('%Y%m%d')}
+      redirect_to studies_log_date_path(date: log_date_formatted[0]), success: t('defaults.message.created', item: Log.model_name.human)
     else
       flash.now['danger'] = t('defaults.message.not_created', item: Log.model_name.human)
       render :new, status: :unprocessable_entity
@@ -41,7 +38,6 @@ class LogsController < ApplicationController
   def destroy
     @log = Log.where(user_id: current_user.id).where(log_date: params["date"]).where(study_id: params["id"])
     @log.update!(study_number: 0)
-    binding.pry
     redirect_to studies_log_date_path(date: params["date"]), success: t('defaults.message.reset', item: Log.model_name.human), status: :see_other
   end
 
