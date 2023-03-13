@@ -4,96 +4,49 @@
       <div class="max-w-screen-xl md:px-8 mx-auto">
         <div class="grid md:grid-cols-2 gap-4 md:gap-8 md:px-20 px-6">
           <!-- quote - start -->
-          <div class="relative py-3">
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-              <div class="relative flex flex-col bg-blue-50 rounded-lg gap-4 md:gap-6 px-8 py-6 drop-shadow-lg">
-                  <div>
-                    <%= form_with model: @form, url: log_path, local: true do |f| %>
-                      <%= f.hidden_field :log_date, :value => params[:date].to_date %>
-                      <div class="flex justify-between mb-6">
-                        <div class="flex max-w-md text-gray-700 lg:text-lg">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left mt-1">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                          </svg>
-                          <div class="ml-1 font-bold text-2xl">完了分</div>
-                        </div>
-                        <div>
-
-                        </div>
-                      </div>
-                      <div class="flex-wrap">
-                        <%# <%= render partial: 'logs/study', locals: { f: f }, collection: @studies %>
-                              <%= f.fields_for :logs do |f| %>
-                                <% study = Study.find(f.object.study_id) %>
-                                <%= f.hidden_field :user_id, :value => current_user.id %>
-                                <%= f.hidden_field :study_id, :value => study.id %>
-                                <%= f.hidden_field :log_date, :value => (params["date"]).to_date %>
-                                <div class="font-bold text-xl text-indigo-900 mt-6"><%= study.title %></div>
-                                <div class="justify-between flex mt-2">
-                                  <div class="flex">
-                                    <%= f.number_field :study_number, in: 0..5000, placeholder: "例) 5", id: ("input_#{study.id}"), class: "mr-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 py-3 px-6" %>
-                                    <span class="pt-3">ページ</span>
-                                    <%= link_to "" do %>
-                                      <div class="hover:underline ml-8" id="calc_btn_<%= study.id %>">
-                                        <%= image_tag "logo_cul.png", alt: "計算アイコン", class: "w-6" %>
-                                        <span class="text-sm font-bold">計算</span>
-                                      </div>
-                                    <% end %>
-                                  </div>
-                                  <div class="flex">
-                                    <%= link_to (t 'defaults.delete'), "", class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm m-auto" %>
-                                    <%# <%= link_to (t 'defaults.delete'), study_path(study), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm" %>
-                                  </div>
-                                </div>
-                              <% end %>
-                      </div>
-                      <div class="text-center">
-                        <%= f.submit (t 'defaults.update'), class: "py-3 px-8 bg-blue-600 text-white font-bold mt-6 rounded-lg hover:bg-blue-700" %>
-                      </div>
-                    <% end %>
+          <div class="relative">
+            <div class="relative flex flex-col bg-blue-50 rounded-lg gap-4 md:gap-6 px-8 py-6 drop-shadow-lg">
+              <%= form_with model: @form, url: log_path, local: true do |f| %>
+                <%= f.hidden_field :log_date, :value => params[:date].to_date %>
+                <div class="flex justify-between mb-6">
+                  <div class="flex max-w-md text-gray-700 lg:text-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left mt-1">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    <div class="ml-1 font-bold text-2xl">完了分</div>
                   </div>
-              </div>
-          </div>
-          <!-- quote - end -->
-          <!-- quote - start -->
-          <div class="flex flex-col bg-gray-50 rounded-lg gap-4 md:gap-6 px-8 py-6 drop-shadow-lg my-4">
-            <div class="flex max-w-md text-gray-700 lg:text-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mt-1">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <div class="ml-1 font-bold text-2xl">目標</div>
-            </div>
-              <div>
+                </div>
                 <div class="flex-wrap">
-                  <% @studies.each do |study| %>
-                    <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title%></p>
-                    <div class="flex text-left  mb-9">
-                      <div class="block">1日<span class="text-3xl mx-3 font-bold underline">5</span>ページ</div>
+                  <%# <%= render partial: 'logs/study', locals: { f: f }, collection: @studies %>
+                  <%= f.fields_for :logs do |f| %>
+                    <% study = Study.find(f.object.study_id) %>
+                    <%= f.hidden_field :user_id, :value => current_user.id %>
+                    <%= f.hidden_field :study_id, :value => study.id %>
+                    <%= f.hidden_field :log_date, :value => (params["date"]).to_date %>
+                    <div class="font-bold text-xl text-indigo-900 mt-6"><%= study.title %></div>
+                    <div class="justify-between flex mt-2">
+                      <div class="flex">
+                        <%= f.number_field :study_number, in: 0..5000, placeholder: "例) 5", id: ("input_#{study.id}"), class: "mr-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 py-3 px-6", required: true %>
+                        <span class="pt-3">ページ</span>
+                        <%= link_to "" do %>
+                          <div class="hover:underline ml-8" id="calc_btn_<%= study.id %>">
+                            <%= image_tag "logo_cul.png", alt: "計算アイコン", class: "w-6" %>
+                            <span class="text-sm font-bold">計算</span>
+                          </div>
+                        <% end %>
+                      </div>
+                      <div class="flex">
+                        <%= link_to (t 'defaults.delete'), "", class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm m-auto" %>
+                        <%# <%= link_to (t 'defaults.delete'), study_path(study), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm" %>
+                      </div>
                     </div>
                   <% end %>
                 </div>
-              </div>
-          </div>
-          <!-- quote - end -->
-          <!-- quote - start -->
-          <div class="flex flex-col bg-gray-50 rounded-lg gap-4 md:gap-6 px-8 py-6 drop-shadow-lg">
-            <div class="flex max-w-md text-gray-700 lg:text-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mt-1">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-              </svg>
-              <div class="ml-1 font-bold text-2xl">残り</div>
-            </div>
-              <div>
-                <div class="flex-wrap">
-                  <% @studies.each do |study| %>
-                    <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title%></p>
-                    <div class="flex text-left  mb-9">
-                      <div class="block">残り<span class="text-3xl mx-3 font-bold underline">150</span>ページ</div>
-                    </div>
-                  <% end %>
+                <div class="text-center">
+                  <%= f.submit (t 'defaults.update'), class: "py-3 px-8 bg-blue-600 text-white font-bold mt-6 rounded-lg hover:bg-blue-700" %>
                 </div>
-
-              </div>
+              <% end %>
+            </div>
           </div>
           <!-- quote - end -->
           <!-- quote - start -->
@@ -104,16 +57,91 @@
               </svg>
               <div class="ml-1 font-bold text-2xl">完了予定日</div>
             </div>
-              <div>
-                <div class="flex-wrap">
-                  <% @studies.each do |study| %>
-                    <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title%></p>
-                    <div class="text-left  mb-9">
-                      <p class="">目標終了予定日: <span>2023年12月31日</span></p>
-                      <p class="">自動計算終了日: <span>2023年12月31日</span></p>
-                    </div>
+            <div class="flex-wrap">
+              <% @studies.each do |study| %>
+                <%# 目標終了予定日計算式 %>
+                <%# "勉強する総ページ数" %>
+                <% study_total_number = study.end_number - study.start_number %>
+                <% if study_total_number % study.target_number == 0 %>
+                  <% study_total_days = study_total_number / study.target_number %>
+                <% else %>
+                  <% study_total_days = (study_total_number.to_f / study.target_number.to_f).ceil %>
+                <% end %>
+
+                <%# "取り組む曜日を曜日の順に数字順に並び替え" %>
+                <% dayOfWeek = study.day_of_week %>
+                <% dayOfWeek_arr = dayOfWeek.split(",").map(&:to_i).sort %>
+
+                <%# "目標終了日をルーブ文で計算" %>
+                <% while study_total_days >= 1 %>
+                  <% if (dayOfWeek_arr).include?(study.start_day.wday) %>
+                    <% study_total_days -= 1 %>
                   <% end %>
+                  <% study.start_day += 1%>
+                <% end %>
+                <% target_day = (study.start_day - 1).strftime('%Y年%m月%d日') %>
+
+                <%# "自動計算終了日計算" %>
+                <% total_studied_number = Log.where(user_id: current_user.id, study_id: study.id).pluck(:study_number).sum %>
+                <% remain_number =  study_total_number - total_studied_number %>
+                <% if remain_number % study.target_number == 0 %>
+                  <% remain_study_days = remain_number / study.target_number %>
+                <% else %>
+                  <% remain_study_days = (remain_number.to_f / study.target_number.to_f).ceil %>
+                <% end %>
+                <% today = Date.today %>
+                <% while remain_study_days >= 1 %>
+                  <% today.wday %>
+                  <% if (dayOfWeek_arr).include?(today.wday) %>
+                    <% remain_study_days -= 1 %>
+                  <% end %>
+                  <% today += 1 %>
+                <% end %>
+                <% culc_end_day = (today - 1).strftime('%Y年%m月%d日') %>
+
+                <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title %></p>
+                <div class="text-left  mb-9">
+                  <p class="">目標終了予定日: <span><%= target_day %></span></p>
+                  <p class="">自動計算終了日: <span id = "culcEndDay_<%= study.id %>"><%= culc_end_day %></span></p>
                 </div>
+              <% end %>
+            </div>
+          </div>
+          <!-- quote - end -->
+          <!-- quote - start -->
+          <div class="flex flex-col bg-gray-50 rounded-lg gap-4 md:gap-6 px-8 py-6 drop-shadow-lg">
+            <div class="flex max-w-md text-gray-700 lg:text-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mt-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+              </svg>
+              <div class="ml-1 font-bold text-2xl">残り</div>
+            </div>
+            <div class="flex-wrap">
+              <% @studies.each do |study| %>
+                <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title %></p>
+                <div class="flex text-left  mb-9">
+                  <% total_studied_number = Log.where(user_id: current_user.id, study_id: study.id).pluck(:study_number).sum %>
+                  <div class="block">残り<span class="text-3xl mx-3 font-bold underline" id="remainPages_<%= study.id %>"><%= (study.end_number - study.start_number) - total_studied_number %></span>ページ</div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <!-- quote - end -->
+          <!-- quote - start -->
+          <div class="flex flex-col bg-gray-50 rounded-lg gap-4 md:gap-6 px-8 py-6 drop-shadow-lg">
+            <div class="flex max-w-md text-gray-700 lg:text-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mt-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div class="ml-1 font-bold text-2xl">目標</div>
+            </div>
+              <div class="flex-wrap">
+                <% @studies.each do |study| %>
+                  <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title%></p>
+                  <div class="flex text-left  mb-9">
+                    <div class="block">1日<span class="text-3xl mx-3 font-bold underline"><%= study.target_number %></span>ページ</div>
+                  </div>
+                <% end %>
               </div>
           </div>
           <!-- quote - end -->
