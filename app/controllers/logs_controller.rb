@@ -9,7 +9,6 @@ class LogsController < ApplicationController
   def create
     @studies = Study.all.includes(:user).order(created_at: :desc)
     @form = Form::LogCollection.new(log_collection_params)
-    binding.pry
     if params[:form_log_collection][:log_date].present?
 			@log_ids = Log.where(user_id: current_user.id, log_date: params[:form_log_collection][:log_date]).pluck(:id)
 		end
@@ -35,8 +34,16 @@ class LogsController < ApplicationController
   end
 
   def destroy
-    @log = current_user.logs.find(params[:id])
-    @log.destroy!
+    @log = Log.where(user_id: current_user.id).where(log_date: params["date"]).where(study_id: params["id"])
+    @study = current_user.stues.find(params[:id])
+    @log.update!(study_number: 0)
+    redirect_to studies_log_date_path, success: t('defaults.message.deleted', item: Log.model_name.human), status: :see_other
+  end
+
+  def destroy_all
+    @logs = Log.where(user_id: current_user.id).where(log_date: params["date"])
+    # @logs = current_user.logs.find(params[:date])
+    @logs.destroy_all
     redirect_to calendars_path, success: t('defaults.message.deleted', item: Log.model_name.human), status: :see_other
   end
 

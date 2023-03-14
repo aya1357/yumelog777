@@ -1,39 +1,40 @@
 <div class="navbar bg-base-100 h-18">
-  <div class="flex-1">
+  <div class="flex-1 ml-3">
     <%= link_to root_path do %>
-      <%= image_tag "header_title.png", alt: "タイトルアイコン" %>
+      <%= image_tag "header_logo1.png", alt: "タイトルアイコン", class: "float-left w-8 pt-1" %>
+      <h1 class="flex m-auto md:text-2xl md:pt-1 pt-2" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;" >&nbsp;積みログ</h1>
     <% end %>
   </div>
-  <div class="flex-none space-x-4 mt-5">
+  <div class="flex-none md:space-x-4 space-x-2 mt-5">
     <div class="">
       <%= link_to calendars_path do %>
         <div class="hover:underline">
-          <%= image_tag "header_calendar.png", alt: "カレンダーアイコン", class: "w-6 m-auto" %>
-          <span class="font-extrabold" style="font-size: 2px">カレンダー</span>
+          <%= image_tag "header_calendar.png", alt: "カレンダーアイコン", class: "md:w-6 w-4 m-auto" %>
+          <span class="font-extrabold" style="md:font-size: 2px; font-size:1px">カレンダー</span>
         </div>
       <% end %>
     </div>
     <div class="">
-      <%= link_to "#" do %>
+      <%= link_to "" do %>
         <div class="hover:underline">
-          <%= image_tag "header_guide.png", alt: "クイックガイドアイコン", class: "w-6 m-auto" %>
-          <span class="font-extrabold" style="font-size: 4px">使い方</span>
+          <%= image_tag "header_guide.png", alt: "クイックガイドアイコン", class: "md:w-6 w-4 m-auto" %>
+          <span class="font-extrabold" style="md:font-size: 2px; font-size:1px">使い方</span>
         </div>
       <% end %>
     </div>
     <div class="">
       <%= link_to profile_path do %>
         <div class="hover:underline">
-          <%= image_tag "header_plofile.png", alt: "プロフィールアイコン", class: "w-6 m-auto" %>
-          <span class="font-extrabold" style="font-size: 4px">アカウント</span>
+          <%= image_tag "header_plofile.png", alt: "プロフィールアイコン", class: "md:w-6 w-4 m-auto" %>
+          <span class="font-extrabold" style="md:font-size: 2px; font-size:1px">アカウント</span>
         </div>
       <% end %>
     </div>
     <div class="">
       <%= link_to logout_path, data: { turbo_method: :delete } do %>
         <div class="hover:underline mr-3">
-          <%= image_tag "header_logout.png", alt: "ログアウトアイコン", class: "w-6 m-auto" %>
-          <span class="font-extrabold" style="font-size: 4px">ログアウト</span>
+          <%= image_tag "header_logout.png", alt: "ログアウトアイコン", class: "md:w-6 w-4 m-auto" %>
+          <span class="font-extrabold" style="md:font-size: 2px; font-size:1px">ログアウト</span>
         </div>
       <% end %>
     </div>

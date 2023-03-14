@@ -1,39 +1,40 @@
 <div class="navbar bg-base-100 h-20">
   <div class="flex-1 ml-3">
     <%= link_to root_path do %>
-      <%= image_tag "header_title.png", alt: "タイトルアイコン" %>
+      <%= image_tag "header_logo1.png", alt: "タイトルアイコン", class: "float-left w-8 pt-1" %>
+      <h1 class="flex m-auto md:text-2xl md:pt-1 pt-2" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;" >&nbsp;積みログ</h1>
     <% end %>
   </div>
-  <div class="flex-none space-x-6 mt-5">
+  <div class="flex-none space-x-3 md:space-x-6 mt-5">
     <div class="">
-      <%= link_to "#" do %>
+      <%= link_to start_path do %>
         <div class="hover:underline">
-          <%= image_tag "header_start.png", alt: "積読本アイコン", class: "w-6 m-auto" %>
-          <span class="font-extrabold" style="font-size: 2px">始める</span>
+          <%= image_tag "header_start.png", alt: "積読本アイコン", class: "md:w-6 w-4 m-auto" %>
+          <span class="font-extrabold" style="md:font-size: 2px; font-size:1px">始める</span>
         </div>
       <% end %>
     </div>
     <div class="">
       <%= link_to "#" do %>
         <div class="hover:underline">
-          <%= image_tag "header_guide.png", alt: "クイックガイドアイコン", class: "w-6 m-auto" %>
-          <span class="font-extrabold" style="font-size: 4px">使い方</span>
+          <%= image_tag "header_guide.png", alt: "クイックガイドアイコン", class: "md:w-6 w-4 m-auto" %>
+          <span class="font-extrabold" style="md:font-size: 4px; font-size:1px">使い方</span>
         </div>
       <% end %>
     </div>
     <div class="">
       <%= link_to login_path do %>
         <div class="hover:underline">
-          <%= image_tag "header_login.png", alt: "ログインアイコン", class: "w-6 m-auto" %>
-          <span class="font-extrabold" style="font-size: 4px">ログイン</span>
+          <%= image_tag "header_login.png", alt: "ログインアイコン", class: "md:w-6 w-4 m-auto" %>
+          <span class="font-extrabold" style="md:font-size: 4px; font-size:1px">ログイン</span>
         </div>
       <% end %>
     </div>
     <div class="">
       <%= link_to new_user_path do %>
         <div class="hover:underline mr-3">
-          <%= image_tag "header_signup.png", alt: "サインアップアイコン", class: "w-6 m-auto" %>
-          <span class="font-extrabold" style="font-size: 4px">新規登録</span>
+          <%= image_tag "header_signup.png", alt: "サインアップアイコン", class: "md:w-6 w-4 m-auto" %>
+          <span class="font-extrabold" style="md:font-size: 4px; font-size:1px">新規登録</span>
         </div>
       <% end %>
     </div>

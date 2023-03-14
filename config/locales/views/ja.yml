@@ -63,3 +63,8 @@ ja:
       target_number: '1日の目標ページ数'
       start_day: '開始予定日'
       day_of_week: '取り組む曜日'
+  static_pages:
+    privacy_policy:
+      title: "プライバシーポリシー"
+    terms:
+      title: "利用規約"
