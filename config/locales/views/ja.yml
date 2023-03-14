@@ -17,6 +17,7 @@ ja:
       updated: '%{item}を更新しました'
       not_updated: '%{item}を更新出来ませんでした'
       deleted: '%{item}を削除しました'
+      reset: '%{item}をリセットしました'
       delete_confirm: '削除しますか？'
       not_authorized: '権限がありません'
   users:
