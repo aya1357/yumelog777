@@ -22,27 +22,32 @@
                       <div class="mb-6">
                         <p class="font-bold text-xl text-indigo-900"><%= study.title %></p>
                         <div class="mt-2 flex justify-between">
-                          <div class="flex pt-2">
-                            <% log = Log.find_by(study_id: study.id, log_date: params["date"]) %>
-                            <div class="text-3xl mx-3 font-bold underline"><%= log.study_number %></div>
-                            <span class="block pt-3">ページ</span>
-                            <%= link_to "" do %>
-                              <div class="hover:underline ml-8" id="calc_btn_id">
-                                <%= image_tag "logo_cul.png", alt: "計算アイコン", class: "w-6" %>
-                                <span class="text-sm font-bold">計算</span>
-                              </div>
-                            <% end %>
-                          </div>
-                          <div class="flex">
-                            <%= link_to (t 'defaults.delete'), "", class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm m-auto" %>
-                            <%# <%= link_to (t 'defaults.delete'), study_path(study), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm" %>
-                          </div>
+                          <% log = Log.find_by(study_id: study.id, log_date: params["date"]) %>
+                          <% if log.present?%>
+                            <div class="flex pt-2">
+                                <div class="text-3xl mx-3 font-bold underline">
+                                  <%= log.study_number %>
+                                </div>
+                                <span class="block pt-3">ページ</span>
+                                <%= link_to "" do %>
+                                  <div class="hover:underline ml-8" id="calc_btn_id">
+                                    <%= image_tag "logo_cul.png", alt: "計算アイコン", class: "w-6" %>
+                                    <span class="text-sm font-bold">計算</span>
+                                  </div>
+                                <% end %>
+                            </div>
+                            <div class="flex">
+                              <%= link_to (t 'defaults.delete'), log_path(@log, id: log.id), data: { turbo_method: :delete,  turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm m-auto" %>
+                            </div>
+                          <% else %>
+                            <div class="">勉強記録の登録がありません</div>
+                          <% end %>
                         </div>
                       </div>
                     <% end %>
                   </div>
                   <div class="text-center">
-                    <%= link_to "編集", edit_log_path(date: params["date"]), class: "py-3 px-8 bg-blue-600 text-white font-bold mt-6 rounded-lg hover:bg-blue-800" %>
+                    <%= link_to (t 'defaults.edit'), edit_log_path(date: params["date"]), class: "py-3 px-8 bg-blue-600 text-white font-bold mt-6 rounded-lg hover:bg-blue-800" %>
                   </div>
                 </div>
               </div>
@@ -56,16 +61,14 @@
               </svg>
               <div class="ml-1 font-bold text-2xl">目標</div>
             </div>
-              <div>
-                <div class="flex-wrap">
-                  <% @studies.each do |study| %>
-                    <p class="font-bold text-xl text-indigo-900 mb-2">タイトル</p>
-                    <div class="flex text-left  mb-9">
-                      <div class="block">1日<span class="text-3xl mx-3 font-bold underline">5</span>ページ</div>
-                    </div>
-                  <% end %>
+            <div class="flex-wrap">
+              <% @studies.each do |study| %>
+                <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title %></p>
+                <div class="flex text-left  mb-9">
+                  <div class="block">1日<span class="text-3xl mx-3 font-bold underline"><%= study.target_number%></span>ページ</div>
                 </div>
-              </div>
+              <% end %>
+            </div>
           </div>
           <!-- quote - end -->
           <!-- quote - start -->
@@ -76,20 +79,15 @@
               </svg>
               <div class="ml-1 font-bold text-2xl">残り</div>
             </div>
-              <div>
-                <div class="mb-7">
-                  <p class="font-bold text-xl text-indigo-900">Ruby超入門</p>
-                  <div class="mt-4 flex text-left">
-                    <div class="block">残り<span class="text-3xl mx-3 font-bold underline">150</span>ページ</div>
-                  </div>
+            <div class="flex-wrap">
+              <% @studies.each do |study| %>
+                <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title %></p>
+                <div class="flex text-left  mb-9">
+                  <% total_studied_number = Log.where(user_id: current_user.id, study_id: study.id).pluck(:study_number).sum %>
+                  <div class="block">残り<span class="text-3xl mx-3 font-bold underline"><%= study.total_number - total_studied_number %></span>ページ</div>
                 </div>
-                <div class="mb-7">
-                  <p class="font-bold text-xl text-indigo-900">Ruby超入門</p>
-                  <div class="mt-4 flex text-left">
-                    <div class="block">残り<span class="text-3xl mx-3 font-bold underline">150</span>ページ</div>
-                  </div>
-                </div>
-              </div>
+              <% end %>
+            </div>
           </div>
           <!-- quote - end -->
           <!-- quote - start -->
@@ -98,25 +96,60 @@
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mt-1">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
               </svg>
-
               <div class="ml-1 font-bold text-2xl">完了予定日</div>
             </div>
-              <div>
-                <div class="mb-5">
-                  <p class="font-bold text-xl text-indigo-900">Ruby超入門</p>
-                  <div class="mt-4">
-                    <p class="">目標終了予定日: <span>2023年12月31日</span></p>
-                    <p class="">自動計算終了日: <span>2023年12月31日</span></p>
-                  </div>
+            <div class="flex-wrap">
+              <% @studies.each do |study| %>
+
+              <%# 目標終了予定日計算式 %>
+                <%# "勉強する総ページ数" %>
+                <% study_total_number = study.end_number - study.start_number %>
+                <% if study_total_number % study.target_number == 0 %>
+                  <% study_total_days = study_total_number / study.target_number %>
+                <% else %>
+                  <% study_total_days = (study_total_number.to_f / study.target_number.to_f).ceil %>
+                <% end %>
+
+                <%# "取り組む曜日を曜日の順に数字順に並び替え" %>
+                <% dayOfWeek = study.day_of_week %>
+                <% dayOfWeek_arr = dayOfWeek.split(",").map(&:to_i).sort %>
+
+                <%# "目標終了日をルーブ文で計算" %>
+                <% while study_total_days >= 1 %>
+                  <% study.start_day%>
+                  <% study.start_day.wday %>
+                  <% if (dayOfWeek_arr).include?(study.start_day.wday) %>
+                    <% study_total_days -= 1 %>
+                  <% end %>
+                  <% study.start_day += 1%>
+                <% end %>
+                <% target_day = (study.start_day - 1).strftime('%Y年%m月%d日') %>
+
+                <%# "自動計算終了日計算" %>
+                <% total_studied_number = Log.where(user_id: current_user.id, study_id: study.id).pluck(:study_number).sum %>
+                <% remain_number =  study_total_number - total_studied_number %>
+                <% if remain_number % study.target_number == 0 %>
+                  <% remain_study_days = remain_number / study.target_number %>
+                <% else %>
+                  <% remain_study_days = (remain_number.to_f / study.target_number.to_f).ceil %>
+                <% end %>
+                <% today = Date.today %>
+                <% while remain_study_days >= 1 %>
+                  <% today.wday %>
+                  <% if (dayOfWeek_arr).include?(today.wday) %>
+                    <% remain_study_days -= 1 %>
+                  <% end %>
+                  <% today += 1 %>
+                <% end %>
+                <% culc_end_day = (today - 1).strftime('%Y年%m月%d日') %>
+
+                <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title %></p>
+                <div class="text-left  mb-9">
+                  <p class="">目標終了予定日: <span><%= target_day %></span></p>
+                  <p class="">自動計算終了日: <span><%= culc_end_day %></span></p>
                 </div>
-                <div class="mb-5">
-                  <p class="font-bold text-xl text-indigo-900">Ruby超入門</p>
-                  <div class="mt-4">
-                    <p class="">目標終了予定日: <span>2023年12月31日</span></p>
-                    <p class="">自動計算終了日: <span>2023年12月31日</span></p>
-                  </div>
-                </div>
-              </div>
+              <% end %>
+            </div>
           </div>
           <!-- quote - end -->
         </div>
