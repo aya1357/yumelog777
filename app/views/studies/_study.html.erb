@@ -10,7 +10,7 @@
     <div class="flex justify-center my-4">
       <div class="bg-gradient-to-tr from-blue-500 to-blue-400 w-32 h-32  rounded-full border-white border-2  flex justify-center items-center drop-shadow-lg">
         <div>
-          <h1 class="text-white text-2xl">100ページ</h1>
+          <h1 class="text-white text-2xl"><span><%= study.target_number %></span>ページ</h1>
         </div>
       </div>
     </div>
@@ -22,8 +22,30 @@
       </svg>
     <% end %>
     <ul class="leading-8 mt-8">
-      <li>残り目標日数 : あと30日</li>
-      <li>残りページ数 : あと30ページ</li>
+      <% study_total_number = study.end_number - study.start_number %>
+      <% if study_total_number % study.target_number == 0 %>
+        <% study_total_days = study_total_number / study.target_number %>
+      <% else %>
+        <% study_total_days = (study_total_number.to_f / study.target_number.to_f).ceil %>
+      <% end %>
+
+      <%# "取り組む曜日を曜日の順に数字順に並び替え" %>
+      <% dayOfWeek = study.day_of_week %>
+      <% dayOfWeek_arr = dayOfWeek.split(",").map(&:to_i).sort %>
+
+      <%# "目標終了日をルーブ文で計算" %>
+      <% while study_total_days >= 1 %>
+        <% if (dayOfWeek_arr).include?(study.start_day.wday) %>
+          <% study_total_days -= 1 %>
+        <% end %>
+        <% study.start_day += 1%>
+      <% end %>
+      <% target_day = (study.start_day - 1).strftime('%Y年%m月%d日') %>
+      <li>目標終了予定日 : <%= target_day %></li>
+
+      <%# 残りページ数計算 %>
+      <% total_studied_number = Log.where(user_id: current_user.id, study_id: study.id).pluck(:study_number).sum %>
+      <li>残りページ数&ensp;&ensp; : あと<span><%= (study.end_number - study.start_number) - total_studied_number %></span>ページ</li>
     </ul>
   </div>
 </div>

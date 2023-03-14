@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'studies/logs', to: 'logs#show'
   get 'studies/log_date', to: 'studies#log_date'
   get 'studies/log_date_api', to: 'studies#log_date_api'
+  get 'log/log_culc_api', to: 'log#log_culc_api'
 
   resources :users, only: %i[new create]
   resource :profile, only: %i[show edit update]
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
   resources :studies do
     resources :memos
   end
-  resource :log, only: %i[new create edit update destroy]
+  resource :log, only: %i[new create edit update destroy] do
+    get 'logs/log_culc_api', to: 'logs#log_culc_api'
+  end
   resources :password_resets, only: %i[new create edit update]
 end

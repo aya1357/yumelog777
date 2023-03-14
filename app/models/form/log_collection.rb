@@ -14,6 +14,7 @@ class Form::LogCollection < Form::Base
 			self.logs = Log.where(user_id: user_id, log_date: date)
       p 'test2'
       p self.logs
+			
 		end
 		p 'initialize method.'
 	end
