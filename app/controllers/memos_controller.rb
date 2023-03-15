@@ -1,4 +1,6 @@
 class MemosController < ApplicationController
+  before_action :check_guest
+
   def index
     @study = current_user.studies.find(params[:study_id])
   end
@@ -51,5 +53,9 @@ class MemosController < ApplicationController
 
   def memo_params
     params.require(:memo).permit(:body).merge(user_id: current_user.id, study_id: params[:study_id])
+  end
+
+  def check_guest
+    redirect_to calendars_path, warning: t('defaults.message.require_login') if current_user.guest?
   end
 end

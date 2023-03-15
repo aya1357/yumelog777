@@ -1,4 +1,7 @@
 class LogsController < ApplicationController
+  before_action :check_guest, except: [:new]
+
+
   def new
     @form = Form::LogCollection.new
     @studies = Study.all.includes(:user).order(created_at: :desc)
@@ -87,5 +90,9 @@ class LogsController < ApplicationController
   def log_collection_params
     params.require(:form_log_collection)
     .permit(logs_attributes: [:log_date, :study_number, :user_id, :study_id])
+  end
+
+  def check_guest
+    redirect_to calendars_path, warning: t('defaults.message.require_login') if current_user.guest?
   end
 end
