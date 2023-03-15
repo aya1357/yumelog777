@@ -21,44 +21,51 @@
         <%= image_tag "top_hero.png", class: "md:w-1/2 flex"%>
     </div>
   </section>
+
+  <section class="mt-10">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mx-6">
+      <div class="p-3 my-2 bg-yellow-50 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <div class="flex flex-col items-center">
+          <%= image_tag "top_calendar.png", class: "pt-3" %>
+          <p class="mt-9 font-bold justify-start text-xl" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">カレンダーに本のページ数を<br>登録してみましょう。<br>ページ数と読書の終了予定日が<br>一覧で確認出来ます。</p>
+        </div>
+      </div>
+      <div class="p-3 my-2 bg-yellow-50 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <div class="flex flex-col items-center">
+          <%= image_tag "top_book.png", class: "pt-6" %>
+          <p class="mt-4 font-bold justify-start text-xl" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">一日の終わりに、<br>読書した総ページ数を<br>記録してみましょう。<br>日々の読書記録を記録出来ます。</p>
+        </div>
+      </div>
+      <div class="p-3 my-2 bg-yellow-50 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <div class="flex flex-col items-center">
+          <%= image_tag "top_webculc.png", class: "pt-4" %>
+          <p class="mt-6 font-bold justify-start text-xl" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">読書の記録を確認してみましょう。<br>読書したページ数から<br>本の残りのページ数と終了日を<br>自動で計算してくれます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="text-center md:mb-2 mt-14">
+    <p class="text-gray-700 md:text-5xl font-bold text-center md:mt-28 leading-snug mb-3 "  style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">買ったまま放置されている<br>本はありませんか？</p>
+  </div>
+
   <div class="bg-no-repeat flex justify-center mx-6">
     <%= image_tag 'top_bookpage.png', class: 'mt-10' %>
   </div>
+
   <div class="text-center md:mb-20 mb-10">
     <p class="text-gray-700 md:text-5xl font-bold text-center mt-10 md:mt-28 leading-snug mb-6"  style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">忙しい毎日の空き時間を<br>有効活用しませんか？</p>
     <%= link_to "使い方を見る", "", class: "shadow-lg bg-orange-500 shadow-orange-500/50 text-white rounded px-2 py-1 md:mt-15 hover:bg-orange-600", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
   </div>
   <div class="bg-no-repeat flex justify-center mx-6">
-    <%= image_tag 'top_culcpages.png' %>
+    <%= image_tag 'top_culcpage.png' %>
   </div>
-  <div class="text-center md:mb-20 mb-10">
-    <p class="text-gray-700 md:text-5xl font-bold text-center mt-10 md:mt-28 leading-snug mb-6"  style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">毎日の勉強をサポートします</p>
-    <%= link_to "使い方を見る", "", class: "shadow-lg bg-orange-500 shadow-orange-500/50 text-white rounded px-2 py-1 mt-15 md:mb-20 hover:bg-orange-600", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
-  </div>
-
-  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mx-6">
-    <div class="p-3 my-2 bg-yellow-50 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-      <div class="flex flex-col items-center">
-        <%= image_tag "top_calendar.png", class: "pt-3" %>
-        <p class="mt-9 font-bold justify-start text-xl" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">カレンダーに本のページ数を<br>登録してみましょう。<br>ページ数と勉強終了予定日が<br>一覧で確認出来ます。</p>
-      </div>
-    </div>
-    <div class="p-3 my-2 bg-yellow-50 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-      <div class="flex flex-col items-center">
-        <%= image_tag "top_book.png", class: "pt-6" %>
-        <p class="mt-4 font-bold justify-start text-xl" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">一日の終わりに、<br>勉強した総ページ数を<br>記録してみましょう。<br>毎日の勉強記録を記録出来ます。</p>
-      </div>
-    </div>
-    <div class="p-3 my-2 bg-yellow-50 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-      <div class="flex flex-col items-center">
-        <%= image_tag "top_webculc.png", class: "pt-4" %>
-        <p class="mt-6 font-bold justify-start text-xl" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">毎日の記録を確認してみましょう。<br>勉強したページ数から<br>本の残りのページ数と終了日を<br>自動で計算してくれます。</p>
-      </div>
-    </div>
+  <div class="text-center md:mb-10 mb-10">
+    <p class="text-gray-700 md:text-5xl font-bold text-center mt-10 md:mt-28 leading-snug mb-6"  style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">読書習慣をサポートします</p>
   </div>
 
-  <div class="text-center pb-20 bg-blue-50 mt-20">
-    <%= link_to "今すぐ始めてみる", "#", class: "shadow-lg shadow-blue-500/50 btn btn-primary md:text-2xl mb-8", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %><br>
+  <div class="text-center pb-10 bg-blue-50 mt-10">
+    <%= link_to "今すぐ始めてみる", "#", class: "shadow-lg shadow-blue-500/50 btn btn-primary md:text-2xl mb-4", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %><br>
     <%= link_to "使い方を見る", "", class: "shadow-lg bg-orange-500 shadow-orange-500/50 text-white rounded px-2 py-1 mt-10 mb-20 hover:bg-orange-600", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
   </div>
 </div>
