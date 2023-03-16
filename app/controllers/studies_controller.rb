@@ -17,10 +17,6 @@ class StudiesController < ApplicationController
     end
   end
 
-  def show
-    @study = current_user.studies.find(params[:id])
-  end
-
   def edit
     @study = current_user.studies.find(params[:id])
   end
@@ -67,6 +63,14 @@ class StudiesController < ApplicationController
     end
 
     render json: { status: status, data: @log }
+  end
+
+  def status_done
+    study = Study.where(user_id: current_user.id).where(id: params["id"])
+    study.update(status: true)
+  end
+
+  def status_not_done
   end
 
   private

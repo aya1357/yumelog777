@@ -10,4 +10,5 @@ class Study < ApplicationRecord
   validates :target_number, presence: true, length: { maximum: 5000 }
   validates :start_day, presence: true
   validates :day_of_week, presence: true
+  validates :status, inclusion: { in: [true, false] }
 end

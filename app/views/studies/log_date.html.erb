@@ -25,15 +25,15 @@
                       <div class="mt-2 flex justify-between">
                         <% log = Log.find_by(study_id: study.id, log_date: params["date"]) %>
                         <% if log.present?%>
-                          <div class="flex pt-2">
-                            <div class="text-3xl mx-3 font-bold underline">
-                              <%= log.study_number %>
-                            </div>
-                            <span class="block pt-3">ページ</span>
+                        <div class="flex pt-2">
+                          <div class="text-3xl mx-3 font-bold underline">
+                            <%= log.study_number %>
                           </div>
-                          <div class="flex">
-                            <%= link_to "リセット", log_path(@log, id: study.id, date: params["date"]), data: { turbo_method: :delete,  turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm m-auto" %>
-                          </div>
+                          <span class="block pt-3">ページ</span>
+                        </div>
+                        <div class="flex">
+                          <%= link_to "リセット", log_path(@log, id: study.id, date: params["date"]), data: { turbo_method: :delete,  turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm m-auto" %>
+                        </div>
                         <% else %>
                           <div class="">勉強記録の登録がありません</div>
                         <% end %>
@@ -120,9 +120,22 @@
             <div class="flex-wrap">
               <% @studies.each do |study| %>
                 <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title %></p>
-                <div class="flex text-left  mb-9">
+                <div class="flex mb-9 justify-between">
                   <% total_studied_number = Log.where(user_id: current_user.id, study_id: study.id).pluck(:study_number).sum %>
-                  <div class="block">残り<span class="text-3xl mx-3 font-bold underline"><%= (study.end_number - study.start_number) - total_studied_number %></span>ページ</div>
+                  <% remain_number = (study.end_number - study.start_number) - total_studied_number %>
+                  <% if remain_number >= 0 %>
+                    <% remain_number = remain_number %>
+                  <% else %>
+                    <% remain_number = 0 %>
+                  <% end %>
+                  <div class="flex">
+                    <div class="block">残り<span class="text-3xl mx-3 font-bold underline"><%= remain_number %></span>ページ</div>
+                  </div>
+                  <% if remain_number == 0 %>
+                    <div class="flex">
+                      <%= link_to "完了済にする", studies_status_done_path(id: study.id), class:"bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+                    </div>
+                  <% end %>
                 </div>
               <% end %>
             </div>
