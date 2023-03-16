@@ -1,7 +1,6 @@
 class LogsController < ApplicationController
   before_action :check_guest, except: [:new]
 
-
   def new
     @form = Form::LogCollection.new
     @studies = Study.all.includes(:user).order(created_at: :desc)
