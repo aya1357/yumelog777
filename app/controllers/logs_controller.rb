@@ -19,6 +19,8 @@ class LogsController < ApplicationController
 					log.destroy
 				end
 			end
+      @logs = log.wher
+      @logs = Log.where(user_id: current_user.id).where(log_date: params[:log_date]).pluck(:log_date)
       redirect_to calendars_path, success: t('defaults.message.created', item: Log.model_name.human)
     else
       flash.now['danger'] = t('defaults.message.not_created', item: Log.model_name.human)
