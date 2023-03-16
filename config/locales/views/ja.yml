@@ -20,6 +20,8 @@ ja:
       reset: '%{item}をリセットしました'
       delete_confirm: '削除しますか？'
       not_authorized: '権限がありません'
+      status_done: '勉強中の本を完了にしました。'
+      status_not_done: '完了済の本を未完了に戻しました。'
   users:
     new:
       title: 'ユーザー登録'

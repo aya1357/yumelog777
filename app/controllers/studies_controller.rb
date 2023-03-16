@@ -68,9 +68,13 @@ class StudiesController < ApplicationController
   def status_done
     study = Study.where(user_id: current_user.id).where(id: params["id"])
     study.update(status: true)
+    redirect_to calendars_path, success: t('defaults.message.status_done')
   end
 
   def status_not_done
+    study = Study.where(user_id: current_user.id).where(id: params["id"])
+    study.update(status: false)
+    redirect_to calendars_path, success: t('defaults.message.status_not_done')
   end
 
   private
