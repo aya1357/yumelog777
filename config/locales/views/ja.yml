@@ -67,12 +67,12 @@ ja:
       start_day: '開始予定日'
       day_of_week: '取り組む曜日'
     log_date:
-      title: '積みログの詳細'
+      title: '積みログ詳細'
   logs:
     new:
-      title: '積みログの新規登録'
+      title: '積みログ新規登録'
     edit:
-      title: '積みログを編集'
+      title: '積みログ編集'
   static_pages:
     privacy_policy:
       title: "プライバシーポリシー"

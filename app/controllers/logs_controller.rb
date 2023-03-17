@@ -9,6 +9,7 @@ class LogsController < ApplicationController
   def create
     @studies = Study.all.includes(:user).order(created_at: :desc)
     @form = Form::LogCollection.new(log_collection_params)
+    @log = Log.where(user_id: current_user.id, log_date: params[:form_log_collection][:logs_attributes]["0"][:log_date])
     if params[:form_log_collection][:log_date].present?
 			@log_ids = Log.where(user_id: current_user.id, log_date: params[:form_log_collection][:log_date]).pluck(:id)
 		end
@@ -19,9 +20,9 @@ class LogsController < ApplicationController
 					log.destroy
 				end
 			end
-      @logs = log.wher
-      @logs = Log.where(user_id: current_user.id).where(log_date: params[:log_date]).pluck(:log_date)
-      redirect_to calendars_path, success: t('defaults.message.created', item: Log.model_name.human)
+      log_dates = Log.where(user_id: current_user.id).where(log_date: params[:form_log_collection][:logs_attributes]["0"][:log_date]).pluck(:log_date).uniq
+      log_date_formatted = log_dates.map {|log_date| log_date.strftime('%Y%m%d')}
+      redirect_to studies_log_date_path(date: log_date_formatted[0]), success: t('defaults.message.created', item: Log.model_name.human)
     else
       flash.now['danger'] = t('defaults.message.not_created', item: Log.model_name.human)
       render :new, status: :unprocessable_entity
@@ -55,6 +56,11 @@ class LogsController < ApplicationController
 
     # 残りページ数を計算
     remain_number =  total_study_number.to_i - (total_studied_number.to_i + params["studied_pages"].to_i)
+    if remain_number >= 0
+      remain_number = remain_number
+    else
+      remain_number = 0
+    end
 
     # 自動計算終了日を計算
     dayOfWeek_arr = study.day_of_week.split(",").map(&:to_i).sort
@@ -66,8 +72,12 @@ class LogsController < ApplicationController
       end
       today += 1
     end
-    culc_end_day = (today - 1).strftime('%Y年%m月%d日')
-    p culc_end_day
+
+    if remain_number == 0
+      culc_end_day = today.strftime('%Y年%m月%d日')
+    else
+      culc_end_day = (today - 1).strftime('%Y年%m月%d日')
+    end
     log = { culc_end_day: culc_end_day, remain_number: remain_number }
     render json: log
   end
