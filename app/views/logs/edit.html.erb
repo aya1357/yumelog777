@@ -136,7 +136,17 @@
                     <% end %>
                     <div class="flex">
                       <div class="block">残り<span class="text-3xl mx-3 font-bold underline" id="remainPages_<%= study.id %>"><%= remain_number %></span>ページ</div>
+                      <% if remain_number == 0 %>
+                        <div class="ml-3">
+                          <%= image_tag "log_completed_logo.svg", alt: "計算アイコン", class: "w-10" %>
+                        </div>
+                      <% end %>
                     </div>
+                    <% if remain_number == 0 %>
+                      <div class="flex">
+                        <%= link_to "完了済にする", studies_status_done_path(id: study.id), class:"bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+                      </div>
+                    <% end %>
                   </div>
                 <% end %>
               <% end %>

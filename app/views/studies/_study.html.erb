@@ -23,6 +23,14 @@
         </svg>
       <% end %>
       <div class="leading-8 mt-8">
+        <%# 取り組む曜日を、数字から曜日に変換して表示 %>
+        <% days_of_week = ['日曜', '月曜', '火曜', '水曜', '木曜', '金曜', '土曜'] %>
+        <% study_days = study.day_of_week.split(",").map(&:to_i) %>
+        <% study_day_names = study_days.map { |day| days_of_week[day] } %>
+        <% study_days_arr = study_day_names.join(" ") %>
+        <div>取り組む曜日 : <%= study_days_arr %></div>
+
+
         <% study_total_number = study.end_number - study.start_number %>
         <% if study_total_number % study.target_number == 0 %>
           <% study_total_days = study_total_number / study.target_number %>
