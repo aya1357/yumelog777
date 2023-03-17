@@ -1,4 +1,16 @@
 document.addEventListener("turbo:load", function () {
+  $("#input_total_pages").on("change", function () {
+    if ($("#input_total_pages").val() <= 0) {
+      // 総ページ数の箇所にもし0以下の値が入力された場合
+      $("#input_total_pages").val(1); // 1に置き換える
+    }
+  });
+  $("#input_target_pages").on("change", function () {
+    if ($("#input_target_pages").val() <= 0) {
+      // 1日の目標ページ数n箇所にもし0以下の値が入力された場合
+      $("#input_target_pages").val(1); // 1に置き換える
+    }
+  });
   $("#start_culc_btn").click(function (e) {
     e.preventDefault();
     let total_number = $("#input_total_pages").val();
