@@ -1,5 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_user, only: %i[update edit]
+  before_action :check_guest
+
 
   def edit; end
 
@@ -20,5 +22,9 @@ class ProfilesController < ApplicationController
 
   def set_user
     @user = User.find(current_user.id)
+  end
+
+  def check_guest
+    redirect_to calendars_path, warning: t('defaults.message.require_login') if current_user.guest?
   end
 end

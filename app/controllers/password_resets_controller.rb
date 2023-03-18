@@ -1,4 +1,6 @@
 class PasswordResetsController < ApplicationController
+  before_action :check_guest
+
   def new; end
 
   def create
@@ -24,5 +26,11 @@ class PasswordResetsController < ApplicationController
       flash.now[:danger] = t('.fail')
       render :edit
     end
+  end
+
+  private
+
+  def check_guest
+    redirect_to calendars_path, warning: t('defaults.message.require_login') if current_user.guest?
   end
 end
