@@ -1,6 +1,8 @@
 class CalendarsController < ApplicationController
   def index
-    @studies = Study.all.includes(:user).order(created_at: :desc)
+    @studies = Study.where(user_id: current_user.id).includes(:user).order(created_at: :desc)
+    @logs = Log.where(user_id: current_user.id)
+    @log_dates = current_user.logs.pluck(:log_date)
   end
 
   def destroy

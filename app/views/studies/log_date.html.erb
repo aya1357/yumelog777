@@ -134,6 +134,11 @@
                     <% end %>
                     <div class="flex">
                       <div class="block">残り<span class="text-3xl mx-3 font-bold underline"><%= remain_number %></span>ページ</div>
+                      <% if remain_number == 0 %>
+                        <div class="ml-3">
+                          <%= image_tag "log_completed_logo.svg", alt: "計算アイコン", class: "w-10" %>
+                        </div>
+                      <% end %>
                     </div>
                     <% if remain_number == 0 %>
                       <div class="flex">

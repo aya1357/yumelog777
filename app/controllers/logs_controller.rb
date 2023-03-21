@@ -3,13 +3,13 @@ class LogsController < ApplicationController
 
   def new
     @form = Form::LogCollection.new
-    @studies = Study.all.includes(:user).order(created_at: :desc)
+    @studies = current_user.studies.order(created_at: :desc)
     log_date = Date.parse(params["date"])
     @formatted_date = log_date.strftime("%Y年%m月%d日")
   end
 
   def create
-    @studies = Study.all.includes(:user).order(created_at: :desc)
+    @studies = current_user.studies.order(created_at: :desc)
     @form = Form::LogCollection.new(log_collection_params)
     @log = Log.where(user_id: current_user.id, log_date: params[:form_log_collection][:logs_attributes]["0"][:log_date])
     if params[:form_log_collection][:log_date].present?
@@ -32,7 +32,7 @@ class LogsController < ApplicationController
   end
 
   def edit
-    @studies = Study.all.includes(:user).order(created_at: :desc)
+    @studies = current_user.studies.order(created_at: :desc)
     log_date = Date.parse(params[:date])
     @formatted_date = log_date.strftime("%Y年%m月%d日")
     @form = Form::LogCollection.new({}, current_user.id, params[:date])

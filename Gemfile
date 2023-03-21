@@ -92,3 +92,6 @@ gem 'rails-i18n'
 
 # カレンダー
 gem "simple_calendar", "~> 2.4"
+
+# OGP, メタタグの設定
+gem 'meta-tags'

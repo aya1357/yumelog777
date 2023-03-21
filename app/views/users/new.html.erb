@@ -14,7 +14,7 @@
           <% end %>
 
 
-          <h2 class="text-gray-800 text-right pr-2 text-sm">To login</h2>
+          <h2 class="text-gray-800 text-right pr-2 text-sm">ログインへ</h2>
         </div>
 
         <%= form_with model: @user, local: true do |f| %>
@@ -38,7 +38,13 @@
           </div>
         <% end %>
         <div class="flex justify-center items-center bg-gray-100 p-4">
-          <p class="text-gray-500 text-sm text-center">利用を開始することで<a href="#" class="text-indigo-500 hover:text-indigo-600 active:text-indigo-700 transition duration-100">利用規約</a>および<a href="#" class="text-indigo-500 hover:text-indigo-600 active:text-indigo-700 transition duration-100">プライバシーポリシー</a>に</br>同意するものとします。</p>
+          <p class="text-gray-500 text-sm text-center">
+            利用を開始することで
+            <%= link_to "利用規約", terms_path,class: "text-indigo-500 hover:text-indigo-600 active:text-indigo-700 transition duration-100" %>
+            および
+            <%= link_to "プライバシーポリシー", privacy_policy_path,  class: "text-indigo-500 hover:text-indigo-600 active:text-indigo-700 transition duration-100" %>
+            に<br>同意するものとします。
+          </p>
         </div>
     </div>
   </div>
