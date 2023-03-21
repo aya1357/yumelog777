@@ -27,9 +27,11 @@
             <button type="submit" class="py-3 px-8 mb-6 bg-blue-600 text-white font-bold mt-6 rounded-lg hover:bg-blue-700" id="start_culc_btn">
               計算
             </button>
+            <%= link_to '計算', "", class: "py-3 px-8 mb-6 bg-blue-600 text-white font-bold mt-6 rounded-lg hover:bg-blue-700", id: "start_culc_btn", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
+
           </div>
         <div class="mt-8 mb-6 flex flex-wrap text-center">
-          <%= link_to '始めてみる', new_user_path, class:  "md:m-auto font-bold mx-10 block w-full rounded bg-blue-700 px-12 py-3 text-sm font-medium text-white shadow hover:bg-blue-900 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto float-left", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
+          <%= link_to '始めてみる', new_user_path, class: "md:m-auto font-bold mx-10 block w-full rounded bg-blue-700 px-12 py-3 text-sm font-medium text-white shadow hover:bg-blue-900 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto float-left", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
           <%= link_to 'ログイン', login_path, class:  "md:m-auto font-bold mx-10 block w-full rounded bg-white px-12 py-3 text-sm font-medium text-blue-700 shadow hover:text-blue-700 focus:outline-none focus:ring active:text-blue-500 sm:w-auto hover:bg-gray-100", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
         </div>
         </div>
