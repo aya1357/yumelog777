@@ -5,7 +5,7 @@ module.exports = {
     "./public/*.html",
     "./app/helpers/**/*.rb",
     "./app/javascript/**/*.js",
-    "../yumelog777/app/views/**/*.{erb,haml,html.erb,slim}",
+    "./app/views/**/*.{erb,haml,html.erb,slim}",
   ],
   theme: {
     extend: {
