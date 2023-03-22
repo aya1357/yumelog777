@@ -12,22 +12,28 @@ class LogsController < ApplicationController
     @studies = current_user.studies.order(created_at: :desc)
     @form = Form::LogCollection.new(log_collection_params)
     @log = Log.where(user_id: current_user.id, log_date: params[:form_log_collection][:logs_attributes]["0"][:log_date])
-    if params[:form_log_collection][:log_date].present?
-			@log_ids = Log.where(user_id: current_user.id, log_date: params[:form_log_collection][:log_date]).pluck(:id)
-		end
-    if @form.save
-      if @log_ids.present?
-				@log_ids.each do |log_id|
-					log = Log.find log_id
-					log.destroy
-				end
+    if params[:form_log_collection][:create_action_flag] && @log.present?
+			redirect_to "/calendars", alert: "勉強記録は登録済みです。"
+		else
+			if params[:form_log_collection][:log_date].present?
+				@log_ids = Log.where(user_id: current_user.id, log_date: params[:form_log_collection][:log_date]).pluck(:id)
 			end
-      log_dates = Log.where(user_id: current_user.id).where(log_date: params[:form_log_collection][:logs_attributes]["0"][:log_date]).pluck(:log_date).uniq
-      log_date_formatted = log_dates.map {|log_date| log_date.strftime('%Y%m%d')}
-      redirect_to studies_log_date_path(date: log_date_formatted[0]), success: t('defaults.message.created', item: Log.model_name.human)
-    else
-      flash.now['danger'] = t('defaults.message.not_created', item: Log.model_name.human)
-      render :new, status: :unprocessable_entity
+
+			if @form.save
+				if @log_ids.present?
+					@log_ids.each do |log_id|
+						log = Log.find log_id
+						log.destroy
+					end
+				end
+
+        log_dates = Log.where(user_id: current_user.id).where(log_date: params[:form_log_collection][:logs_attributes]["0"][:log_date]).pluck(:log_date).uniq
+        log_date_formatted = log_dates.map {|log_date| log_date.strftime('%Y%m%d')}
+        redirect_to studies_log_date_path(date: log_date_formatted[0]), success: t('defaults.message.created', item: Log.model_name.human)
+      else
+        flash.now['danger'] = t('defaults.message.not_created', item: Log.model_name.human)
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 
