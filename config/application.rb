@@ -25,7 +25,6 @@ module Yumelog777
     config.active_record.default_timezone = :local
     config.beginning_of_week = :sunday
     config.action_controller.include_all_helpers = false
-    config.assets.enabled = true
   end
 
 end
