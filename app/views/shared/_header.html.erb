@@ -10,7 +10,7 @@
       <%= link_to calendars_path do %>
         <div class="hover:underline">
           <%= image_tag "header_calendar.png", alt: "カレンダーアイコン", class: "md:w-6 w-4 m-auto" %>
-          <span class="font-extrabold text-xs">カレンダー</span>
+          <span class="md:font-extrabold text-xs">カレンダー</span>
         </div>
       <% end %>
     </div>
@@ -18,7 +18,7 @@
       <%= link_to guide_path do %>
         <div class="hover:underline">
           <%= image_tag "header_guide.png", alt: "クイックガイドアイコン", class: "md:w-6 w-4 m-auto" %>
-          <span class="font-extrabold text-xs">使い方</span>
+          <span class="md:font-extrabold text-xs">使い方</span>
         </div>
       <% end %>
     </div>
@@ -26,7 +26,7 @@
       <%= link_to profile_path do %>
         <div class="hover:underline">
           <%= image_tag "header_plofile.png", alt: "プロフィールアイコン", class: "md:w-6 w-4 m-auto" %>
-          <span class="font-extrabold text-xs">アカウント</span>
+          <span class="md:font-extrabold text-xs">アカウント</span>
         </div>
       <% end %>
     </div>
@@ -34,7 +34,7 @@
       <%= link_to logout_path, data: { turbo_method: :delete } do %>
         <div class="hover:underline mr-3">
           <%= image_tag "header_logout.png", alt: "ログアウトアイコン", class: "md:w-6 w-4 m-auto" %>
-          <span class="font-extrabold text-xs">ログアウト</span>
+          <span class="md:font-extrabold text-xs">ログアウト</span>
         </div>
       <% end %>
     </div>
