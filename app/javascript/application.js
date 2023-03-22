@@ -6,5 +6,6 @@ import "./packs/calendars_index.js"
 import "./packs/logs_culc.js"
 import "./packs/start.js"
 import "./packs/calendars_studies_status.js"
+import "./stylesheets/simple_calendar.css"
 import jquery from "jquery"
 window.$ = window.jQuery = jquery
