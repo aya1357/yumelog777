@@ -6,6 +6,7 @@ module.exports = {
     "./app/helpers/**/*.rb",
     "./app/javascript/**/*.js",
     "./app/views/**/*.{erb,haml,html,slim}",
+    "../yumelog777/app/views/**/*.{html.erb,*.js}",
   ],
   theme: {
     extend: {
