@@ -1,5 +1,5 @@
 <div class="navbar bg-base-100 h-18">
-  <div class="flex-1 ml-3">
+  <div class="flex-1 md:ml-3">
     <%= link_to root_path do %>
       <%= image_tag "header_logo1.png", alt: "タイトルアイコン", class: "float-left w-8 pt-1" %>
       <h1 class="flex m-auto md:text-2xl md:pt-1 pt-2" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;" >&nbsp;積みログ</h1>
@@ -32,7 +32,7 @@
     </div>
     <div class="">
       <%= link_to logout_path, data: { turbo_method: :delete } do %>
-        <div class="hover:underline mr-3">
+        <div class="hover:underline md:mr-3">
           <%= image_tag "header_logout.png", alt: "ログアウトアイコン", class: "md:w-6 w-4 m-auto" %>
           <span class="md:font-extrabold text-xs" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">ログアウト</span>
         </div>
