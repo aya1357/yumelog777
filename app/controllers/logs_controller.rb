@@ -70,15 +70,19 @@ class LogsController < ApplicationController
       remain_number = 0
     end
 
+    if remain_number == 0
+      culc_end_day = today.strftime('%Y年%m月%d日')
+    else
     # 自動計算終了日を計算
-    dayOfWeek_arr = study.day_of_week.split(",").map(&:to_i).sort
-    remain_study_days = remain_number % study.target_number == 0 ? remain_number / study.target_number : (remain_number.to_f / study.target_number.to_f).ceil
-    today = Date.today
-    while remain_study_days >= 1
-      if dayOfWeek_arr.include?(today.wday)
-        remain_study_days -= 1
+      dayOfWeek_arr = study.day_of_week.split(",").map(&:to_i).sort
+      remain_study_days = remain_number % study.target_number == 0 ? remain_number / study.target_number : (remain_number.to_f / study.target_number.to_f).ceil
+      today = Date.today
+      while remain_study_days >= 1
+        if dayOfWeek_arr.include?(today.wday)
+          remain_study_days -= 1
+        end
+        today += 1
       end
-      today += 1
     end
 
     if remain_number == 0
