@@ -44,7 +44,7 @@
                   <% end %>
                 </div>
                 <div class="text-center pt-10 space-x-5">
-                  <%= link_to (t 'defaults.edit'), edit_log_path(date: params["date"]), class: "py-3 px-8 bg-blue-600 text-white font-bold mt-6 rounded-lg hover:bg-blue-800" %>
+                  <%= link_to (t 'defaults.edit'), edit_log_path(date: params["date"]), class: "py-3 px-8 bg-blue-700 text-white font-bold mt-6 rounded-lg hover:bg-blue-900" %>
                   <%= link_to (t 'defaults.delete'), logs_destroy_all_path(@logs, date: params["date"]), data: { turbo_method: :delete,  turbo_confirm: t('defaults.message.delete_confirm') }, class: "py-3 px-8 bg-red-600 text-white font-bold mt-6 rounded-lg hover:bg-red-800" %>
                 </div>
               </div>

@@ -5,7 +5,7 @@
         <div class="flex flex-col text-center md:text-left md:pl-14">
           <h1 class="text-5xl sm:text-7xl font-bold md:pt-1 pt-10" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">積みログ</h1>
           <p class="mb-4 text-3xl md:pt-5 pt-2 font-bold" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">
-            積読本解消カレンダーアプリ
+            積読本解消<br>カレンダーアプリ
           </p>
           <p class="mb-4 text-xl md:pt-8 pt-6" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">
             本棚に眠っている資格の本やビジネス書<br>そろそろ読み始めませんか？
@@ -55,7 +55,7 @@
 
   <div class="text-center md:mb-20 mb-10">
     <p class="text-gray-700 md:text-5xl font-bold text-center mt-10 md:mt-28 leading-snug mb-6"  style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">忙しい毎日の空き時間を<br>有効活用しませんか？</p>
-    <%= link_to "使い方を見る", "", class: "shadow-lg bg-orange-500 shadow-orange-500/50 text-white rounded px-2 py-1 md:mt-15 hover:bg-orange-600", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
+    <%= link_to "使い方を見る", guide_path, class: "shadow-lg bg-orange-500 shadow-orange-500/50 text-white rounded px-2 py-1 md:mt-15 hover:bg-orange-600", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
   </div>
   <div class="bg-no-repeat flex justify-center mx-6">
     <%= image_tag 'top_culcpage.png' %>
@@ -65,7 +65,7 @@
   </div>
 
   <div class="text-center pb-10 bg-blue-50 mt-10">
-    <%= link_to "今すぐ始めてみる", "#", class: "shadow-lg shadow-blue-500/50 btn btn-primary md:text-2xl mb-4", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %><br>
-    <%= link_to "使い方を見る", "", class: "shadow-lg bg-orange-500 shadow-orange-500/50 text-white rounded px-2 py-1 mt-10 mb-20 hover:bg-orange-600", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
+    <%= link_to "今すぐ始めてみる", new_user_path, class: "shadow-lg shadow-blue-500/50 btn btn-primary md:text-2xl mb-4", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %><br>
+    <%= link_to "使い方を見る", guide_path, class: "shadow-lg bg-orange-500 shadow-orange-500/50 text-white rounded px-2 py-1 mt-10 mb-20 hover:bg-orange-600", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
   </div>
 </div>

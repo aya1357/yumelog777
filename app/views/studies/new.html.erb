@@ -2,11 +2,10 @@
 
 <div data-turbo="false">
   <div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
-    <div class="relative py-3 sm:max-w-xl sm:mx-auto mx-4">
-      <div class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-      <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+    <div class="py-3 sm:max-w-xl sm:mx-auto mx-4">
+      <div class="px-4 py-10 bg-blue-50 shadow-lg sm:rounded-3xl sm:p-20 rounded-lg">
         <%= form_with model: @study, local: true do |f| %>
-          <h1 class="text-2xl font-semibold text-center mb-6">勉強する本や動画を新規追加</h1>
+          <h1 class="md:text-2xl font-semibold text-center mb-6 text-xl">勉強する本や動画を新規追加</h1>
           <%= render 'shared/error_messages', object: f.object %>
           <div class="my-6">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left text-center mr-2">
@@ -86,21 +85,21 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold">取り組む曜日<span class="text-red-500 ml-2 text-sm">* 必須</span></label>
-            <div class="mt-2">
-              <div class="justify-start my-2 select-none flex">
-                <%= f.hidden_field :day_of_week, value: "", id: "week_hidden" %>
-                <input type="button" value="日" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-4 border border-blue-500 rounded-full" />
-                <input type="button" value="月" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-4 border border-blue-500 rounded-full" />
-                <input type="button" value="火" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-4 border border-blue-500 rounded-full" />
-                <input type="button" value="水" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-4 border border-blue-500 rounded-full" />
-                <input type="button" value="木" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-4 border border-blue-500 rounded-full" />
-                <input type="button" value="金" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-4 border border-blue-500 rounded-full" />
-                <input type="button" value="土" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-4 border border-blue-500 rounded-full" />
+            <div class="mt-2 max-w-full">
+              <div class="justify-start my-2 select-none md:space-x-2">
+                <%= f.hidden_field :day_of_week, value: "", id: "week_checked" %>
+                <input type="button" value="日" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
+                <input type="button" value="月" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
+                <input type="button" value="火" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
+                <input type="button" value="水" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
+                <input type="button" value="木" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
+                <input type="button" value="金" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
+                <input type="button" value="土" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
               </div>
             </div>
           </div>
           <div class="text-center">
-            <%= f.submit (t 'defaults.register'), class: "py-3 px-8 bg-blue-600 text-white font-bold mt-6 rounded-lg hover:bg-blue-800" %>
+            <%= f.submit (t 'defaults.register'), class: "py-3 px-8 bg-blue-700 text-white font-bold mt-6 rounded-lg hover:bg-blue-900" %>
           </div>
       <% end %>
       </div>

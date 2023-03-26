@@ -1,11 +1,11 @@
 <div class="navbar bg-base-100 h-20">
-  <div class="flex-1 ml-3">
+  <div class="flex-1 md:ml-3">
     <%= link_to root_path do %>
       <%= image_tag "header_logo1.png", alt: "タイトルアイコン", class: "float-left w-8 pt-1" %>
-      <h1 class="flex m-auto md:text-2xl md:pt-1 pt-2" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;" >&nbsp;積みログ</h1>
+      <h1 class="flex m-auto md:text-2xl md:pt-1 pt-2" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">&nbsp;積みログ</h1>
     <% end %>
   </div>
-  <%= link_to "ゲストログイン", guest_login_path, data: { turbo_method: :post}, class:  "flex md:mr-5 md:mt-6 mt-2 mr-2 px-1 md:m-auto font-bold block rounded bg-blue-700 py-1 text-sm font-medium text-white shadow hover:bg-blue-900 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
+  <%= link_to "ゲストログイン", guest_login_path, data: { turbo_method: :post}, class:  "flex md:mr-5 md:mt-6 mt-2 mr-2 px-1 md:m-auto font-bold block rounded bg-blue-700 py-1 text-xs font-medium text-white shadow hover:bg-blue-900 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
 
   <div class="flex-none space-x-2 md:space-x-6 mt-5">
 
@@ -13,7 +13,7 @@
       <%= link_to start_path do %>
         <div class="hover:underline">
           <%= image_tag "header_start.png", alt: "積読本アイコン", class: "md:w-6 w-4 m-auto" %>
-          <span class="font-extrabold" style="md:font-size: 2px; font-size:1px">始める</span>
+          <span class="md:font-extrabold text-xs" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">始める</span>
         </div>
       <% end %>
     </div>
@@ -22,15 +22,15 @@
       <%= link_to login_path do %>
         <div class="hover:underline">
           <%= image_tag "header_login.png", alt: "ログインアイコン", class: "md:w-6 w-4 m-auto" %>
-          <span class="font-extrabold" style="md:font-size: 4px; font-size:1px">ログイン</span>
+          <span class="md:font-extrabold text-xs" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">ログイン</span>
         </div>
       <% end %>
     </div>
     <div class="">
       <%= link_to new_user_path do %>
-        <div class="hover:underline mr-3">
+        <div class="hover:underline md:mr-3">
           <%= image_tag "header_signup.png", alt: "サインアップアイコン", class: "md:w-6 w-4 m-auto" %>
-          <span class="font-extrabold" style="md:font-size: 4px; font-size:1px">新規登録</span>
+          <span class="md:font-extrabold text-xs" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">新規登録</span>
         </div>
       <% end %>
     </div>

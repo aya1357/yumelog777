@@ -14,6 +14,10 @@ class StudiesController < ApplicationController
     end
   end
 
+  def show
+    @study = current_user.studies.find(params[:id])
+  end
+
   def edit
     @study = current_user.studies.find(params[:id])
   end

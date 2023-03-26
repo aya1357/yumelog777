@@ -12793,30 +12793,31 @@
   document.addEventListener("turbo:load", function() {
     $(".dayOfWeek").click(function() {
       let week_value2 = check_week_value($(this).val());
-      $(this).toggleClass("hid bg-gray-50 text-blue-700 border-blue-500 bg-blue-700 text-slate-50 border-blue-700");
-      if ($(this).hasClass("hid")) {
-        let current_value = $("#week_hidden").val();
+      $(this).toggleClass(
+        "checked bg-gray-50 text-blue-700 border-blue-500 bg-blue-700 text-slate-50 border-blue-700"
+      );
+      if ($(this).hasClass("checked")) {
+        let current_value = $("#week_checked").val();
         if (current_value != "") {
           let split_value = current_value.split(",");
           split_value.push(week_value2);
           let new_value = split_value.join(",");
-          $("#week_hidden").val(new_value);
+          $("#week_checked").val(new_value);
         } else {
-          $("#week_hidden").val(week_value2);
+          $("#week_checked").val(week_value2);
         }
       } else {
-        let current_value = $("#week_hidden").val();
+        let current_value = $("#week_checked").val();
         if (current_value != "") {
           let split_value = current_value.split(",");
           if (split_value.includes(week_value2)) {
             let index = split_value.indexOf(week_value2);
             split_value.splice(index, 1);
             let new_value = split_value.join(",");
-            $("#week_hidden").val(new_value);
+            $("#week_checked").val(new_value);
           }
         }
       }
-      ;
     });
     function check_week_value(checked_week_value) {
       switch (checked_week_value) {

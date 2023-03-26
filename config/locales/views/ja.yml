@@ -60,7 +60,7 @@ ja:
       no_result: '登録がありません。'
   studies:
     new:
-      top_title: '勉強本の新規登録'
+      top_title: '勉強する本の新規登録'
       title: 'タイトル'
       total_number: '総ページ数、または総再生時間'
       start_number: '勉強を始めるページ数'
@@ -70,6 +70,8 @@ ja:
       day_of_week: '取り組む曜日'
     log_date:
       title: '積みログ詳細'
+    show:
+      title: '勉強する本の詳細'
   logs:
     new:
       title: '積みログ新規登録'

@@ -43,10 +43,9 @@ class MemosController < ApplicationController
   end
 
   def destroy
-    @study = current_user.studies.find(params[:study_id])
     @memo = current_user.memos.find(params[:id])
     @memo.destroy!
-    redirect_to study, success: t('defaults.message.deleted', item: Memo.model_name.human), status: :see_other
+    redirect_to calendars_path, success: t('defaults.message.deleted', item: Memo.model_name.human), status: :see_other
   end
 
   private
