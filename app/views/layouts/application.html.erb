@@ -19,7 +19,9 @@
       <%= render 'shared/before_login_header' %>
     <% end %>
     <%= render 'shared/flash_message' %>
-    <%= yield %>
+    <div>
+      <%= yield %>
+    </div>
     <% if logged_in? %>
       <%= render 'shared/footer' %>
     <% else %>
