@@ -12926,9 +12926,10 @@
       let month = ("0" + (end_day.getMonth() + 1)).slice(-2);
       let day = ("0" + end_day.getDate()).slice(-2);
       let formatted_end_date = year + "\u5E74" + month + "\u6708" + day + "\u65E5";
-      document.getElementById("end_date").innerHTML = formatted_end_date;
+      document.getElementById("end_date").innerHTML = "\u7D42\u4E86\u4E88\u5B9A\u65E5\u306F\u3001" + formatted_end_date + "\u3067\u3059\u3002";
     });
   });
+  console.log("test1");
 
   // app/javascript/packs/calendars_studies_status.js
   document.addEventListener("turbo:load", function() {
