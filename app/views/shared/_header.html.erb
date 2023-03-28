@@ -1,4 +1,4 @@
-<div class="navbar bg-base-100 h-18">
+<div class="navbar h-18" style="background-color: #f9fcff;">
   <div class="flex-1 md:ml-3">
     <%= link_to root_path do %>
       <%= image_tag "header_logo1.png", alt: "タイトルアイコン", class: "float-left w-8 pt-1" %>
@@ -6,7 +6,7 @@
     <% end %>
   </div>
   <div class="flex-none md:space-x-4 space-x-2 mt-5">
-    <div class="">
+    <div>
       <%= link_to calendars_path do %>
         <div class="hover:underline">
           <%= image_tag "header_calendar.png", alt: "カレンダーアイコン", class: "md:w-6 w-4 m-auto" %>
@@ -14,7 +14,7 @@
         </div>
       <% end %>
     </div>
-    <div class="">
+    <div>
       <%= link_to guide_path do %>
         <div class="hover:underline">
           <%= image_tag "header_guide.png", alt: "クイックガイドアイコン", class: "md:w-6 w-4 m-auto" %>
@@ -22,15 +22,17 @@
         </div>
       <% end %>
     </div>
-    <div class="">
+    <div>
+    <% unless current_user.guest? %>
       <%= link_to profile_path do %>
         <div class="hover:underline">
           <%= image_tag "header_plofile.png", alt: "プロフィールアイコン", class: "md:w-6 w-4 m-auto" %>
           <span class="md:font-extrabold text-xs" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">アカウント</span>
         </div>
       <% end %>
+    <% end %>
     </div>
-    <div class="">
+    <div>
       <%= link_to logout_path, data: { turbo_method: :delete } do %>
         <div class="hover:underline md:mr-3">
           <%= image_tag "header_logout.png", alt: "ログアウトアイコン", class: "md:w-6 w-4 m-auto" %>

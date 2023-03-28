@@ -7,10 +7,12 @@ ja:
     show: '詳細'
     edit: '編集'
     delete: '削除'
+    all_delete: '一括削除'
     update: '更新'
     add: '追加'
     password_reset: 'パスワードリセット'
     message:
+      guest_login: 'アカウントの登録後に使用出来るようになります'
       require_login: 'ログインしてください'
       created: '%{item}を作成しました'
       not_created: '%{item}を作成出来ませんでした'
@@ -38,9 +40,9 @@ ja:
       success: 'ログアウトしました'
   profiles:
     show:
-      title: 'プロフィール'
+      title: 'アカウント'
     edit:
-      title: 'プロフィール編集'
+      title: 'アカウント編集'
   password_resets:
     new:
       title: 'パスワードリセット申請'
@@ -74,9 +76,9 @@ ja:
       title: '勉強する本の詳細'
   logs:
     new:
-      title: '積みログ新規登録'
+      title: '積みログを新規登録'
     edit:
-      title: '積みログ編集'
+      title: '積みログを編集'
   static_pages:
     privacy_policy:
       title: "プライバシーポリシー"
@@ -84,3 +86,12 @@ ja:
       title: "利用規約"
     start:
       title: "始めてみる"
+  memos:
+    new:
+      title: 'メモを新規登録'
+    edit:
+      title: 'メモを編集'
+    index:
+      title: '勉強本のメモ'
+    show:
+      title: 'メモの詳細'

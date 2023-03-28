@@ -1,6 +1,6 @@
 class UserSessionsController < ApplicationController
   skip_before_action :require_login, only: %i[new create guest_login]
-  
+
   def new; end
 
   def create
@@ -30,6 +30,6 @@ class UserSessionsController < ApplicationController
     id = @guest_user.id
     @guest_user.update!(name: "GuestUser_#{id}")
     auto_login(@guest_user)
-    redirect_back_or_to root_path, success: 'ゲストとしてログインしました'
+    redirect_back_or_to calendars_path, success: 'ゲストとしてログインしました'
   end
 end

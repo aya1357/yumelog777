@@ -1,51 +1,50 @@
 <% content_for(:title, t('.title')) %>
+<div data-turbo="false">
+  <div class="py-6 sm:py-8 lg:py-12" style="background-color: #f9fcff;">
+    <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
+      <h2 class="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-8"><%= t '.title' %></h2>
 
-<div class="bg-white py-6 sm:py-8 lg:py-12">
-  <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
-    <h2 class="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-8"><%= t '.title' %></h2>
-
-    <div class="max-w-lg border rounded-lg mx-auto">
-      <div class="flex flex-col border-t-4 border-blue-700">
-        <div class="flex flex-row-reverse">
-          <%= link_to login_path do %>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 bg-blue-700 text-white">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-            </svg>
-          <% end %>
-
-
-          <h2 class="text-gray-800 text-right pr-2 text-sm">ログインはこちら</h2>
-        </div>
-
-        <%= form_with model: @user, local: true do |f| %>
-          <%= render 'shared/error_messages', object: f.object %>
-          <div class="flex flex-col gap-4 p-4 md:p-8">
-            <div>
-              <%= f.text_field :name, placeholder: User.human_attribute_name(:name), class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2 my-2" %>
-            </div>
-            <div>
-              <%= f.email_field :email, placeholder: User.human_attribute_name(:email), class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2 my-2" %>
-            </div>
-            <div>
-              <%= f.password_field :password, placeholder: User.human_attribute_name(:password), class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2 my-2" %>
-            </div>
-            <div>
-              <%= f.password_field :password_confirmation, placeholder: User.human_attribute_name(:password_confirmation), class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2 my-2" %>
-            </div>
-            <div class="flex justify-center">
-              <%= f.submit (t 'defaults.register'), class: "block bg-blue-700 hover:bg-blue-900 focus-visible:ring ring-gray-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3 mt-10 mb-5" %>
-            </div>
+      <div class="max-w-lg border rounded-lg mx-auto">
+        <div class="flex flex-col border-t-4 border-blue-700">
+          <div class="flex flex-row-reverse">
+            <%= link_to login_path do %>
+              <h2 class="text-gray-800 text-right pr-2 text-sm flex float-left">ログインはこちら</h2>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 bg-blue-700 text-white">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+              </svg>
+            <% end %>
           </div>
-        <% end %>
-        <div class="flex justify-center items-center bg-gray-100 p-4">
-          <p class="text-gray-500 text-sm text-center">
-            利用を開始することで
-            <%= link_to "利用規約", terms_path,class: "text-indigo-500 hover:text-indigo-600 active:text-indigo-700 transition duration-100" %>
-            および<br>
-            <%= link_to "プライバシーポリシー", privacy_policy_path,  class: "text-indigo-500 hover:text-indigo-600 active:text-indigo-700 transition duration-100" %>
-            に同意するものとします。
-          </p>
-        </div>
+
+          <%= form_with model: @user, local: true do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+            <div class="flex flex-col gap-4 p-4 md:p-8">
+              <div>
+                <%= f.text_field :name, placeholder: User.human_attribute_name(:name), class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2 my-2" %>
+              </div>
+              <div>
+                <%= f.email_field :email, placeholder: User.human_attribute_name(:email), class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2 my-2" %>
+              </div>
+              <div>
+                <%= f.password_field :password, placeholder: User.human_attribute_name(:password), class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2 my-2" %>
+              </div>
+              <div>
+                <%= f.password_field :password_confirmation, placeholder: User.human_attribute_name(:password_confirmation), class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2 my-2" %>
+              </div>
+              <div class="flex justify-center">
+                <%= f.submit (t 'defaults.register'), class: "block bg-blue-700 hover:bg-blue-900 focus-visible:ring ring-gray-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3 mt-10 mb-5" %>
+              </div>
+            </div>
+          <% end %>
+          <div class="flex justify-center items-center bg-gray-100 p-4">
+            <p class="text-gray-500 text-sm text-center">
+              利用を開始することで
+              <%= link_to "利用規約", terms_path,class: "text-indigo-500 hover:text-indigo-600 active:text-indigo-700 transition duration-100" %>
+              および<br>
+              <%= link_to "プライバシーポリシー", privacy_policy_path,  class: "text-indigo-500 hover:text-indigo-600 active:text-indigo-700 transition duration-100" %>
+              に同意するものとします。
+            </p>
+          </div>
+      </div>
     </div>
   </div>
 </div>
