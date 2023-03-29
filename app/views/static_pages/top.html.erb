@@ -58,14 +58,18 @@
     <%= link_to "使い方を見る", guide_path, class: "shadow-lg bg-orange-500 shadow-orange-500/50 text-white rounded px-2 py-1 md:mt-15 hover:bg-orange-600", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
   </div>
   <div class="bg-no-repeat flex justify-center mx-6">
-    <%= image_tag 'top_culcpage.png' %>
+    <%= image_tag 'top_culcbook.png' %>
   </div>
   <div class="text-center md:mb-10 mb-10">
     <p class="text-gray-700 md:text-5xl font-bold text-center mt-10 md:mt-28 leading-snug mb-6"  style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">読書習慣をサポートします</p>
   </div>
 
   <div class="text-center pb-10 bg-blue-50 mt-10">
-    <%= link_to "今すぐ始めてみる", new_user_path, class: "shadow-lg shadow-blue-500/50 btn btn-primary md:text-2xl mb-4", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %><br>
+    <% if logged_in?%>
+      <%= link_to "本の登録をしてみる", new_study_path, class: "shadow-lg shadow-blue-500/50 btn btn-primary md:text-2xl mb-4", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %><br>
+    <% else %>
+      <%= link_to "今すぐ始めてみる", new_user_path, class: "shadow-lg shadow-blue-500/50 btn btn-primary md:text-2xl mb-4", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %><br>
+    <% end %>
     <%= link_to "使い方を見る", guide_path, class: "shadow-lg bg-orange-500 shadow-orange-500/50 text-white rounded px-2 py-1 mt-10 mb-20 hover:bg-orange-600", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
   </div>
 </div>

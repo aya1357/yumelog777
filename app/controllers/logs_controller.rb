@@ -11,23 +11,22 @@ class LogsController < ApplicationController
   def create
     @studies = current_user.studies.order(created_at: :desc)
     @form = Form::LogCollection.new(log_collection_params)
-    @log = Log.where(user_id: current_user.id, log_date: params[:form_log_collection][:logs_attributes]["0"][:log_date])
     if params[:form_log_collection][:create_action_flag] && @log.present?
-			redirect_to "/calendars", alert: "勉強記録は登録済みです。"
-		else
-			if params[:form_log_collection][:log_date].present?
-				@log_ids = Log.where(user_id: current_user.id, log_date: params[:form_log_collection][:log_date]).pluck(:id)
-			end
+      redirect_to "/calendars", alert: "勉強記録は登録済みです。"
+    else
+      if params[:form_log_collection][:log_date].present?
+        @log_ids = current_user.logs.where(log_date: params[:form_log_collection][:log_date]).pluck(:id)
+      end
 
-			if @form.save
-				if @log_ids.present?
-					@log_ids.each do |log_id|
-						log = Log.find log_id
-						log.destroy
-					end
-				end
+      if @form.save
+        if @log_ids.present?
+          @log_ids.each do |log_id|
+            log = Log.find log_id
+            log.destroy
+          end
+        end
 
-        log_dates = Log.where(user_id: current_user.id).where(log_date: params[:form_log_collection][:logs_attributes]["0"][:log_date]).pluck(:log_date).uniq
+        log_dates = current_user.logs.where(log_date: params[:form_log_collection][:logs_attributes]["0"][:log_date]).pluck(:log_date).uniq
         log_date_formatted = log_dates.map {|log_date| log_date.strftime('%Y%m%d')}
         redirect_to studies_log_date_path(date: log_date_formatted[0]), success: t('defaults.message.created', item: Log.model_name.human)
       else
@@ -45,14 +44,13 @@ class LogsController < ApplicationController
   end
 
   def destroy
-    @log = Log.where(user_id: current_user.id).where(log_date: params["date"]).where(study_id: params["id"])
+    @log = current_user.logs.where(log_date: params["date"]).where(study_id: params["id"])
     @log.update!(study_number: 0)
     redirect_to studies_log_date_path(date: params["date"]), success: t('defaults.message.reset', item: Log.model_name.human), status: :see_other
   end
 
   def destroy_all
-    @logs = Log.where(user_id: current_user.id).where(log_date: params["date"])
-    # @logs = current_user.logs.find(params[:date])
+    @logs = current_user.logs.where(log_date: params["date"])
     @logs.destroy_all
     redirect_to calendars_path, success: t('defaults.message.deleted', item: Log.model_name.human), status: :see_other
   end
@@ -102,6 +100,6 @@ class LogsController < ApplicationController
   end
 
   def check_guest
-    redirect_to calendars_path, warning: t('defaults.message.require_login') if current_user.guest?
+    redirect_to calendars_path, warning: t('defaults.message.guest_login') if current_user.guest?
   end
 end

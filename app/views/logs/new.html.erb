@@ -1,8 +1,7 @@
 <% content_for(:title, t('.title')) %>
-
-<div>
-  <h1 class="text-center font-bold sm:text-3xl mt-10 text-gray-700 text-xl"><%= @formatted_date %>   <%= t('.title') %></h1>
-  <div class="bg-white py-6 sm:py-8 lg:py-12">
+<div style="background-color: #f9fcff;">
+  <h1 class="text-center font-bold sm:text-3xl pt-10 text-gray-700 text-xl"><%= @formatted_date %>   <%= t('.title') %></h1>
+  <div class="py-6 sm:py-8 lg:py-12">
     <div class="max-w-screen-xl md:px-8 mx-auto">
       <div class="grid md:grid-cols-2 gap-4 md:gap-8 md:px-20 px-6">
         <!-- quote - start -->
@@ -31,7 +30,7 @@
                             <%= f.hidden_field :user_id, :value => current_user.id %>
                             <%= f.hidden_field :study_id, :value => study.id %>
                             <%= f.hidden_field :log_date, value: (params["date"]).to_date %>
-                            <%= f.number_field :study_number, in: 0..5000, placeholder: "例) 5", id: ("input_#{study.id}"), class: "mr-3 float-left bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 float-left py-3 px-6", required: true %>
+                            <%= f.number_field :study_number, in: 0..5000, value: study.target_number, placeholder: "例) 5", id: ("input_#{study.id}"), class: "mr-3 float-left bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 float-left py-3 px-6", required: true %>
                             <span class="block pt-3">ページ</span>
                             <%= link_to "" do %>
                               <div class="hover:underline ml-8" id="calc_btn_<%=study.id%>">
@@ -47,7 +46,7 @@
                   <% end %>
                 </div>
                 <% if current_user.guest? %>
-                  <p class="font-bold">ログイン後に勉強記録が登録出来ます。</p>
+                  <p class="font-bold">アカウントの登録後に勉強記録が登録出来ます。</p>
                 <% else%>
                   <div class="text-center">
                     <%= f.submit (t 'defaults.register'), class: "py-3 px-8 bg-blue-700 text-white font-bold mt-6 rounded-lg hover:bg-blue-900" %>
@@ -180,6 +179,8 @@
         </div>
         <!-- quote - end -->
       </div>
+        <p class="mt-10">*目標終了日は、最初に登録した総勉強ページ数と1日の目標ページ数、取り組む曜日を加味して設定されています。</p>
+        <p class="mt-3">*自動計算終了日は、実際に勉強したページ数を加味して、勉強したページ数が想定よりも多ければ終わる予定の日付を早く、少なければ予定よりも長く日付を設定しています。</p>
     </div>
   </div>
 </div>

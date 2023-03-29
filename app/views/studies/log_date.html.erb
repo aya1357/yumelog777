@@ -1,8 +1,8 @@
 <% content_for(:title, @formatted_date) %>
 
-<div>
-  <h1 class="text-center font-bold sm:text-3xl mt-10 text-gray-700 text-xl"><%= @formatted_date %> <%= t('.title') %></h1>
-  <div class="bg-white py-6 sm:py-8 lg:py-12">
+<div style="background-color: #f9fcff;">
+  <h1 class="text-center font-bold sm:text-3xl text-gray-700 text-xl"><%= @formatted_date %> <%= t('.title') %></h1>
+  <div class="py-6 sm:py-8 lg:py-12">
       <div class="max-w-screen-xl px-4 md:px-8 mx-auto">
         <div class="grid md:grid-cols-2 gap-4 md:gap-8 md:px-20 px-6">
           <!-- quote - start -->
@@ -33,7 +33,7 @@
                             <span class="block pt-3">ページ</span>
                           </div>
                           <div class="flex">
-                            <%= link_to "リセット", log_path(@log, id: study.id, date: params["date"]), data: { turbo_method: :delete,  turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm m-auto" %>
+                            <%= link_to (t 'defaults.delete'), log_path(@log, id: study.id, date: params["date"]), data: { turbo_method: :delete,  turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm m-auto" %>
                           </div>
                           <% else %>
                             <div class="">勉強記録の登録がありません</div>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="text-center pt-10 space-x-5">
                   <%= link_to (t 'defaults.edit'), edit_log_path(date: params["date"]), class: "py-3 px-8 bg-blue-700 text-white font-bold mt-6 rounded-lg hover:bg-blue-900" %>
-                  <%= link_to (t 'defaults.delete'), logs_destroy_all_path(@logs, date: params["date"]), data: { turbo_method: :delete,  turbo_confirm: t('defaults.message.delete_confirm') }, class: "py-3 px-8 bg-red-600 text-white font-bold mt-6 rounded-lg hover:bg-red-800" %>
+                  <%= link_to (t 'defaults.all_delete'), logs_destroy_all_path(@logs, date: params["date"]), data: { turbo_method: :delete,  turbo_confirm: t('defaults.message.delete_confirm') }, class: "py-3 px-8 bg-red-600 text-white font-bold mt-6 rounded-lg hover:bg-red-800" %>
                 </div>
               </div>
             </div>
@@ -172,6 +172,8 @@
           </div>
           <!-- quote - end -->
         </div>
+        <p class="mt-10">*目標終了日は、最初に登録した総勉強ページ数と1日の目標ページ数、取り組む曜日を加味して設定されています。</p>
+        <p class="mt-3">*自動計算終了日は、実際に勉強したページ数を加味して、勉強したページ数が想定よりも多ければ終わる予定の日付を早く、少なければ予定よりも長く日付を設定しています。</p>
       </div>
   </div>
 </div>
