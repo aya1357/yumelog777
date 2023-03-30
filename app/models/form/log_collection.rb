@@ -20,7 +20,7 @@ class Form::LogCollection < Form::Base
     Log.transaction do
       self.logs.map do |log|
         log.save!
-    end
+      end
     end
     return true
       rescue => e
