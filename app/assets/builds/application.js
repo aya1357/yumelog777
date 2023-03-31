@@ -12963,6 +12963,83 @@
     });
   });
 
+  // app/javascript/packs/dayOfWeek_default.js
+  document.addEventListener("turbo:load", function() {
+    let dayOfWeek_arr = $("#dayOfWeek_checked").val().split(",").sort(function(a, b) {
+      return a - b;
+    });
+    let dayOfWeek_intarr = dayOfWeek_arr.map(function(str) {
+      return parseInt(str, 10);
+    });
+    $(document).ready(function() {
+      $(".day_of_week").each(function(index) {
+        let cellWeekday = dayOfWeek_arr[index % 7];
+        if (dayOfWeek_intarr.includes(index % 7)) {
+          $(this).toggleClass(
+            "checked bg-gray-50 text-blue-700 border-blue-500 bg-blue-700 text-slate-50 border-blue-700"
+          );
+        }
+      });
+    });
+    $(".day_of_week").click(function() {
+      let week_value2 = check_week_value($(this).val());
+      $(this).toggleClass(
+        "checked bg-gray-50 text-blue-700 border-blue-500 bg-blue-700 text-slate-50 border-blue-700"
+      );
+      if ($(this).hasClass("checked")) {
+        let current_value = $("#dayOfWeek_checked").val();
+        if (current_value != "") {
+          let split_value = current_value.split(",");
+          split_value.push(week_value2);
+          let new_value = split_value.join(",");
+          $("#dayOfWeek_checked").val(new_value);
+        } else {
+          $("#dayOfWeek_checked").val(week_value2);
+        }
+      } else {
+        let current_value = $("#dayOfWeek_checked").val();
+        if (current_value != "") {
+          let split_value = current_value.split(",");
+          if (split_value.includes(week_value2)) {
+            let index = split_value.indexOf(week_value2);
+            split_value.splice(index, 1);
+            let new_value = split_value.join(",");
+            $("#dayOfWeek_checked").val(new_value);
+          }
+        }
+      }
+    });
+    function check_week_value(checked_week_value) {
+      switch (checked_week_value) {
+        case "\u65E5":
+          week_value = "0";
+          break;
+        case "\u6708":
+          week_value = "1";
+          break;
+        case "\u706B":
+          week_value = "2";
+          break;
+        case "\u6C34":
+          week_value = "3";
+          break;
+        case "\u6728":
+          week_value = "4";
+          break;
+        case "\u91D1":
+          week_value = "5";
+          break;
+        case "\u571F":
+          week_value = "6";
+          break;
+        default:
+          week_value = "";
+          break;
+      }
+      return week_value;
+    }
+  });
+
   // app/javascript/application.js
   var import_jquery = __toESM(require_jquery());
   window.$ = window.jQuery = import_jquery.default;
