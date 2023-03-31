@@ -12929,6 +12929,7 @@
       document.getElementById("end_date").innerHTML = "\u7D42\u4E86\u4E88\u5B9A\u65E5\u306F\u3001" + formatted_end_date + "\u3067\u3059\u3002";
     });
   });
+  console.log("test1");
 
   // app/javascript/packs/calendars_studies_status.js
   document.addEventListener("turbo:load", function() {

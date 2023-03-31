@@ -36,3 +36,4 @@ document.addEventListener("turbo:load", function () {
     document.getElementById("end_date").innerHTML = "終了予定日は、" + formatted_end_date + "です。";
   });
 });
+console.log("test1");
