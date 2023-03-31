@@ -33,6 +33,7 @@ document.addEventListener("turbo:load", function () {
     let formatted_end_date = year + "年" + month + "月" + day + "日";
 
     //終了日時をビューで表示
-    document.getElementById("end_date").innerHTML = formatted_end_date;
+    document.getElementById("end_date").innerHTML = "終了予定日は、" + formatted_end_date + "です。";
   });
 });
+console.log("test1");
