@@ -8,9 +8,10 @@ class LogsController < ApplicationController
   end
 
   def create
-    @form = Form::LogCollection.new(log_collection_params)
+		@form = Form::LogCollection.new(log_collection_params)
+		@log = current_user.logs.where(log_date: params[:form_log_collection][:logs_attributes]["0"][:log_date])
     if params[:form_log_collection][:create_action_flag] && @log.present?
-      redirect_to "/calendars", alert: "勉強記録は登録済みです。"
+      redirect_to "/calendars", alert: t('defaults.message.log_registered')
     else
       if params[:form_log_collection][:log_date].present?
         @log_ids = current_user.logs.where(log_date: params[:form_log_collection][:log_date]).pluck(:id)
