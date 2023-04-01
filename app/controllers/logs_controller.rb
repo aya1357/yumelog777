@@ -1,10 +1,10 @@
 class LogsController < ApplicationController
   before_action :check_guest, except: [:new]
   before_action :get_study, only: %i[new create edit]
+  before_action :log_date_display, only: %i[new edit]
 
   def new
     @form = Form::LogCollection.new
-    @formatted_date = Date.parse(params["date"]).strftime("%Y年%m月%d日")
   end
 
   def create
@@ -35,7 +35,6 @@ class LogsController < ApplicationController
   end
 
   def edit
-    @formatted_date = Date.parse(params[:date]).strftime("%Y年%m月%d日")
     @form = Form::LogCollection.new({}, current_user.id, params[:date])
   end
 
@@ -101,6 +100,10 @@ class LogsController < ApplicationController
 
   def get_study
     @studies = current_user.studies.order(created_at: :desc)
+  end
+
+  def log_date_display
+    @log_date_display = Date.parse(params[:date]).strftime("%Y年%m月%d日")
   end
 
 end

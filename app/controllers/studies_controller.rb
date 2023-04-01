@@ -42,7 +42,7 @@ class StudiesController < ApplicationController
     @studies = current_user.studies.order(created_at: :desc)
     @logs = current_user.logs.where(log_date: params["date"])
     log_date = Date.parse(params["date"])
-    @formatted_date = log_date.strftime("%Y年%m月%d日")
+    @log_date_display = Date.parse(params["date"]).strftime("%Y年%m月%d日")
     study_number = Log.where(user_id: current_user.id).where(log_date: params["date"]).pluck(:study_number)
     if study_number.all? {|x| x == 0 }
       redirect_to calendars_path, success: t('defaults.message.deleted', item: Log.model_name.human), status: :see_other
