@@ -1,15 +1,13 @@
 class LogsController < ApplicationController
   before_action :check_guest, except: [:new]
+  before_action :get_study, only: %i[new create edit]
 
   def new
     @form = Form::LogCollection.new
-    @studies = current_user.studies.order(created_at: :desc)
-    log_date = Date.parse(params["date"])
-    @formatted_date = log_date.strftime("%Y年%m月%d日")
+    @formatted_date = Date.parse(params["date"]).strftime("%Y年%m月%d日")
   end
 
   def create
-    @studies = current_user.studies.order(created_at: :desc)
     @form = Form::LogCollection.new(log_collection_params)
     if params[:form_log_collection][:create_action_flag] && @log.present?
       redirect_to "/calendars", alert: "勉強記録は登録済みです。"
@@ -37,9 +35,7 @@ class LogsController < ApplicationController
   end
 
   def edit
-    @studies = current_user.studies.order(created_at: :desc)
-    log_date = Date.parse(params[:date])
-    @formatted_date = log_date.strftime("%Y年%m月%d日")
+    @formatted_date = Date.parse(params[:date]).strftime("%Y年%m月%d日")
     @form = Form::LogCollection.new({}, current_user.id, params[:date])
   end
 
@@ -102,4 +98,9 @@ class LogsController < ApplicationController
   def check_guest
     redirect_to calendars_path, warning: t('defaults.message.guest_login') if current_user.guest?
   end
+
+  def get_study
+    @studies = current_user.studies.order(created_at: :desc)
+  end
+
 end
