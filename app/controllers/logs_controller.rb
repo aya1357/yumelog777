@@ -13,14 +13,10 @@ class LogsController < ApplicationController
 
     if params[:form_log_collection][:create_action_flag] && current_user.logs.where(log_date: @log_date).present?
       redirect_to "/calendars", alert: t('defaults.message.log_registered')
-      return
-    end
-
-    if params[:form_log_collection][:log_date].present?
-      @log_ids = current_user.logs.where(log_date: @log_date).pluck(:id)
     end
 
     if @form.save
+      @log_ids = current_user.logs.where(log_date: @log_date).pluck(:id) if params[:form_log_collection][:log_date].present?
       Log.where(id: @log_ids).destroy_all if @log_ids.present?
       redirect_to studies_log_date_path(date: @log_date), success: t('defaults.message.created', item: Log.model_name.human)
     else
