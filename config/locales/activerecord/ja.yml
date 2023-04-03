@@ -2,9 +2,9 @@ ja:
   activerecord:
     models:
       user: 'ユーザー'
-      study: '勉強'
+      study: '本'
       memo: 'メモ'
-      log: '勉強の記録'
+      log: '読書の記録'
     attributes:
       user:
         email: 'メールアドレス'

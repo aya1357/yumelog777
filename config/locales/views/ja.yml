@@ -15,6 +15,7 @@ ja:
       guest_login: 'アカウントの登録後に使用出来るようになります'
       require_login: 'ログインしてください'
       created: '%{item}を作成しました'
+      registed: '%{item}を登録しました'
       not_created: '%{item}を作成出来ませんでした'
       updated: '%{item}を更新しました'
       not_updated: '%{item}を更新出来ませんでした'
