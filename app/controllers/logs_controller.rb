@@ -46,7 +46,7 @@ class LogsController < ApplicationController
   def log_culc_api
     study = current_user.studies.find(params["study_id"])
     total_study_number = study.end_number - study.start_number
-    total_studied_number = Log.where(user_id: current_user.id, study_id: params["study_id"]).pluck(:study_number).sum
+    total_studied_number = current_user.logs.where(user_id: current_user.id, study_id: params["study_id"]).pluck(:study_number).sum
 
     # 残りページ数を計算
     remain_number =  total_study_number.to_i - (total_studied_number.to_i + params["studied_pages"].to_i)
