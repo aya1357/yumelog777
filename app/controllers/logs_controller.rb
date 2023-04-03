@@ -11,13 +11,15 @@ class LogsController < ApplicationController
     @form = Form::LogCollection.new(log_collection_params)
     @log_date = params[:form_log_collection][:logs_attributes]["0"][:log_date]
 
-    if params[:form_log_collection][:create_action_flag] && current_user.logs.where(log_date: @log_date).present?
+    if create_log_exist?
       redirect_to "/calendars", alert: t('defaults.message.log_registered')
+      return
     end
 
+    log_ids = current_user.logs.where(log_date: @log_date).pluck(:id)  if params.dig(:form_log_collection, :log_date).present?
+
     if @form.save
-      @log_ids = current_user.logs.where(log_date: @log_date).pluck(:id) if params[:form_log_collection][:log_date].present?
-      Log.where(id: @log_ids).destroy_all if @log_ids.present?
+      Log.where(id: log_ids).destroy_all if log_ids.present?
       redirect_to studies_log_date_path(date: @log_date), success: t('defaults.message.created', item: Log.model_name.human)
     else
       flash.now['danger'] = t('defaults.message.not_created', item: Log.model_name.human)
@@ -95,6 +97,10 @@ class LogsController < ApplicationController
 
   def log_date_display
     @log_date_display = Date.parse(params[:date]).strftime("%Y年%m月%d日")
+  end
+
+  def create_log_exist?
+    params[:form_log_collection][:create_action_flag] && current_user.logs.where(log_date: @log_date).present?
   end
 
 end
