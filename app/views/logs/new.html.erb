@@ -1,4 +1,6 @@
 <% content_for(:title, t('.title')) %>
+<% StudiesHelper %>
+
 <div style="background-color: #f9fcff;">
   <h1 class="text-center font-bold sm:text-3xl pt-10 text-gray-700 text-xl"><%= @log_date_display %>   <%= t('.title') %></h1>
   <div class="py-6 sm:py-8 lg:py-12">
@@ -70,26 +72,16 @@
             <% @studies.each do |study| %>
               <% if study.status == false %>
                 <%# 目標終了予定日計算式 %>
-                <%# "勉強する総ページ数" %>
-                <% study_total_number = study.end_number - study.start_number %>
-                <% if study_total_number % study.target_number == 0 %>
-                  <% study_total_days = study_total_number / study.target_number %>
-                <% else %>
-                  <% study_total_days = (study_total_number.to_f / study.target_number.to_f).ceil %>
-                <% end %>
+                <%# "勉強日数(初期設定)" %>
+                <%= study_total_number = calculate_study_total_number(study) %>
+                <%= study_total_days = calculate_study_total_days(study) %>
 
                 <%# "取り組む曜日を曜日の順に数字順に並び替え" %>
-                <% dayOfWeek = study.day_of_week %>
-                <% dayOfWeek_arr = dayOfWeek.split(",").map(&:to_i).sort %>
+                <% dayOfWeek_arr = study.day_of_week.split(",").map(&:to_i).sort %>
 
-                <%# "目標終了日をルーブ文で計算" %>
-                <% while study_total_days >= 1 %>
-                  <% if (dayOfWeek_arr).include?(study.start_day.wday) %>
-                    <% study_total_days -= 1 %>
-                  <% end %>
-                  <% study.start_day += 1%>
-                <% end %>
-                <% target_day = (study.start_day - 1).strftime('%Y年%m月%d日') %>
+                <%# "目標終了日をループ文で計算" %>
+                <%= target_day = calculate_target_day(study_total_days, dayOfWeek_arr, study.start_day) %>
+
 
                 <%# "自動計算終了日計算" %>
                 <% total_studied_number = Log.where(user_id: current_user.id, study_id: study.id).pluck(:study_number).sum %>
