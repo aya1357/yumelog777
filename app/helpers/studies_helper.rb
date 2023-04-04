@@ -12,6 +12,15 @@ module StudiesHelper
     end
   end
 
+  def calculate_remain_study_days(study, total_studied_number)
+    remain_number = calculate_study_total_number(study) - total_studied_number
+    if remain_number % study.target_number == 0
+      remain_study_days = remain_number / study.target_number
+    else
+      remain_study_days = (remain_number.to_f / study.target_number.to_f).ceil
+    end
+  end
+
   def calculate_target_day(study_total_days, dayOfWeek_arr, start_day)
     while study_total_days >= 1
       if (dayOfWeek_arr).include?(start_day.wday)
@@ -21,4 +30,6 @@ module StudiesHelper
     end
     return (start_day - 1).strftime('%Y年%m月%d日')
   end
+
+
 end

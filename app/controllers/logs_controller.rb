@@ -1,9 +1,7 @@
 class LogsController < ApplicationController
   before_action :check_guest, except: [:new]
   before_action :get_study, only: %i[new create edit]
-  # This before_action method is used to format the date
-# for the date fields on the new and edit forms.
-before_action :log_date_display, only: %i[new edit]
+  before_action :log_date_display, only: %i[new edit]
 
   def new
     @form = Form::LogCollection.new

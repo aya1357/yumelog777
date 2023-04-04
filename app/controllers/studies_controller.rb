@@ -7,7 +7,7 @@ class StudiesController < ApplicationController
   def create
     @study = current_user.studies.build(study_params)
     if @study.save
-      redirect_to calendars_path, success: t('defaults.message.resisted', item: Study.model_name.human)
+      redirect_to calendars_path, success: t('defaults.message.registed', item: Study.model_name.human)
     else
       flash.now['danger'] = t('defaults.message.not_resisted', item: Study.model_name.human)
       render :new, status: :unprocessable_entity

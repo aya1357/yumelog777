@@ -84,13 +84,9 @@
 
 
                 <%# "自動計算終了日計算" %>
-                <% total_studied_number = Log.where(user_id: current_user.id, study_id: study.id).pluck(:study_number).sum %>
-                <% remain_number =  study_total_number - total_studied_number %>
-                <% if remain_number % study.target_number == 0 %>
-                  <% remain_study_days = remain_number / study.target_number %>
-                <% else %>
-                  <% remain_study_days = (remain_number.to_f / study.target_number.to_f).ceil %>
-                <% end %>
+                <%= total_studied_number = current_user.logs.where(study_id: study.id).pluck(:study_number).sum %>
+                <% remain_study_days = calculate_remain_study_days(study, total_studied_number) %>
+
                 <% today = Date.today %>
                 <% while remain_study_days >= 1 %>
                   <% today.wday %>
@@ -99,7 +95,7 @@
                   <% end %>
                   <% today += 1 %>
                 <% end %>
-                <% culc_end_day = (today - 1).strftime('%Y年%m月%d日') %>
+                <%= culc_end_day = (today - 1).strftime('%Y年%m月%d日') %>
 
                 <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title %></p>
                 <div class="text-left  mb-9">
