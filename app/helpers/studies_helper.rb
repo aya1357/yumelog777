@@ -1,9 +1,9 @@
 module StudiesHelper
-  def calculate_study_total_number(study)
+  def calculate_study_total_number(study) # 総読書ページ数を計算(基本として目次から索引までのページ数)
     study_total_number = study.end_number - study.start_number
   end
 
-  def calculate_study_total_days(study)
+  def calculate_study_total_days(study) # 総読書日数を計算(初期設定)
     study_total_number = calculate_study_total_number(study)
     if study_total_number % study.target_number == 0
       study_total_days = study_total_number / study.target_number
@@ -12,7 +12,7 @@ module StudiesHelper
     end
   end
 
-  def calculate_remain_study_days(study, total_studied_number)
+  def calculate_remain_study_days(study, total_studied_number) # 総読書日数を計算(読書したページ数を差し引いて計算)
     remain_number = calculate_study_total_number(study) - total_studied_number
     if remain_number % study.target_number == 0
       remain_study_days = remain_number / study.target_number
