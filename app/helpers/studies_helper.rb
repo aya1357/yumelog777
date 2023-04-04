@@ -31,5 +31,16 @@ module StudiesHelper
     return (start_day - 1).strftime('%Y年%m月%d日')
   end
 
+  def automatic_end_day(remain_study_days, dayOfWeek_arr)
+    today = Date.today
+    while remain_study_days >= 1
+      if (dayOfWeek_arr).include?(today.wday)
+        remain_study_days -= 1
+      end
+      today += 1
+    end
+    (today - 1).strftime('%Y年%m月%d日')
+  end
+
 
 end

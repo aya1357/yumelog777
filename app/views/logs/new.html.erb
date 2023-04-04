@@ -84,23 +84,16 @@
 
 
                 <%# "自動計算終了日計算" %>
+                <%= "総勉強ページ数" %>
                 <%= total_studied_number = current_user.logs.where(study_id: study.id).pluck(:study_number).sum %>
                 <% remain_study_days = calculate_remain_study_days(study, total_studied_number) %>
 
-                <% today = Date.today %>
-                <% while remain_study_days >= 1 %>
-                  <% today.wday %>
-                  <% if (dayOfWeek_arr).include?(today.wday) %>
-                    <% remain_study_days -= 1 %>
-                  <% end %>
-                  <% today += 1 %>
-                <% end %>
-                <%= culc_end_day = (today - 1).strftime('%Y年%m月%d日') %>
+                <%= automatic_end_day(remain_study_days, dayOfWeek_arr) %>
 
                 <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title %></p>
                 <div class="text-left  mb-9">
                   <p class="">目標終了予定日: <span><%= target_day %></span></p>
-                  <p class="">自動計算終了日: <span id = "culcEndDay_<%= study.id %>"><%= culc_end_day %></span></p>
+                  <p class="">自動計算終了日: <span id = "culcEndDay_<%= study.id %>"><%= automatic_end_day(remain_study_days, dayOfWeek_arr) %></span></p>
                 </div>
               <% end %>
             <% end %>
