@@ -71,22 +71,10 @@
           <div class="flex-wrap">
             <% @studies.each do |study| %>
               <% if study.status == false %>
-                <%# 目標終了予定日計算式 %>
-                <%# "勉強日数(初期設定)" %>
-                <%= study_total_number = calculate_study_total_number(study) %>
-                <%= study_total_days = calculate_study_total_days(study) %>
-
-                <%# "自動計算終了日計算" %>
-                <%= "総勉強ページ数" %>
-                <%= total_studied_number = current_user.logs.where(study_id: study.id).pluck(:study_number).sum %>
-                <% remain_study_days = calculate_remain_study_days(study, total_studied_number) %>
-
-                <%= automatic_end_day(study, remain_study_days) %>
-
                 <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title %></p>
                 <div class="text-left  mb-9">
-                  <p class="">目標終了予定日: <span><%= calculate_target_day(study) %></span></p>
-                  <p class="">自動計算終了日: <span id = "culcEndDay_<%= study.id %>"><%= automatic_end_day(study, remain_study_days) %></span></p>
+                  <p>目標終了予定日: <span><%= calculate_target_day(study) %></span></p>
+                  <p>自動計算終了日: <span id = "culcEndDay_<%= study.id %>"><%= automatic_end_day(study) %></span></p>
                 </div>
               <% end %>
             <% end %>
