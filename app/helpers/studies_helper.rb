@@ -5,25 +5,21 @@ module StudiesHelper
 
   def calculate_study_total_days(study) # 総読書日数を計算(初期設定)
     study_total_number = calculate_study_total_number(study)
-    if study_total_number % study.target_number == 0
-      study_total_days = study_total_number / study.target_number
-    else
-      study_total_days = (study_total_number.to_f / study.target_number.to_f).ceil
-    end
+    study_total_days = (study_total_number.to_f / study.target_number.to_f).ceil
   end
 
-  def calculate_total_studied_number(study, current_user) # 総読書ページ数を計算
+  def calculate_total_studied_number(study, current_user) # 総読書したページ数を計算
     current_user.logs.where(study_id: study.id).pluck(:study_number).sum
   end
 
-  def calculate_remain_study_days(study) # 総読書日数を計算(読書したページ数を差し引いて計算)
+  def calculate_remain_number(study) # 残り読書ページ数を計算
     total_studied_number = calculate_total_studied_number(study, current_user)
     remain_number = calculate_study_total_number(study) - total_studied_number
-    if remain_number % study.target_number == 0
-      remain_study_days = remain_number / study.target_number
-    else
-      remain_study_days = (remain_number.to_f / study.target_number.to_f).ceil
-    end
+  end
+
+  def calculate_remain_study_days(study) # 残り読書ページ数から総読書日数を計算(読書したページ数を差し引いて計算)
+    remain_number = calculate_remain_number(study)
+    remain_study_days = (remain_number.to_f / study.target_number.to_f).ceil
   end
 
   def calculate_target_day(study) #目標終了予定日を計算(読書したページ数を加味せず初期設定での計算)
