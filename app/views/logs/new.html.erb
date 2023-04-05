@@ -76,24 +76,17 @@
                 <%= study_total_number = calculate_study_total_number(study) %>
                 <%= study_total_days = calculate_study_total_days(study) %>
 
-                <%# "取り組む曜日を曜日の順に数字順に並び替え" %>
-                <% dayOfWeek_arr = study.day_of_week.split(",").map(&:to_i).sort %>
-
-                <%# "目標終了日をループ文で計算" %>
-                <%= target_day = calculate_target_day(study_total_days, dayOfWeek_arr, study.start_day) %>
-
-
                 <%# "自動計算終了日計算" %>
                 <%= "総勉強ページ数" %>
                 <%= total_studied_number = current_user.logs.where(study_id: study.id).pluck(:study_number).sum %>
                 <% remain_study_days = calculate_remain_study_days(study, total_studied_number) %>
 
-                <%= automatic_end_day(remain_study_days, dayOfWeek_arr) %>
+                <%= automatic_end_day(study, remain_study_days) %>
 
                 <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title %></p>
                 <div class="text-left  mb-9">
-                  <p class="">目標終了予定日: <span><%= target_day %></span></p>
-                  <p class="">自動計算終了日: <span id = "culcEndDay_<%= study.id %>"><%= automatic_end_day(remain_study_days, dayOfWeek_arr) %></span></p>
+                  <p class="">目標終了予定日: <span><%= calculate_target_day(study) %></span></p>
+                  <p class="">自動計算終了日: <span id = "culcEndDay_<%= study.id %>"><%= automatic_end_day(study, remain_study_days) %></span></p>
                 </div>
               <% end %>
             <% end %>

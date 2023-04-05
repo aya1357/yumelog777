@@ -21,7 +21,10 @@ module StudiesHelper
     end
   end
 
-  def calculate_target_day(study_total_days, dayOfWeek_arr, start_day)
+  def calculate_target_day(study) #目標終了予定日を計算(読書したページ数を加味せず初期設定での計算)
+    study_total_days = calculate_study_total_days(study)
+    dayOfWeek_arr = study.day_of_week.split(",").map(&:to_i).sort
+    start_day = study.start_day
     while study_total_days >= 1
       if (dayOfWeek_arr).include?(start_day.wday)
         study_total_days -= 1
@@ -31,8 +34,9 @@ module StudiesHelper
     return (start_day - 1).strftime('%Y年%m月%d日')
   end
 
-  def automatic_end_day(remain_study_days, dayOfWeek_arr)
+  def automatic_end_day(study, remain_study_days)
     today = Date.today
+    dayOfWeek_arr = study.day_of_week.split(",").map(&:to_i).sort
     while remain_study_days >= 1
       if (dayOfWeek_arr).include?(today.wday)
         remain_study_days -= 1
@@ -41,6 +45,4 @@ module StudiesHelper
     end
     (today - 1).strftime('%Y年%m月%d日')
   end
-
-
 end
