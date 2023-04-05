@@ -14,7 +14,7 @@ module StudiesHelper
 
   def calculate_remain_number(study) # 残り読書ページ数を計算
     total_studied_number = calculate_total_studied_number(study, current_user)
-    remain_number = calculate_study_total_number(study) - total_studied_number
+    remain_number = [calculate_study_total_number(study) - total_studied_number, 0].max
   end
 
   def calculate_remain_study_days(study) # 残り読書ページ数から総読書日数を計算(読書したページ数を差し引いて計算)
