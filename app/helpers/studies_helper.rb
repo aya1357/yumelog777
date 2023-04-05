@@ -12,7 +12,7 @@ module StudiesHelper
     end
   end
 
-  def calculate_total_studied_number(study, current_user)
+  def calculate_total_studied_number(study, current_user) # 総読書ページ数を計算
     current_user.logs.where(study_id: study.id).pluck(:study_number).sum
   end
 
@@ -39,7 +39,7 @@ module StudiesHelper
     return (start_day - 1).strftime('%Y年%m月%d日')
   end
 
-  def automatic_end_day(study)
+  def automatic_end_day(study) #目標終了予定日を計算(読書したページ数を加味して終了日を計算)
     today = Date.today
     remain_study_days = calculate_remain_study_days(study)
     dayOfWeek_arr = study.day_of_week.split(",").map(&:to_i).sort
