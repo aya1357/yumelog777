@@ -21,7 +21,6 @@
                   </div>
                 </div>
                 <div class="flex-wrap">
-                  <%# <%= render partial: 'logs/study', locals: { f: f }, collection: @studies %>
                   <% @studies.each do |study| %>
                     <% if study.status == false %>
                       <div class="mb-6">
@@ -54,7 +53,6 @@
                     <%= f.submit (t 'defaults.register'), class: "py-3 px-8 bg-blue-700 text-white font-bold mt-6 rounded-lg hover:bg-blue-900" %>
                   </div>
                 <% end %>
-
               <% end %>
             </div>
           </div>
@@ -94,22 +92,15 @@
               <% if study.status == false %>
                 <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title %></p>
                 <div class="flex mb-9 justify-between">
-                  <% total_studied_number = Log.where(user_id: current_user.id, study_id: study.id).pluck(:study_number).sum %>
-                  <% remain_number = (study.end_number - study.start_number) - total_studied_number %>
-                  <% if remain_number >= 0 %>
-                    <% remain_number = remain_number %>
-                  <% else %>
-                    <% remain_number = 0 %>
-                  <% end %>
                   <div class="flex">
-                    <div class="block">残り<span class="text-3xl mx-3 font-bold underline" id="remainPages_<%= study.id %>"><%= remain_number %></span>ページ</div>
-                    <% if remain_number == 0 %>
+                    <div class="block">残り<span class="text-3xl mx-3 font-bold underline" id="remainPages_<%= study.id %>"><%= calculate_remain_number(study) %></span>ページ</div>
+                    <% if calculate_remain_number(study) == 0 %>
                       <div class="ml-3">
                         <%= image_tag "log_completed_logo.svg", alt: "計算アイコン", class: "w-10" %>
                       </div>
                     <% end %>
                   </div>
-                  <% if remain_number == 0 %>
+                  <% if calculate_remain_number(study) == 0 %>
                     <div class="flex">
                       <%= link_to "完了済にする", studies_status_done_path(id: study.id), class:"bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
                     </div>

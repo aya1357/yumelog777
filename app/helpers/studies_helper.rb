@@ -32,7 +32,7 @@ module StudiesHelper
       end
       start_day += 1
     end
-    return (start_day - 1).strftime('%Y年%m月%d日')
+    (start_day - 1).strftime('%Y年%m月%d日')
   end
 
   def automatic_end_day(study) #目標終了予定日を計算(読書したページ数を加味して終了日を計算)
