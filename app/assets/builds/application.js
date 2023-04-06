@@ -12966,12 +12966,12 @@
 
   // app/javascript/packs/dayOfWeek_default.js
   document.addEventListener("turbo:load", function() {
-    let dayOfWeek_arr = $("#dayOfWeek_checked").val().split(",").sort(function(a, b) {
+    let dayOfWeek_arr = $("#dayOfWeek_checked").length > 0 ? $("#dayOfWeek_checked").val().split(",").sort(function(a, b) {
       return a - b;
-    });
-    let dayOfWeek_intarr = dayOfWeek_arr.map(function(str) {
+    }) : void 0;
+    let dayOfWeek_intarr = dayOfWeek_arr ? dayOfWeek_arr.map(function(str) {
       return parseInt(str, 10);
-    });
+    }) : void 0;
     console.log(dayOfWeek_intarr);
     $(document).ready(function() {
       $(".day_of_week").each(function(index) {

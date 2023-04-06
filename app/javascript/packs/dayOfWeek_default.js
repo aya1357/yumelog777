@@ -1,15 +1,20 @@
 document.addEventListener("turbo:load", function () {
   //曜日選択の際に、既に設定されている曜日を数値として取得して数字の配列を作成
-  let dayOfWeek_arr = $("#dayOfWeek_checked")
-    .val()
-    .split(",")
-    .sort(function (a, b) {
-      return a - b;
-    });
+  let dayOfWeek_arr =
+    $("#dayOfWeek_checked").length > 0
+      ? $("#dayOfWeek_checked")
+          .val()
+          .split(",")
+          .sort(function (a, b) {
+            return a - b;
+          })
+      : undefined;
   //文字列の配列を数字の配列に変換
-  let dayOfWeek_intarr = dayOfWeek_arr.map(function (str) {
-    return parseInt(str, 10);
-  });
+  let dayOfWeek_intarr = dayOfWeek_arr
+    ? dayOfWeek_arr.map(function (str) {
+        return parseInt(str, 10);
+      })
+    : undefined;
   console.log(dayOfWeek_intarr);
   $(document).ready(function () {
     $(".day_of_week").each(function (index) {
