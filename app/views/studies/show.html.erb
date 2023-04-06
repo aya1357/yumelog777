@@ -47,7 +47,7 @@
         </svg>
         <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold">リンク</label>
         <% if @study.url.present? %>
-          <p class="font-bold text-xl underline"><%= @study.url %></p>
+          <%= link_to @study.title, @study.url, class: "font-bold text-xl underline"%>
         <% else %>
           <p class="font-bold text-xl underline"><%= "リンクの登録がありません。" %></p>
         <% end %>
