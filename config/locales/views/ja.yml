@@ -15,6 +15,7 @@ ja:
       guest_login: 'アカウントの登録後に使用出来るようになります'
       require_login: 'ログインしてください'
       created: '%{item}を作成しました'
+      registed: '%{item}を登録しました'
       not_created: '%{item}を作成出来ませんでした'
       updated: '%{item}を更新しました'
       not_updated: '%{item}を更新出来ませんでした'
@@ -22,8 +23,9 @@ ja:
       reset: '%{item}をリセットしました'
       delete_confirm: '削除しますか？'
       not_authorized: '権限がありません'
-      status_done: '勉強中の本を完了にしました。'
+      status_done: '進行中の本を完了にしました。'
       status_not_done: '完了済の本を未完了に戻しました。'
+      log_registered: "読書の記録は登録済みです。"
   users:
     new:
       title: 'ユーザー登録'

@@ -7,9 +7,9 @@ class StudiesController < ApplicationController
   def create
     @study = current_user.studies.build(study_params)
     if @study.save
-      redirect_to calendars_path, success: t('defaults.message.created', item: Study.model_name.human)
+      redirect_to calendars_path, success: t('defaults.message.resisted', item: Study.model_name.human)
     else
-      flash.now['danger'] = t('defaults.message.not_created', item: Study.model_name.human)
+      flash.now['danger'] = t('defaults.message.not_resisted', item: Study.model_name.human)
       render :new, status: :unprocessable_entity
     end
   end
@@ -42,7 +42,7 @@ class StudiesController < ApplicationController
     @studies = current_user.studies.order(created_at: :desc)
     @logs = current_user.logs.where(log_date: params["date"])
     log_date = Date.parse(params["date"])
-    @formatted_date = log_date.strftime("%Y年%m月%d日")
+    @log_date_display = Date.parse(params["date"]).strftime("%Y年%m月%d日")
     study_number = Log.where(user_id: current_user.id).where(log_date: params["date"]).pluck(:study_number)
     if study_number.all? {|x| x == 0 }
       redirect_to calendars_path, success: t('defaults.message.deleted', item: Log.model_name.human), status: :see_other

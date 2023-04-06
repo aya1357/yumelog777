@@ -12972,6 +12972,7 @@
     let dayOfWeek_intarr = dayOfWeek_arr.map(function(str) {
       return parseInt(str, 10);
     });
+    console.log(dayOfWeek_intarr);
     $(document).ready(function() {
       $(".day_of_week").each(function(index) {
         let cellWeekday = dayOfWeek_arr[index % 7];
