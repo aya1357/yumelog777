@@ -2,7 +2,7 @@
   <div class="notDone w-full md:w-1/2 p-2">
     <div class=" p-3 my-2 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700" style="background-color: #fdfdfd;">
       <div class="flex justify-between">
-        <p class="font-bold justify-start text-xl">1日の目標</p>
+        <p class="font-bold justify-start text-xl">1日の目標ページ数</p>
         <div class="justify-end">
           <%= link_to (t 'defaults.edit'), edit_study_path(study), class: "float-left bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-1 px-1 border border-blue-500 hover:border-transparent rounded text-sm mr-2" %>
           <%= link_to (t 'defaults.delete'), study_path(study), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm" %>
@@ -15,9 +15,13 @@
           </div>
         </div>
       </div>
-      <%= link_to study.title, study_path(study, id: study.id), class: "font-bold text-xl hover:text-blue-500" %><br>
-      <% memo = Memo.where(user_id: current_user.id, study_id: study.id) %>
-      <% memo_id = Memo.where(user_id: current_user.id, study_id: study.id).pluck(:id) %>
+      <%= link_to study.title.truncate(24), study_path(study, id: study.id), class: "justify-start font-bold text-xl hover:text-blue-500", title: study.title %><br>
+      <% if study.url.present? %>
+        <%= link_to study.url.truncate(24), study.url, class: "hover:text-blue-500", title: study.url %>
+      <% else %>
+        <%= "urlの登録はありません" %>
+      <% end %>
+
       <div class="leading-8 mt-8">
         <%# 取り組む曜日を、数字から曜日に変換して表示 %>
         <% days_of_week = ['日', '月', '火', '水', '木', '金', '土'] %>
