@@ -15,7 +15,6 @@ document.addEventListener("turbo:load", function () {
         return parseInt(str, 10);
       })
     : undefined;
-  console.log(dayOfWeek_intarr);
   $(document).ready(function () {
     $(".day_of_week").each(function (index) {
       let cellWeekday = dayOfWeek_arr[index % 7]; //セルの曜日を取得する
@@ -24,7 +23,7 @@ document.addEventListener("turbo:load", function () {
         $(this).toggleClass(
           "checked bg-gray-50 text-blue-700 border-blue-500 bg-blue-700 text-slate-50 border-blue-700"
         );
-      }
+      };
     });
   });
 

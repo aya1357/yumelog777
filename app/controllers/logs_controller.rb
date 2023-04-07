@@ -5,6 +5,7 @@ class LogsController < ApplicationController
 
   def new
     @form = Form::LogCollection.new
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 
   def create
@@ -67,7 +68,8 @@ class LogsController < ApplicationController
   end
 
   def log_date_display
-    @log_date_display = Date.parse(params[:date]).strftime("%Y年%m月%d日")
+    date = params[:date] ? Date.parse(params[:date]) : Date.today
+    @log_date_display = date.strftime("%Y年%m月%d日")
   end
 
   def create_log_exist?
