@@ -1,7 +1,6 @@
 document.addEventListener("turbo:load", function () {
   $(".dayOfWeek").click(function () {
     let week_value = check_week_value($(this).val());
-
     $(this).toggleClass(
       "checked bg-gray-50 text-blue-700 border-blue-500 bg-blue-700 text-slate-50 border-blue-700"
     );

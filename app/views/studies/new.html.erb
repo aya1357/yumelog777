@@ -11,7 +11,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
           </svg>
           <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold">タイトル<span class="text-red-500 ml-2 text-sm">* 必須</span></label>
-          <%= f.text_field :title, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: '登録する本のタイトル' %>
+          <%= f.text_field :title, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: '登録する本のタイトル', required: true  %>
         </div>
         <div class="mb-6">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left text-center mr-2">
@@ -19,13 +19,13 @@
           </svg>
           <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold">総ページ数<span class="text-red-500 ml-2 text-sm">* 必須</span></label>
           <div class="justify-start my-2 select-none flex">
-            <%= f.hidden_field :study_type, value: "1" %>
+            <%= f.hidden_field :study_type, value: "1", required: true %>
             <%# <%= f.button "書籍", class: "py-2 px-4 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-blue btn-primary hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2" %>
             <%# <%= f.button "動画", class: "py-2 px-4 shadow-md no-underline rounded-full bg-orange text-white font-sans font-semibold text-sm border-orange btn-primary hover:text-white hover:bg-orange-light focus:outline-none active:shadow-none mr-2" %>
           </div>
           <div>
             <span class="float-left text-center pt-2">総</span>
-            <%= f.number_field :total_number, in: 1..5000, class: "mx-3 float-left text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-1/2", placeholder: "例) 500" %>
+            <%= f.number_field :total_number, in: 1..5000, class: "mx-3 float-left text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-1/2", placeholder: "例) 500", required: true %>
             <span class="block text-left pt-2">ページ</span>
           </div>
         </div>
@@ -36,7 +36,7 @@
           <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold">勉強を始めるページ数<span class="text-red-500 ml-2 text-sm">* 必須</span></label>
           <p class="text-gray-600 dark:text-white ">例:目次を抜いたページ数等</p>
           <div class="mt-2">
-            <%= f.number_field :start_number, in: 1..5000, class: "mr-3 float-left text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-1/2", placeholder: "例) 10" %>
+            <%= f.number_field :start_number, in: 1..5000, class: "mr-3 float-left text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-1/2", placeholder: "例) 10", required: true %>
             <span class="block text-left pt-2">ページから</span>
           </div>
         </div>
@@ -47,7 +47,7 @@
           <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold">勉強を終えるページ数<span class="text-red-500 ml-2 text-sm">* 必須</span></label>
           <p class="text-gray-600 dark:text-white ">例:索引を抜いたページ数等</p>
           <div class="mt-2">
-            <%= f.number_field :end_number, in: 1..5000, class: "mr-3 float-left text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-1/2", placeholder: "例) 480" %>
+            <%= f.number_field :end_number, in: 1..5000, class: "mr-3 float-left text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-1/2", placeholder: "例) 480", required: true %>
             <span class="block text-left pt-2">ページまで</span>
           </div>
         </div>
@@ -57,7 +57,7 @@
           </svg>
           <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold">1日に取り組む目標ページ数<span class="text-red-500 ml-2 text-sm">* 必須</span></label>
           <div class="mt-2">
-            <%= f.number_field :target_number, in: 1..5000, class: "mr-3 float-left text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-1/2", placeholder: "例) 5" %>
+            <%= f.number_field :target_number, in: 1..5000, class: "mr-3 float-left text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-1/2", placeholder: "例) 5", required: true %>
             <span class="block text-left pt-2">ページ</span>
           </div>
         </div>
@@ -86,7 +86,7 @@
           <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold">取り組む曜日<span class="text-red-500 ml-2 text-sm">* 必須</span></label>
           <div class="mt-2 max-w-full">
             <div class="justify-start my-2 select-none md:space-x-2">
-              <%= f.hidden_field :day_of_week, value: "", id: "week_checked" %>
+              <%= f.hidden_field :day_of_week, value: "", id: "week_checked", required: true %>
               <input type="button" value="日" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
               <input type="button" value="月" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
               <input type="button" value="火" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />

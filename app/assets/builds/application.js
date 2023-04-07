@@ -12971,7 +12971,6 @@
     let dayOfWeek_intarr = dayOfWeek_arr ? dayOfWeek_arr.map(function(str) {
       return parseInt(str, 10);
     }) : void 0;
-    console.log(dayOfWeek_intarr);
     $(document).ready(function() {
       $(".day_of_week").each(function(index) {
         let cellWeekday = dayOfWeek_arr[index % 7];
@@ -12980,6 +12979,7 @@
             "checked bg-gray-50 text-blue-700 border-blue-500 bg-blue-700 text-slate-50 border-blue-700"
           );
         }
+        ;
       });
     });
     $(".day_of_week").click(function() {

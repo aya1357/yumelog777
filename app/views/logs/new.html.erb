@@ -28,9 +28,9 @@
                         <div class="mt-2 flex justify-between">
                         <%= f.fields_for :logs do |f| %>
                           <div class="flex">
-                            <%= f.hidden_field :user_id, :value => current_user.id %>
-                            <%= f.hidden_field :study_id, :value => study.id %>
-                            <%= f.hidden_field :log_date, value: (params["date"]).to_date %>
+                            <%= f.hidden_field :user_id, value: current_user.id %>
+                            <%= f.hidden_field :study_id, value: study.id %>
+                            <%= f.hidden_field :log_date, value: @date %>
                             <%= f.number_field :study_number, in: 0..5000, value: study.target_number, placeholder: "例) 5", id: ("input_#{study.id}"), class: "mr-3 float-left bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 float-left py-3 px-6", required: true %>
                             <span class="block pt-3">ページ</span>
                             <%= link_to "" do %>
