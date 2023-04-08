@@ -15,7 +15,7 @@
           </div>
         </div>
       </div>
-      <%= link_to study.title.truncate(24), study_path(study, id: study.id), class: "justify-start font-bold text-xl hover:text-blue-500", title: study.title %><br>
+      <%= link_to study.title.truncate(20), study_path(study, id: study.id), class: "justify-start font-bold text-xl hover:text-blue-500", title: study.title %><br>
       <% if study.url.present? %>
         <%= link_to study.url.truncate(24), study.url, class: "hover:text-blue-500", title: study.url %>
       <% else %>
@@ -59,7 +59,7 @@
           <div class="flex">残りページ数&ensp;&ensp; : あと<span><%= remain_number %></span>ページ</div>
           <% if remain_number == 0 %>
             <div class="flex">
-              <%= link_to "完了済にする", studies_status_done_path(id: study.id), class: "float-left hover:bg-transparent bg-red-400 hover:text-red-400 font-semibold text-white py-1 px-1 border hover:border-red-500 border-transparent rounded text-sm" %>
+              <%= link_to "完了済", studies_status_done_path(id: study.id), class: "float-left hover:bg-transparent bg-red-400 hover:text-red-400 font-semibold text-white py-1 px-1 border hover:border-red-500 border-transparent rounded text-sm" %>
             </div>
           <% end %>
         </div>
@@ -84,7 +84,7 @@
         </div>
       </div>
       <div class="mt-7">
-        <%= link_to study.title.truncate(24), study_path(study), class: "font-bold text-xl hover:text-blue-500", title: study.title %><br>
+        <%= link_to study.title.truncate(20), study_path(study), class: "font-bold text-xl hover:text-blue-500", title: study.title %><br>
       </div>
       <div class="flex justify-between pt-3">
         <div class="flex">
@@ -95,7 +95,7 @@
           <% end %>
         </div>
         <div class="flex">
-          <%= link_to "未完了にする", studies_status_not_done_path(id: study.id), class: "float-left hover:bg-transparent bg-blue-400 hover:text-blue-400 font-semibold text-white py-1 px-1 border hover:border-blue-500 border-transparent rounded text-sm" %>
+          <%= link_to "未完了", studies_status_not_done_path(id: study.id), class: "float-left hover:bg-transparent bg-blue-400 hover:text-blue-400 font-semibold text-white py-1 px-1 border hover:border-blue-500 border-transparent rounded text-sm" %>
         </div>
       </div>
     </div>
