@@ -68,7 +68,7 @@
   </div>
 <% else %>
   <div class="done w-full md:w-1/2 p-2">
-    <div class="p-3 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700" style="background-color: #f9fcff;">
+    <div class="mb-4 p-3 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700" style="background-color: #f9fcff;">
       <div class="flex justify-between">
         <p class="font-bold justify-start text-xl">1日の目標</p>
         <div class="justify-end">
@@ -83,11 +83,18 @@
           </div>
         </div>
       </div>
-      <div class="flex justify-between">
-        <div class="flex mt-4">
-          <%= link_to study.title, study_path(study), class: "font-bold text-xl hover:text-blue-500" %><br>
+      <div class="mt-7">
+        <%= link_to study.title.truncate(24), study_path(study), class: "font-bold text-xl hover:text-blue-500", title: study.title %><br>
+      </div>
+      <div class="flex justify-between pt-3">
+        <div class="flex">
+          <% if study.url.present? %>
+            <%= link_to study.url.truncate(24), study.url, class: "hover:text-blue-500", title: study.url %><br>
+          <% else %>
+            <%= "urlの登録はありません" %><br>
+          <% end %>
         </div>
-        <div class="flex mt-4">
+        <div class="flex">
           <%= link_to "未完了にする", studies_status_not_done_path(id: study.id), class: "float-left hover:bg-transparent bg-blue-400 hover:text-blue-400 font-semibold text-white py-1 px-1 border hover:border-blue-500 border-transparent rounded text-sm" %>
         </div>
       </div>
