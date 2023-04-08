@@ -1,9 +1,18 @@
 <section class="simple_calendar">
-  <div class="calendar-heading flex justify-between">
-    <div class="mb-2 space-x-3">
-      <%= link_to "前月", calendar.url_for_previous_view, class: "bg-transparent hover:bg-blue-400 text-blue-500 font-semibold hover:text-white px-4 border border-blue-500 hover:border-transparent rounded" %>
-      <span class="calendar-title"><%= start_date.year %>年 <%= t('date.month_names')[start_date.month] %></span>
-      <%= link_to "翌月", calendar.url_for_next_view, class: "bg-transparent hover:bg-blue-400 text-blue-500 font-semibold hover:text-white px-4 border border-blue-500 hover:border-transparent rounded" %>
+  <div class="calendar-heading flex justify-between mb-4">
+    <div class="flex float-left space-x-3 items-center">
+      <%= link_to calendar.url_for_previous_view, class: "text-blue-500 font-semibold" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
+        </svg>
+      <% end %>
+      <span class="flex float-left calendar-title md:text-3xl text-2xl font-bold"><%= start_date.year %>年 <%= t('date.month_names')[start_date.month] %></span>
+      <%= link_to calendar.url_for_next_view, class: "text-blue-500 font-semibold" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+</svg>
+
+      <% end %>
     </div>
   </div>
   <div class="mb-2">
