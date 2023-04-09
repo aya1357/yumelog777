@@ -64,18 +64,14 @@ ja:
       no_result: '登録がありません。'
   studies:
     new:
-      top_title: '勉強する本の新規登録'
+      top_title: '本の新規登録'
       title: 'タイトル'
-      total_number: '総ページ数、または総再生時間'
-      start_number: '勉強を始めるページ数'
-      end_number: '勉強を終えるページ数'
-      target_number: '1日の目標ページ数'
-      start_day: '開始予定日'
-      day_of_week: '取り組む曜日'
     log_date:
       title: '積みログ詳細'
     show:
-      title: '勉強する本の詳細'
+      title: '登録している本の詳細'
+    edit:
+      title: '登録している本を編集'
   logs:
     new:
       title: '積みログを新規登録'
