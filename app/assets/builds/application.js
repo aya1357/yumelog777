@@ -12929,7 +12929,6 @@
       document.getElementById("end_date").innerHTML = "\u7D42\u4E86\u4E88\u5B9A\u65E5\u306F\u3001" + formatted_end_date + "\u3067\u3059\u3002";
     });
   });
-  console.log("test1");
 
   // app/javascript/packs/calendars_studies_status.js
   document.addEventListener("turbo:load", function() {
@@ -13040,6 +13039,30 @@
       }
       return week_value;
     }
+  });
+
+  // app/javascript/packs/study_pages_comparison.js
+  document.addEventListener("turbo:load", function() {
+    $("form").submit(function(event) {
+      event.preventDefault();
+      let total_pages = parseInt($("#total_pages").val());
+      let start_page = parseInt($("#start_page").val());
+      let end_page = parseInt($("#end_page").val());
+      let target_pages = parseInt($("#target_pages").val());
+      if (end_page > total_pages) {
+        alert("\u8AAD\u307F\u7D42\u3048\u308B\u30DA\u30FC\u30B8\u6570\u306F\u7DCF\u30DA\u30FC\u30B8\u6570\u4EE5\u4E0B\u306B\u8A2D\u5B9A\u3057\u3066\u304F\u3060\u3055\u3044\u3002");
+        return false;
+      } else if (start_page > end_page) {
+        alert("\u8AAD\u307F\u59CB\u3081\u308B\u30DA\u30FC\u30B8\u6570\u306F\u8AAD\u307F\u7D42\u3048\u308B\u30DA\u30FC\u30B8\u6570\u4EE5\u4E0B\u306B\u8A2D\u5B9A\u3057\u3066\u304F\u3060\u3055\u3044\u3002");
+        return false;
+      } else if (target_pages > end_page && target_pages > total_pages) {
+        alert("1\u65E5\u306B\u53D6\u308A\u7D44\u3080\u30DA\u30FC\u30B8\u6570\u306F\u8AAD\u307F\u7D42\u3048\u308B\u30DA\u30FC\u30B8\u6570\u3001\u307E\u305F\u306F\u7DCF\u30DA\u30FC\u30B8\u6570\u4EE5\u4E0B\u306B\u8A2D\u5B9A\u3057\u3066\u304F\u3060\u3055\u3044\u3002");
+        return false;
+      } else {
+        this.submit();
+      }
+      ;
+    });
   });
 
   // app/javascript/application.js
