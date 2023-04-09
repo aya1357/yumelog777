@@ -8,44 +8,44 @@
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left text-center mr-2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
         </svg>
-        <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold">タイトル</label>
+        <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold"><%= t('activerecord.attributes.study.title') %></label>
         <p class="font-bold text-xl underline"><%= @study.title %></p>
       </div>
       <div class="mb-8">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left text-center mr-2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
         </svg>
-        <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold">総ページ数</label>
+        <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold"><%= t('activerecord.attributes.study.total_pages') %></label>
         <p class="font-bold text-xl underline">総<%= @study.total_number %>ページ</p>
       </div>
       <div class="mb-8">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left text-center mr-2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
         </svg>
-        <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold">勉強を始めるページ数</label>
-        <p class="text-gray-600 dark:text-white ">例:目次を抜いたページ数等</p>
+        <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold"><%= t('activerecord.attributes.study.start_page') %></label>
+        <p class="text-gray-600 dark:text-white "><%= t('activerecord.attributes.study.start_page_example') %></p>
         <p class="font-bold text-xl underline"><%= @study.start_number %>ページから</p>
       </div>
       <div class="mb-8">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left text-center mr-2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
         </svg>
-        <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold">勉強を終えるページ数</label>
-        <p class="text-gray-600 dark:text-white ">例:索引を抜いたページ数等</p>
+        <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold"><%= t('activerecord.attributes.study.end_page') %></label>
+        <p class="text-gray-600 dark:text-white "><%= t('activerecord.attributes.study.end_page_example') %></p>
         <p class="font-bold text-xl underline"><%= @study.end_number %>ページまで</p>
       </div>
       <div class="mb-8">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left text-center mr-2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
         </svg>
-        <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold">1日に取り組む目標ページ数</label>
+        <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold"><%= t('activerecord.attributes.study.target_pages') %></label>
         <p class="font-bold text-xl underline"><%= @study.target_number %>ページ</p>
       </div>
       <div class="mb-8">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left text-center mr-2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" />
         </svg>
-        <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold">リンク</label>
+        <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold"><%= t('activerecord.attributes.study.url') %></label>
         <% if @study.url.present? %>
           <%= link_to @study.title, @study.url, class: "font-bold text-xl underline"%>
         <% else %>
@@ -57,7 +57,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left text-center mr-2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold">開始予定日</label>
+        <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold"><%= t('activerecord.attributes.study.start_day') %></label>
         <p class="font-bold text-xl underline"><%= @study.start_day%></p>
 
       </div>
@@ -65,7 +65,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left text-center mr-2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold">取り組む曜日</label>
+        <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold"><%= t('activerecord.attributes.study.day_of_week') %></label>
         <% days_of_week = ['日', '月', '火', '水', '木', '金', '土'] %>
         <% study_days = @study.day_of_week.split(",").map(&:to_i).sort %>
         <% study_day_names = study_days.map { |day| days_of_week[day] } %>
