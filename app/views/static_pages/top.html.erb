@@ -25,27 +25,27 @@
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mx-6">
       <div class="p-3 my-2 bg-yellow-50 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
         <div class="flex flex-col items-center">
-          <%= image_tag "top_calendar.png", class: "pt-3" %>
-          <p class="mt-9 font-bold justify-start text-xl" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">カレンダーに本のページ数を<br>登録してみましょう。<br>ページ数と読書の終了予定日が<br>一覧で確認出来ます。</p>
+          <%= image_tag "top_calendar.png", class: "top_content_img pt-3" %>
+          <p class="top_content_text mt-9 font-bold justify-start text-xl" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">カレンダーに本のページ数を<br>登録してみましょう。<br>ページ数と読書の終了予定日が<br>一覧で確認出来ます。</p>
         </div>
       </div>
       <div class="p-3 my-2 bg-yellow-50 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
         <div class="flex flex-col items-center">
-          <%= image_tag "top_book.png", class: "pt-6" %>
-          <p class="mt-4 font-bold justify-start text-xl" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">一日の終わりに、<br>読書した総ページ数を<br>記録してみましょう。<br>日々の読書記録を記録出来ます。</p>
+          <%= image_tag "top_book.png", class: "top_content_img pt-6" %>
+          <p class="top_content_text mt-4 font-bold justify-start text-xl" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">一日の終わりに、<br>読書した総ページ数を<br>記録してみましょう。<br>日々の読書記録を記録出来ます。</p>
         </div>
       </div>
       <div class="p-3 my-2 bg-yellow-50 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
         <div class="flex flex-col items-center">
-          <%= image_tag "top_webculc.png", class: "pt-4" %>
-          <p class="mt-6 font-bold justify-start text-xl" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">読書の記録を確認してみましょう。<br>読書したページ数から<br>本の残りのページ数と終了日を<br>自動で計算してくれます。</p>
+          <%= image_tag "top_webculc.png", class: "top_content_img pt-4" %>
+          <p class="top_content_text mt-6 font-bold justify-start text-xl" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">読書の記録を確認してみましょう。<br>読書したページ数から<br>本の残りのページ数と終了日を<br>自動で計算してくれます。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="text-center md:mb-2 mt-14">
-    <p class="text-gray-700 md:text-5xl font-bold text-center md:mt-28 leading-snug mb-3 "  style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">買ったまま放置されている<br>本はありませんか？</p>
+  <div class="top_message text-center md:mb-2 mt-14">
+    <p class="top_message_inner text-gray-700 md:text-5xl font-bold text-center md:mt-28 leading-snug mb-3 "  style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">買ったまま放置されている<br>本はありませんか？</p>
   </div>
 
   <div class="bg-no-repeat flex justify-center mx-6">
@@ -53,14 +53,16 @@
   </div>
 
   <div class="text-center md:mb-20 mb-10">
-    <p class="text-gray-700 md:text-5xl font-bold text-center mt-10 md:mt-28 leading-snug mb-6"  style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">忙しい毎日の空き時間を<br>有効活用しませんか？</p>
+    <div class="top_message">
+      <p class="top_message_inner text-gray-700 md:text-5xl font-bold text-center mt-10 md:mt-28 leading-snug mb-6"  style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">忙しい毎日の空き時間を<br>有効活用しませんか？</p>
+    </div>
     <%= link_to "使い方を見る", guide_path, class: "shadow-lg bg-orange-500 shadow-orange-500/50 text-white rounded px-2 py-1 md:mt-15 hover:bg-orange-600", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
   </div>
   <div class="bg-no-repeat flex justify-center mx-6">
     <%= image_tag 'top_culcbook.png' %>
   </div>
-  <div class="text-center md:mb-10 mb-10">
-    <p class="text-gray-700 md:text-5xl font-bold text-center mt-10 md:mt-28 leading-snug mb-6"  style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">読書習慣をサポートします</p>
+  <div class="top_message text-center md:mb-10 mb-10">
+    <p class="top_message_inner text-gray-700 md:text-5xl font-bold text-center mt-10 md:mt-28 leading-snug mb-6"  style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">読書習慣をサポートします</p>
   </div>
 
   <div class="text-center pb-10 bg-blue-50 mt-10">
