@@ -46,9 +46,7 @@
                     <% end %>
                   <% end %>
                 </div>
-                <% if current_user.guest? %>
-                  <p class="font-bold">アカウントの登録後に勉強記録が登録出来ます。</p>
-                <% else%>
+                <% if @studies.present? %>
                   <div class="text-center">
                     <%= f.submit (t 'defaults.register'), class: "py-3 px-8 bg-blue-700 text-white font-bold mt-6 rounded-lg hover:bg-blue-900" %>
                   </div>

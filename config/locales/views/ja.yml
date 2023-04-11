@@ -12,6 +12,7 @@ ja:
     add: '追加'
     password_reset: 'パスワードリセット'
     message:
+      log_guest_login: 'アカウントの登録後に読書記録を登録出来ます'
       guest_login: 'アカウントの登録後に使用出来るようになります'
       require_login: 'ログインしてください'
       created: '%{item}を作成しました'
