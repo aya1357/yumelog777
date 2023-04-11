@@ -3,9 +3,10 @@ class Form::LogCollection < Form::Base
   attr_accessor :logs
 
   def initialize(attributes = {}, user_id='', date='')
+    # 親クラスのinitializeメソッドを呼び出す
     super attributes
-
-    unless (user_id.present?)
+    # ログを入力するためのフォーム画面を表示するために、デフォルトのログを1件用意する必要があるため、空のLogオブジェクトを1件生成してlogsに格納する必要がある
+    if user_id.blank?
       self.logs = FORM_COUNT.times.map { Log.new() } unless self.logs.present?
     else
       self.logs = Log.where(user_id: user_id, log_date: date)
@@ -13,17 +14,18 @@ class Form::LogCollection < Form::Base
   end
 
   def logs_attributes=(attributes)
+    # Log.newを呼び出してLogオブジェクトを生成し、それらのオブジェクトを配列にまとめて返す
     self.logs = attributes.map { |_, v| Log.new(v) }
   end
 
   def save
     Log.transaction do
-      self.logs.map do |log|
+      self.logs.each do |log|
         log.save!
       end
     end
-    return true
-      rescue => e
-    return false
+    true
+  rescue => e
+    false
   end
 end
