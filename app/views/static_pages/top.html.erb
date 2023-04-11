@@ -64,7 +64,7 @@
   </div>
 
   <div class="text-center pb-10 bg-blue-50 mt-10">
-    <% if logged_in?%>
+    <% if logged_in? %>
       <%= link_to "本の登録をしてみる", new_study_path, class: "shadow-lg shadow-blue-500/50 btn btn-primary md:text-2xl mb-4", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %><br>
     <% else %>
       <%= link_to "今すぐ始めてみる", new_user_path, class: "text-white start_button shadow-lg shadow-green-500/50 btn btn-success md:text-2xl mb-7", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %><br>
