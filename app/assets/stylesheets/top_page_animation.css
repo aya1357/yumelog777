@@ -1,3 +1,4 @@
+/* 始めるの緑ボタンにアニメーション */
 .start_button {
   background: #37d39a;
 	text-decoration: none;
@@ -12,7 +13,6 @@
   animation: bounce 2s ease-in-out forwards;
   animation-iteration-count: infinite;
 }
-
 @keyframes bounce {
   0% {
     transform: scale(1);
@@ -23,8 +23,8 @@
     -webkit-transform: scale(1.15);
   }
 }
+/* トップページの本と時計の画像にアニメーション */
 .top_hero_img {
-  /*⬇︎⬇︎2秒ごとに画像が動くようになっている*/
   animation: fluffy1 2s ease infinite;
 }
 @keyframes fluffy1 {
@@ -61,6 +61,7 @@
     transform: rotateZ(0);
   }
 }
+/* hero下の3コンテンツの画像 */
 .top_content_img {
     opacity : 0;
     transform : translate(0, 50px);
@@ -70,62 +71,53 @@
     opacity : 1;
     transform : translate(0, 0);
 }
+/* hero下の3コンテンツのテキスト */
 .top_content_text {
   opacity : 0;
   transform: translateY(20px);
   transition: all 1s;
 }
- /*左から右テキストエフェクト*/
-  .top_message {
-    opacity: 0;
-    overflow: hidden;
-
-  }
-
-  .top_message_inner {
-    text-align: center;
-  }
-
-
-  .slideAnimeLeftRight {
-    animation-name: slideTextX100;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-    opacity: 0;
-  }
-
-  @keyframes slideTextX100 {
-    from {
-      transform: translateX(10%);
-      /*要素を左の枠外に移動*/
-      opacity: 0;
-    }
-
-    to {
-      transform: translateX(0);
-      /*要素を元の位置に移動*/
-      opacity: 1;
-    }
-  }
-
-  .slideAnimeRightLeft {
-    animation-name: slideTextX-100;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
+/* メッセージの箇所にアニメーション */
+.top_message {
+  opacity: 0;
+  overflow: hidden;
+}
+.top_message_inner {
+  text-align: center;
+}
+.slideAnimeLeftRight {
+  animation-name: slideTextX100;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+@keyframes slideTextX100 {
+  from {
+    transform: translateX(10%);
+    /*要素を左の枠外に移動*/
     opacity: 0;
   }
-
-
-  @keyframes slideTextX-100 {
-    from {
-      transform: translateX(5%);
-      /*要素を右の枠外に移動*/
-      opacity: 0;
-    }
-
-    to {
-      transform: translateX(0);
-      /*要素を元の位置に移動*/
-      opacity: 1;
-    }
+  to {
+    transform: translateX(0);
+    /*要素を元の位置に移動*/
+    opacity: 1;
   }
+}
+.slideAnimeRightLeft {
+  animation-name: slideTextX-100;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+@keyframes slideTextX-100 {
+  from {
+    transform: translateX(5%);
+    /*要素を右の方に移動*/
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    /*要素を元の位置に移動*/
+    opacity: 1;
+  }
+}

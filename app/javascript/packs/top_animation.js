@@ -21,21 +21,20 @@ document.addEventListener("turbo:load", function () {
     });
   });
   $(window).scroll(function () {
-  $(".top_message").each(function () {
-    var elemPos = $(this).offset().top;
-    var scroll = $(window).scrollTop();
-    var windowHeight = $(window).height();
-    //要素がスクロール位置まできたら
-    if (scroll >= elemPos - windowHeight) {
-      //クラス付与
-      $(this).addClass("slideAnimeLeftRight");
-      $(this).children(".top_message_inner").addClass("slideAnimeRightLeft");
-    } else {
-      //クラス削除
-      $(this).removeClass("slideAnimeLeftRight");
-      $(this).children(".top_message_inner").removeClass("slideAnimeRightLeft");
-    }
+    $(".top_message").each(function () {
+      var elemPos = $(this).offset().top;
+      var scroll = $(window).scrollTop();
+      var windowHeight = $(window).height();
+      //要素がスクロール位置まできたら
+      if (scroll >= elemPos - windowHeight) {
+        //クラス付与
+        $(this).addClass("slideAnimeLeftRight");
+        $(this).children(".top_message_inner").addClass("slideAnimeRightLeft");
+      } else {
+        //クラス削除
+        $(this).removeClass("slideAnimeLeftRight");
+        $(this).children(".top_message_inner").removeClass("slideAnimeRightLeft");
+      }
+    });
   });
-});
-
 });
