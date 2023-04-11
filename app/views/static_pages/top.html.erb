@@ -10,11 +10,10 @@
           <p class="mb-4 text-xl md:pt-8 pt-6" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">
             本棚に眠っている資格の本やビジネス書<br>そろそろ読み始めませんか？
           </p>
-          <% if logged_in? %>
-          <% else %>
+          <% unless logged_in? %>
             <div class="mt-12 flex flex-wrap gap-4 text-center">
-              <%= link_to '新規登録', new_user_path, class:  "md:m-auto font-bold mx-10 block w-full rounded bg-blue-700 px-12 py-3 text-sm font-medium text-white shadow hover:bg-blue-900 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
-              <%= link_to 'ログイン', login_path, class:  "md:m-auto font-bold mx-10 block w-full rounded bg-white px-12 py-3 text-sm font-medium text-blue-700 shadow hover:text-blue-700 focus:outline-none focus:ring active:text-blue-500 sm:w-auto hover:bg-gray-100", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
+              <%= link_to '始める', new_user_path, class: "text-xl start_button md:m-auto font-bold mx-10 block w-full rounded bg-green-500 px-12 py-3 font-medium text-white shadow hover:bg-green-600 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
+              <%= link_to 'ログイン', login_path, class: "text-xl md:m-auto font-bold mx-10 block w-full rounded bg-white px-12 py-3 font-medium text-blue-700 shadow hover:text-blue-700 focus:outline-none focus:ring active:text-blue-500 sm:w-auto hover:bg-gray-100", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
             </div>
           <% end %>
         </div>
@@ -65,10 +64,10 @@
   </div>
 
   <div class="text-center pb-10 bg-blue-50 mt-10">
-    <% if logged_in?%>
+    <% if logged_in? %>
       <%= link_to "本の登録をしてみる", new_study_path, class: "shadow-lg shadow-blue-500/50 btn btn-primary md:text-2xl mb-4", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %><br>
     <% else %>
-      <%= link_to "今すぐ始めてみる", new_user_path, class: "shadow-lg shadow-blue-500/50 btn btn-primary md:text-2xl mb-4", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %><br>
+      <%= link_to "今すぐ始めてみる", new_user_path, class: "text-white start_button shadow-lg shadow-green-500/50 btn btn-success md:text-2xl mb-7", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %><br>
     <% end %>
     <%= link_to "使い方を見る", guide_path, class: "shadow-lg bg-orange-500 shadow-orange-500/50 text-white rounded px-2 py-1 mt-10 mb-20 hover:bg-orange-600", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
   </div>

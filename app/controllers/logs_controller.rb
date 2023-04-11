@@ -60,7 +60,7 @@ class LogsController < ApplicationController
   end
 
   def check_guest
-    redirect_to calendars_path, warning: t('defaults.message.guest_login') if current_user.guest?
+    redirect_to new_user_path, warning: t('defaults.message.log_guest_login') if current_user.guest?
   end
 
   def get_study
