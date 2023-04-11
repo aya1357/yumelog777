@@ -8,5 +8,6 @@ import "./packs/start.js"
 import "./packs/calendars_studies_status.js"
 import "./packs/dayOfWeek_default.js"
 import "./packs/study_pages_comparison.js"
+import "./packs/top_animation.js"
 import jquery from "jquery"
 window.$ = window.jQuery = jquery
