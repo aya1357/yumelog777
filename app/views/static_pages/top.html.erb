@@ -11,13 +11,13 @@
             本棚に眠っている資格の本やビジネス書<br>そろそろ読み始めませんか？
           </p>
           <% unless logged_in? %>
-            <div class="mt-12 flex flex-wrap gap-4 text-center">
+            <div class="mt-12 flex flex-wrap gap-4 text-center md:space-x-6">
               <%= link_to '始める', new_user_path, class: "text-xl start_button md:m-auto font-bold mx-10 block w-full rounded bg-green-500 px-12 py-3 font-medium text-white shadow hover:bg-green-600 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
               <%= link_to 'ログイン', login_path, class: "text-xl md:m-auto font-bold mx-10 block w-full rounded bg-white px-12 py-3 font-medium text-blue-700 shadow hover:text-blue-700 focus:outline-none focus:ring active:text-blue-500 sm:w-auto hover:bg-gray-100", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
             </div>
           <% end %>
         </div>
-        <%= image_tag "top_hero.png", class: "md:w-1/2 flex"%>
+        <%= image_tag "top_hero.png", class: "top_hero_img md:w-1/2 flex"%>
     </div>
   </section>
 

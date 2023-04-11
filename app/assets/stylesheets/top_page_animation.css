@@ -1,0 +1,65 @@
+.start_button {
+  background: #37d39a;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #333;
+	letter-spacing: 0;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all  0.3s ease;
+	cursor: pointer;
+  animation: bounce 2s ease-in-out forwards;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+    -webkit-transform: scale(1.15);
+  }
+}
+
+
+.top_hero_img {
+  /*⬇︎⬇︎2秒ごとに画像が動くようになっている*/
+  animation: fluffy1 2s ease infinite;
+}
+@keyframes fluffy1 {
+  0% {
+    transform: translateY(0);
+    transform: rotateZ(0);
+  }
+  5% {
+    transform: translateY(0);
+    transform: rotateZ(0);
+  }
+  10% {
+    transform: translateY(0);
+    transform: rotateZ(0);
+  }
+  20% {
+    transform: translateY(-10px);
+    transform: rotateZ(-3deg);
+  }
+  25% {
+    transform: translateY(0);
+    transform: rotateZ(3deg);
+  }
+  30% {
+    transform: translateY(-10px);
+    transform: rotateZ(-3deg);
+  }
+  50% {
+    transform: translateY(0);
+    transform: rotateZ(3deg);
+  }
+  100% {
+    transform: translateY(0);
+    transform: rotateZ(0);
+  }
+}
