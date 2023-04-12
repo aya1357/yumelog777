@@ -68,15 +68,23 @@
 - 本を読むたびにカロリー数に合わせて、今日は１kgステーキ分読みましたとか遊び心が欲しいとのこと。
 
 
-## 【スケジュール】<br>
+## 【スケジュール】
 
 README〜ER図作成：12/14 〆切
 メイン機能実装：3/31 〆切
 β版をRUNTEQ内リリース（MVP）：3/31〆切
 本番リリース：4月中旬
 
-## 【画面遷移図】<br>
+
+## 【使用技術】
+|  バックエンド  |  フロントエンド  |  インフラ ・ その他 |
+| ---- | ---- | ---- |
+|  Ruby on Rails(7.0.3)  |  TailwindCSS  |  PostgreSQL  |
+|  Ruby(3.1.2)  |  jQuery  |  Heroku  |
+|    |    |  Blender |
+
+### 【画面遷移図】<br>
 https://www.figma.com/file/yTq0bQsHWISKMvBg7mlkXX/%E7%84%A1%E9%A1%8C?node-id=0%3A1&t=ol4j64oMJC5fHmsK-0
 
-## 【ER図】<br>
+### 【ER図】<br>
 [![Image from Gyazo](https://i.gyazo.com/b0417f1c1dc24478cbe0711125b08fb5.png)](https://gyazo.com/b0417f1c1dc24478cbe0711125b08fb5)
