@@ -12889,12 +12889,15 @@
         type: "GET",
         data: { studied_pages: input_value, study_id }
       }).done(function(data) {
-        console.log(data.remain_number);
-        console.log(data.culc_end_day);
-        $("#remainPages_" + study_id).text(data.remain_number);
-        $("#remainPages_" + study_id).css("color", "#2563eb");
-        $("#culcEndDay_" + study_id).text(data.culc_end_day);
-        $("#culcEndDay_" + study_id).css("color", "#2563eb");
+        let endDate = new Date(data.automatic_calculation_end_date);
+        let year = endDate.getFullYear();
+        let month = endDate.getMonth() + 1;
+        let date = endDate.getDate();
+        let weekdays = ["\u65E5", "\u6708", "\u706B", "\u6C34", "\u6728", "\u91D1", "\u571F"];
+        let weekday = weekdays[endDate.getDay()];
+        let automatic_calculation_end_date = year + "\u5E74" + ("0" + month).slice(-2) + "\u6708" + ("0" + date).slice(-2) + "\u65E5(" + weekday + ")";
+        $("#remainPages_" + study_id).text(data.remain_pages).css("color", "#2563eb");
+        $("#culcEndDay_" + study_id).text(automatic_calculation_end_date).css("color", "#2563eb");
       });
     });
   });

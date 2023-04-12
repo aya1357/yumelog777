@@ -46,9 +46,9 @@ class LogsController < ApplicationController
 
   def log_culc_api
     study = current_user.studies.find(params[:study_id])
-    remain_number = study.remaining_number(current_user.id, params[:studied_pages])
-    end_day = study.calculate_end_date(current_user.id, params[:studied_pages])
-    log = { culc_end_day: end_day, remain_number: remain_number }
+    remain_pages = study.remain_pages(current_user.id, params[:studied_pages])
+    automatic_calculation_end_date = study.automatic_calculation_end_date(current_user.id, params[:studied_pages])
+    log = { automatic_calculation_end_date: automatic_calculation_end_date, remain_pages: remain_pages }
     render json: log
   end
 
