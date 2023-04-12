@@ -80,4 +80,4 @@ README〜ER図作成：12/14 〆切
 https://www.figma.com/file/yTq0bQsHWISKMvBg7mlkXX/%E7%84%A1%E9%A1%8C?node-id=0%3A1&t=ol4j64oMJC5fHmsK-0
 
 * 【ER図】<br>
-[![Image from Gyazo](https://i.gyazo.com/965b41b4c0d78a3d2677e54e0563d41f.png)](https://gyazo.com/965b41b4c0d78a3d2677e54e0563d41f)
+[![Image from Gyazo](https://i.gyazo.com/b0417f1c1dc24478cbe0711125b08fb5.png)](https://gyazo.com/b0417f1c1dc24478cbe0711125b08fb5)
