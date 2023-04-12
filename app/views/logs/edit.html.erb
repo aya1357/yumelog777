@@ -63,8 +63,8 @@
                 <% if study.status == false %>
                   <p class="font-bold md:text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>
                   <div class="text-left  mb-9">
-                    <p>目標終了予定日: <span><%= calculate_target_day(study) %></span></p>
-                    <p>自動計算終了日: <span id = "culcEndDay_<%= study.id %>"><%= automatic_end_day(study) %></span></p>
+                    <p>目標終了予定日: <span><%= l target_end_date(study), format: :long %></span></p>
+                    <p>自動計算終了日: <span id = "culcEndDay_<%= study.id %>"><%= l automatic_calculation_end_day(study), format: :long %></span></p>
                   </div>
                 <% end %>
               <% end %>
@@ -85,14 +85,14 @@
                   <p class="font-bold md:text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>
                   <div class="flex mb-9 justify-between">
                     <div class="flex">
-                      <div class="block">残り<span class="text-3xl mx-3 font-bold underline" id="remainPages_<%= study.id %>"><%= calculate_remain_number(study) %></span>ページ</div>
-                      <% if calculate_remain_number(study)== 0 %>
+                      <div class="block">残り<span class="text-3xl mx-3 font-bold underline" id="remainPages_<%= study.id %>"><%= remain_pages(study) %></span>ページ</div>
+                      <% if remain_pages(study)== 0 %>
                         <div class="ml-3">
                           <%= image_tag "log_completed_logo.svg", alt: "計算アイコン", class: "w-10" %>
                         </div>
                       <% end %>
                     </div>
-                    <% if calculate_remain_number(study) == 0 %>
+                    <% if remain_pages(study) == 0 %>
                       <div class="flex">
                         <%= link_to "完了済", studies_status_done_path(id: study.id), class:"bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
                       </div>
