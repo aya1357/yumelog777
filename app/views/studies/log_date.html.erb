@@ -65,8 +65,8 @@
                 <% if study.status == false %>
                   <p class="font-bold text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>
                   <div class="text-left  mb-9">
-                    <p>目標終了予定日: <span><%= target_end_date(study) %></span></p>
-                    <p>自動計算終了日: <span id = "culcEndDay_<%= study.id %>"><%= automatic_calculation_end_day(study) %></span></p>
+                    <p>目標終了予定日: <span><%= l target_end_date(study), format: :long %></span></p>
+                    <p>自動計算終了日: <span id = "culcEndDay_<%= study.id %>"><%= l automatic_calculation_end_day(study), format: :long %></span></p>
                   </div>
                 <% end %>
               <% end %>
