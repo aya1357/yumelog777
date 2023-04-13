@@ -2,7 +2,6 @@ class ProfilesController < ApplicationController
   before_action :set_user, only: %i[update edit]
   before_action :check_guest
 
-
   def edit; end
 
   def update

@@ -1,5 +1,4 @@
 class StudiesController < ApplicationController
-
   def new
     @study = Study.new
   end
@@ -40,22 +39,22 @@ class StudiesController < ApplicationController
 
   def log_date
     @studies = current_user.studies.order(created_at: :desc)
-    @logs = current_user.logs.where(log_date: params["date"])
-    log_date = Date.parse(params["date"])
-    @log_date_display = Date.parse(params["date"]).strftime("%Y年%m月%d日")
-    study_number = Log.where(user_id: current_user.id).where(log_date: params["date"]).pluck(:study_number)
+    @logs = current_user.logs.where(log_date: params[:date])
+    log_date = Date.parse(params[:date])
+    @log_date_display = Date.parse(params[:date]).strftime("%Y年%m月%d日")
+    study_number = Log.where(user_id: current_user.id).where(log_date: params[:date]).pluck(:study_number)
     if study_number.all? {|x| x == 0 }
       redirect_to calendars_path, success: t('defaults.message.deleted', item: Log.model_name.human), status: :see_other
     end
   end
 
   def log_date_api
-    @log = current_user.logs.where(log_date: params["date"])
-    study_number = current_user.logs.where(log_date: params["date"]).pluck(:study_number)
+    @log = current_user.logs.where(log_date: params[:date])
+    study_number = current_user.logs.where(log_date: params[:date]).pluck(:study_number)
     if study_number.all? {|x| x == 0 }
       @log.destroy_all
     end
-    #logs(勉強の記録)が無い場合はstatus: 0, logs(勉強の記録)がある場合はstatus: 1を設定
+    # logs(勉強の記録)が無い場合はstatus: 0, logs(勉強の記録)がある場合はstatus: 1を設定
     if @log.empty? || study_number.all? {|x| x == 0 }
       status = 0
     else
