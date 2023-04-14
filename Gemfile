@@ -63,6 +63,11 @@ group :development do
 
   # Mail
   gem 'letter_opener_web'
+
+  # rubocop
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :test do
@@ -90,6 +95,3 @@ gem 'simple_calendar', '~> 2.4'
 
 # OGP, メタタグの設定
 gem 'meta-tags'
-
-# rubocop
-gem 'rubocop', require: false

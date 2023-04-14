@@ -5,7 +5,11 @@ class LogsController < ApplicationController
 
   def new
     @form = Form::LogCollection.new
-    @date = params[:date] ? Date.parse(params[:date]) : Date.today
+    @date = params[:date] ? Date.parse(params[:date]) : Time.zone.today
+  end
+
+  def edit
+    @form = Form::LogCollection.new({}, current_user.id, params[:date])
   end
 
   def create
@@ -29,12 +33,8 @@ class LogsController < ApplicationController
     end
   end
 
-  def edit
-    @form = Form::LogCollection.new({}, current_user.id, params[:date])
-  end
-
   def destroy
-    log = current_user.logs.where(log_date: params[:date]).where(study_id: params[:date])
+    log = current_user.logs.where(log_date: params[:date]).where(study_id: params[:id])
     log.update!(study_number: 0)
     redirect_to studies_log_date_path(date: params[:date]), success: t('defaults.message.reset', item: Log.model_name.human), status: :see_other
   end
@@ -69,8 +69,7 @@ class LogsController < ApplicationController
   end
 
   def log_date_display
-    date = params[:date] ? Date.parse(params[:date]) : Date.today
-    @log_date_display = date.strftime("%Y年%m月%d日")
+    @date_display = params[:date] ? Date.parse(params[:date]) : Time.zone.today
   end
 
   def create_log_exist?

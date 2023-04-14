@@ -1,6 +1,14 @@
 class StudiesController < ApplicationController
+  def show
+    @study = current_user.studies.find(params[:id])
+  end
+
   def new
     @study = Study.new
+  end
+
+  def edit
+    @study = current_user.studies.find(params[:id])
   end
 
   def create
@@ -11,14 +19,6 @@ class StudiesController < ApplicationController
       flash.now['danger'] = t('defaults.message.not_resisted', item: Study.model_name.human)
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def show
-    @study = current_user.studies.find(params[:id])
-  end
-
-  def edit
-    @study = current_user.studies.find(params[:id])
   end
 
   def update
@@ -41,9 +41,9 @@ class StudiesController < ApplicationController
     @studies = current_user.studies.order(created_at: :desc)
     @logs = current_user.logs.where(log_date: params[:date])
     log_date = Date.parse(params[:date])
-    @log_date_display = Date.parse(params[:date]).strftime("%Y年%m月%d日")
+    @log_date_display = Date.parse(params[:date])
     study_number = Log.where(user_id: current_user.id).where(log_date: params[:date]).pluck(:study_number)
-    if study_number.all? {|x| x == 0 }
+    if study_number.all?(0)
       redirect_to calendars_path, success: t('defaults.message.deleted', item: Log.model_name.human), status: :see_other
     end
   end
@@ -51,11 +51,11 @@ class StudiesController < ApplicationController
   def log_date_api
     @log = current_user.logs.where(log_date: params[:date])
     study_number = current_user.logs.where(log_date: params[:date]).pluck(:study_number)
-    if study_number.all? {|x| x == 0 }
+    if study_number.all?(0)
       @log.destroy_all
     end
     # logs(勉強の記録)が無い場合はstatus: 0, logs(勉強の記録)がある場合はstatus: 1を設定
-    if @log.empty? || study_number.all? {|x| x == 0 }
+    if @log.empty? || study_number.all?(0)
       status = 0
     else
       status = 1

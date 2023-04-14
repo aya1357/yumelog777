@@ -1,7 +1,7 @@
 class Study < ApplicationRecord
   belongs_to :user
   has_one :memo, dependent: :destroy
-  has_one :log, dependent: :destroy
+  has_many :logs, dependent: :destroy
 
   validates :title, presence: true, length: { maximum: 255 }
   validates :total_number, presence: true, length: { maximum: 5000 }
@@ -25,12 +25,12 @@ class Study < ApplicationRecord
   #読書したページ数を加味して、残りページ数を返す
   def remain_pages(user_id, studied_pages)
     remain_number = total_pages - (total_read_pages(user_id) + studied_pages.to_i)
-    remain_number >= 0 ? remain_number : 0
+    [remain_number, 0].max
   end
 
   #読書したページ数を加味して、自動計算終了日として終了日を返す
   def automatic_calculation_end_date(user_id, studied_pages)
-    today = Date.today
+    today = Time.zone.today
     remaining_days = remain_pages(user_id, studied_pages)
     end_day = remaining_days == 0 ? today : get_end_date(today, remaining_days)
   end

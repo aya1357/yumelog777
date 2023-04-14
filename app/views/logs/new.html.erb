@@ -2,7 +2,7 @@
 <% StudiesHelper %>
 
 <div style="background-color: #f9fcff;">
-  <h1 class="text-center font-bold sm:text-3xl pt-10 text-gray-700 text-xl"><%= @log_date_display %>   <%= t('.title') %></h1>
+  <h1 class="text-center font-bold sm:text-3xl pt-10 text-gray-700 text-xl"><%= l @date_display, format: :long %>&ensp;<%= t('.title') %></h1>
   <div class="py-6 sm:py-8 lg:py-12">
     <div class="max-w-screen-xl md:px-8 mx-auto">
       <div class="grid md:grid-cols-2 gap-4 md:gap-8 md:px-20 px-6">
@@ -34,7 +34,7 @@
                             <%= f.number_field :study_number, in: 0..5000, value: study.target_number, placeholder: "例) 5", id: ("input_#{study.id}"), class: "mr-3 float-left bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 float-left py-3 px-6", required: true %>
                             <span class="block pt-3">ページ</span>
                             <%= link_to "" do %>
-                              <div class="hover:underline ml-8" id="calc_btn_<%=study.id%>">
+                              <div class="hover:underline ml-8" id="calc_btn_<%= study.id %>">
                                 <%= image_tag "logo_cul.png", alt: "計算アイコン", class: "w-6" %>
                                 <span class="text-sm font-bold">計算</span>
                               </div>

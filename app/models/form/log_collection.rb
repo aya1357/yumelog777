@@ -7,7 +7,7 @@ class Form::LogCollection < Form::Base
     super attributes
     # ログを入力するためのフォーム画面を表示するために、デフォルトのログを1件用意する必要があるため、空のLogオブジェクトを1件生成してlogsに格納する必要がある
     if user_id.blank?
-      self.logs = FORM_COUNT.times.map { Log.new() } unless self.logs.present?
+      self.logs = FORM_COUNT.times.map { Log.new() } if self.logs.blank?
     else
       self.logs = Log.where(user_id: user_id, log_date: date)
     end
