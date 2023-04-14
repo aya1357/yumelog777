@@ -10,12 +10,12 @@ module ApplicationHelper
       site: 'tsumilog',
       title: '積みログ',
       reverse: true,
-      separator: '|',   #Webサイト名とページタイトルを区切るために使用されるテキスト
+      separator: '|',
       description: '積みログは、積読本解消のための読書管理カレンダーアプリです。使い方は簡単!! 本を登録すると残りページ数や終了日が一目で分かり、読書スケジュールを作成することが出来ます。',
-      keywords: 'カレンダー, 積読本, ビジネス書, 資格本, 勉強本, 社会人',   #キーワードを「,」区切りで設定する
-      canonical: request.original_url,   #優先するurlを指定する
-      noindex: ! Rails.env.production?,
-      icon: [                    #favicon、apple用アイコンを指定する
+      keywords: 'カレンダー, 積読本, ビジネス書, 資格本, 勉強本, 社会人',
+      canonical: request.original_url,
+      noindex: !Rails.env.production?,
+      icon: [
         { href: image_url('header_logo1.png'), sizes: '180x180'}
       ],
       og: {

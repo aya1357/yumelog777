@@ -5,9 +5,19 @@ class MemosController < ApplicationController
     @study = current_user.studies.find(params[:study_id])
   end
 
+  def show
+    @study = current_user.studies.find(params[:study_id])
+    @memo = Memo.find(params[:id])
+  end
+
   def new
     @study = current_user.studies.find(params[:study_id])
     @memo = Memo.new
+  end
+
+  def edit
+    @study = current_user.studies.find(params[:study_id])
+    @memo = current_user.memos.find(params[:id])
   end
 
   def create
@@ -19,16 +29,6 @@ class MemosController < ApplicationController
       flash.now['danger'] = t('defaults.message.not_created', item: Memo.model_name.human)
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def show
-    @study = current_user.studies.find(params[:study_id])
-    @memo = Memo.find(params[:id])
-  end
-
-  def edit
-    @study = current_user.studies.find(params[:study_id])
-    @memo = current_user.memos.find(params[:id])
   end
 
   def update

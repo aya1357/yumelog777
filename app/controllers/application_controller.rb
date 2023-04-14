@@ -8,6 +8,4 @@ class ApplicationController < ActionController::Base
     flash[:warning] = t('defaults.message.require_login')
     redirect_to login_path
   end
-
-
 end

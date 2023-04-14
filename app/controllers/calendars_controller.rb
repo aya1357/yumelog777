@@ -10,5 +10,4 @@ class CalendarsController < ApplicationController
     @study.destroy!
     redirect_to calendars_path, success: t('defaults.message.deleted', item: Study.model_name.human), status: :see_other
   end
-
 end
