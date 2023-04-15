@@ -91,4 +91,4 @@ README〜ER図作成：12/14 〆切
 [画面遷移図](https://www.figma.com/file/yTq0bQsHWISKMvBg7mlkXX/%E7%84%A1%E9%A1%8C?node-id=0%3A1&t=ol4j64oMJC5fHmsK-0)
 
 【ER図】<br>
-[![Image from Gyazo](https://i.gyazo.com/af818587af5b68ef5c90f65cb02df91e.png)](https://gyazo.com/af818587af5b68ef5c90f65cb02df91e)
+[![Image from Gyazo](https://i.gyazo.com/49337581e0e69c12e681baf7de996b07.png)](https://gyazo.com/49337581e0e69c12e681baf7de996b07)
