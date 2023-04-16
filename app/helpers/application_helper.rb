@@ -30,6 +30,10 @@ module ApplicationHelper
       twitter: {
         card: 'summary_large_image',
         site: '@ツイッターのアカウント名',
+        title: '積みログ',
+        description: '積みログは、積読本解消のための読書管理カレンダーアプリです。',
+        image: image_url('tsumilog_img.png'),
+        # text: "【積みログ】\n本のタイトルを登録しました。\n総ページ数: ⚪︎ページ\n1日目標ページ数: ⚪︎ページ\n目標終了予定日: 1月1日\n#積みログ #積読本解消 #カレンダーアプリ"
       }
     }
   end
