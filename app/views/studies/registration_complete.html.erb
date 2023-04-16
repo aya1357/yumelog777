@@ -17,7 +17,7 @@
             <span class="md:font-extrabold text-xs" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">Twitterで共有</span>
           </div>
         <% end %>
-        <%= link_to 'tweet', "https://twitter.com/intent/tweet?text=【積みログ】%0A本のタイトルを登録しました。%0A目標終了予定日は1月1日です。#積みログ #積読本解消 #カレンダーアプリ" %>
+        <%= link_to 'tweet', "https://twitter.com/intent/tweet?url=#{CGI.escape(request.original_url)}&text=【積みログ】%0A本のタイトルを登録しました。%0A目標終了予定日は1月1日です。#積みログ #積読本解消 #カレンダーアプリ" %>
         <%= link_to 'tweet', "https://twitter.com/intent/tweet?#{{
           url: request.original_url,
           text: "【積みログ】\n本のタイトルを登録しました。\n総ページ数: ⚪︎ページ\n1日目標ページ数: ⚪︎ページ\n目標終了予定日: 1月1日\n#積みログ #積読本解消 #カレンダーアプリ",
