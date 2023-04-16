@@ -32,13 +32,10 @@ module ApplicationHelper
         site: '@your_twitter_account',
         title: page_title,
         description: '積みログは、積読本解消のための読書管理カレンダーアプリです。使い方は簡単!! 本を登録すると残りページ数や終了日が一目で分かり、読書スケジュールを作成することが出来ます。',
-        image: image_url('tsumilog_img.png')
+        image: image_url('food.jpg')
       }
     }
   end
 
-  def twitter_share_message(user)
-    message = "&text=【私の米（まい）ランキングはこれです!】%0a%0a  No1. #{ user.user_rankings.find_by(rank:1).rice.name }%0a%0a  No2. #{ user.user_rankings.find_by(rank:2).rice.name }%0a%0a  No3. #{ user.user_rankings.find_by(rank:3).rice.name }%0a%0a"
-    return message
-  end
+
 end
