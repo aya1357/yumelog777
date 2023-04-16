@@ -32,7 +32,7 @@ module ApplicationHelper
         site: '@your_twitter_account',
         title: page_title,
         description: '積みログは、積読本解消のための読書管理カレンダーアプリです。使い方は簡単!! 本を登録すると残りページ数や終了日が一目で分かり、読書スケジュールを作成することが出来ます。',
-        image: image_url('food.jpg')
+        image: image_url('header_guide.png')
       }
     }
   end
