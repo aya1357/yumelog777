@@ -1,0 +1,30 @@
+<% content_for(:title, t('.top_title')) %>
+
+<div class="min-h-screen py-6 justify-center sm:py-12" style="background-color: #f9fcff;">
+  <div class="py-3 sm:max-w-xl sm:mx-auto mx-4">
+    <div class="px-4 py-10 shadow-lg sm:rounded-3xl sm:p-20 rounded-lg bg-blue-50">
+      <h1 class="font-bold text-center text-2xl md:text-3xl" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">本の登録が完了しました</h1>
+      <div class="flex justify-center items-center mt-12 ml-8">
+        <%= link_to calendars_path do %>
+          <div class="hover:underline flex flex-col justify-center items-center space-y-2">
+            <%= image_tag "header_calendar.png", alt: "カレンダーアイコン" %>
+            <span class="md:font-extrabold text-xs" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">カレンダー画面へ</span>
+          </div>
+        <% end %>
+        <%= link_to calendars_path do %>
+          <div class="hover:underline flex flex-col justify-center items-center space-y-2">
+            <%= image_tag "twitter_icon.png", alt: "Twitterアイコン", style: "width: 50%;" %>
+            <span class="md:font-extrabold text-xs" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">Twitterで共有</span>
+          </div>
+        <% end %>
+        <%= link_to 'tweet', "https://twitter.com/intent/tweet?text=【積みログ】%0A本のタイトルを登録しました。%0A目標終了予定日は1月1日です。#積みログ #積読本解消 #カレンダーアプリ" %>
+        <%= link_to 'tweet', "https://twitter.com/intent/tweet?#{{
+          url: request.original_url,
+          text: "【積みログ】\n本のタイトルを登録しました。\n総ページ数: ⚪︎ページ\n1日目標ページ数: ⚪︎ページ\n目標終了予定日: 1月1日\n#積みログ #積読本解消 #カレンダーアプリ",
+          via: 'YourTwitterHandle'
+        }.to_param}", rel: 'nofollow', target: '_blank', onClick: "window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;", class: 'twitter-link' %>
+
+      </div>
+    </div>
+  </div>
+</div>

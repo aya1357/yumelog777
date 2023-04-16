@@ -1,4 +1,6 @@
 class StudiesController < ApplicationController
+  skip_before_action :require_login, only: %i[registration_complete]
+
   def show
     @study = current_user.studies.find(params[:id])
   end
@@ -74,6 +76,9 @@ class StudiesController < ApplicationController
     study = current_user.studies.where(id: params["id"])
     study.update(status: false)
     redirect_to calendars_path, success: t('defaults.message.status_not_done')
+  end
+
+  def registration_complete
   end
 
   private

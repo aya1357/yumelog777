@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'studies/log_date_api', to: 'studies#log_date_api'
   get '/studies/status_done', to: 'studies#status_done'
   get '/studies/status_not_done', to: 'studies#status_not_done'
+  get '/studies/registration_complete', to: 'studies#registration_complete'
   resources :users, only: %i[new create]
   resource :profile, only: %i[show edit update]
   resources :calendars, only: %i[index destroy]
@@ -27,5 +28,4 @@ Rails.application.routes.draw do
   get '/faq', to: 'static_pages#faq'
   get '/guide', to: 'static_pages#guide'
   get '/start', to: 'static_pages#start'
-
 end
