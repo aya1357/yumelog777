@@ -21,18 +21,14 @@ module ApplicationHelper
       og: {
         site_name: 'tsumilog',
         title: '積みログ',
-        description: '積みログは、積読本解消のための読書管理カレンダーアプリです。使い方は簡単！！本を登録すると残りページ数や終了日が一目で分かり、読書スケジュールを作成することが出来ます。',
+        description: '積みログは、積読本解消のための読書管理カレンダーアプリです。',
         type: 'website',
         url: request.original_url,
-        image: image_url('tsumilog_img.png'),
+        image: image_url('/twitter_card.png'),
         locale: 'ja_JP',
       },
       twitter: {
         card: 'summary_large_image',
-        site: '@aya1room',
-        title: '積みログ',
-        description: '積みログは、積読本解消のための読書管理カレンダーアプリです。',
-        image: image_url('tsumilog_img.png'),
       }
     }
   end
