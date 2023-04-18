@@ -29,10 +29,10 @@ module ApplicationHelper
       },
       twitter: {
         card: 'summary_large_image',
-        site: '@your_twitter_account',
+        site: '@aya1room',
         title: '積みログ',
         description: '積みログは、積読本解消のための読書管理カレンダーアプリです。',
-        image: image_url('/public/tsumilog_img.png'),
+        image: image_url('tsumilog_img.png'),
       }
     }
   end
