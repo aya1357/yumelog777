@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/studies/status_done', to: 'studies#status_done'
   get '/studies/status_not_done', to: 'studies#status_not_done'
   get '/studies/registration_complete', to: 'studies#registration_complete'
+  get '/studies/test', to: 'studies#test'
   resources :users, only: %i[new create]
   resource :profile, only: %i[show edit update]
   resources :calendars, only: %i[index destroy]

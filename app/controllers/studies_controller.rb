@@ -16,7 +16,7 @@ class StudiesController < ApplicationController
   def create
     @study = current_user.studies.build(study_params)
     if @study.save
-      redirect_to calendars_path, success: t('defaults.message.registed', item: Study.model_name.human)
+      redirect_to studies_registration_complete_path(id: @study.id), success: t('defaults.message.registed', item: Study.model_name.human)
     else
       flash.now['danger'] = t('defaults.message.not_resisted', item: Study.model_name.human)
       render :new, status: :unprocessable_entity
@@ -80,6 +80,9 @@ class StudiesController < ApplicationController
 
   def registration_complete
     @study = current_user.studies.find(params[:id])
+  end
+
+  def test
   end
 
   private
