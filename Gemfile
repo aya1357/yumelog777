@@ -81,8 +81,12 @@ end
 gem 'tailwindcss-rails'
 gem 'cssbundling-rails'
 
-# ログイン機能
-gem 'sorcery'
+# 画像編集
+gem 'mini_magick'
+gem 'rmagick'
+
+# OGP, メタタグの設定
+gem 'meta-tags'
 
 # デバッグ
 gem 'pry-rails'
@@ -93,5 +97,5 @@ gem 'rails-i18n'
 # カレンダー
 gem 'simple_calendar', '~> 2.4'
 
-# OGP, メタタグの設定
-gem 'meta-tags'
+# ログイン機能
+gem 'sorcery'

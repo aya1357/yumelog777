@@ -82,8 +82,6 @@ class StudiesController < ApplicationController
     @study = current_user.studies.find(params[:id])
   end
 
-  def test
-  end
 
   private
 

@@ -2,6 +2,7 @@ class LogsController < ApplicationController
   before_action :check_guest, except: [:new]
   before_action :get_study, only: %i[new create edit]
   before_action :log_date_display, only: %i[new edit]
+  include OgpImage
 
   def new
     @form = Form::LogCollection.new
@@ -26,7 +27,9 @@ class LogsController < ApplicationController
 
     if @form.save
       Log.where(id: log_ids).destroy_all if log_ids.present?
-      redirect_to studies_log_date_path(date: @log_date), success: t('defaults.message.created', item: Log.model_name.human)
+      @log = @form.logs.first
+      # redirect_to studies_log_date_path(date: @log_date), success: t('defaults.message.created', item: Log.model_name.human)
+      redirect_to completed_log_path(id: @log.id), success: t('defaults.message.created', item: Log.model_name.human)
     else
       flash.now['danger'] = t('defaults.message.not_created', item: Log.model_name.human)
       render :new, status: :unprocessable_entity
@@ -51,6 +54,15 @@ class LogsController < ApplicationController
     automatic_calculation_end_date = study.automatic_calculation_end_date(current_user.id, params[:studied_pages])
     log = { automatic_calculation_end_date: automatic_calculation_end_date, remain_pages: remain_pages }
     render json: log
+  end
+
+  def completed
+    @log = Log.find(params[:id])
+  end
+
+  def image
+    image = build_image
+    send_data image.to_blob, type: 'image/png', disposition: 'inline'
   end
 
   private
