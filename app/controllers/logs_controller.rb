@@ -60,8 +60,39 @@ class LogsController < ApplicationController
     @log = Log.find(params[:id])
   end
 
+  def image_build
+    @log = Log.find(params[:id])
+    image = MiniMagick::Image.open('./app/assets/images/frame.png')
+    # test_image = MiniMagick::Image.open('./app/assets/images/test.png')
+    text = @log.log_date.strftime('%Y年%m月%d日')
+    test = Log.where(log_date: @log.log_date).pluck(:study_number).sum
+    image.resize "800x418"
+    test_image_files = Dir.glob('./app/assets/images/cards/*.png')
+    random_test_image_path = test_image_files.sample
+    test_image = MiniMagick::Image.open(random_test_image_path)
+    test_image.resize "380x280"
+
+    # 画像の合成
+    image = image.composite(test_image) do |c|
+      c.gravity "NorthWest"
+      c.geometry "+60+170" # ここで位置を調整できます。"+X+Y"の形式で、XおよびYはピクセル単位です。
+    end
+
+    image.combine_options do |c|
+      c.font "./app/assets/fonts/NotoSansJP-Medium.ttf"
+      c.pointsize "30"
+      c.gravity "NorthWest"
+      c.fill "black"
+      c.draw "text 70, 20'#{text}'"
+      c.draw "text 90, 70'総読書ページ数'"
+      c.draw "text 90, 120'#{test}ページ'"
+    end
+    image.format 'png'
+  end
+
+
   def image
-    image = build_image
+    image = image_build
     send_data image.to_blob, type: 'image/png', disposition: 'inline'
   end
 
