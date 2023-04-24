@@ -62,30 +62,49 @@ class LogsController < ApplicationController
 
   def image_build
     @log = Log.find(params[:id])
+
+    #背景画像の設定
     image = MiniMagick::Image.open('./app/assets/images/frame.png')
-    # test_image = MiniMagick::Image.open('./app/assets/images/test.png')
-    text = @log.log_date.strftime('%Y年%m月%d日')
-    test = Log.where(log_date: @log.log_date).pluck(:study_number).sum
     image.resize "800x418"
-    test_image_files = Dir.glob('./app/assets/images/cards/*.png')
-    random_test_image_path = test_image_files.sample
-    test_image = MiniMagick::Image.open(random_test_image_path)
-    test_image.resize "380x280"
+
+    #吹き出し画像の設定
+    speech_bubble = MiniMagick::Image.open('./app/assets/images/speech_bubble.png')
+    speech_bubble.resize "420x320"
+
+    #キャラクターの設定
+    character_files = Dir.glob('./app/assets/images/cards/*.png')
+    random_character = character_files.sample
+    character = MiniMagick::Image.open(random_character)
+    character.resize "310x200"
+
+    #テキストの設定
+    log_date = @log.log_date.strftime('%Y年%m月%d日')
+    total_read_pages = Log.where(log_date: @log.log_date).pluck(:study_number).sum
+
+    #キャラクターのコメントをランダム表示
+    comments = ["テスト", "test", "テステス", "testes", "ttt"]
+    random_comment = comments.sample
 
     # 画像の合成
-    image = image.composite(test_image) do |c|
+    image = image.composite(character) do |c|
       c.gravity "NorthWest"
-      c.geometry "+60+170" # ここで位置を調整できます。"+X+Y"の形式で、XおよびYはピクセル単位です。
+      c.geometry "+60+210"
+    end
+
+    image = image.composite(speech_bubble) do |c|
+      c.gravity "NorthWest"
+      c.geometry "+340+90"
     end
 
     image.combine_options do |c|
-      c.font "./app/assets/fonts/NotoSansJP-Medium.ttf"
+      c.font "./app/assets/fonts/GenJyuuGothic-Bold.ttf"
       c.pointsize "30"
       c.gravity "NorthWest"
       c.fill "black"
-      c.draw "text 70, 20'#{text}'"
-      c.draw "text 90, 70'総読書ページ数'"
-      c.draw "text 90, 120'#{test}ページ'"
+      c.draw "text 130, 45'#{log_date}'"
+      c.draw "text 130, 100'総読書ページ数'"
+      c.draw "text 130, 140'#{total_read_pages}ページ'"
+      c.draw "text 450, 160'#{random_comment}'"
     end
     image.format 'png'
   end
