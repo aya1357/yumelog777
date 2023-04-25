@@ -28,8 +28,8 @@ class LogsController < ApplicationController
     if @form.save
       Log.where(id: log_ids).destroy_all if log_ids.present?
       @log = @form.logs.first
-      # redirect_to studies_log_date_path(date: @log_date), success: t('defaults.message.created', item: Log.model_name.human)
-      redirect_to completed_log_path(id: @log.id), success: t('defaults.message.created', item: Log.model_name.human)
+      redirect_to studies_log_date_path(date: @log_date), success: t('defaults.message.created', item: Log.model_name.human)
+      # redirect_to completed_log_path(id: @log.id), success: t('defaults.message.created', item: Log.model_name.human)
     else
       flash.now['danger'] = t('defaults.message.not_created', item: Log.model_name.human)
       render :new, status: :unprocessable_entity
