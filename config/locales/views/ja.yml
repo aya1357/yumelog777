@@ -16,18 +16,21 @@ ja:
     add: '追加'
     password_reset: 'パスワードリセット'
     message:
-      log_guest_login: 'アカウントの登録後に読書記録を登録出来ます'
-      guest_login: 'アカウントの登録後に使用出来るようになります'
-      require_login: 'ログインしてください'
-      created: '%{item}を作成しました'
-      registed: '%{item}を登録しました'
-      not_created: '%{item}を作成出来ませんでした'
-      updated: '%{item}を更新しました'
-      not_updated: '%{item}を更新出来ませんでした'
-      deleted: '%{item}を削除しました'
-      reset: '%{item}をリセットしました'
+      log_guest_login: 'アカウントの登録後に読書記録を登録出来ます。'
+      guest_login: 'アカウントの登録後に使用出来るようになります。'
+      require_login: 'ログインしてください。'
+      withdrawal: "退会処理が完了しました。ご利用ありがとうございました。"
+      user_is_not_active: 'アカウントが無効化されています。'
+      withdrew: '退会済みです。再度ご登録をしてご利用ください。'
+      created: '%{item}を作成しました。'
+      registed: '%{item}を登録しました。'
+      not_created: '%{item}を作成出来ませんでした。'
+      updated: '%{item}を更新しました。'
+      not_updated: '%{item}を更新出来ませんでした。'
+      deleted: '%{item}を削除しました。'
+      reset: '%{item}をリセットしました。'
       delete_confirm: '削除しますか？'
-      not_authorized: '権限がありません'
+      not_authorized: '権限がありません。'
       status_done: '進行中の本を完了にしました。'
       status_not_done: '完了済の本を未完了に戻しました。'
       log_registered: "読書の記録は登録済みです。"
@@ -35,16 +38,16 @@ ja:
     new:
       title: 'ユーザー登録'
     create:
-      success: 'ユーザー登録が完了しました'
-      fail: 'ユーザー登録に失敗しました'
+      success: 'ユーザー登録が完了しました。'
+      fail: 'ユーザー登録に失敗しました。'
   user_sessions:
     new:
       title: 'ログイン'
     create:
-      success: 'ログインしました'
-      fail: 'ログインに失敗しました'
+      success: 'ログインしました。'
+      fail: 'ログインに失敗しました。'
     destroy:
-      success: 'ログアウトしました'
+      success: 'ログアウトしました。'
   profiles:
     show:
       title: 'アカウント'
@@ -56,13 +59,13 @@ ja:
       submit: '送信'
     edit:
       title: 'パスワードリセット'
-      new_password: '新しいパスワードをご入力ください'
-      new_password_confirmation: '確認用として新しいパスワードをもう一度ご入力ください'
+      new_password: '新しいパスワードをご入力ください。'
+      new_password_confirmation: '確認用として新しいパスワードをもう一度ご入力ください。'
     create:
-      success: 'パスワードリセット手順を送信しました'
+      success: 'パスワードリセット手順を送信しました。'
     update:
-      success: 'パスワードを変更しました'
-      fail: 'パスワードの変更に失敗しました'
+      success: 'パスワードを変更しました。'
+      fail: 'パスワードの変更に失敗しました。'
   calendars:
     index:
       title: 'カレンダー'
