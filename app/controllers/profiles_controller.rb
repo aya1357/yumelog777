@@ -2,6 +2,10 @@ class ProfilesController < ApplicationController
   before_action :set_user, only: %i[update edit]
   before_action :check_guest
 
+  def show
+    @user = User.find(current_user.id)
+  end
+
   def edit; end
 
   def update

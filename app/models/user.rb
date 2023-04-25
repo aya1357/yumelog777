@@ -22,4 +22,14 @@ class User < ApplicationRecord
   validates :reset_password_token, presence: true, uniqueness: true, allow_nil: true
 
   enum role: { general: 0, admin: 1, guest: 2 }
+
+  def is_active?
+    self.is_active
+  end
+  
+  def validate_active_status
+    if self.is_active == false
+      errors.add(:is_active, "アカウントが無効化されています。")
+    end
+  end
 end
