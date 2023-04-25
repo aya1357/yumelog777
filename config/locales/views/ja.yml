@@ -92,6 +92,8 @@ ja:
       title: "利用規約"
     start:
       title: "始めてみる"
+    guide:
+      title: "使い方"
   memos:
     new:
       title: 'メモを新規登録'
