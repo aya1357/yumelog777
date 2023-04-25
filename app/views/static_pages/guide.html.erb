@@ -1,5 +1,239 @@
-<% content_for(:title, t('.title')) %>
+<div style="background-color: #f9fcff;">
+  <h1 class="flex justify-center items-center md:text-3xl text-2xl pt-6 font-bold">積みログの使い方</h1>
+  <section>
+    <section class="text-gray-600 body-font overflow-hidden">
+      <div class="container px-5 py-8 mx-auto">
+        <div class="lg:w-4/5 mx-auto flex flex-wrap justify-center items-center">
+        <%= image_tag "guides/book_guide.png", alt: "book_register_img", class: "lg:w-[230px] w-full lg:h-auto h-[300px] object-cover object-center rounded md:mx-1 mx-10" %>
+          <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+            <div>
+              <div class="badge mb-3">step1</div>
+              <h1 class="text-gray-900 md:text-3xl text-2xl font-mono title-font mb-4">本を登録</h1>
+            </div>
+            <p class="leading-relaxed">カレンダー画面のカレンダー下の【本を追加する】ボタンから本の登録が出来ます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="text-gray-600 body-font overflow-hidden">
+      <div class="container px-5 py-8 mx-auto">
+        <div class="lg:w-4/5 mx-auto flex flex-wrap justify-center items-center">
+          <%= image_tag "guides/book_guide1.png", alt: "book_register_img", class: "lg:w-[230px] w-full lg:h-auto h-[300px] object-cover object-center rounded md:mx-1 mx-10" %>
+          <div class="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
+            <div class="flex flex-col mb-10 lg:items-start items-center space-y-5">
+              <div class="flex-grow text-left">
+                <div>
+                  <div class="badge mb-3 mt-6">step2</div>
+                  <h1 class="text-gray-900 md:text-3xl text-2xl font-mono title-font mb-4">本の詳細を登録(1)</h1>
+                  <p class="leading-relaxed text-base">読む本の詳細が登録出来ます。</p>
+                </div>
+                <div class="flex items-center mb-3">
+                  <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mt-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                    </svg>
+                  </div>
+                  <h2 class="text-gray-900 text-lg title-font font-medium mt-5 ml-4">読み始めるページ数</h2>
+                </div>
+                <p class="leading-relaxed text-base mb-2">目次等を抜いた読み始めるページ数を入力してください。</p>
+              </div>
+              <div class="flex-grow">
+                <div class="flex items-center">
+                  <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                    </svg>
+                  </div>
+                  <h2 class="text-gray-900 text-lg title-font font-medium mb-3 ml-4">読み終えるページ数</h2>
+                </div>
+                <p class="leading-relaxed text-base text-left">索引等を抜いた読み終えるページ数を入力してください。</p>
+              </div>
+              <div class="flex-grow">
+                <div class="flex items-center">
+                  <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                    </svg>
+                  </div>
+                  <h2 class="text-gray-900 text-lg title-font font-medium mb-3 ml-4">注意事項</h2>
+                </div>
+                <ul>
+                  <li class="leading-relaxed text-base text-left">・ページ数は半角数字で入力してください。</li>
+                  <li class="leading-relaxed text-base text-left">・*必須の箇所は入力が必須の項目です。</li>
+                </ul>
+              </div>
 
-<div class="m-auto" style="background-color: #f9fcff;">
-  coming soon
+            </div>
+          </div>
+      </div>
+    </section>
+    <section class="text-gray-600 body-font overflow-hidden">
+      <div class="container px-5 py-8 mx-auto">
+        <div class="lg:w-4/5 mx-auto flex flex-wrap justify-center items-center">
+          <%= image_tag "guides/book_guide2.png", alt: "book_register_img", class: "lg:w-[230px] w-full lg:h-auto h-[300px] object-cover object-center rounded md:mx-1 mx-10" %>
+          <div class="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
+            <div class="flex flex-col mb-10 lg:items-start items-center space-y-5">
+              <div class="flex-grow text-left">
+                <div>
+                  <div class="badge mb-3 mt-6">step3</div>
+                  <h1 class="text-gray-900 md:text-3xl text-2xl font-mono title-font mb-4">本の詳細を登録(2)</h1>
+                  <p class="leading-relaxed text-base">読む本の詳細が登録出来ます。</p>
+                </div>
+                <div class="flex items-center mb-3">
+                  <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mt-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                    </svg>
+                  </div>
+                  <h2 class="text-gray-900 text-lg title-font font-medium mt-5 ml-4">開始予定日</h2>
+                </div>
+                <p class="leading-relaxed text-base mb-2">カレンダーのアイコンを押すと日付が登録出来ます。</p>
+              </div>
+              <div class="flex-grow">
+                <div class="flex items-center">
+                  <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                    </svg>
+                  </div>
+                  <h2 class="text-gray-900 text-lg title-font font-medium mb-3 ml-4">取り組む曜日</h2>
+                </div>
+                <p class="leading-relaxed text-base text-left">曜日のボタンを押してみてください。背景が青色の表示が選択された曜日となります。</p>
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+  </section>
+  <section>
+    <section class="text-gray-600 body-font overflow-hidden">
+      <div class="container px-5 py-8 mx-auto">
+        <div class="lg:w-4/5 mx-auto flex flex-wrap justify-center items-center">
+        <%= image_tag "guides/log_guide.png", alt: "book_register_img", class: "lg:w-[230px] w-full lg:h-auto h-[300px] object-cover object-center rounded md:mx-1 mx-10" %>
+          <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+            <div>
+              <div class="badge mb-3">step1</div>
+              <h1 class="text-gray-900 md:text-3xl text-2xl font-mono title-font mb-4">読書の記録を登録</h1>
+            </div>
+            <p class="leading-relaxed">カレンダー画面から読書記録を登録したい日付を選択すると、読書記録の登録が出来ます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="text-gray-600 body-font overflow-hidden">
+      <div class="container px-5 py-8 mx-auto">
+        <div class="lg:w-4/5 mx-auto flex flex-wrap justify-center items-center">
+          <%= image_tag "guides/log_guide1.png", alt: "book_register_img", class: "lg:w-[230px] w-full lg:h-auto h-[300px] object-cover object-center rounded md:mx-1 mx-10" %>
+          <div class="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
+            <div class="flex flex-col mb-10 lg:items-start items-center space-y-5">
+              <div class="flex-grow text-left">
+                <div>
+                  <div class="badge mb-3 mt-6">step2</div>
+                  <h1 class="text-gray-900 md:text-3xl text-2xl font-mono title-font mb-4">読書したページ数を登録</h1>
+                  <p class="leading-relaxed text-base">読む本の詳細が登録出来ます。</p>
+                </div>
+                <div class="flex items-center mb-3">
+                  <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mt-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                    </svg>
+                  </div>
+                  <h2 class="text-gray-900 text-lg title-font font-medium mt-5 ml-4">読書したページ数</h2>
+                </div>
+                <p class="leading-relaxed text-base">その日に読んだ本のページ数を入力欄に入力出来ます。</p>
+                <p class="leading-relaxed text-base mb-2">本を登録時に登録した1日の目標ページ数が初期設定として入力されています。</p>
+              </div>
+              <div class="flex-grow">
+                <div class="flex items-center">
+                  <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                    </svg>
+                  </div>
+                  <h2 class="text-gray-900 text-lg title-font font-medium mb-3 ml-4">注意事項</h2>
+                </div>
+                <ul>
+                  <li class="leading-relaxed text-base text-left">・ページ数は半角数字で入力してください。</li>
+                  <li class="leading-relaxed text-base text-left">・ページ数が0の場合は0を入力してください。</li>
+                  <li class="leading-relaxed text-base text-left">・進行中の本で全ての本のページ数が0の場合は登録出来ません。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+    <section class="text-gray-600 body-font overflow-hidden">
+      <div class="container px-5 py-8 mx-auto">
+        <div class="lg:w-4/5 mx-auto flex flex-wrap justify-center items-center">
+          <%= image_tag "guides/log_guide2.png", alt: "book_register_img", class: "lg:w-[230px] w-full lg:h-auto h-[300px] object-cover object-center rounded md:mx-1 mx-10" %>
+          <div class="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
+            <div class="flex flex-col mb-10 lg:items-start items-center space-y-5">
+              <div class="flex-grow text-left">
+                <div>
+                  <div class="badge mb-3 mt-6">step3</div>
+                  <h1 class="text-gray-900 md:text-3xl text-2xl font-mono title-font mb-4">残りページ数と終了日を計算(1)</h1>
+                  <p class="leading-relaxed text-base">読書ページ数に合わせて、自動で残りページ数と終了予定日を算出してくれます。</p>
+                </div>
+                <div class="flex items-center mb-3">
+                  <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mt-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z" />
+                    </svg>
+                  </div>
+                  <h2 class="text-gray-900 text-lg title-font font-medium mt-5 ml-4">計算機能</h2>
+                </div>
+                <p class="leading-relaxed text-base mb-2">フォームに読んだページ数を入力して各フォームの右隣にある計算ボタンを押してください。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="text-gray-600 body-font overflow-hidden">
+      <div class="container px-5 py-8 mx-auto">
+        <div class="lg:w-4/5 mx-auto flex flex-wrap justify-center items-center">
+          <%= image_tag "guides/log_guide3.png", alt: "book_register_img", class: "lg:w-[300px] w-full lg:h-auto h-[400px] object-cover object-center rounded md:mx-1 mx-10 md:my-1 my-6" %>
+          <div class="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
+            <div class="flex flex-col mb-10 lg:items-start items-center space-y-5">
+              <div class="flex-grow text-left">
+                <div>
+                  <div class="badge mb-3 mt-6">step4</div>
+                  <h1 class="text-gray-900 md:text-3xl text-2xl font-mono title-font mb-4">残りページ数と終了日を計算(2)</h1>
+                  <p class="leading-relaxed text-base">読書ページ数に合わせて、自動で残りページ数と終了予定日を算出してくれます。</p>
+                </div>
+                <div class="flex items-center mb-3">
+                  <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mt-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z" />
+                    </svg>
+                  </div>
+                  <h2 class="text-gray-900 text-lg title-font font-medium mt-5 ml-4">予定よりも読んだページ数が多い場合</h2>
+                </div>
+                <p class="leading-relaxed text-base mb-2">自動計算終了日の終了日が目標終了予定日よりも短縮された日付が表示されます。</p>
+                <div class="flex items-center mb-3">
+                  <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mt-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z" />
+                    </svg>
+                  </div>
+                  <h2 class="text-gray-900 text-lg title-font font-medium mt-5 ml-4">予定よりも読んだページ数が少ない場合</h2>
+                </div>
+                <p class="leading-relaxed text-base mb-2">自動計算終了日の終了日が目標終了予定日よりも延長された日付が表示されます。</p>
+                <div class="flex items-center mb-3">
+                  <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mt-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                    </svg>
+                  </div>
+                  <h2 class="text-gray-900 text-lg title-font font-medium mt-5 ml-4">目標終了予定日と自動計算終了日の違い</h2>
+                </div>
+                <p class="leading-relaxed text-base mb-2">目標終了予定日:初期設定時の本のページ数と取り組む曜日と1日の目標ページ数から終了日を算出します。</p>
+                <p class="leading-relaxed text-base mb-2">自動計算終了日:読書の登録する日付までに読んだページ数の差異を加味して終了日を算出します。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
 </div>
