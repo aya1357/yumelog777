@@ -13,7 +13,7 @@ module ApplicationHelper
       separator: '|',
       description: '積みログは、積読本解消のための読書管理カレンダーアプリです。使い方は簡単!! 本を登録すると残りページ数や終了日が一目で分かり、読書スケジュールを作成することが出来ます。',
       keywords: 'カレンダー, 積読本, ビジネス書, 資格本, 勉強本, 社会人',
-      canonical: request.original_url,
+      canonical: 'https://www.tsumilog.net/',
       noindex: !Rails.env.production?,
       icon: [
         { href: image_url('header_logo1.png'), sizes: '180x180'}
@@ -23,7 +23,7 @@ module ApplicationHelper
         title: '積みログ',
         description: '積みログは、積読本解消のための読書管理カレンダーアプリです。',
         type: 'website',
-        url: request.original_url,
+        url: 'https://www.tsumilog.net/',
         image: image_url('/twitter_card.png'),
         locale: 'ja_JP',
       },

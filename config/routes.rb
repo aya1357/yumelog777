@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get '/studies/status_done', to: 'studies#status_done'
   get '/studies/status_not_done', to: 'studies#status_not_done'
   get '/studies/registration_complete', to: 'studies#registration_complete'
-  get '/studies/test', to: 'studies#test'
   resources :users, only: %i[new create]
   resource :profile, only: %i[show edit update]
   resources :calendars, only: %i[index destroy]
@@ -20,6 +19,8 @@ Rails.application.routes.draw do
   end
   resource :log, only: %i[new create edit update destroy] do
     get 'logs/log_culc_api', to: 'logs#log_culc_api'
+    get 'completed', to: 'logs#completed', on: :member
+    get 'image', to: 'logs#image', on: :member
   end
   get 'logs/destroy_all', to: 'logs#destroy_all'
   resources :password_resets, only: %i[new create edit update]
