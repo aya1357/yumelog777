@@ -10,6 +10,7 @@ ja:
     show: '詳細'
     edit: '編集'
     delete: '削除'
+    withdrawal: '退会'
     all_delete: '一括削除'
     update: '更新'
     add: '追加'

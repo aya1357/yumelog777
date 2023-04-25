@@ -1,0 +1,17 @@
+<section class="text-gray-600 body-font" style="background-color: #f9fcff;">
+  <div class="container mx-auto flex flex-col px-5 py-24 justify-center items-center">
+    <%= image_tag "withdrawal.png", class: "mb-10 object-cover object-center rounded", alt: "withdrawl_logo", width: 120, height: 30 %>
+    <div class="w-full md:w-2/3 flex flex-col mb-1 items-center text-center">
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-bold text-gray-900 font-mono">退会前にご確認ください！</h1>
+      <p class="mb-2 leading-relaxed">
+        退会手続きをされますと、全てのサービスがご利用いただけなくなります。<br>
+        再度ご利用をいただく場合には、新規登録のお手続きが必要になります。<br>
+        本当に退会してよろしいですか？
+      </p>
+      <div class="flex justify-center space-x-6">
+        <%= link_to "退会する", unsubscribe_path, class: "block bg-red-600 hover:bg-red-800 active:bg-gray-600 focus-visible:ring ring-gray-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3 mt-10 mb-5" %>
+        <%= link_to "退会しない", calendars_path, class: "block bg-blue-700 hover:bg-blue-900 active:bg-gray-600 focus-visible:ring ring-gray-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3 mt-10 mb-5" %>
+      </div>
+    </div>
+  </div>
+</section>

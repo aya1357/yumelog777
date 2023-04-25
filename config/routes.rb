@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
   post '/guest_login', to: 'user_sessions#guest_login'
+  get 'unsubscribe', to: 'user_sessions#unsubscribe'
 
   get 'studies/log_date', to: 'studies#log_date'
   get 'studies/log_date_api', to: 'studies#log_date_api'
