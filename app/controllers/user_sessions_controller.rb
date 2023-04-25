@@ -33,6 +33,8 @@ class UserSessionsController < ApplicationController
     redirect_back_or_to calendars_path, success: 'ゲストとしてログインしました'
   end
 
-  def unsubscribe
+  def unsubscribe; end
+
+  def withdrawal
   end
 end
