@@ -61,9 +61,6 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
-  # Mail
-  gem 'letter_opener_web'
-
   # rubocop
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
@@ -80,6 +77,9 @@ end
 # CSS、JSバンドラー
 gem 'tailwindcss-rails'
 gem 'cssbundling-rails'
+
+# Mail
+gem 'letter_opener_web'
 
 # 画像編集
 gem 'mini_magick'
