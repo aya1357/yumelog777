@@ -1,6 +1,9 @@
 # README
 
-# ゆめログ
+# 積みログ
+[![Image from Gyazo](https://i.gyazo.com/8fa124e871d19abe7d672cb75e2ec514.png)](https://gyazo.com/8fa124e871d19abe7d672cb75e2ec514)
+## 【アプリのURL】
+[積みログ](https://www.tsumilog.net/)
 
 ## 【サービス概要】<br>
 積読本解消のための読書カレンダー管理サービスです。
@@ -77,9 +80,6 @@ README〜ER図作成：12/14 〆切
 メイン機能実装：3/31 〆切
 β版をRUNTEQ内リリース（MVP）：3/31〆切
 本番リリース：4月中旬
-
-## 【アプリのURL】
-[積みログ](https://www.tsumilog.net/)
 
 ## 【使用技術】
 |  バックエンド  |  フロントエンド  |  インフラ ・ その他 |
