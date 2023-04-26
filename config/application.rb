@@ -25,6 +25,7 @@ module Yumelog777
     config.active_record.default_timezone = :local
     config.beginning_of_week = :sunday
     config.action_controller.include_all_helpers = true
+    config.action_mailer.default_url_options = { host: 'www.tsumilog.net' }
     config.generators do |g|
       g.skip_routes true
       g.assets false
