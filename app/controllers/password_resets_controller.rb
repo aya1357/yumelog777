@@ -1,5 +1,6 @@
 class PasswordResetsController < ApplicationController
   before_action :check_guest
+  skip_before_action :require_login
 
   def new; end
 
