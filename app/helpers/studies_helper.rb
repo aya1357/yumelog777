@@ -65,4 +65,5 @@ module StudiesHelper
     today = Time.zone.today
     automatic_calculation_end_day(study) - today
   end
+
 end
