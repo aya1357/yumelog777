@@ -13140,6 +13140,22 @@
     });
   });
 
+  // app/javascript/packs/today_books_accordion.js
+  document.addEventListener("turbo:load", function() {
+    $(document).ready(function() {
+      $(".books_titles").hide();
+      $(".books_index_open").hide();
+      $(".accordion_books_index_title").click(function() {
+        $(this).next(".books_titles").slideToggle(200);
+        $(this).find(".books_index_open").toggle();
+        $(this).find(".books_index_close").toggle();
+        $(".books_titles").not($(this).next(".books_titles")).slideUp(200);
+        $(".accordion_books_index_title").not($(this)).find(".books_index_open").hide();
+        $(".accordion_books_index_title").not($(this)).find(".books_index_close").show();
+      });
+    });
+  });
+
   // app/javascript/application.js
   var import_jquery = __toESM(require_jquery());
   window.$ = window.jQuery = import_jquery.default;

@@ -14,6 +14,30 @@
         <% end %>
       <% end %>
     </div>
+    <div class="w-full  mx-auto mt-6 shadow-md">
+      <div class="accordion-item">
+        <div class="accordion_books_index_title bg-blue-100 border-t-4 border-blue-200 p-4 cursor-pointer font-bold text-xl">
+          <div class="books_index_close float-left mr-1 mt-1">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5" />
+            </svg>
+          </div>
+          <div class="books_index_open float-left mr-1 mt-1">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" />
+            </svg>
+          </div>
+          <div>
+            本日読書予定の本の一覧
+          </div>
+        </div>
+        <div class="books_titles bg-white p-4 space-y-4 border-blue-200 border-b-2">
+          <% @todays_books.each do |title| %>
+            <div>・ <%= title %></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
     <section>
       <div class="mt-8">
         <%= link_to "本を追加する", new_study_path, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
