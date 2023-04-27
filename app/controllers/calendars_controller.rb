@@ -2,7 +2,7 @@ class CalendarsController < ApplicationController
   def index
     @studies = current_user.studies.includes(:user).order(created_at: :desc)
     @logs = current_user.logs
-    @log_dates = current_user.logs.pluck(:log_date)
+    @log_date = current_user.logs.pluck(:log_date).uniq
   end
 
   def destroy
