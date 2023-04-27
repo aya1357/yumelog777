@@ -38,7 +38,7 @@ module StudiesHelper
     (start_day - 1)
   end
 
-  #目標終了予定日を計算(読書したページ数を加味して終了日を計算)
+  #自動計算終了日を計算(読書したページ数を加味して終了日を計算)
   def automatic_calculation_end_day(study)
     today = Time.zone.today
     remain_study_days = remain_days(study)
@@ -50,5 +50,19 @@ module StudiesHelper
       today += 1
     end
     (today - 1)
+  end
+
+  #取り組む曜日を表示
+  def read_day_of_week(study)
+    days_of_week = ['日', '月', '火', '水', '木', '金', '土']
+    study_days = study.day_of_week.split(",").map(&:to_i).sort
+    study_day_names = study_days.map { |day| days_of_week[day] }
+    study_day_names.join(" ")
+  end
+
+  #自動計算終了日を元に残り何日か算出
+  def remain_days_count(study)
+    today = Time.zone.today
+    automatic_calculation_end_day(study) - today
   end
 end
