@@ -1,5 +1,6 @@
 <% if study.status == false %>
   <div class="notDone w-full md:w-1/2 p-2">
+      <p class="font-bold text-right">終了まであと<span class="text-3xl"><%= remain_days_count(study).to_i %></span>日</p>
     <div class=" p-3 my-2 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700" style="background-color: #fdfdfd;">
       <div class="flex justify-between">
         <p class="font-bold justify-start text-xl">1日の目標ページ数</p>
@@ -23,46 +24,10 @@
       <% end %>
 
       <div class="leading-8 mt-8">
-        <%# 取り組む曜日を、数字から曜日に変換して表示 %>
-        <% days_of_week = ['日', '月', '火', '水', '木', '金', '土'] %>
-        <% study_days = study.day_of_week.split(",").map(&:to_i).sort %>
-        <% study_day_names = study_days.map { |day| days_of_week[day] } %>
-        <% study_days_arr = study_day_names.join(" ") %>
-        <div>取り組む曜日 : <%= study_days_arr %></div>
-        <% study_total_number = study.end_number - study.start_number %>
-        <% if study_total_number % study.target_number == 0 %>
-          <% study_total_days = study_total_number / study.target_number %>
-        <% else %>
-          <% study_total_days = (study_total_number.to_f / study.target_number.to_f).ceil %>
-        <% end %>
-        <%# "取り組む曜日を曜日の順に数字順に並び替え" %>
-        <% dayOfWeek = study.day_of_week %>
-        <% dayOfWeek_arr = dayOfWeek.split(",").map(&:to_i).sort %>
-        <%# "目標終了日をルーブ文で計算" %>
-        <% while study_total_days >= 1 %>
-          <% if (dayOfWeek_arr).include?(study.start_day.wday) %>
-            <% study_total_days -= 1 %>
-          <% end %>
-          <% study.start_day += 1%>
-        <% end %>
-        <% target_day = (study.start_day - 1).strftime('%Y年%m月%d日') %>
-        <div>目標終了予定日 : <%= target_day %></div>
-        <%# 残りページ数計算 %>
-        <% total_studied_number = Log.where(user_id: current_user.id, study_id: study.id).pluck(:study_number).sum %>
-        <% remain_number = (study.end_number - study.start_number) - total_studied_number %>
-        <% if remain_number >= 0 %>
-          <% remain_number = remain_number %>
-        <% else %>
-          <% remain_number = 0 %>
-        <% end %>
-        <div class="flex justify-between">
-          <div class="flex">残りページ数&ensp;&ensp; : あと<span><%= remain_number %></span>ページ</div>
-          <% if remain_number == 0 %>
-            <div class="flex">
-              <%= link_to "完了済", studies_status_done_path(id: study.id), class: "float-left hover:bg-transparent bg-red-400 hover:text-red-400 font-semibold text-white py-1 px-1 border hover:border-red-500 border-transparent rounded text-sm" %>
-            </div>
-          <% end %>
-        </div>
+        <div>取り組む曜日 : <%= read_day_of_week(study) %></div>
+        <div>目標終了予定日 :   <%= l target_end_date(study), format: :long %></div>
+        <div>自動計算終了日 :   <%= l automatic_calculation_end_day(study), format: :long %></div>
+        <div class="flex">残りページ数&ensp;&ensp; : あと<span><%= remain_pages(study) %></span>ページ</div>
       </div>
     </div>
   </div>
