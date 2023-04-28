@@ -1,6 +1,10 @@
 <% if study.status == false %>
   <div class="notDone w-full md:w-1/2 p-2">
+    <% if remain_days_count(study).to_i > 0 %>
       <p class="font-bold text-right">終了まであと <span class="text-3xl"><%= remain_days_count(study).to_i %> </span>日</p>
+    <% else %>
+      <p class="font-bold text-right">終了まであと <span class="text-3xl">0 </span>日</p>
+    <% end %>
     <div class=" p-3 my-2 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700" style="background-color: #fdfdfd;">
       <div class="flex justify-between">
         <p class="font-bold justify-start text-xl">1日の目標ページ数</p>
@@ -16,18 +20,24 @@
           </div>
         </div>
       </div>
-      <%= link_to study.title.truncate(20), study_path(study, id: study.id), class: "justify-start font-bold text-xl hover:text-blue-500", title: study.title %><br>
+      <%= link_to study.title.truncate(16), study_path(study, id: study.id), class: "justify-start font-bold text-xl hover:text-blue-500", title: study.title %><br>
       <% if study.url.present? %>
         <%= link_to study.url.truncate(24), study.url, class: "hover:text-blue-500", title: study.url %>
       <% else %>
         <%= "urlの登録はありません" %>
       <% end %>
-
       <div class="leading-8 mt-8">
         <div>取り組む曜日 : <%= read_day_of_week(study) %></div>
         <div>目標終了予定日 :   <%= l target_end_date(study), format: :long %></div>
         <div>自動計算終了日 :   <%= l automatic_calculation_end_day(study), format: :long %></div>
-        <div class="flex">残りページ数&ensp;&ensp; : あと<span><%= remain_pages(study) %></span>ページ</div>
+        <div class="flex justify-between">
+          <div class="flex">残りページ数&ensp;&ensp; : あと<span><%= remain_pages(study) %></span>ページ</div>
+          <% if remain_pages(study) == 0 %>
+            <div class="flex">
+              <%= link_to "完了", studies_status_done_path(id: study.id), class: "float-left hover:bg-transparent bg-red-400 hover:text-red-400 font-semibold text-white py-1 px-1 border hover:border-red-500 border-transparent rounded text-sm" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
