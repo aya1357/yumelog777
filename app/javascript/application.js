@@ -4,7 +4,7 @@ import "./controllers"
 import "./packs/studies_new.js"
 import "./packs/calendars_index.js"
 import "./packs/logs_culc.js"
-import "./packs/start.js"
+import "./packs/top_culc.js";
 import "./packs/calendars_studies_status.js"
 import "./packs/dayOfWeek_default.js"
 import "./packs/study_pages_comparison.js"
