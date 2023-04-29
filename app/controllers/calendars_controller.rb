@@ -17,7 +17,7 @@ class CalendarsController < ApplicationController
   #本を最初に登録した際の取り組む曜日に、本日の日付が含まれているかチェック
   def today_in_read_day_of_week(study)
     study_days = study.day_of_week.split(",").map(&:to_i).sort
-    study_days.include?(Time.now.wday)
+    study_days.include?(Time.now.getlocal('+09:00').wday)
   end
 
   #今日の日付が取り組む曜日に含まれている本のタイトルを取得
