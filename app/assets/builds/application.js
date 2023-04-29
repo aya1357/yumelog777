@@ -12902,11 +12902,11 @@
     });
   });
 
-  // app/javascript/packs/start.js
+  // app/javascript/packs/top_culc.js
   document.addEventListener("turbo:load", function() {
-    $("#input_total_pages").on("change", function() {
-      if ($("#input_total_pages").val() <= 0) {
-        $("#input_total_pages").val(1);
+    $("#top_input_left_total_pages").on("change", function() {
+      if ($("#top_input_left_total_pages").val() <= 0) {
+        $("#top_input_left_total_pages").val(1);
       }
     });
     $("#input_target_pages").on("change", function() {
@@ -12920,7 +12920,7 @@
         form.reportValidity();
         return;
       }
-      let total_number = $("#input_total_pages").val();
+      let total_number = $("#top_input_left_total_pages").val();
       let target_number = $("#input_target_pages").val();
       if (Number.isInteger(total_number / target_number)) {
         study_days = total_number / target_number - 1;

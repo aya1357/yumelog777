@@ -1,8 +1,8 @@
 document.addEventListener("turbo:load", function () {
-  $("#input_total_pages").on("change", function () {
-    if ($("#input_total_pages").val() <= 0) {
+  $("#top_input_left_total_pages").on("change", function () {
+    if ($("#top_input_left_total_pages").val() <= 0) {
       // 総ページ数の箇所にもし0以下の値が入力された場合1に置き換える
-      $("#input_total_pages").val(1);
+      $("#top_input_left_total_pages").val(1);
     }
   });
   $("#input_target_pages").on("change", function () {
@@ -19,7 +19,7 @@ document.addEventListener("turbo:load", function () {
       form.reportValidity();
       return;
     }
-    let total_number = $("#input_total_pages").val();
+    let total_number = $("#top_input_left_total_pages").val();
     let target_number = $("#input_target_pages").val();
     //勉強日数を計算(総ページ数 / 1日の目標ページ数が整数でない場合は、その値を切り上げる。)
     if (Number.isInteger(total_number / target_number)) {

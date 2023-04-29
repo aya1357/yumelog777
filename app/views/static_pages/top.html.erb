@@ -1,63 +1,104 @@
 <div class="bg-blue-50">
   <section class="max-h-full max-w-full bg-blue-100">
-    <div class="">
-      <div class="container mx-auto md:flex md:justify-around items-center justify-between">
-        <div class="flex flex-col text-center md:text-left md:pl-14">
-          <h1 class="text-5xl sm:text-7xl font-bold md:pt-1 pt-10" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">積みログ</h1>
-          <p class="mb-4 text-3xl md:pt-5 pt-2 font-bold" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">
-            積読本解消<br>カレンダーアプリ
-          </p>
-          <p class="mb-4 text-xl md:pt-8 pt-6" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">
-            本棚に眠っている資格の本やビジネス書<br>そろそろ読み始めませんか？
-          </p>
-          <% unless logged_in? %>
-            <div class="mt-12 flex flex-wrap gap-4 text-center md:space-x-6">
-              <%= link_to '始める', new_user_path, class: "text-xl start_button md:m-auto font-bold mx-10 block w-full rounded bg-green-500 px-12 py-3 font-medium text-white shadow hover:bg-green-500 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
-              <%= link_to 'ログイン', login_path, class: "text-xl md:m-auto font-bold mx-10 block w-full rounded bg-white px-12 py-3 font-medium text-blue-700 shadow hover:text-blue-700 focus:outline-none focus:ring active:text-blue-500 sm:w-auto hover:bg-gray-100", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
-            </div>
-          <% end %>
-        </div>
-        <%= image_tag "top_hero.png", class: "top_hero_img md:w-1/2 flex"%>
+    <div class="container mx-auto md:flex md:justify-around items-center justify-between">
+      <div class="flex flex-col text-center md:text-left md:pl-14">
+        <h1 class="text-5xl sm:text-7xl font-bold md:pt-1 pt-10" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">積みログ</h1>
+        <p class="mb-4 text-3xl md:pt-5 pt-2 font-bold" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">
+          積読本解消<br>カレンダーアプリ
+        </p>
+        <p class="mb-4 text-xl md:pt-8 pt-6" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">
+          本棚に眠っている資格の本やビジネス書<br>そろそろ読み始めませんか？
+        </p>
+        <% unless logged_in? %>
+          <div class="mt-12 flex flex-wrap gap-4 text-center md:space-x-6">
+            <%= link_to '始める', new_user_path, class: "text-xl start_button md:m-auto font-bold mx-10 block w-full rounded bg-green-500 px-12 py-3 font-medium text-white shadow hover:bg-green-500 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
+            <%= link_to 'ログイン', login_path, class: "text-xl md:m-auto font-bold mx-10 block w-full rounded bg-white px-12 py-3 font-medium text-blue-700 shadow hover:text-blue-700 focus:outline-none focus:ring active:text-blue-500 sm:w-auto hover:bg-gray-100", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
+          </div>
+        <% end %>
+      </div>
+      <%= image_tag "top_hero.png", class: "top_hero_img md:w-1/2 flex"%>
     </div>
   </section>
   <section>
-    <div class="md:w-2/5 mt-10 shadow-md mx-5 md:mx-auto">
-      <div>
-        <div class="bg-blue-100 border-t-4 border-blue-200 p-3 cursor-pointer font-bold text-xl">
-          <div class="books_index_close float-left mr-1">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z" />
-            </svg>
+    <div class="flex flex-col md:flex-row">
+      <div class="md:w-2/5 mt-10 shadow-md mx-5 md:mx-auto">
+        <div>
+          <div class="bg-blue-100 border-t-4 border-blue-200 p-3 cursor-pointer font-bold text-xl">
+            <div class="books_index_close float-left mr-1">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z" />
+              </svg>
+            </div>
+            <div>
+              読み終わるのは何日？
+            </div>
           </div>
-          <div>
-            読み終わるのは何日？
+          <div class="bg-slate-50 py-2 space-y-2 border-blue-200 border-b-2">
+            <form>
+              <div class="flex flex-col">
+                <div class="flex p-4 mt-6">
+                  <div class="flex md:text-xl md:font-bold">
+                    <span class="block pt-3 float-left">本の総ページ数&emsp;</span>
+                    <input type="number" id="top_input_left_total_pages" class="mr-2 float-left bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 py-3 px-6" name="study_number" placeholder="例)90" required="required" min="0" max="5000" required>
+                    <span class="block pt-3">ページ</span>
+                  </div>
+                </div>
+                <div class="flex flex-col p-4 md:text-xl md:font-bold">
+                  <div>
+                    <span class="block pt-3 float-left">1日の目標ページ数&emsp;</span>
+                    <input type="number" id="input_target_pages" class="mr-2 float-left bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 py-3 px-6" name="study_number" placeholder="例)5" required="required" min="0" max="5000" required>
+                    <span class="block pt-3">ページ</span>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <button type="button" class="py-3 px-8 mb-2 bg-red-500 text-white font-bold mt-6 rounded-lg hover:bg-red-600" id="start_culc_btn">
+                  計算
+                </button>
+                <p class="text-gray-800 md:text-2xl lg:text-xl font-bold text-center mb-4 md:mb-8 underline"><span id="end_date"></span></p>
+              </div>
+            </form>
           </div>
         </div>
-        <div class="bg-slate-50 py-2 space-y-2 border-blue-200 border-b-2">
-          <form>
-            <div class="flex flex-col">
-              <div class="flex p-4 mt-6">
-                <div class="flex md:text-xl md:font-bold">
-                  <span class="block pt-3 float-left">本の総ページ数&emsp;</span>
-                  <input type="number" id="input_total_pages" class="mr-2 float-left bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 py-3 px-6" name="study_number" placeholder="例)30" required="required" min="0" max="5000" required>
-                  <span class="block pt-3">ページ</span>
+      </div>
+      <div class="md:w-2/5 mt-10 shadow-md mx-5 md:mx-auto">
+        <div>
+          <div class="bg-blue-100 border-t-4 border-blue-200 p-3 cursor-pointer font-bold text-xl">
+            <div class="books_index_close float-left mr-1">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z" />
+              </svg>
+            </div>
+            <div>
+              1日何ページで読み終わる？
+            </div>
+          </div>
+          <div class="bg-slate-50 py-2 space-y-2 border-blue-200 border-b-2">
+            <form>
+              <div class="flex flex-col">
+                <div class="flex p-4 mt-6">
+                  <div class="flex md:text-xl md:font-bold">
+                    <span class="block pt-3 float-left">本の総ページ数&emsp;</span>
+                    <input type="number" id="input_total_pages" class="mr-2 float-left bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 py-3 px-6" name="study_number" placeholder="例)90" required="required" min="0" max="5000" required>
+                    <span class="block pt-3">ページ</span>
+                  </div>
+                </div>
+                <div class="flex flex-col p-4 md:text-xl md:font-bold">
+                  <div>
+                    <span class="block pt-3 float-left">読み終えたい日付&emsp;</span>
+                    <input type="date" id="input_target_end_date" class="mr-2 float-left bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 py-3 px-6" name="study_number" placeholder="例)2" required="required" min="0" max="5000" required>
+                    <span class="block pt-3">ページ</span>
+                  </div>
                 </div>
               </div>
-              <div class="flex flex-col p-4 md:text-xl md:font-bold">
-                <div class="">
-                  <span class="block pt-3 float-left">1日の目標ページ数&emsp;</span>
-                  <input type="number" id="input_target_pages" class="mr-2 float-left bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 py-3 px-6" name="study_number" placeholder="例)2" required="required" min="0" max="5000" required>
-                  <span class="block pt-3">ページ</span>
-                </div>
+              <div class="text-center">
+                <button type="button" class="py-3 px-8 mb-2 bg-red-500 text-white font-bold mt-6 rounded-lg hover:bg-red-600" id="start_culc_btn">
+                  計算
+                </button>
+                <p class="text-gray-800 md:text-2xl lg:text-xl font-bold text-center mb-4 md:mb-8 underline"><span id="end_date"></span></p>
               </div>
-            </div>
-            <div class="text-center">
-              <button type="button" class="py-3 px-8 mb-2 bg-red-500 text-white font-bold mt-6 rounded-lg hover:bg-red-600" id="start_culc_btn">
-                計算
-              </button>
-              <p class="text-gray-800 md:text-2xl lg:text-xl font-bold text-center mb-4 md:mb-8 underline"><span id="end_date"></span></p>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
