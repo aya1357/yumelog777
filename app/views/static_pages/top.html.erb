@@ -52,10 +52,10 @@
                 </div>
               </div>
               <div class="text-center">
-                <button type="button" class="py-3 px-8 mb-2 bg-red-500 text-white font-bold mt-6 rounded-lg hover:bg-red-600" id="start_culc_btn">
+                <button type="button" class="md:py-3 md:px-8 py-2 px-6 mb-2 bg-red-500 text-white font-bold mt-6 rounded-lg hover:bg-red-600" id="top_left_culc_btn">
                   計算
                 </button>
-                <p class="text-gray-800 md:text-2xl lg:text-xl font-bold text-center mb-4 md:mb-8 underline"><span id="end_date"></span></p>
+                <p class="text-gray-800 md:text-2xl lg:text-xl font-bold text-center my-4"><span id="end_date">&emsp;</span></p>
               </div>
             </form>
           </div>
@@ -70,7 +70,7 @@
               </svg>
             </div>
             <div>
-              1日何ページで読み終わる？
+              読み終わるには1日何ページ？
             </div>
           </div>
           <div class="bg-slate-50 py-2 space-y-2 border-blue-200 border-b-2">
@@ -79,23 +79,22 @@
                 <div class="flex p-4 mt-6">
                   <div class="flex md:text-xl md:font-bold">
                     <span class="block pt-3 float-left">本の総ページ数&emsp;</span>
-                    <input type="number" id="input_total_pages" class="mr-2 float-left bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 py-3 px-6" name="study_number" placeholder="例)90" required="required" min="0" max="5000" required>
+                    <input type="number" id="top_input_right_total_pages" class="mr-2 float-left bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 py-3 px-6" name="study_number" placeholder="例)90" required="required" min="0" max="5000" required>
                     <span class="block pt-3">ページ</span>
                   </div>
                 </div>
-                <div class="flex flex-col p-4 md:text-xl md:font-bold">
+                <div class="flex p-4 md:text-xl md:font-bold">
                   <div>
-                    <span class="block pt-3 float-left">読み終えたい日付&emsp;</span>
-                    <input type="date" id="input_target_end_date" class="mr-2 float-left bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 py-3 px-6" name="study_number" placeholder="例)2" required="required" min="0" max="5000" required>
-                    <span class="block pt-3">ページ</span>
+                    <span class="pt-3 float-left">読み終えたい日付&emsp;</span>
+                    <input type="date" id="top_input_date" class="mr-2 float-left bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 py-3 px-3" name="target_finish_date" required="required">
                   </div>
                 </div>
               </div>
               <div class="text-center">
-                <button type="button" class="py-3 px-8 mb-2 bg-red-500 text-white font-bold mt-6 rounded-lg hover:bg-red-600" id="start_culc_btn">
+                <button type="button" class="md:py-3 md:px-8 py-2 px-6 mb-2 bg-red-500 text-white font-bold mt-6 rounded-lg hover:bg-red-600" id="top_right_culc_btn">
                   計算
                 </button>
-                <p class="text-gray-800 md:text-2xl lg:text-xl font-bold text-center mb-4 md:mb-8 underline"><span id="end_date"></span></p>
+                <p class="text-gray-800 md:text-2xl lg:text-xl font-bold text-center my-4"><span id="top_target_pages">&emsp;</span></p>
               </div>
             </form>
           </div>

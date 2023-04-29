@@ -12909,23 +12909,28 @@
         $("#top_input_left_total_pages").val(1);
       }
     });
+    $("#top_input_right_total_pages").on("change", function() {
+      if ($("#top_input_right_total_pages").val() <= 0) {
+        $("#top_input_right_total_pages").val(1);
+      }
+    });
     $("#input_target_pages").on("change", function() {
       if ($("#input_target_pages").val() <= 0) {
         $("#input_target_pages").val(1);
       }
     });
-    $("#start_culc_btn").click(function() {
+    $("#top_left_culc_btn").click(function() {
       let form = $(this).closest("form")[0];
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
-      let total_number = $("#top_input_left_total_pages").val();
-      let target_number = $("#input_target_pages").val();
-      if (Number.isInteger(total_number / target_number)) {
-        study_days = total_number / target_number - 1;
+      let total_pages = $("#top_input_left_total_pages").val();
+      let target_pages = $("#input_target_pages").val();
+      if (Number.isInteger(total_pages / target_pages)) {
+        study_days = total_pages / target_pages - 1;
       } else {
-        study_days = Math.ceil(total_number / target_number) - 1;
+        study_days = Math.ceil(total_pages / target_pages) - 1;
       }
       let today = new Date();
       let end_day = new Date(today.getTime() + study_days * 24 * 60 * 60 * 1e3);
@@ -12934,6 +12939,28 @@
       let day = ("0" + end_day.getDate()).slice(-2);
       let formatted_end_date = year + "\u5E74" + month + "\u6708" + day + "\u65E5";
       document.getElementById("end_date").innerHTML = "\u7D42\u4E86\u4E88\u5B9A\u65E5\u306F\u3001" + formatted_end_date + "\u3067\u3059\u3002";
+    });
+    $(document).ready(function() {
+      let today = new Date().toISOString().split("T")[0];
+      $("#top_input_date").attr("min", today);
+    });
+    $("#top_right_culc_btn").click(function() {
+      let form = $(this).closest("form")[0];
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      let right_total_pages = $("#top_input_right_total_pages").val();
+      let target_finish_date = $("#top_input_date").val();
+      let today = new Date();
+      today.setHours(0, 0, 0, 0);
+      let target_date = new Date(target_finish_date);
+      let diff_in_ms = target_date - today;
+      let read_days_count = Math.ceil(diff_in_ms / (1e3 * 60 * 60 * 24));
+      let target_pages = Math.ceil(right_total_pages / read_days_count);
+      console.log(target_pages);
+      ;
+      document.getElementById("top_target_pages").innerHTML = "1\u65E5\u306E\u76EE\u6A19\u30DA\u30FC\u30B8\u6570\u306F\u3001\u7D04" + target_pages + "\u30DA\u30FC\u30B8\u3067\u3059\u3002";
     });
   });
 
