@@ -12914,14 +12914,18 @@
         $("#input_target_pages").val(1);
       }
     });
-    $("#start_culc_btn").click(function(e) {
-      e.preventDefault();
+    $("#start_culc_btn").click(function() {
+      let form = $(this).closest("form")[0];
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
       let total_number = $("#input_total_pages").val();
       let target_number = $("#input_target_pages").val();
       if (Number.isInteger(total_number / target_number)) {
-        study_days = total_number / target_number;
+        study_days = total_number / target_number - 1;
       } else {
-        study_days = Math.ceil(total_number / target_number);
+        study_days = Math.ceil(total_number / target_number) - 1;
       }
       let today = new Date();
       let end_day = new Date(today.getTime() + study_days * 24 * 60 * 60 * 1e3);

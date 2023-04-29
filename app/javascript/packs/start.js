@@ -1,25 +1,31 @@
 document.addEventListener("turbo:load", function () {
   $("#input_total_pages").on("change", function () {
     if ($("#input_total_pages").val() <= 0) {
-      // 総ページ数の箇所にもし0以下の値が入力された場合
-      $("#input_total_pages").val(1); // 1に置き換える
+      // 総ページ数の箇所にもし0以下の値が入力された場合1に置き換える
+      $("#input_total_pages").val(1);
     }
   });
   $("#input_target_pages").on("change", function () {
     if ($("#input_target_pages").val() <= 0) {
-      // 1日の目標ページ数n箇所にもし0以下の値が入力された場合
-      $("#input_target_pages").val(1); // 1に置き換える
+      // 1日の目標ページ数n箇所にもし0以下の値が入力された場合1に置き換える
+      $("#input_target_pages").val(1);
     }
   });
-  $("#start_culc_btn").click(function (e) {
-    e.preventDefault();
+  $("#start_culc_btn").click(function () {
+    // フォームのバリデーション
+    let form = $(this).closest("form")[0];
+    if (!form.checkValidity()) {
+      // バリデーションに失敗した場合、デフォルトのバリデーションメッセージを表示して終了
+      form.reportValidity();
+      return;
+    }
     let total_number = $("#input_total_pages").val();
     let target_number = $("#input_target_pages").val();
     //勉強日数を計算(総ページ数 / 1日の目標ページ数が整数でない場合は、その値を切り上げる。)
     if (Number.isInteger(total_number / target_number)) {
-      study_days = total_number / target_number;
+      study_days = total_number / target_number - 1;
     } else {
-      study_days = Math.ceil(total_number / target_number);
+      study_days = Math.ceil(total_number / target_number) - 1;
     }
 
     //計算した勉強日数を元に終了日時を計算

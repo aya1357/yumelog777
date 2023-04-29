@@ -8,16 +8,14 @@
   <%= link_to "ゲストログイン", guest_login_path, data: { turbo_method: :post}, class:  "flex md:mr-5 md:mt-6 mt-2 mr-2 px-1 md:m-auto font-bold block rounded bg-blue-700 py-1 text-xs font-medium text-white shadow hover:bg-blue-900 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto", style: "font-family: 'Gen Jyuu Gothic XP', sans-serif;" %>
 
   <div class="flex-none space-x-2 md:space-x-6 mt-5">
-
     <div>
-      <%= link_to start_path do %>
+      <%= link_to guide_path do %>
         <div class="hover:underline">
-          <%= image_tag "header_start.png", alt: "積読本アイコン", class: "md:w-6 w-4 m-auto" %>
-          <span class="md:font-extrabold text-xs" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">お試し</span>
+          <%= image_tag "header_guide.png", alt: "クイックガイドアイコン", class: "md:w-6 w-4 m-auto" %>
+          <span class="md:font-extrabold text-xs" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">使い方</span>
         </div>
       <% end %>
     </div>
-
     <div>
       <%= link_to login_path do %>
         <div class="hover:underline">
