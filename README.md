@@ -1,7 +1,7 @@
 # README
 
 # 積みログ
-[![Image from Gyazo](https://i.gyazo.com/8fa124e871d19abe7d672cb75e2ec514.png)](https://gyazo.com/8fa124e871d19abe7d672cb75e2ec514)
+[![Image from Gyazo](https://i.gyazo.com/e21db215392bbde33c8a55fcb552a27f.png)](https://gyazo.com/e21db215392bbde33c8a55fcb552a27f)
 ## 【アプリのURL】
 [積みログ](https://www.tsumilog.net/)
 
