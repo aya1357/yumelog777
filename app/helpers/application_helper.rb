@@ -21,7 +21,7 @@ module ApplicationHelper
       og: {
         site_name: 'tsumilog',
         title: '積みログ',
-        description: '積みログは、積読本解消のための読書管理カレンダーアプリです。',
+        description: '積みログは、積読本解消のための読書管理カレンダーアプリです。残りページ数や終了日の計算機能も搭載しています。',
         type: 'website',
         url: 'https://www.tsumilog.net/',
         image: image_url('tsumilog_ogp.png'),
