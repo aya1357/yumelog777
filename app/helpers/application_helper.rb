@@ -24,7 +24,7 @@ module ApplicationHelper
         description: '積みログは、積読本解消のための読書管理カレンダーアプリです。',
         type: 'website',
         url: 'https://www.tsumilog.net/',
-        image: image_url('/twitter_card.png'),
+        image: image_url('tsumilog_ogp.png'),
         locale: 'ja_JP',
       },
       twitter: {
