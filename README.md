@@ -3,7 +3,10 @@
 # 積みログ
 [![Image from Gyazo](https://i.gyazo.com/e21db215392bbde33c8a55fcb552a27f.png)](https://gyazo.com/e21db215392bbde33c8a55fcb552a27f)
 ## 【アプリのURL】
-[積みログ](https://www.tsumilog.net/)
+### [積みログ](https://www.tsumilog.net/)
+
+### [Qiita記事](https://qiita.com/aya1357/items/5abc68b557197dc39baf)
+
 
 ## 【サービス概要】<br>
 積読本解消のための読書カレンダー管理サービスです。
