@@ -42,9 +42,7 @@ module StudiesHelper
   def automatic_calculation_end_day(study)
     today = Time.zone.today
     remain_study_days = remain_days(study)
-    p remain_study_days
     day_of_week_arr = study.day_of_week.split(",").map(&:to_i).sort
-    p day_of_week_arr
     while remain_study_days >= 0
       if (day_of_week_arr).include?(today.wday)
         remain_study_days -= 1
