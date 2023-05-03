@@ -1,5 +1,4 @@
 class PasswordResetsController < ApplicationController
-  # before_action :check_guest
   skip_before_action :require_login
 
   def new; end
@@ -30,9 +29,4 @@ class PasswordResetsController < ApplicationController
     end
   end
 
-  # private
-
-  # def check_guest
-    # redirect_to calendars_path, warning: t('defaults.message.require_login') if current_user.guest?
-  # end
 end
