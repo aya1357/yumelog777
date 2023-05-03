@@ -30,6 +30,7 @@
         <div>取り組む曜日 : <%= read_day_of_week(study) %></div>
         <div>目標終了予定日 :   <%= l target_end_date(study), format: :long %></div>
         <div>自動計算終了日 :   <%= l automatic_calculation_end_day(study), format: :long %></div>
+        <%= automatic_calculation_end_day(study) %>
         <div class="flex justify-between">
           <div class="flex">残りページ数&ensp;&ensp; : あと<span><%= remain_pages(study) %></span>ページ</div>
           <% if remain_pages(study) == 0 %>
