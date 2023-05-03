@@ -41,9 +41,12 @@ module StudiesHelper
   #自動計算終了日を計算(読書したページ数を加味して終了日を計算)
   def automatic_calculation_end_day(study)
     today = Time.zone.today
+    if study.start_day > today
+      today = study.start_day
+    end
     remain_study_days = remain_days(study)
     day_of_week_arr = study.day_of_week.split(",").map(&:to_i).sort
-    while remain_study_days >= 0
+    while remain_study_days >= 1
       if (day_of_week_arr).include?(today.wday)
         remain_study_days -= 1
       end
