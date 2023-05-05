@@ -6,13 +6,22 @@
         <%= form_with url: password_resets_path, local: true do |f| %>
           <div class="flex flex-col gap-4 p-4 md:p-8">
             <div>
-              <%= f.email_field :email, placeholder: User.human_attribute_name(:email), class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2 my-6", required: true %>
+              <%= f.email_field :email, placeholder: t('password_resets.new.password_reset_email'), class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2 my-6", required: true %>
             </div>
             <div class="flex justify-center">
               <%= f.submit t('password_resets.new.submit'), class: "block bg-blue-700 hover:bg-blue-900 focus-visible:ring ring-gray-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3 mb-5" %>
             </div>
           </div>
         <% end %>
+    </div>
+  </div>
+  <div class="flex mt-10 text-sm text-gray-800 rounded-lg justify-center items-center" role="alert">
+    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+    <span class="sr-only">Info</span>
+    <div>
+      ご登録のメールアドレスに届かない場合は、迷惑メールフォルダをご確認ください。<br>
+      また、メールアドレスの入力間違いがないかご確認ください。<br>
+      キャリアメールで届かない場合がありますので、その場合はGmailなどのフリーメールアドレスをご利用ください。
     </div>
   </div>
 </div>

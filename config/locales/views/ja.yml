@@ -57,6 +57,7 @@ ja:
     new:
       title: 'パスワードリセット申請'
       submit: '送信'
+      password_reset_email: 'ご登録のメールアドレスを入力ください。'
     edit:
       title: 'パスワードリセット'
       new_password: '新しいパスワードをご入力ください。'
