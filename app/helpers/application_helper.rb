@@ -38,4 +38,16 @@ module ApplicationHelper
     return message
   end
 
+  def error_messages_for(resource)
+    return unless resource.errors.any?
+
+    content_tag :div, id: 'error_explanation' do
+      content_tag(:ul) do
+        resource.errors.full_messages.map do |message|
+          content_tag(:li, message)
+        end.join.html_safe
+      end
+    end
+  end
+
 end

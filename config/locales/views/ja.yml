@@ -57,12 +57,17 @@ ja:
     new:
       title: 'パスワードリセット申請'
       submit: '送信'
+      password_reset_email: 'ご登録のメールアドレスを入力ください。'
     edit:
       title: 'パスワードリセット'
       new_password: '新しいパスワードをご入力ください。'
       new_password_confirmation: '確認用として新しいパスワードをもう一度ご入力ください。'
+    alerts:
+      invalid_token: '無効なリンクです。再度パスワードリセットのリクエストを行ってください。'
+      token_expired: 'パスワードリセット用のリンクが期限切れです。再度パスワードリセットのリクエストを行ってください。'
     create:
       success: 'パスワードリセット手順を送信しました。'
+      email_not_found: "入力されたメールアドレスは登録されていません。"
     update:
       success: 'パスワードを変更しました。'
       fail: 'パスワードの変更に失敗しました。'
