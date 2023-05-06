@@ -6,7 +6,7 @@ class LogsController < ApplicationController
 
   def new
     @form = Form::LogCollection.new
-    @date = params[:date] ? Date.parse(params[:date]) : Time.zone.today
+    @date = Date.parse(params[:date])
   end
 
   def edit

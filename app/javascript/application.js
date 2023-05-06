@@ -11,5 +11,6 @@ import "./packs/study_pages_comparison.js"
 import "./packs/top_animation.js"
 import "./packs/guide_change.js"
 import "./packs/today_books_accordion.js"
+import "./packs/logs_not_read_books.js"
 import jquery from "jquery"
 window.$ = window.jQuery = jquery

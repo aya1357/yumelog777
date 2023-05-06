@@ -13187,6 +13187,34 @@
     });
   });
 
+  // app/javascript/packs/logs_not_read_books.js
+  document.addEventListener("turbo:load", function() {
+    $(document).ready(function() {
+      $(
+        ".form_not_read_titles, .endDate_not_read_titles, .remainPages_not_read_titles, .targetPages_not_read_titles"
+      ).hide();
+      $(
+        ".form_not_read_open, .endDate_not_read_open, .remainPages_not_read_open, .targetPages_not_read_open"
+      ).hide();
+      $(
+        ".form_not_read_index_title, .endDate_not_read_index_title, .remainPages_not_read_index_title, .targetPages_not_read_index_title"
+      ).click(function() {
+        toggleAllAccordions();
+      });
+      function toggleAllAccordions() {
+        $(
+          ".form_not_read_titles, .endDate_not_read_titles, .remainPages_not_read_titles, .targetPages_not_read_titles"
+        ).slideToggle(200);
+        $(
+          ".form_not_read_open, .endDate_not_read_open, .remainPages_not_read_open, .targetPages_not_read_open"
+        ).toggle();
+        $(
+          ".form_not_read_close, .endDate_not_read_close, .remainPages_not_read_close, .targetPages_not_read_close"
+        ).toggle();
+      }
+    });
+  });
+
   // app/javascript/application.js
   var import_jquery = __toESM(require_jquery());
   window.$ = window.jQuery = import_jquery.default;
