@@ -22,7 +22,7 @@ class CalendarsController < ApplicationController
 
   #今日の日付が取り組む曜日に含まれている本のタイトルを取得
   def todays_books_titles(studies)
-    todays_books = studies.select { |study| today_in_read_day_of_week(study) && !study.status }
+    todays_books = studies.select { |study| today_in_read_day_of_week(study) && !study.status && study.start_day <= Date.today }
     todays_books.map(&:title)
   end
 end
