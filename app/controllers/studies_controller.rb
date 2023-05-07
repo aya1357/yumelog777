@@ -19,7 +19,7 @@ class StudiesController < ApplicationController
       # redirect_to studies_registration_complete_path(id: @study.id), success: t('defaults.message.registed', item: Study.model_name.human)
       redirect_to calendars_path, success: t('defaults.message.registed', item: Study.model_name.human)
     else
-      flash.now['danger'] = t('defaults.message.not_resisted', item: Study.model_name.human)
+      flash.now['danger'] = t('defaults.message.not_registed', item: Study.model_name.human)
       render :new, status: :unprocessable_entity
     end
   end

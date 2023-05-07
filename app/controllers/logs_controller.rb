@@ -6,11 +6,12 @@ class LogsController < ApplicationController
 
   def new
     @form = Form::LogCollection.new
-    @date = params[:date] ? Date.parse(params[:date]) : Time.zone.today
+    @date = Date.parse(params[:date])
   end
 
   def edit
     @form = Form::LogCollection.new({}, current_user.id, params[:date])
+    @date = Date.parse(params[:date])
   end
 
   def create
