@@ -11,6 +11,7 @@ class LogsController < ApplicationController
 
   def edit
     @form = Form::LogCollection.new({}, current_user.id, params[:date])
+    @date = Date.parse(params[:date])
   end
 
   def create
