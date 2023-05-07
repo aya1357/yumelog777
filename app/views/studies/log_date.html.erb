@@ -20,7 +20,7 @@
                 </div>
                 <div class="flex-wrap">
                   <% @studies.each do |study| %>
-                    <% if study.status == false %>
+                    <% if !study.status %>
                       <div class="mb-6">
                         <p class="font-bold md:text-xl text-indigo-900"><%= study.title.truncate(22) %></p>
                         <div class="mt-2 flex justify-between">

@@ -68,7 +68,7 @@
                   <div class="flex-wrap">
                     <% @studies.each do |study| %>
                       <% if study.status == false && !study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
-                        <div class="mb-2">
+                        <div class="mb-5">
                           <p class="font-bold md:text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>
                           <div class="mt-2 flex justify-between">
                           <%= f.fields_for :logs do |f| %>
@@ -95,7 +95,7 @@
               </div>
                 <% if @studies.present? %>
                   <div class="text-center">
-                    <%= f.submit (t 'defaults.register'), class: "py-3 px-8 bg-blue-700 text-white font-bold mt-6 rounded-lg hover:bg-blue-900" %>
+                    <%= f.submit (t 'defaults.register'), class: "py-3 px-8 bg-blue-700 text-white font-bold mt-2 rounded-lg hover:bg-blue-900" %>
                   </div>
                 <% end %>
             <% end %>
@@ -110,7 +110,7 @@
             </svg>
             <div class="ml-1 font-bold text-2xl">完了予定日</div>
           </div>
-          <div class="flex-wrap">
+          <div class="flex-wrap mb-5">
             <% @studies.each do |study| %>
               <% if study.status == false && study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
                 <p class="font-bold md:text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>
@@ -121,7 +121,7 @@
               <% end %>
             <% end %>
           </div>
-          <div class="endDate_not_read mt-5">
+          <div class="endDate_not_read">
             <div class="endDate_not_read_index_title cursor-pointer font-bold hover:underline mb-4">
               <div class="endDate_not_read_close float-left">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
