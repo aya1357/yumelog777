@@ -1,4 +1,4 @@
-<% content_for(:title, @log_date_display) %>
+<% content_for(:title, l(@log_date_display)) %>
 <% StudiesHelper %>
 
 <div style="background-color: #f9fcff;">
@@ -19,29 +19,73 @@
                   </div>
                 </div>
                 <div class="flex-wrap">
-                  <% @studies.each do |study| %>
-                    <% if !study.status %>
-                      <div class="mb-6">
-                        <p class="font-bold md:text-xl text-indigo-900"><%= study.title.truncate(22) %></p>
-                        <div class="mt-2 flex justify-between">
-                          <% log = Log.find_by(study_id: study.id, log_date: params["date"]) %>
-                          <% if log.present?%>
-                          <div class="flex pt-2">
-                            <div class="text-3xl mx-3 font-bold underline">
-                              <%= log.study_number %>
+                  <div class="mb-10">
+                    <% @studies.each do |study| %>
+                      <% if !study.status && study.day_of_week.split(",").map{|n| n.to_i}.include?(@log_date_display.wday.to_i) %>
+                        <div class="mb-6 mt-7">
+                          <p class="font-bold md:text-xl text-indigo-900"><%= study.title.truncate(22) %></p>
+                          <div class="flex justify-between">
+                            <% log = Log.find_by(study_id: study.id, log_date: params["date"]) %>
+                            <% if log.present?%>
+                            <div class="flex pt-2">
+                              <div class="text-3xl mx-3 font-bold underline">
+                                <%= log.study_number %>
+                              </div>
+                              <span class="block pt-3">ページ</span>
                             </div>
-                            <span class="block pt-3">ページ</span>
+                            <div class="flex">
+                              <%= link_to (t 'defaults.delete'), log_path(@log, id: study.id, date: params["date"]), data: { turbo_method: :delete,  turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm m-auto" %>
+                            </div>
+                            <% else %>
+                              <div class="">勉強記録の登録がありません</div>
+                            <% end %>
                           </div>
-                          <div class="flex">
-                            <%= link_to (t 'defaults.delete'), log_path(@log, id: study.id, date: params["date"]), data: { turbo_method: :delete,  turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm m-auto" %>
-                          </div>
-                          <% else %>
-                            <div class="">勉強記録の登録がありません</div>
-                          <% end %>
                         </div>
-                      </div>
+                      <% end %>
                     <% end %>
-                  <% end %>
+                  </div>
+                <div class="form_not_read">
+                  <div class="form_not_read_index_title cursor-pointer font-bold hover:underline mt-8 mb-4">
+                    <div class="form_not_read_close float-left">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </div>
+                    <div class="form_not_read_open float-left">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" />
+                      </svg>
+                    </div>
+                    <div>
+                      読書予定ではない本の一覧
+                    </div>
+                  </div>
+                  <div class="form_not_read_titles">
+                    <% @studies.each do |study| %>
+                      <% if !study.status && !study.day_of_week.split(",").map{|n| n.to_i}.include?(@log_date_display.wday.to_i) %>
+                        <div class="mb-6">
+                          <p class="font-bold md:text-xl text-indigo-900"><%= study.title.truncate(22) %></p>
+                          <div class="flex justify-between">
+                            <% log = Log.find_by(study_id: study.id, log_date: params["date"]) %>
+                            <% if log.present?%>
+                            <div class="flex pt-2">
+                              <div class="text-3xl mx-3 font-bold underline">
+                                <%= log.study_number %>
+                              </div>
+                              <span class="block pt-3">ページ</span>
+                            </div>
+                            <div class="flex">
+                              <%= link_to (t 'defaults.delete'), log_path(@log, id: study.id, date: params["date"]), data: { turbo_method: :delete,  turbo_confirm: t('defaults.message.delete_confirm') }, class: "float-left bg-transparent hover:bg-red-500 text-red-400 font-semibold hover:text-white py-1 px-1 border border-red-500 hover:border-transparent rounded text-sm m-auto" %>
+                            </div>
+                            <% else %>
+                              <div class="">勉強記録の登録がありません</div>
+                            <% end %>
+                          </div>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
                 </div>
                 <div class="text-center pt-10 space-x-5">
                   <%= link_to (t 'defaults.edit'), edit_log_path(date: params["date"]), class: "py-3 md:px-8 px-5 bg-blue-700 text-white font-bold mt-6 rounded-lg hover:bg-blue-900" %>
@@ -60,15 +104,45 @@
               <div class="ml-1 font-bold text-2xl">完了予定日</div>
             </div>
             <div class="flex-wrap">
-              <% @studies.each do |study| %>
-                <% if study.status == false %>
-                  <p class="font-bold md:text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>
-                  <div class="text-left  mb-9">
-                    <p>目標終了予定日: <span><%= l target_end_date(study), format: :long %></span></p>
-                    <p>自動計算終了日: <span id = "culcEndDay_<%= study.id %>"><%= l automatic_calculation_end_day(study), format: :long %></span></p>
-                  </div>
+              <div class="mb-8">
+                <% @studies.each do |study| %>
+                  <% if !study.status && study.day_of_week.split(",").map{|n| n.to_i}.include?(@log_date_display.wday.to_i) %>
+                    <p class="font-bold md:text-xl text-indigo-900 mb-1"><%= study.title.truncate(22) %></p>
+                    <div class="text-left mb-5">
+                      <p>目標終了予定日: <span><%= l target_end_date(study), format: :long %></span></p>
+                      <p>自動計算終了日: <span id = "culcEndDay_<%= study.id %>"><%= l automatic_calculation_end_day(study), format: :long %></span></p>
+                    </div>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </div>
+              <div class="form_not_read">
+                <div class="form_not_read_index_title cursor-pointer font-bold hover:underline mt-2 mb-4">
+                  <div class="form_not_read_close float-left">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </div>
+                  <div class="form_not_read_open float-left">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" />
+                    </svg>
+                  </div>
+                  <div>
+                    読書予定ではない本の一覧
+                  </div>
+                </div>
+                <div class="form_not_read_titles space-y-2">
+                  <% @studies.each do |study| %>
+                    <% if !study.status && !study.day_of_week.split(",").map{|n| n.to_i}.include?(@log_date_display.wday.to_i) %>
+                      <p class="font-bold md:text-xl text-indigo-900 mb-1"><%= study.title.truncate(22) %></p>
+                      <div class="text-left mb-9">
+                        <p>目標終了予定日: <span><%= l target_end_date(study), format: :long %></span></p>
+                        <p>自動計算終了日: <span id = "culcEndDay_<%= study.id %>"><%= l automatic_calculation_end_day(study), format: :long %></span></p>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
           <!-- quote - end -->
@@ -82,11 +156,11 @@
             </div>
             <div class="flex-wrap">
               <% @studies.each do |study| %>
-                <% if study.status == false %>
-                  <p class="font-bold md:text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>
-                  <div class="flex mb-9 justify-between">
+                <% if !study.status && study.day_of_week.split(",").map{|n| n.to_i}.include?(@log_date_display.wday.to_i) %>
+                  <p class="font-bold md:text-xl text-indigo-900 mb-1"><%= study.title.truncate(22) %></p>
+                  <div class="flex mb-7 justify-between">
                     <div class="flex">
-                      <div class="block">残り<span class="text-3xl mx-3 font-bold underline"><%= remain_pages(study) %></span>ページ</div>
+                      <div class="block">残り<span class="text-3xl font-bold underline"><%= remain_pages(study) %></span>ページ</div>
                       <% if remain_pages(study) == 0 %>
                         <div class="ml-3">
                           <%= image_tag "log_completed_logo.svg", alt: "計算アイコン", class: "w-10" %>
@@ -101,6 +175,45 @@
                   </div>
                 <% end %>
               <% end %>
+              <div class="form_not_read">
+                <div class="form_not_read_index_title cursor-pointer font-bold hover:underline mb-4">
+                  <div class="form_not_read_close float-left">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </div>
+                  <div class="form_not_read_open float-left">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" />
+                    </svg>
+                  </div>
+                  <div>
+                    読書予定ではない本の一覧
+                  </div>
+                </div>
+                <div class="form_not_read_titles">
+                  <% @studies.each do |study| %>
+                    <% if !study.status && !study.day_of_week.split(",").map{|n| n.to_i}.include?(@log_date_display.wday.to_i) %>
+                      <p class="font-bold md:text-xl text-indigo-900 mb-1"><%= study.title.truncate(22) %></p>
+                      <div class="flex mb-7 justify-between">
+                        <div class="flex">
+                          <div class="block">残り<span class="text-3xl mx-3 font-bold underline"><%= remain_pages(study) %></span>ページ</div>
+                          <% if remain_pages(study) == 0 %>
+                            <div class="ml-3">
+                              <%= image_tag "log_completed_logo.svg", alt: "計算アイコン", class: "w-10" %>
+                            </div>
+                          <% end %>
+                        </div>
+                        <% if remain_pages(study) == 0 %>
+                          <div class="flex">
+                            <%= link_to "完了済", studies_status_done_path(id: study.id), class:"bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+                          </div>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
           <!-- quote - end -->
@@ -114,13 +227,40 @@
             </div>
             <div class="flex-wrap">
               <% @studies.each do |study| %>
-                <% if study.status == false %>
-                  <p class="font-bold md:text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>
-                  <div class="flex text-left  mb-9">
+                <% if !study.status && study.day_of_week.split(",").map{|n| n.to_i}.include?(@log_date_display.wday.to_i) %>
+                  <p class="font-bold md:text-xl text-indigo-900"><%= study.title.truncate(22) %></p>
+                  <div class="flex text-left mb-7">
                     <div class="block">1日<span class="text-3xl mx-3 font-bold underline"><%= study.target_number%></span>ページ</div>
                   </div>
                 <% end %>
               <% end %>
+              <div class="form_not_read">
+                <div class="form_not_read_index_title cursor-pointer font-bold hover:underline mt-8 mb-4">
+                  <div class="form_not_read_close float-left">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </div>
+                  <div class="form_not_read_open float-left">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" />
+                    </svg>
+                  </div>
+                  <div>
+                    読書予定ではない本の一覧
+                  </div>
+                </div>
+                <div class="form_not_read_titles space-y-2">
+                  <% @studies.each do |study| %>
+                    <% if !study.status && !study.day_of_week.split(",").map{|n| n.to_i}.include?(@log_date_display.wday.to_i) %>
+                      <p class="font-bold md:text-xl text-indigo-900 mb-1"><%= study.title.truncate(22) %></p>
+                      <div class="flex text-left mb-7">
+                        <div class="block">1日<span class="text-3xl mx-3 font-bold underline"><%= study.target_number%></span>ページ</div>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
           <!-- quote - end -->
