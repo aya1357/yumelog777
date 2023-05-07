@@ -20,27 +20,29 @@
                   </div>
                 </div>
                 <div class="flex-wrap">
-                  <%= f.fields_for :logs do |f| %>
-                    <% study = Study.find(f.object.study_id) %>
-                    <% if !study.status && study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
-                      <%= f.hidden_field :user_id, :value => current_user.id %>
-                      <%= f.hidden_field :study_id, :value => study.id %>
-                      <%= f.hidden_field :log_date, :value => (params["date"]).to_date %>
-                      <div class="font-bold md:text-xl text-indigo-900 mt-6"><%= study.title.truncate(22) %></div>
-                      <div class="justify-between flex mt-2">
-                        <div class="flex">
-                          <%= f.number_field :study_number, in: 0..5000, placeholder: "例) 5", id: ("input_#{study.id}"), class: "mr-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 py-3 px-6", required: true %>
-                          <span class="pt-3">ページ</span>
-                          <%= link_to "" do %>
-                            <div class="hover:underline ml-8" id="calc_btn_<%= study.id %>">
-                              <%= image_tag "logo_cul.png", alt: "計算アイコン", class: "w-6" %>
-                              <span class="text-sm font-bold">計算</span>
-                            </div>
-                          <% end %>
+                  <div class="mb-12">
+                    <%= f.fields_for :logs do |f| %>
+                      <% study = Study.find(f.object.study_id) %>
+                      <% if !study.status && study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
+                        <%= f.hidden_field :user_id, :value => current_user.id %>
+                        <%= f.hidden_field :study_id, :value => study.id %>
+                        <%= f.hidden_field :log_date, :value => (params["date"]).to_date %>
+                        <div class="font-bold md:text-xl text-indigo-900 mt-6"><%= study.title.truncate(22) %></div>
+                        <div class="justify-between flex mt-2">
+                          <div class="flex">
+                            <%= f.number_field :study_number, in: 0..5000, placeholder: "例) 5", id: ("input_#{study.id}"), class: "mr-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 py-3 px-6", required: true %>
+                            <span class="pt-3">ページ</span>
+                            <%= link_to "" do %>
+                              <div class="hover:underline ml-8" id="calc_btn_<%= study.id %>">
+                                <%= image_tag "logo_cul.png", alt: "計算アイコン", class: "w-6" %>
+                                <span class="text-sm font-bold">計算</span>
+                              </div>
+                            <% end %>
+                          </div>
                         </div>
-                      </div>
+                      <% end %>
                     <% end %>
-                  <% end %>
+                  </div>
                   <div class="form_not_read">
                     <div class="form_not_read_index_title cursor-pointer font-bold hover:underline mt-8 mb-4">
                       <div class="form_not_read_close float-left">
@@ -152,7 +154,7 @@
             </div>
             <div class="flex-wrap mb-4">
               <% @studies.each do |study| %>
-                <% if study.status == false && study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
+                <% if !study.status && study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
                   <p class="font-bold md:text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>
                   <div class="flex mb-9 justify-between">
                     <div class="flex">
@@ -187,9 +189,9 @@
                     読書予定ではない本の一覧
                   </div>
                 </div>
-                <div class="form_not_read_titles space-y-4">
+                <div class="form_not_read_titles">
                   <% @studies.each do |study| %>
-                    <% if study.status == false && !study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
+                    <% if !study.status && !study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
                       <p class="font-bold md:text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>
                       <div class="flex mb-9 justify-between">
                         <div class="flex">
@@ -246,7 +248,7 @@
                       読書予定ではない本の一覧
                     </div>
                   </div>
-                  <div class="form_not_read_titles space-y-4">
+                  <div class="form_not_read_titles">
                     <% @studies.each do |study| %>
                       <% if !study.status && !study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
                         <p class="font-bold md:text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>

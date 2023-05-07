@@ -1,4 +1,4 @@
-<% if study.status == false %>
+<% if !study.status %>
   <div class="notDone w-full md:w-1/2 p-2">
     <% if remain_days_count(study).to_i > 0 %>
       <p class="font-bold text-right">終了まであと <span class="text-3xl"><%= remain_days_count(study).to_i %> </span>日</p>

@@ -24,7 +24,7 @@
               </div>
               <div class="flex-wrap">
                 <% @studies.each do |study| %>
-                  <% if study.status == false && study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
+                  <% if !study.status && study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
                     <div class="mb-6">
                       <p class="font-bold md:text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>
                       <div class="mt-2 flex justify-between">
@@ -67,7 +67,7 @@
                 <div class="form_not_read_titles space-y-4">
                   <div class="flex-wrap">
                     <% @studies.each do |study| %>
-                      <% if study.status == false && !study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
+                      <% if !study.status && !study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
                         <div class="mb-5">
                           <p class="font-bold md:text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>
                           <div class="mt-2 flex justify-between">
@@ -76,7 +76,7 @@
                               <%= f.hidden_field :user_id, value: current_user.id %>
                               <%= f.hidden_field :study_id, value: study.id %>
                               <%= f.hidden_field :log_date, value: @date %>
-                              <%= f.number_field :study_number, in: 0..5000, value: study.target_number, placeholder: "例) 5", id: ("input_#{study.id}"), class: "mr-3 float-left bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 float-left py-3 px-6", required: true %>
+                              <%= f.number_field :study_number, in: 0..5000, value: "0", placeholder: "例) 5", id: ("input_#{study.id}"), class: "mr-3 float-left bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 float-left py-3 px-6", required: true %>
                               <span class="block pt-3">ページ</span>
                               <%= link_to "" do %>
                                 <div class="hover:underline ml-8" id="calc_btn_<%= study.id %>">
@@ -112,7 +112,7 @@
           </div>
           <div class="flex-wrap mb-5">
             <% @studies.each do |study| %>
-              <% if study.status == false && study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
+              <% if !study.status && study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
                 <p class="font-bold md:text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>
                 <div class="text-left">
                   <p>目標終了予定日: <span><%= l target_end_date(study), format: :long %></span></p>
@@ -140,7 +140,7 @@
             <div class="endDate_not_read_titles space-y-4">
               <div class="flex-wrap">
                 <% @studies.each do |study| %>
-                  <% if study.status == false && !study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
+                  <% if !study.status && !study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
                     <p class="font-bold md:text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>
                     <div class="text-left mb-6">
                       <p>目標終了予定日: <span><%= l target_end_date(study), format: :long %></span></p>
@@ -163,7 +163,7 @@
           </div>
           <div class="flex-wrap">
             <% @studies.each do |study| %>
-              <% if study.status == false && study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
+              <% if !study.status && study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
                 <p class="font-bold md:text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>
                 <div class="flex justify-between">
                   <div class="flex">
@@ -202,7 +202,7 @@
             <div class="remainPages_not_read_titles space-y-4">
               <div class="flex-wrap">
                 <% @studies.each do |study| %>
-                  <% if study.status == false && !study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
+                  <% if !study.status && !study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
                     <p class="font-bold md:text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>
                     <div class="flex mb-9 justify-between">
                       <div class="flex">
@@ -236,7 +236,7 @@
           </div>
           <div class="flex-wrap">
             <% @studies.each do |study| %>
-              <% if study.status == false && study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
+              <% if !study.status && study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
                 <p class="font-bold md:text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>
                 <div class="flex text-left">
                   <div class="block">1日<span class="text-3xl mx-3 font-bold underline"><%= study.target_number %></span>ページ</div>
@@ -263,7 +263,7 @@
             <div class="targetPages_not_read_titles space-y-4">
               <div class="flex-wrap">
                 <% @studies.each do |study| %>
-                  <% if study.status == false && !study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
+                  <% if !study.status && !study.day_of_week.split(",").map{|n| n.to_i}.include?(@date.wday.to_i) %>
                     <p class="font-bold md:text-xl text-indigo-900 mb-2"><%= study.title.truncate(22) %></p>
                     <div class="flex text-left mb-9">
                       <div class="block">1日<span class="text-3xl mx-3 font-bold underline"><%= study.target_number %></span>ページ</div>

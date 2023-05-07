@@ -19,7 +19,7 @@
                   </div>
                 </div>
                 <div class="flex-wrap">
-                  <div class="mb-10">
+                  <div class="mb-12">
                     <% @studies.each do |study| %>
                       <% if !study.status && study.day_of_week.split(",").map{|n| n.to_i}.include?(@log_date_display.wday.to_i) %>
                         <div class="mb-6 mt-7">
@@ -45,7 +45,7 @@
                     <% end %>
                   </div>
                 <div class="form_not_read">
-                  <div class="form_not_read_index_title cursor-pointer font-bold hover:underline mt-8 mb-4">
+                  <div class="form_not_read_index_title cursor-pointer font-bold hover:underline mt-5 mb-4">
                     <div class="form_not_read_close float-left">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5" />
@@ -108,15 +108,15 @@
                 <% @studies.each do |study| %>
                   <% if !study.status && study.day_of_week.split(",").map{|n| n.to_i}.include?(@log_date_display.wday.to_i) %>
                     <p class="font-bold md:text-xl text-indigo-900 mb-1"><%= study.title.truncate(22) %></p>
-                    <div class="text-left mb-5">
+                    <div class="text-left">
                       <p>目標終了予定日: <span><%= l target_end_date(study), format: :long %></span></p>
                       <p>自動計算終了日: <span id = "culcEndDay_<%= study.id %>"><%= l automatic_calculation_end_day(study), format: :long %></span></p>
                     </div>
                   <% end %>
                 <% end %>
               </div>
-              <div class="form_not_read">
-                <div class="form_not_read_index_title cursor-pointer font-bold hover:underline mt-2 mb-4">
+              <div class="form_not_read mt-6">
+                <div class="form_not_read_index_title cursor-pointer font-bold hover:underline mb-4">
                   <div class="form_not_read_close float-left">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5" />
@@ -134,7 +134,7 @@
                 <div class="form_not_read_titles space-y-2">
                   <% @studies.each do |study| %>
                     <% if !study.status && !study.day_of_week.split(",").map{|n| n.to_i}.include?(@log_date_display.wday.to_i) %>
-                      <p class="font-bold md:text-xl text-indigo-900 mb-1"><%= study.title.truncate(22) %></p>
+                      <p class="font-bold md:text-xl text-indigo-900 mb-1 mt-8"><%= study.title.truncate(22) %></p>
                       <div class="text-left mb-9">
                         <p>目標終了予定日: <span><%= l target_end_date(study), format: :long %></span></p>
                         <p>自動計算終了日: <span id = "culcEndDay_<%= study.id %>"><%= l automatic_calculation_end_day(study), format: :long %></span></p>
@@ -235,7 +235,7 @@
                 <% end %>
               <% end %>
               <div class="form_not_read">
-                <div class="form_not_read_index_title cursor-pointer font-bold hover:underline mt-8 mb-4">
+                <div class="form_not_read_index_title cursor-pointer font-bold hover:underline mb-4">
                   <div class="form_not_read_close float-left">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5" />
