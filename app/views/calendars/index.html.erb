@@ -27,8 +27,9 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" />
             </svg>
           </div>
-          <div>
-            本日読書予定の本の一覧
+          <div class="flex space-x-8">
+            <div>本日読書予定の本の一覧</div>
+            <%= link_to "LINEで通知", line_bot_path, class: "text-sm bg-green-500 hover:bg-green-600 text-white  py-1 px-2 rounded" %>
           </div>
         </div>
         <div class="books_titles bg-white p-4 space-y-4 border-blue-200 border-b-2">
@@ -43,8 +44,8 @@
       </div>
     </div>
     <section>
-      <div class="mt-8">
-        <%= link_to "本を追加する", new_study_path, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+      <div class="mt-8 space-x-8">
+        <%= link_to "本を追加", new_study_path, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
       </div>
       <div class="mt-12">
         <nav class="flex flex-col sm:flex-row">

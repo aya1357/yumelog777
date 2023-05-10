@@ -82,6 +82,9 @@ gem 'cssbundling-rails'
 # Mail
 gem 'letter_opener_web'
 
+# LINEリマインダー
+gem 'line-bot-api'
+
 # 画像編集
 gem 'mini_magick'
 gem 'rmagick'

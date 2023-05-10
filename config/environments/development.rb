@@ -88,4 +88,6 @@ Rails.application.configure do
     :authentication => :plain,
     :enable_starttls_auto => true
   }
+  config.hosts.clear
+  config.web_console.whitelisted_ips = '147.92.150.194'
 end

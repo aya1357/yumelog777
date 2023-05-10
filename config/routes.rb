@@ -32,4 +32,6 @@ Rails.application.routes.draw do
   get '/faq', to: 'static_pages#faq'
   get '/guide', to: 'static_pages#guide'
   get '/start', to: 'static_pages#start'
+  get '/line_bot' => 'line_bot#index'
+  post '/' => 'line_bot#index'
 end

@@ -161,6 +161,7 @@ GEM
       letter_opener (~> 1.7)
       railties (>= 5.2)
       rexml
+    line-bot-api (1.28.0)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -353,6 +354,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   letter_opener_web
+  line-bot-api
   meta-tags
   mini_magick
   pg (~> 1.1)
