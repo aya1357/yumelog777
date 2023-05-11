@@ -40,16 +40,22 @@ document.addEventListener("turbo:load", function () {
     $(".weekday").toggleClass(
       "checked bg-gray-50 text-blue-700 border-blue-500 bg-blue-700 text-slate-50 border-blue-700"
     );
+    // ここで、hidden_fieldの値を取得して、配列に変換する(filter(Boolean)は先頭の不要なコンマを削除するため)
     let current_value = $("#week_checked").val().split(",").filter(Boolean);
+    // 選択されているボタンがある場合
     if ($(this).hasClass("checked")) {
+      // CSSとvalueを削除
       $(this).removeClass("checked");
       $(".weekday")
         .removeClass("checked bg-blue-700 text-slate-50 border-blue-700")
         .addClass("bg-gray-50 text-blue-700 border-blue-500");
+      // 現在の選択から平日の値を削除した配列を作成
       current_value = current_value.filter(
         (value) => !weekdayValues.includes(value)
       );
+      // 選択されているボタンがない場合
     } else {
+      // CSSとvalueを追加
       $(this).addClass("checked");
       $(".weekday")
         .addClass("checked bg-blue-700 text-slate-50 border-blue-700")
@@ -59,19 +65,24 @@ document.addEventListener("turbo:load", function () {
     $("#week_checked").val(current_value.join(","));
   });
 
+  // 休日のボタンをクリックした時の処理
   $(".mainHoliday").click(function () {
     $(".holiday").toggleClass(
       "checked bg-gray-50 text-blue-700 border-blue-500 bg-blue-700 text-slate-50 border-blue-700"
     );
     let current_value = $("#week_checked").val().split(",").filter(Boolean);
+    // 選択されているボタンがある場合
     if ($(this).hasClass("checked")) {
+      // CSSとvalueを削除
       $(this).removeClass("checked");
       $(".holiday")
         .removeClass("checked bg-blue-700 text-slate-50 border-blue-700")
         .addClass("bg-gray-50 text-blue-700 border-blue-500");
+      // 現在の選択から休日の値を削除した配列を作成;
       current_value = current_value.filter(
         (value) => !holidayValues.includes(value)
       );
+    // 選択されているボタンがない場合
     } else {
       $(this).addClass("checked");
       $(".holiday")

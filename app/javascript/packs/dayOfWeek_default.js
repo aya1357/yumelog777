@@ -84,6 +84,7 @@ document.addEventListener("turbo:load", function () {
       $(".edit_weekday")
         .removeClass("checked bg-blue-700 text-slate-50 border-blue-700")
         .addClass("bg-gray-50 text-blue-700 border-blue-500");
+      // 現在の選択から平日の値を削除した配列を作成
       current_value = current_value.filter(
         (value) => !weekdayValues.includes(value)
       );
@@ -116,6 +117,7 @@ document.addEventListener("turbo:load", function () {
       $(".edit_holiday")
         .removeClass("checked bg-blue-700 text-slate-50 border-blue-700")
         .addClass("bg-gray-50 text-blue-700 border-blue-500");
+      // 現在の選択から休日の値を削除した配列を作成
       current_value = current_value.filter(
         (value) => !holidayValues.includes(value)
       );
@@ -158,7 +160,6 @@ document.addEventListener("turbo:load", function () {
         week_value = "";
         break;
     }
-
     return week_value;
   }
 });
