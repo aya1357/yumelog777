@@ -17,13 +17,14 @@ document.addEventListener("turbo:load", function () {
     : undefined;
   $(document).ready(function () {
     $(".day_of_week").each(function (index) {
-      let cellWeekday = dayOfWeek_arr[index % 7]; //セルの曜日を取得する
+      //セルの曜日を取得する
+      let cellWeekday = dayOfWeek_arr[index % 7];
       if (dayOfWeek_intarr.includes(index % 7)) {
         //セルの曜日がdayOfWeek_intarrに含まれる場合、背景色選択されている際の色に設定
         $(this).toggleClass(
           "checked bg-gray-50 text-blue-700 border-blue-500 bg-blue-700 text-slate-50 border-blue-700"
         );
-      };
+      }
     });
   });
 
@@ -62,6 +63,76 @@ document.addEventListener("turbo:load", function () {
     }
   });
 
+  const weekdayValues = ["1", "2", "3", "4", "5"];
+  const holidayValues = ["0", "6"];
+
+  // 平日ボタンがクリックされたときの処理
+  $(".edit_mainWeekday").click(function () {
+    // 平日ボタンのクラスを切り替える
+    $(".edit_weekday").toggleClass(
+      "checked bg-gray-50 text-blue-700 border-blue-500 bg-blue-700 text-slate-50 border-blue-700"
+    );
+    // 現在の選択値を取得
+    let current_value = $("#dayOfWeek_checked")
+      .val()
+      .split(",")
+      .filter(Boolean);
+    // 選択されているボタンがある場合
+    if ($(this).hasClass("checked")) {
+      // 選択されているボタンのCSSとvalue解除
+      $(this).removeClass("checked");
+      $(".edit_weekday")
+        .removeClass("checked bg-blue-700 text-slate-50 border-blue-700")
+        .addClass("bg-gray-50 text-blue-700 border-blue-500");
+      // 現在の選択から平日の値を削除した配列を作成
+      current_value = current_value.filter(
+        (value) => !weekdayValues.includes(value)
+      );
+    } else {
+      // 選択されているボタンがない場合
+      $(this).addClass("checked");
+      $(".edit_weekday")
+        .addClass("checked bg-blue-700 text-slate-50 border-blue-700")
+        .removeClass("bg-gray-50 text-blue-700 border-blue-500");
+      // 現在の選択に平日の値を追加します
+      current_value = [...new Set([...current_value, ...weekdayValues])];
+    }
+    $("#dayOfWeek_checked").val(current_value.join(","));
+  });
+
+  // 休日ボタンがクリックされたときの処理
+  $(".edit_mainHoliday").click(function () {
+    $(".holiday").toggleClass(
+      "checked bg-gray-50 text-blue-700 border-blue-500 bg-blue-700 text-slate-50 border-blue-700"
+    );
+    // 現在の選択値を取得
+    let current_value = $("#dayOfWeek_checked")
+      .val()
+      .split(",")
+      .filter(Boolean);
+    // 選択されているボタンがある場合
+    if ($(this).hasClass("checked")) {
+      // 選択されているボタンのCSSとvalue解除
+      $(this).removeClass("checked");
+      $(".edit_holiday")
+        .removeClass("checked bg-blue-700 text-slate-50 border-blue-700")
+        .addClass("bg-gray-50 text-blue-700 border-blue-500");
+      // 現在の選択から休日の値を削除した配列を作成
+      current_value = current_value.filter(
+        (value) => !holidayValues.includes(value)
+      );
+    } else {
+      // 選択されているボタンがない場合
+      $(this).addClass("checked");
+      $(".edit_holiday")
+        .addClass("checked bg-blue-700 text-slate-50 border-blue-700")
+        .removeClass("bg-gray-50 text-blue-700 border-blue-500");
+      // 現在の選択に休日の値を追加
+      current_value = [...new Set([...current_value, ...holidayValues])];
+    }
+    $("#dayOfWeek_checked").val(current_value.join(","));
+  });
+
   function check_week_value(checked_week_value) {
     switch (checked_week_value) {
       case "日":
@@ -89,7 +160,6 @@ document.addEventListener("turbo:load", function () {
         week_value = "";
         break;
     }
-
     return week_value;
   }
 });

@@ -83,15 +83,21 @@
           </svg>
           <label for="title" class="block mb-2 text-gray-600 dark:text-white font-bold"><%= t('activerecord.attributes.study.day_of_week') %><span class="text-red-500 ml-2 text-sm">* 必須</span></label>
           <div class="mt-2 max-w-full">
-            <div class="justify-start my-2 select-none md:space-x-2">
+            <div class="justify-start my-2 select-none md:space-x-2 space-y-2">
               <%= f.hidden_field :day_of_week, value: "", id: "week_checked", required: true %>
-              <input type="button" value="日" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
-              <input type="button" value="月" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
-              <input type="button" value="火" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
-              <input type="button" value="水" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
-              <input type="button" value="木" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
-              <input type="button" value="金" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
-              <input type="button" value="土" class="dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
+              <div class="space-x-2 mb-2">
+                <input type="button" value="平日" class="mainWeekday py-1 px-3 bg-green-500 text-white font-bold my-2 rounded-lg hover:bg-green-600" />
+                <input type="button" value="土日" class="mainHoliday py-1 px-3 bg-red-500 text-white font-bold my-2 rounded-lg hover:bg-red-600" />
+              </div>
+              <div>
+                <input type="button" value="日" class="holiday dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
+                <input type="button" value="月" class="weekday dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
+                <input type="button" value="火" class="weekday dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
+                <input type="button" value="水" class="weekday dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
+                <input type="button" value="木" class="weekday dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
+                <input type="button" value="金" class="weekday dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
+                <input type="button" value="土" class="holiday dayOfWeek bg-gray-50 text-blue-700 font-semibold py-2 px-2 md:px-3 border border-blue-500 rounded-full" />
+              </div>
             </div>
           </div>
         </div>
