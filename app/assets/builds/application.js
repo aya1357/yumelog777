@@ -13296,6 +13296,17 @@
     });
   });
 
+  // app/javascript/packs/book_progress.js
+  document.addEventListener("turbo:load", function() {
+    let progressBars = document.querySelectorAll(".progress-bar");
+    let progressTexts = document.querySelectorAll(".progress-text");
+    progressBars.forEach((progressBar, index) => {
+      let progress = progressBar.dataset.progress;
+      progressBar.style.width = progress + "%";
+      progressTexts[index].textContent = progress + "%";
+    });
+  });
+
   // app/javascript/application.js
   var import_jquery = __toESM(require_jquery());
   window.$ = window.jQuery = import_jquery.default;
