@@ -38,6 +38,12 @@
             </div>
           <% end %>
         </div>
+        <% book_progress = (((study.logs.pluck(:study_number).sum.to_f) / (study.end_number - study.start_number)) * 100).floor  %>
+        <div class="w-full h-6 bg-gray-200 rounded-full mt-3">
+          <div class="flex justify-start items-center progress-bar h-full text-sm text-white bg-blue-500 rounded-full font-bold" data-progress="<%= book_progress %>">
+            <span class="progress-text inline-block px-2"></span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
