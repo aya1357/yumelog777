@@ -13307,6 +13307,20 @@
     });
   });
 
+  // app/javascript/packs/calendar_hover_books_index.js
+  document.addEventListener("turbo:load", function() {
+    $(document).ready(function() {
+      $(".calendar_book_index_dropdown").hover(
+        function() {
+          $(this).find(".calendar_book_index_dropdown-content").stop(true, true).delay(200).fadeIn(500);
+        },
+        function() {
+          $(this).find(".calendar_book_index_dropdown-content").stop(true, true).delay(200).fadeOut(500);
+        }
+      );
+    });
+  });
+
   // app/javascript/application.js
   var import_jquery = __toESM(require_jquery());
   window.$ = window.jQuery = import_jquery.default;

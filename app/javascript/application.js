@@ -13,5 +13,6 @@ import "./packs/guide_change.js"
 import "./packs/today_books_accordion.js"
 import "./packs/logs_not_read_books.js"
 import "./packs/book_progress.js"
+import "./packs/calendar_hover_books_index.js"
 import jquery from "jquery"
 window.$ = window.jQuery = jquery
