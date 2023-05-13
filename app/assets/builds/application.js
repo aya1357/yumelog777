@@ -12898,7 +12898,8 @@
   document.addEventListener("turbo:load", function() {
     $(".table tbody tr td a").click(function(e) {
       e.preventDefault();
-      const log_date_text = $(this).text();
+      const log_date_text = $(this).find(".books_date").text();
+      console.log(log_date_text);
       const log_date_num = log_date_text.replace(/[^0-9]/g, "");
       const log_date = log_date_num < 10 ? "0" + log_date_num : log_date_num;
       const log_month_text = $(".calendar-title").text();
@@ -13304,6 +13305,20 @@
       let progress = progressBar.dataset.progress;
       progressBar.style.width = progress + "%";
       progressTexts[index].textContent = progress + "%";
+    });
+  });
+
+  // app/javascript/packs/calendar_hover_books_index.js
+  document.addEventListener("turbo:load", function() {
+    $(document).ready(function() {
+      $(".calendar_book_index_dropdown").hover(
+        function() {
+          $(this).find(".calendar_book_index_dropdown-content").stop(true, true).delay(200).fadeIn(500);
+        },
+        function() {
+          $(this).find(".calendar_book_index_dropdown-content").stop(true, true).delay(200).fadeOut(500);
+        }
+      );
     });
   });
 
