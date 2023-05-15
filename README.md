@@ -8,8 +8,8 @@
 ## [Qiita記事](https://qiita.com/aya1357/items/5abc68b557197dc39baf)
 
 ### * 2023年5月11日現在
-#### PV数: 9060pv
-#### uu数： 360
+#### PV数: 10390pv
+#### uu数： 378
 
 
 ## 【サービス概要】<br>
