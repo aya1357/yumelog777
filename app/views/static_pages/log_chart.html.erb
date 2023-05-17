@@ -1,0 +1,95 @@
+<div style="background-color: #f9fcff;">
+  <div class="flex flex-col md:flex-row justify-center items-center space-x-0 md:space-x-6 mx-4 pt-14">
+    <div class="relative overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 w-full md:w-1/3 shadow-md md:mx-6">
+      <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
+      <div class="sm:flex sm:justify-between sm:gap-4">
+        <div>
+          <h3 class="text-lg font-bold text-gray-900 sm:text-2xl">
+            <%= current_user.name%>
+          </h3>
+        </div>
+      </div>
+      <div class="flex justify-between mt-4">
+        <div class="text-sm text-gray-500">
+          読書ランク
+        </div>
+        <div>10</div>
+      </div>
+      <div class="flex justify-between mt-4">
+        <div class="text-sm text-gray-500">
+          称号
+        </div>
+        <div>
+          博士
+        </div>
+      </div>
+      <div class="flex justify-between mt-4">
+        <div class="text-sm text-gray-500">
+          総ページ数
+        </div>
+        <div class="text-gray-500">
+          10ページ
+        </div>
+      </div>
+      <div class="mt-4">
+        <p class="max-w-[40ch] text-sm text-gray-500">
+          ランクアップに必要なページ数
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-row items-center justify-center w-full md:w-1/3 mt-4 md:mt-0 md:space-x-6 space-x-2 font-bold">
+      <div class="flex flex-col items-center justify-center">
+        <div>本日までの<br>総ページ数</div>
+        <div class="bg-gradient-to-tr from-blue-500 to-blue-400 md:w-32 md:h-32 w-28 h-28 rounded-full border-white border-2  flex justify-center items-center drop-shadow-lg">
+          <div>
+            <h1 class="text-white text-4xl">1<span class="text-sm">ページ</span></h1>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col items-center justify-center">
+        <div>2023年5月<br>総ページ数</div>
+        <div class="bg-gradient-to-tr from-blue-500 to-blue-400 md:w-32 md:h-32 w-28 h-28 rounded-full border-white border-2  flex justify-center items-center drop-shadow-lg">
+          <div>
+            <h1 class="text-white text-4xl">1<span class="text-sm">ページ</span></h1>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col items-center justify-center">
+        <div>2023年5月<br>総目標ページ数</div>
+        <div class="bg-gradient-to-tr from-blue-500 to-blue-400 md:w-32 md:h-32 w-28 h-28 rounded-full border-white border-2  flex justify-center items-center drop-shadow-lg">
+          <div>
+            <h1 class="text-white text-4xl">1<span class="text-sm">ページ</span></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-col justify-center items-center pt-20 mx-3" style="background-color: #f9fcff;">
+    <div class="flex items-center space-x-4 mb-4">
+      <%= link_to log_chart_path(start_date: @start_date - 1.week), remote: true, id: "previous_week" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
+        </svg>
+      <% end %>
+      <%= link_to '今週', log_chart_path, id: 'current_week', remote: true, class: "bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-1 px-1 border border-blue-500 hover:border-transparent rounded text-xl mr-2" %>
+      <%= link_to log_chart_path(start_date: @start_date + 1.week), remote: true, id: "next_week" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+        </svg>
+      <% end %>
+    </div>
+    <div class="justify-center items-center md:w-1/2 w-full">
+      <%= column_chart @chart_data, id: "weekChart" %>
+    </div>
+  </div>
+</div>
+<%# <div class="flex justify-center"> %>
+  <%# <%= link_to '先月', log_chart_path(start_date: @start_date.prev_month), remote: true, id: "previous_month" %> %>
+  <%# <%= link_to '今月', log_chart_path(start_date: Date.today.beginning_of_month), remote: true, id: "current_month" %> %>
+  <%# <%= link_to '翌月', log_chart_path(start_date: @start_date.next_month), remote: true, id: "next_month" %> %>
+<%# </div> %>
+<%# <div id="month-display" class="text-center"> %>
+  <%# <%= @start_date.strftime("%Y年%m月") %> %>
+<%# </div> %>
+
+<%# <%= line_chart @monthly_chart_data, id: "myMonthlyChart" %> %>

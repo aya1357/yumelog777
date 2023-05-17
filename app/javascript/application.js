@@ -14,5 +14,8 @@ import "./packs/today_books_accordion.js"
 import "./packs/logs_not_read_books.js"
 import "./packs/book_progress.js"
 import "./packs/calendar_hover_books_index.js"
+import "./packs/log_chart_ajax.js"
 import jquery from "jquery"
+import "chartkick";
+import "chartkick/chart.js";
 window.$ = window.jQuery = jquery
