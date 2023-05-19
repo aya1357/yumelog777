@@ -13327,34 +13327,29 @@
     });
   });
 
-  // app/javascript/packs/log_chart_ajax.js
+  // app/javascript/packs/log_chart_week.js
+  var weekOffset = 0;
   document.addEventListener("turbo:load", function() {
     $(document).ready(function() {
       $("#previous_week, #next_week, #current_week").on("click", function(e2) {
         e2.preventDefault();
         let $this = $(this);
-        let url = $this.attr("href");
-        $.getJSON(url, function(data) {
+        if ($this.attr("id") === "previous_week") {
+          weekOffset -= 1;
+        } else if ($this.attr("id") === "next_week") {
+          weekOffset += 1;
+        } else if ($this.attr("id") === "current_week") {
+          weekOffset = 0;
+        }
+        let currentDate = new Date();
+        currentDate.setDate(
+          currentDate.getDate() - currentDate.getDay() + 7 * weekOffset
+        );
+        let newStartDate = currentDate.toISOString().slice(0, 10);
+        let newUrl = "/log_chart?start_date=" + newStartDate;
+        $this.attr("href", newUrl);
+        $.getJSON(newUrl, function(data) {
           Chartkick.charts["weekChart"].updateData(data);
-          if ($this.attr("id") === "previous_week") {
-            $this.attr(
-              "href",
-              url.replace(/start_date=(\d+-\d+-\d+)/, function(_, date) {
-                let newDate = new Date(date);
-                newDate.setDate(newDate.getDate() - 7);
-                return "start_date=" + newDate.toISOString().slice(0, 10);
-              })
-            );
-          } else {
-            $this.attr(
-              "href",
-              url.replace(/start_date=(\d+-\d+-\d+)/, function(_, date) {
-                let newDate = new Date(date);
-                newDate.setDate(newDate.getDate() + 7);
-                return "start_date=" + newDate.toISOString().slice(0, 10);
-              })
-            );
-          }
         });
       });
     });
