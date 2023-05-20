@@ -13328,26 +13328,26 @@
   });
 
   // app/javascript/packs/log_chart_week.js
-  var weekOffset = 0;
+  var weekSet = 0;
   document.addEventListener("turbo:load", function() {
     $(document).ready(function() {
       $("#previous_week, #next_week, #current_week").on("click", function(e2) {
         e2.preventDefault();
-        let $this = $(this);
-        if ($this.attr("id") === "previous_week") {
-          weekOffset -= 1;
-        } else if ($this.attr("id") === "next_week") {
-          weekOffset += 1;
-        } else if ($this.attr("id") === "current_week") {
-          weekOffset = 0;
+        let weekButton = $(this);
+        if (weekButton.attr("id") === "previous_week") {
+          weekSet -= 1;
+        } else if (weekButton.attr("id") === "next_week") {
+          weekSet += 1;
+        } else if (weekButton.attr("id") === "current_week") {
+          weekSet = 0;
         }
         let currentDate = new Date();
         currentDate.setDate(
-          currentDate.getDate() - currentDate.getDay() + 7 * weekOffset
+          currentDate.getDate() - currentDate.getDay() + 7 * weekSet
         );
         let newStartDate = currentDate.toISOString().slice(0, 10);
-        let newUrl = "/log_chart?start_date=" + newStartDate;
-        $this.attr("href", newUrl);
+        let newUrl = "/log_chart?week_start_date=" + newStartDate;
+        weekButton.attr("href", newUrl);
         $.getJSON(newUrl, function(data) {
           Chartkick.charts["weekChart"].updateData(data);
         });

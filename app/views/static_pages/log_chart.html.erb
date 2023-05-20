@@ -66,13 +66,13 @@
   </div>
   <div class="flex flex-col justify-center items-center pt-20 mx-3" style="background-color: #f9fcff;">
     <div class="flex items-center space-x-4 mb-4">
-      <%= link_to log_chart_path(start_date: @start_date - 1.week), remote: true, id: "previous_week" do %>
+      <%= link_to log_chart_path(week_start_date: @week_start_date - 1.week), remote: true, id: "previous_week" do %>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
         </svg>
       <% end %>
       <%= link_to '今週', log_chart_path, id: 'current_week', remote: true, class: "bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-1 px-1 border border-blue-500 hover:border-transparent rounded text-xl mr-2" %>
-      <%= link_to log_chart_path(start_date: @start_date + 1.week), remote: true, id: "next_week" do %>
+      <%= link_to log_chart_path(week_start_date: @week_start_date + 1.week), remote: true, id: "next_week" do %>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
         </svg>
@@ -83,13 +83,3 @@
     </div>
   </div>
 </div>
-<%# <div class="flex justify-center"> %>
-  <%# <%= link_to '先月', log_chart_path(start_date: @start_date.prev_month), remote: true, id: "previous_month" %> %>
-  <%# <%= link_to '今月', log_chart_path(start_date: Date.today.beginning_of_month), remote: true, id: "current_month" %> %>
-  <%# <%= link_to '翌月', log_chart_path(start_date: @start_date.next_month), remote: true, id: "next_month" %> %>
-<%# </div> %>
-<%# <div id="month-display" class="text-center"> %>
-  <%# <%= @start_date.strftime("%Y年%m月") %> %>
-<%# </div> %>
-
-<%# <%= line_chart @monthly_chart_data, id: "myMonthlyChart" %> %>
