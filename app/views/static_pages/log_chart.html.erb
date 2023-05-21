@@ -42,23 +42,23 @@
         <div>本日までの<br>総ページ数</div>
         <div class="bg-gradient-to-tr from-blue-500 to-blue-400 md:w-32 md:h-32 w-28 h-28 rounded-full border-white border-2  flex justify-center items-center drop-shadow-lg">
           <div>
-            <h1 class="text-white text-4xl">1<span class="text-sm">ページ</span></h1>
+            <h1 class="text-white text-4xl"><%= @total_read_pages %><span class="text-sm">ページ</span></h1>
           </div>
         </div>
       </div>
       <div class="flex flex-col items-center justify-center">
-        <div>2023年5月<br>総ページ数</div>
+        <div><%= Time.now.strftime("%Y年%m月") %><br>総ページ数</div>
         <div class="bg-gradient-to-tr from-blue-500 to-blue-400 md:w-32 md:h-32 w-28 h-28 rounded-full border-white border-2  flex justify-center items-center drop-shadow-lg">
           <div>
-            <h1 class="text-white text-4xl">1<span class="text-sm">ページ</span></h1>
+            <h1 class="text-white text-4xl"><%= @total_this__month_read_pages %><span class="text-sm">ページ</span></h1>
           </div>
         </div>
       </div>
       <div class="flex flex-col items-center justify-center">
-        <div>2023年5月<br>総目標ページ数</div>
+        <div><%= Time.now.strftime("%Y年%m月") %><br>総目標ページ数</div>
         <div class="bg-gradient-to-tr from-blue-500 to-blue-400 md:w-32 md:h-32 w-28 h-28 rounded-full border-white border-2  flex justify-center items-center drop-shadow-lg">
           <div>
-            <h1 class="text-white text-4xl">1<span class="text-sm">ページ</span></h1>
+            <h1 class="text-white text-4xl"><%= @total_this_month_target_number %><span class="text-sm">ページ</span></h1>
           </div>
         </div>
       </div>
