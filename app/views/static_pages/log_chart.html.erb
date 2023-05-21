@@ -13,14 +13,55 @@
         <div class="text-sm text-gray-500">
           読書ランク
         </div>
-        <div>10</div>
+        <div class="text-gray-500">10</div>
       </div>
       <div class="flex justify-between mt-4">
         <div class="text-sm text-gray-500">
           称号
         </div>
-        <div>
-          博士
+        <div class="text-gray-500">
+          <%= case
+          when @total_read_pages <= 10
+            "文字探求家"
+          when @total_read_pages <= 50
+            "小説の新米"
+          when @total_read_pages <= 100
+            "詩の旅人"
+          when @total_read_pages <= 200
+            "短編小説の冒険者"
+          when @total_read_pages <= 500
+            "中編小説の達人"
+          when @total_read_pages <= 750
+            "長編小説の勇者"
+          when @total_read_pages <= 1000
+            "古典の鑑賞家"
+          when @total_read_pages <= 1500
+            "ノンフィクションの解析者"
+          when @total_read_pages <= 2000
+            "フィクションの夢追人"
+          when @total_read_pages <= 3000
+            "ベストセラーの制覇者"
+          when @total_read_pages <= 4000
+            "ファンタジーの魔術師"
+          when @total_read_pages <= 5000
+            "SFの未来人"
+          when @total_read_pages <= 6000
+            "ミステリーの探偵"
+          when @total_read_pages <= 7000
+            "ロマンスの情緒家"
+          when @total_read_pages <= 8000
+            "伝記の歴史家"
+          when @total_read_pages <= 9000
+            "哲学の思索家"
+          when @total_read_pages <= 10000
+            "歴史書の時空旅行者"
+          when @total_read_pages <= 12000
+            "科学書の探究者"
+          when @total_read_pages <= 16000
+            "文学の巨人"
+          else
+            "万能の書籍達人"
+          end %>
         </div>
       </div>
       <div class="flex justify-between mt-4">
@@ -28,7 +69,7 @@
           総ページ数
         </div>
         <div class="text-gray-500">
-          10ページ
+          <%= @total_read_pages %>ページ
         </div>
       </div>
       <div class="mt-4">
