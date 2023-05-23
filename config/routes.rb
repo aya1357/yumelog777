@@ -32,4 +32,5 @@ Rails.application.routes.draw do
   get '/faq', to: 'static_pages#faq'
   get '/guide', to: 'static_pages#guide'
   get '/start', to: 'static_pages#start'
+  get '/log_chart', to: 'static_pages#log_chart'
 end

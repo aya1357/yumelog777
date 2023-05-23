@@ -75,6 +75,9 @@ group :test do
   gem 'webdrivers'
 end
 
+# 読書記録のグラフ
+gem 'chartkick'
+
 # CSS、JSバンドラー
 gem 'tailwindcss-rails'
 gem 'cssbundling-rails'

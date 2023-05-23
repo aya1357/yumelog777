@@ -3,7 +3,6 @@ document.addEventListener("turbo:load", function () {
     e.preventDefault()
     //カレンダーでクリックした箇所の日付の数字を取り出す
     const log_date_text = $(this).find(".books_date").text();
-    console.log(log_date_text)
     const log_date_num = log_date_text.replace(/[^0-9]/g, '');
     const log_date = (log_date_num < 10) ? '0' + log_date_num : log_date_num;
     const log_month_text = $(".calendar-title").text();
