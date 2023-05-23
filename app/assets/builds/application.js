@@ -13383,12 +13383,11 @@
         { name: "\u4F1D\u8AAC\u306E\u66F8\u7C4D\u4ED9\u4EBA", min: 16e3 }
       ];
       let total_read_pages = parseInt($(".rank_total_read_pages").text(), 10);
-      console.log(total_read_pages);
       let currentTitle = "";
-      let nextTitleMax = 0;
       let remainingPages = 0;
       let currentTitleMin = 0;
       let currentTitleMax = 0;
+      let level = 0;
       for (let i2 = 0; i2 < titles.length; i2++) {
         if (total_read_pages >= titles[i2].min && total_read_pages <= titles[i2].max) {
           currentTitle = titles[i2].name;
@@ -13397,6 +13396,7 @@
           if (i2 < titles.length - 1) {
             remainingPages = currentTitleMax + 1 - total_read_pages;
           }
+          level = i2 + 1;
           break;
         }
       }
@@ -13404,6 +13404,7 @@
       $(".rank_log_remaining").text(remainingPages);
       let progress = (total_read_pages - currentTitleMin) / (currentTitleMax - currentTitleMin) * 100;
       $(".rank_progress_bar").css("width", progress + "%").attr("aria-valuenow", progress);
+      $(".rank_log_level").text(level);
     });
   });
 

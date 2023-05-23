@@ -23,32 +23,37 @@ document.addEventListener("turbo:load", function () {
       { name: "伝説の書籍仙人", min: 16000 },
     ];
     let total_read_pages = parseInt($(".rank_total_read_pages").text(), 10);
-    console.log(total_read_pages);
-
+    // 現在の称号、残りのページ数、レベルの初期化
     let currentTitle = "";
-    let nextTitleMax = 0;
     let remainingPages = 0;
     let currentTitleMin = 0;
     let currentTitleMax = 0;
-
+    let level = 0;
     for (let i = 0; i < titles.length; i++) {
+      // 現在の総読書ページ数が、称号の範囲内にあるかを判定
       if (
         total_read_pages >= titles[i].min &&
         total_read_pages <= titles[i].max
       ) {
+        // 現在の称号を設定
         currentTitle = titles[i].name;
+        // 現在の称号の最小ページ数を設定
         currentTitleMin = titles[i].min;
+        // 現在の称号の最大ページ数を設定
         currentTitleMax = titles[i].max;
+        // 現在の称号が最後の称号でない場合、残りのページ数を計算
         if (i < titles.length - 1) {
-          remainingPages = (currentTitleMax + 1) - total_read_pages;
+          remainingPages = currentTitleMax + 1 - total_read_pages;
         }
+        // 現在の称号に対応するレベルを設定
+        level = i + 1;
         break;
       }
     }
-
+    // 現在の称号を表示
     $(".rank_log_title").text(currentTitle);
+    // 残りのページ数を表示
     $(".rank_log_remaining").text(remainingPages);
-
     // プログレスバーの更新
     let progress =
       ((total_read_pages - currentTitleMin) /
@@ -57,5 +62,7 @@ document.addEventListener("turbo:load", function () {
     $(".rank_progress_bar")
       .css("width", progress + "%")
       .attr("aria-valuenow", progress);
+    // レベルを表示
+    $(".rank_log_level").text(level);
   });
 });
