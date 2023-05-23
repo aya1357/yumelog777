@@ -16,7 +16,14 @@ class LogsController < ApplicationController
 
   def create
     @form = Form::LogCollection.new(log_collection_params)
-    @log_date = params[:form_log_collection][:logs_attributes]["0"][:log_date]
+    # @log_date = params[:form_log_collection][:logs_attributes]["0"][:log_date]
+    if params[:form_log_collection][:logs_attributes]["0"].present?
+      # 登録時の日付取得処理
+      @log_date = params[:form_log_collection][:logs_attributes]["0"][:log_date]
+    else
+      # 更新時の日付取得処理
+      @log_date =  params[:form_log_collection][:log_date]
+    end
 
     if create_log_exist?
       redirect_to "/calendars", alert: t('defaults.message.log_registered')
