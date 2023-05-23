@@ -15,6 +15,7 @@ import "./packs/logs_not_read_books.js"
 import "./packs/book_progress.js"
 import "./packs/calendar_hover_books_index.js"
 import "./packs/log_chart_week.js"
+import "./packs/rank_read_pages.js"
 import jquery from "jquery"
 import "chartkick";
 import "chartkick/chart.js";
