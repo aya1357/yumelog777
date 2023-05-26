@@ -16,8 +16,8 @@ class StudiesController < ApplicationController
   def create
     @study = current_user.studies.build(study_params)
     if @study.save
-      # redirect_to studies_registration_complete_path(id: @study.id), success: t('defaults.message.registed', item: Study.model_name.human)
-      redirect_to calendars_path, success: t('defaults.message.registed', item: Study.model_name.human)
+      redirect_to register_study_path(id: @study.id), success: t('defaults.message.registed', item: Study.model_name.human)
+      # redirect_to calendars_path, success: t('defaults.message.registed', item: Study.model_name.human)
     else
       flash.now['danger'] = t('defaults.message.not_registed', item: Study.model_name.human)
       render :new, status: :unprocessable_entity
@@ -79,10 +79,14 @@ class StudiesController < ApplicationController
     redirect_to calendars_path, success: t('defaults.message.status_not_done')
   end
 
-  def registration_complete
+  def register
     @study = current_user.studies.find(params[:id])
   end
 
+  def image
+    image = Study.bookregist_card_img(params[:id])
+    send_data image.to_blob, type: 'image/png', disposition: 'inline'
+  end
 
   private
 
