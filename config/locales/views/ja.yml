@@ -86,6 +86,8 @@ ja:
       title: '登録している本の詳細'
     edit:
       title: '登録している本を編集'
+    register:
+      title: '本を登録'
   logs:
     new:
       title: '積みログを新規登録'

@@ -21,7 +21,7 @@ module ApplicationHelper
       og: {
         site_name: 'tsumilog',
         title: '積みログ',
-        description: '積みログは、積読本解消のための読書管理カレンダーアプリです。残りページ数や終了日の計算機能も搭載しています。',
+        description: '積みログは、積読本解消のための読書管理カレンダーアプリです。使い方は簡単！残りページ数や終了日が一目で分かります。',
         type: 'website',
         url: 'https://www.tsumilog.net/',
         image: image_url('tsumilog_ogp.png'),
@@ -34,9 +34,18 @@ module ApplicationHelper
   end
 
   def twitter_share_message(study)
-    message = "&text=【積みログ】%0A #{ study.title } を登録しました。%0A目標終了予定日は #{ l target_end_date(study) }です。#積みログ #積読本解消 #カレンダーアプリ"
-    return message
-  end
+    message_parts = [
+      "【積みログ】",
+      "#{ study.title } を登録しました。",
+      "1日目標は #{ study.target_number }ページです。",
+      "目標終了予定日は #{ l target_end_date(study) }です。",
+      "#読書",
+      "#積読本解消",
+      ""
+    ]
+    message = message_parts.map { |part| CGI.escape(part) }.join('%0A')
+    return "&text=#{message}"
+end
 
   def error_messages_for(resource)
     return unless resource.errors.any?

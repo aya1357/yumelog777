@@ -1,0 +1,23 @@
+<% content_for(:title, t('.title')) %>
+
+<div class="py-1 justify-center" style="background-color: #f9fcff;">
+  <div class="flex items-center justify-center mx-4">
+    <%= image_tag(image_study_path(id: @study.id), alt: "Generated Image") %>
+  </div>
+  <div class="sm:max-w-xl sm:mx-auto">
+      <div class="flex justify-center items-center mt-2 mb-4">
+        <%= link_to calendars_path do %>
+          <div class="hover:underline flex flex-col justify-center items-center space-y-1">
+            <%= image_tag "header_calendar.png", alt: "カレンダーアイコン", style: "width: 30%;" %>
+            <span class="md:font-extrabold text-xs" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">カレンダー画面へ</span>
+          </div>
+        <% end %>
+        <%= link_to "https://twitter.com/intent/tweet?url=#{CGI.escape('https://www.tsumilog.net/')}#{twitter_share_message(@study)}" do %>
+          <div class="hover:underline flex flex-col justify-center items-center space-y-1">
+            <%= image_tag "twitter_icon.png", alt: "Twitterアイコン", style: "width: 15%;" %>
+            <span class="md:font-extrabold text-xs" style="font-family: 'Gen Jyuu Gothic XP', sans-serif;">Twitterで共有</span>
+          </div>
+        <% end %>
+      </div>
+  </div>
+</div>
