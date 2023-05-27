@@ -5,7 +5,12 @@ module ApplicationHelper
     page_title.empty? ? base_title : page_title + ' | ' + base_title
   end
 
-  def default_meta_tags
+  def default_meta_tags(study = nil)
+    og_image = if study
+                image_url(image_study_path(id: study.id))
+              else
+                image_url('tsumilog_ogp.png')
+              end
     {
       site: 'tsumilog',
       title: '積みログ',
@@ -24,11 +29,11 @@ module ApplicationHelper
         description: '積みログは、積読本解消のための読書管理カレンダーアプリです。使い方は簡単！残りページ数や終了日が一目で分かります。',
         type: 'website',
         url: 'https://www.tsumilog.net/',
-        image: image_url('tsumilog_ogp.png'),
+        image: og_image,
         locale: 'ja_JP',
       },
       twitter: {
-        card: 'summary_large_image',
+        card: og_image,
       }
     }
   end

@@ -31,6 +31,7 @@ module Yumelog777
       g.helper false
       g.test_framework false
     end
+    config.autoloader = :classic
   end
 
 end
