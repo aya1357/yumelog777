@@ -13259,46 +13259,42 @@
 
   // app/javascript/packs/today_books_accordion.js
   document.addEventListener("turbo:load", function() {
-    $(document).ready(function() {
-      $(".books_titles").hide();
-      $(".books_index_open").hide();
-      $(".accordion_books_index_title").click(function() {
-        $(this).next(".books_titles").slideToggle(200);
-        $(this).find(".books_index_open").toggle();
-        $(this).find(".books_index_close").toggle();
-        $(".books_titles").not($(this).next(".books_titles")).slideUp(200);
-        $(".accordion_books_index_title").not($(this)).find(".books_index_open").hide();
-        $(".accordion_books_index_title").not($(this)).find(".books_index_close").show();
-      });
+    $(".books_titles").hide();
+    $(".books_index_open").hide();
+    $(".accordion_books_index_title").click(function() {
+      $(this).next(".books_titles").slideToggle(200);
+      $(this).find(".books_index_open").toggle();
+      $(this).find(".books_index_close").toggle();
+      $(".books_titles").not($(this).next(".books_titles")).slideUp(200);
+      $(".accordion_books_index_title").not($(this)).find(".books_index_open").hide();
+      $(".accordion_books_index_title").not($(this)).find(".books_index_close").show();
     });
   });
 
   // app/javascript/packs/logs_not_read_books.js
   document.addEventListener("turbo:load", function() {
-    $(document).ready(function() {
+    $(
+      ".form_not_read_titles, .endDate_not_read_titles, .remainPages_not_read_titles, .targetPages_not_read_titles"
+    ).hide();
+    $(
+      ".form_not_read_open, .endDate_not_read_open, .remainPages_not_read_open, .targetPages_not_read_open"
+    ).hide();
+    $(
+      ".form_not_read_index_title, .endDate_not_read_index_title, .remainPages_not_read_index_title, .targetPages_not_read_index_title"
+    ).click(function() {
+      toggleAllAccordions();
+    });
+    function toggleAllAccordions() {
       $(
         ".form_not_read_titles, .endDate_not_read_titles, .remainPages_not_read_titles, .targetPages_not_read_titles"
-      ).hide();
+      ).slideToggle(200);
       $(
         ".form_not_read_open, .endDate_not_read_open, .remainPages_not_read_open, .targetPages_not_read_open"
-      ).hide();
+      ).toggle();
       $(
-        ".form_not_read_index_title, .endDate_not_read_index_title, .remainPages_not_read_index_title, .targetPages_not_read_index_title"
-      ).click(function() {
-        toggleAllAccordions();
-      });
-      function toggleAllAccordions() {
-        $(
-          ".form_not_read_titles, .endDate_not_read_titles, .remainPages_not_read_titles, .targetPages_not_read_titles"
-        ).slideToggle(200);
-        $(
-          ".form_not_read_open, .endDate_not_read_open, .remainPages_not_read_open, .targetPages_not_read_open"
-        ).toggle();
-        $(
-          ".form_not_read_close, .endDate_not_read_close, .remainPages_not_read_close, .targetPages_not_read_close"
-        ).toggle();
-      }
-    });
+        ".form_not_read_close, .endDate_not_read_close, .remainPages_not_read_close, .targetPages_not_read_close"
+      ).toggle();
+    }
   });
 
   // app/javascript/packs/book_progress.js
@@ -13317,95 +13313,89 @@
 
   // app/javascript/packs/calendar_hover_books_index.js
   document.addEventListener("turbo:load", function() {
-    $(document).ready(function() {
-      $(".calendar_book_index_dropdown").hover(
-        function() {
-          $(this).find(".calendar_book_index_dropdown-content").stop(true, true).delay(200).fadeIn(500);
-        },
-        function() {
-          $(this).find(".calendar_book_index_dropdown-content").stop(true, true).delay(200).fadeOut(500);
-        }
-      );
-    });
+    $(".calendar_book_index_dropdown").hover(
+      function() {
+        $(this).find(".calendar_book_index_dropdown-content").stop(true, true).delay(200).fadeIn(500);
+      },
+      function() {
+        $(this).find(".calendar_book_index_dropdown-content").stop(true, true).delay(200).fadeOut(500);
+      }
+    );
   });
 
   // app/javascript/packs/log_chart_week.js
   var weekSet = 0;
   document.addEventListener("turbo:load", function() {
-    $(document).ready(function() {
-      $("#previous_week, #next_week, #current_week").on("click", function(e2) {
-        e2.preventDefault();
-        let weekButton = $(this);
-        if (weekButton.attr("id") === "previous_week") {
-          weekSet -= 1;
-        } else if (weekButton.attr("id") === "next_week") {
-          weekSet += 1;
-        } else if (weekButton.attr("id") === "current_week") {
-          weekSet = 0;
-        }
-        let currentDate = new Date();
-        currentDate.setDate(
-          currentDate.getDate() - currentDate.getDay() + 7 * weekSet
-        );
-        let newStartDate = currentDate.toISOString().slice(0, 10);
-        let newUrl = "/log_chart?week_start_date=" + newStartDate;
-        weekButton.attr("href", newUrl);
-        $.getJSON(newUrl, function(data) {
-          Chartkick.charts["weekChart"].updateData(data);
-        });
+    $("#previous_week, #next_week, #current_week").on("click", function(e2) {
+      e2.preventDefault();
+      let weekButton = $(this);
+      if (weekButton.attr("id") === "previous_week") {
+        weekSet -= 1;
+      } else if (weekButton.attr("id") === "next_week") {
+        weekSet += 1;
+      } else if (weekButton.attr("id") === "current_week") {
+        weekSet = 0;
+      }
+      let currentDate = new Date();
+      currentDate.setDate(
+        currentDate.getDate() - currentDate.getDay() + 7 * weekSet
+      );
+      let newStartDate = currentDate.toISOString().slice(0, 10);
+      let newUrl = "/log_chart?week_start_date=" + newStartDate;
+      weekButton.attr("href", newUrl);
+      $.getJSON(newUrl, function(data) {
+        Chartkick.charts["weekChart"].updateData(data);
       });
     });
   });
 
   // app/javascript/packs/rank_read_pages.js
   document.addEventListener("turbo:load", function() {
-    $(document).ready(function() {
-      let titles = [
-        { name: "\u6587\u5B57\u63A2\u6C42\u5BB6", min: 0, max: 9 },
-        { name: "\u6587\u5B66\u306E\u65B0\u7C73", min: 10, max: 49 },
-        { name: "\u8A69\u306E\u65C5\u4EBA", min: 50, max: 99 },
-        { name: "\u77ED\u7DE8\u6587\u5B66\u306E\u5192\u967A\u8005", min: 100, max: 199 },
-        { name: "\u4E2D\u7DE8\u6587\u5B66\u306E\u9054\u4EBA", min: 200, max: 499 },
-        { name: "\u9577\u7DE8\u6587\u5B66\u306E\u52C7\u8005", min: 500, max: 749 },
-        { name: "\u53E4\u5178\u306E\u9451\u8CDE\u5BB6", min: 750, max: 999 },
-        { name: "\u30CE\u30F3\u30D5\u30A3\u30AF\u30B7\u30E7\u30F3\u306E\u89E3\u6790\u8005", min: 1e3, max: 1499 },
-        { name: "\u30D5\u30A3\u30AF\u30B7\u30E7\u30F3\u306E\u5922\u8FFD\u4EBA", min: 1500, max: 1999 },
-        { name: "\u30D9\u30B9\u30C8\u30BB\u30E9\u30FC\u306E\u5236\u8987\u8005", min: 2e3, max: 2999 },
-        { name: "\u30D5\u30A1\u30F3\u30BF\u30B8\u30FC\u306E\u9B54\u8853\u5E2B", min: 3e3, max: 3999 },
-        { name: "SF\u306E\u672A\u6765\u4EBA", min: 4e3, max: 4999 },
-        { name: "\u30DF\u30B9\u30C6\u30EA\u30FC\u306E\u63A2\u5075", min: 5e3, max: 5999 },
-        { name: "\u30ED\u30DE\u30F3\u30B9\u306E\u60C5\u7DD2\u5BB6", min: 6e3, max: 6999 },
-        { name: "\u4F1D\u8A18\u306E\u6B74\u53F2\u5BB6", min: 7e3, max: 7999 },
-        { name: "\u54F2\u5B66\u306E\u601D\u7D22\u5BB6", min: 8e3, max: 8999 },
-        { name: "\u6B74\u53F2\u66F8\u306E\u6642\u7A7A\u65C5\u884C\u8005", min: 9e3, max: 9999 },
-        { name: "\u79D1\u5B66\u66F8\u306E\u63A2\u7A76\u8005", min: 1e4, max: 11999 },
-        { name: "\u6587\u5B66\u306E\u5DE8\u4EBA", min: 12e3, max: 15999 },
-        { name: "\u4F1D\u8AAC\u306E\u66F8\u7C4D\u4ED9\u4EBA", min: 16e3 }
-      ];
-      let total_read_pages = parseInt($(".rank_total_read_pages").text(), 10);
-      let currentTitle = "";
-      let remainingPages = 0;
-      let currentTitleMin = 0;
-      let currentTitleMax = 0;
-      let level = 0;
-      for (let i2 = 0; i2 < titles.length; i2++) {
-        if (total_read_pages >= titles[i2].min && total_read_pages <= titles[i2].max) {
-          currentTitle = titles[i2].name;
-          currentTitleMin = titles[i2].min;
-          currentTitleMax = titles[i2].max;
-          if (i2 < titles.length - 1) {
-            remainingPages = currentTitleMax + 1 - total_read_pages;
-          }
-          level = i2 + 1;
-          break;
+    let titles = [
+      { name: "\u6587\u5B57\u63A2\u6C42\u5BB6", min: 0, max: 9 },
+      { name: "\u6587\u5B66\u306E\u65B0\u7C73", min: 10, max: 49 },
+      { name: "\u8A69\u306E\u65C5\u4EBA", min: 50, max: 99 },
+      { name: "\u77ED\u7DE8\u6587\u5B66\u306E\u5192\u967A\u8005", min: 100, max: 199 },
+      { name: "\u4E2D\u7DE8\u6587\u5B66\u306E\u9054\u4EBA", min: 200, max: 499 },
+      { name: "\u9577\u7DE8\u6587\u5B66\u306E\u52C7\u8005", min: 500, max: 749 },
+      { name: "\u53E4\u5178\u306E\u9451\u8CDE\u5BB6", min: 750, max: 999 },
+      { name: "\u30CE\u30F3\u30D5\u30A3\u30AF\u30B7\u30E7\u30F3\u306E\u89E3\u6790\u8005", min: 1e3, max: 1499 },
+      { name: "\u30D5\u30A3\u30AF\u30B7\u30E7\u30F3\u306E\u5922\u8FFD\u4EBA", min: 1500, max: 1999 },
+      { name: "\u30D9\u30B9\u30C8\u30BB\u30E9\u30FC\u306E\u5236\u8987\u8005", min: 2e3, max: 2999 },
+      { name: "\u30D5\u30A1\u30F3\u30BF\u30B8\u30FC\u306E\u9B54\u8853\u5E2B", min: 3e3, max: 3999 },
+      { name: "SF\u306E\u672A\u6765\u4EBA", min: 4e3, max: 4999 },
+      { name: "\u30DF\u30B9\u30C6\u30EA\u30FC\u306E\u63A2\u5075", min: 5e3, max: 5999 },
+      { name: "\u30ED\u30DE\u30F3\u30B9\u306E\u60C5\u7DD2\u5BB6", min: 6e3, max: 6999 },
+      { name: "\u4F1D\u8A18\u306E\u6B74\u53F2\u5BB6", min: 7e3, max: 7999 },
+      { name: "\u54F2\u5B66\u306E\u601D\u7D22\u5BB6", min: 8e3, max: 8999 },
+      { name: "\u6B74\u53F2\u66F8\u306E\u6642\u7A7A\u65C5\u884C\u8005", min: 9e3, max: 9999 },
+      { name: "\u79D1\u5B66\u66F8\u306E\u63A2\u7A76\u8005", min: 1e4, max: 11999 },
+      { name: "\u6587\u5B66\u306E\u5DE8\u4EBA", min: 12e3, max: 15999 },
+      { name: "\u4F1D\u8AAC\u306E\u66F8\u7C4D\u4ED9\u4EBA", min: 16e3 }
+    ];
+    let total_read_pages = parseInt($(".rank_total_read_pages").text(), 10);
+    let currentTitle = "";
+    let remainingPages = 0;
+    let currentTitleMin = 0;
+    let currentTitleMax = 0;
+    let level = 0;
+    for (let i2 = 0; i2 < titles.length; i2++) {
+      if (total_read_pages >= titles[i2].min && total_read_pages <= titles[i2].max) {
+        currentTitle = titles[i2].name;
+        currentTitleMin = titles[i2].min;
+        currentTitleMax = titles[i2].max;
+        if (i2 < titles.length - 1) {
+          remainingPages = currentTitleMax + 1 - total_read_pages;
         }
+        level = i2 + 1;
+        break;
       }
-      $(".rank_log_title").text(currentTitle);
-      $(".rank_log_remaining").text(remainingPages);
-      let progress = (total_read_pages - currentTitleMin) / (currentTitleMax - currentTitleMin) * 100;
-      $(".rank_progress_bar").css("width", progress + "%").attr("aria-valuenow", progress);
-      $(".rank_log_level").text(level);
-    });
+    }
+    $(".rank_log_title").text(currentTitle);
+    $(".rank_log_remaining").text(remainingPages);
+    let progress = (total_read_pages - currentTitleMin) / (currentTitleMax - currentTitleMin) * 100;
+    $(".rank_progress_bar").css("width", progress + "%").attr("aria-valuenow", progress);
+    $(".rank_log_level").text(level);
   });
 
   // app/javascript/application.js
