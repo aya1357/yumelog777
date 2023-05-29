@@ -60,7 +60,7 @@ class Study < ApplicationRecord
     speech_bubble.resize "450x490"
 
     #キャラクターの設定
-    character_files = Dir.glob('./app/assets/images/cards/*.png')
+    character_files = Dir.glob('./public/images/cards/*.png')
     random_character = character_files.sample
     character = MiniMagick::Image.open(random_character)
     character.resize "400x300"
@@ -110,5 +110,11 @@ class Study < ApplicationRecord
       c.draw "text 40, 60'#{study_random_comment}'"
     end
     image.format 'png'
+
+    # {
+    #   image: image.to_blob,
+    #   character_filename: File.basename(random_character),
+    #   character_message: study_random_comment
+    # }
   end
 end
