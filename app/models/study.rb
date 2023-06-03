@@ -60,7 +60,7 @@ class Study < ApplicationRecord
     speech_bubble.resize "450x490"
 
     #キャラクターの設定
-    character_files = Dir.glob('./app/assets/images/cards/*.png')
+    character_files = Dir.glob('./public/images/cards/*.png')
     random_character = character_files.sample
     character = MiniMagick::Image.open(random_character)
     character.resize "400x300"
