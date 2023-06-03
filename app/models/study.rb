@@ -110,11 +110,5 @@ class Study < ApplicationRecord
       c.draw "text 40, 60'#{study_random_comment}'"
     end
     image.format 'png'
-
-    # {
-    #   image: image.to_blob,
-    #   character_filename: File.basename(random_character),
-    #   character_message: study_random_comment
-    # }
   end
 end
