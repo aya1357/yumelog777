@@ -8,8 +8,8 @@
 ## [Qiita記事](https://qiita.com/aya1357/items/5abc68b557197dc39baf)
 
 ### * 【積みログ】 2023年6月1日現在
-#### PV数: 12,768pv
-#### uu数： 437
+#### PV数: 12,945pv
+#### uu数： 444
 #### 【Qiita記事】 1万view以上
 
 
