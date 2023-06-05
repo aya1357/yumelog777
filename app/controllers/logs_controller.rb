@@ -64,15 +64,6 @@ class LogsController < ApplicationController
     render json: log
   end
 
-  def completed
-    @log = Log.find(params[:id])
-  end
-
-  def image
-    image = Log.character_card_img(params[:id])
-    send_data image.to_blob, type: 'image/png', disposition: 'inline'
-  end
-
   private
 
   def log_collection_params
