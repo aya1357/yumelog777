@@ -85,10 +85,6 @@ gem 'cssbundling-rails'
 # Mail
 gem 'letter_opener_web'
 
-# 画像編集
-gem 'mini_magick'
-gem 'rmagick'
-
 # OGP, メタタグの設定
 gem 'meta-tags'
 

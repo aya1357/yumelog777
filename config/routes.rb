@@ -17,12 +17,9 @@ Rails.application.routes.draw do
   resources :calendars, only: %i[index destroy]
   resources :studies do
     resources :memos
-    get 'register', to: 'studies#register', on: :member
-    get 'image', to: 'studies#image', on: :member
   end
   resource :log, only: %i[new create edit update destroy] do
     get 'logs/log_culc_api', to: 'logs#log_culc_api'
-    get 'completed', to: 'logs#completed', on: :member
     get 'image', to: 'logs#image', on: :member
   end
   get 'logs/destroy_all', to: 'logs#destroy_all'
